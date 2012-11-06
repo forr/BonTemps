@@ -55,16 +55,15 @@ namespace BonTemps
             {
                 if (iTable == 4 | iTable == 5)
                 {
-                    this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[1].FirstName, TableStatus.NotOnTime);
+                    this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[1].FirstName, TableStatus.NOTONTIME);
+                    continue;
                 }
                 else if (iTable == 2)
                 {
-                    this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[0].FirstName, TableStatus.Ordered);
+                    this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[0].FirstName, TableStatus.ORDERED);
+                    continue;
                 }
-                else
-                {
-                    this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, "", TableStatus.Empty);
-                }
+                this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, "", TableStatus.EMPTY);
             }
         }
 
@@ -197,30 +196,23 @@ namespace BonTemps
                 lblClientID.ForeColor = System.Drawing.Color.Black;
                 lblClientID.BackColor = System.Drawing.Color.White;
                 lblClientID.Text = this.tables[(i - 1)].clientID;
+
                 switch (this.tables[(i - 1)].tableStatus)
                 {
-                    case TableStatus.Empty:
-                        {
-                            lblTableStatus.BackColor = System.Drawing.Color.Blue;
-                            break;
-                        }
-                    case TableStatus.NotOnTime:
-                        {
-                            lblTableStatus.BackColor = System.Drawing.Color.FromArgb(255,99,25);
-                            lblClientID.ForeColor = System.Drawing.Color.White;
-                            lblClientID.BackColor = System.Drawing.Color.Red;
-                            break;
-                        }
-                    case TableStatus.OnTime:
-                        {
-                            lblTableStatus.BackColor = System.Drawing.Color.Green;
-                            break;
-                        }
-                    case TableStatus.Ordered:
-                        {
-                            lblTableStatus.BackColor = System.Drawing.Color.DarkRed;
-                            break;
-                        }
+                    case TableStatus.EMPTY:
+                        lblTableStatus.BackColor = System.Drawing.Color.Blue;
+                        break;
+                    case TableStatus.NOTONTIME:
+                        lblTableStatus.BackColor = System.Drawing.Color.FromArgb(255,99,25);
+                        lblClientID.ForeColor = System.Drawing.Color.White;
+                        lblClientID.BackColor = System.Drawing.Color.Red;
+                        break;
+                    case TableStatus.ONTIME:
+                        lblTableStatus.BackColor = System.Drawing.Color.Green;
+                        break;
+                    case TableStatus.ORDERED:
+                        lblTableStatus.BackColor = System.Drawing.Color.DarkRed;
+                        break;
                 }
 
                 pos_x += table_width + 2;

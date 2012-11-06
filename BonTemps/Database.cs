@@ -2,55 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Configuration;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace BonTemps
 {
-    public class Database
+    public static class Database
     {
-        public static bool Insert(ClientInfo c)
+        private static string GetConnectionString()
         {
-            return false;
+            
         }
-        public static bool Insert(OrderInfo o)
+        public static bool Insert(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
-            return false;
+            
         }
-        public static bool Insert(Menu m)
+        public static bool Update(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
-            return false;
-        }
 
-        public static bool Update(ClientInfo c)
-        {
-            return false;
         }
-        public static bool Update(OrderInfo o)
+        public static bool Delete(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
-            return false;
-        }
-        public static bool Update(Menu m)
-        {
-            return false;
-        }
 
-        public static bool Delete(ClientInfo c)
-        {
-            return false;
         }
-        public static bool Delete(OrderInfo o)
-        {
-            return false;
-        }
-        public static bool Delete(Menu m)
-        {
-            return false;
-        }
-
         public static void Select()
         {
 
         }
-        public static void Select(OrderInfo o, Menu m)
+        public static void Select(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
 
         }
