@@ -55,5 +55,167 @@ namespace BonTemps
         {
             return null;
         }
+
+        //R version
+        #region Example1
+        /*
+        public enum TableSelect { CLIENTS, TABLES, ORDERS }
+
+        public static DataTable SelectGlobal(TableSelect tableSelect, string[] ArgsSelect, string ArgsWhere)
+        {
+            string sqlcmd = String.Empty;
+            string table = String.Empty;
+            string selectables = String.Empty;
+            DataTable dt = null;
+
+            switch(tableSelect)
+            {
+                case TableSelect.CLIENTS:
+                    table = "'Clients'";
+                    break;
+                case TableSelect.ORDERS:
+                    table = "'Orders'";
+                    break;
+                case TableSelect.TABLES:
+                    table = "'Tables'";
+                    break;
+            }
+            foreach(String s in ArgsSelect)
+            {
+                selectables = "'" + s + "'";
+            }
+
+            sqlcmd = string.Format("SELECT {0} FROM {1} WHERE {2}", selectables, table, ArgsWhere);
+
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    using(SqlDataAdapter sqlda = new SqlDataAdapter("", sqlConn))
+                    {
+                        sqlda.Fill(dt);
+                    }
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+
+                        return null;
+                    }
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        */
+        #endregion
+
+
+        #region Example2
+        /*
+        public static DataTable SelectFromClients()
+        {
+            DataTable dt = null;
+            string sqlcmd = string.Format("SELECT * FROM Clients");
+
+            try
+            {
+
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    using (SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd, sqlConn))
+                    {
+                        sqlda.Fill(dt);
+                    }
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+
+                        return null;
+                    }
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable SelectFromClients(int id)
+        {
+            DataTable dt = null;
+            string sqlcmd = string.Format("SELECT * FROM Clients WHERE ID={0}", id);
+
+            try
+            {
+
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    using (SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd, sqlConn))
+                    {
+                        sqlda.Fill(dt);
+                    }
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+
+                        return null;
+                    }
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static DataTable SelectFromClients(string[] ArgsSelect, string[] ArgsWhere)
+        {
+            string selectables = "";
+            DataTable dt = null;
+
+            foreach (String s in ArgsSelect)
+            {
+                selectables = "'" + s + "'";
+            }
+
+            string sqlcmd = string.Format("SELECT {0} FROM Clients WHERE {1}", selectables, ArgsWhere);
+
+            try
+            {
+
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    using (SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd, sqlConn))
+                    {
+                        sqlda.Fill(dt);
+                    }
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+
+                        return null;
+                    }
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }*/
+        #endregion
     }
 }
