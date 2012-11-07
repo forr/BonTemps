@@ -46,12 +46,12 @@
             this.lblClientName_pnlOrder = new System.Windows.Forms.Label();
             this.lblClientID_pnlOrder = new System.Windows.Forms.Label();
             this.lblTableID_pnlOrder = new System.Windows.Forms.Label();
+            this.btnCancelNewOrder = new System.Windows.Forms.Button();
             this.btnCreateNewOrder = new System.Windows.Forms.Button();
             this.tbx1_pnlOrder = new System.Windows.Forms.TextBox();
             this.tbxClientName_pnlOrder = new System.Windows.Forms.TextBox();
             this.tbxClientID_pnlOrder = new System.Windows.Forms.TextBox();
             this.tbxTableID_pnlOrder = new System.Windows.Forms.TextBox();
-            this.btnCancelNewOrder = new System.Windows.Forms.Button();
             this.menuMain.SuspendLayout();
             this.pnlOrder.SuspendLayout();
             this.SuspendLayout();
@@ -193,9 +193,9 @@
             this.lbl1_pnlOrder.AutoSize = true;
             this.lbl1_pnlOrder.Location = new System.Drawing.Point(3, 132);
             this.lbl1_pnlOrder.Name = "lbl1_pnlOrder";
-            this.lbl1_pnlOrder.Size = new System.Drawing.Size(35, 13);
+            this.lbl1_pnlOrder.Size = new System.Drawing.Size(36, 13);
             this.lbl1_pnlOrder.TabIndex = 2;
-            this.lbl1_pnlOrder.Text = "label1";
+            this.lbl1_pnlOrder.Text = "Order:";
             // 
             // lblClientName_pnlOrder
             // 
@@ -224,13 +224,22 @@
             this.lblTableID_pnlOrder.TabIndex = 2;
             this.lblTableID_pnlOrder.Text = "Table:";
             // 
+            // btnCancelNewOrder
+            // 
+            this.btnCancelNewOrder.Location = new System.Drawing.Point(3, 203);
+            this.btnCancelNewOrder.Name = "btnCancelNewOrder";
+            this.btnCancelNewOrder.Size = new System.Drawing.Size(163, 23);
+            this.btnCancelNewOrder.TabIndex = 1;
+            this.btnCancelNewOrder.Text = "Cancel";
+            this.btnCancelNewOrder.UseVisualStyleBackColor = true;
+            // 
             // btnCreateNewOrder
             // 
             this.btnCreateNewOrder.Location = new System.Drawing.Point(3, 174);
             this.btnCreateNewOrder.Name = "btnCreateNewOrder";
             this.btnCreateNewOrder.Size = new System.Drawing.Size(163, 23);
             this.btnCreateNewOrder.TabIndex = 1;
-            this.btnCreateNewOrder.Text = "button1";
+            this.btnCreateNewOrder.Text = "New Order";
             this.btnCreateNewOrder.UseVisualStyleBackColor = true;
             // 
             // tbx1_pnlOrder
@@ -260,15 +269,6 @@
             this.tbxTableID_pnlOrder.Name = "tbxTableID_pnlOrder";
             this.tbxTableID_pnlOrder.Size = new System.Drawing.Size(163, 20);
             this.tbxTableID_pnlOrder.TabIndex = 0;
-            // 
-            // btnCancelNewOrder
-            // 
-            this.btnCancelNewOrder.Location = new System.Drawing.Point(3, 203);
-            this.btnCancelNewOrder.Name = "btnCancelNewOrder";
-            this.btnCancelNewOrder.Size = new System.Drawing.Size(163, 23);
-            this.btnCancelNewOrder.TabIndex = 1;
-            this.btnCancelNewOrder.Text = "Cancel";
-            this.btnCancelNewOrder.UseVisualStyleBackColor = true;
             // 
             // formMain
             // 
