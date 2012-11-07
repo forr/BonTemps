@@ -17,28 +17,31 @@ namespace BonTemps
         }
         public static bool Insert(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
-            var sql_statement = "INSERT INTO Tables,Clients,Orders,TableOrders,Menus,Persons WHERE ";
+            string sqlStatement = "INSERT INTO Tables,Clients,Orders,TableOrders,Menus,Persons";
             try
             {
-                using(SqlConnection sql_conn = new SqlConnection(GetConnectionString()))
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
-                    sql_conn.Open();
-                    if (sql_conn.State == ConnectionState.Open)
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
                     {
-                        
+                        SqlCommand sqlQuery = new SqlCommand(sqlStatement, sqlConn);
+                        int m_success = sqlQuery.ExecuteNonQuery();
+                        return m_success == 1;
                     }
                 }
-
                 return false;
             }
-            catch
-            {
-                return false;
-            }
+            catch { return false; }
         }
         public static bool Update(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
-            return false;
+            string sqlStatement = "UPDATE Tables,Clients,Orders,TableOrders,Menus,Persons";
+            try
+            {
+
+            }
+            catch { return false; }
         }
         public static bool Delete(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
