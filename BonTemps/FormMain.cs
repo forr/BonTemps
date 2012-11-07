@@ -12,7 +12,7 @@ namespace BonTemps
 {
     public partial class formMain : Form
     {
-        Table[] tables = new Table[22];
+        TableLayout[] tables = new TableLayout[22];
         int tableSize = 0;
         int tableMultiplier = 0;
 
@@ -21,14 +21,14 @@ namespace BonTemps
         //======================================================================================
         //======================================================================================
 
-        List<ClientInfo> clients = new List<ClientInfo>();
+        List<Clients> clients = new List<Clients>();
 
         private void CreateTempClientList()
         {
             
             for (int iClient = 1; (iClient - 1) < 2; iClient++)
             {
-                clients.Add(new ClientInfo("Name" + iClient.ToString(),
+                clients.Add(new Clients(null, "Name" + iClient.ToString(),
                                            "LastName",
                                            "Address",
                                            "Postcode",
@@ -40,7 +40,7 @@ namespace BonTemps
 
         private void AddClient()
         {
-            clients.Add(new ClientInfo("tbxFirstName.Text",
+            clients.Add(new Clients(null, "tbxFirstName.Text",
                                        "tbxLastName.Text",
                                        "tbxAddress.Text",
                                        "tbxPostcode.Text",
@@ -55,15 +55,15 @@ namespace BonTemps
             {
                 if (iTable == 4 | iTable == 5)
                 {
-                    this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[1].FirstName, TableStatus.NOTONTIME);
+                    this.tables[iTable] = new TableLayout(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[1].FirstName, TableStatus.NOTONTIME);
                     continue;
                 }
                 else if (iTable == 2)
                 {
-                    this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[0].FirstName, TableStatus.ORDERED);
+                    this.tables[iTable] = new TableLayout(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[0].FirstName, TableStatus.ORDERED);
                     continue;
                 }
-                this.tables[iTable] = new Table(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, "", TableStatus.EMPTY);
+                this.tables[iTable] = new TableLayout(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, "", TableStatus.EMPTY);
             }
         }
 
@@ -177,12 +177,12 @@ namespace BonTemps
                 pnlTable.Location = new Point(pos_x, pos_y);
                 pnlTable.BackgroundImage = this.tables[(i - 1)].bmpTableImage;
                 pnlTable.BackgroundImageLayout = ImageLayout.Stretch;
-                pnlTable.Name = Table.GetTableName("pnlTable", (i-1));
+                pnlTable.Name = TableLayout.GetTableName("pnlTable", (i-1));
                 pnlTable.BorderStyle = BorderStyle.FixedSingle;
                 pnlTable.Click += new EventHandler(this.pnlTable_Click);
 
                 Label lblTableStatus = new Label();
-                lblTableStatus.Text = Table.GetTableName("pnlTable", (i - 1));
+                lblTableStatus.Text = TableLayout.GetTableName("pnlTable", (i - 1));
                 lblTableStatus.AutoSize = true;
                 lblTableStatus.Location = new Point(((pos_x + table_width) - lblTableStatus.Width) - 1, (pos_y) + 1);
                 lblTableStatus.TextAlign = ContentAlignment.MiddleRight;
@@ -236,7 +236,7 @@ namespace BonTemps
         {
             Panel pnlSender = (Panel)sender;
             int currentTableID = 0;
-            currentTableID = Table.GetTableID(pnlSender.Name);
+            currentTableID = TableLayout.GetTableID(pnlSender.Name);
             tbxTableID_pnlOrder.Text = this.tables[currentTableID].tableID.ToString();
             tbxClientID_pnlOrder.Text = this.tables[currentTableID].clientID;
             try

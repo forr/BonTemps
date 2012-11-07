@@ -80,6 +80,7 @@
     <Compile Include="FormNewOrder.Designer.cs">
       <DependentUpon>FormNewOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Orders.cs" />
     <Compile Include="Persons.cs" />
@@ -103,7 +104,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataDataSet.xsc">
       <DependentUpon>DataDataSet.xsd</DependentUpon>
     </None>

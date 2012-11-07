@@ -25,7 +25,7 @@ namespace BonTemps
         public string PhoneNumber { get { return this.phoneNumber; } }
         public string Email { get { return this.email; } }
 
-        public Clients(ulong clientID, string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email)
+        public Clients(ulong? clientID, string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email)
         {
             this.clientID = clientID;
             this.firstName = firstName;
