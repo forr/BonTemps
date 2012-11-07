@@ -39,7 +39,7 @@ namespace BonTemps
             string sqlStatement = "UPDATE Tables,Clients,Orders,TableOrders,Menus,Persons";
             try
             {
-
+                return false;
             }
             catch { return false; }
         }
