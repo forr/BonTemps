@@ -34,6 +34,7 @@ namespace BonTemps
             }
             catch { return false; }
         }
+
         public static bool Update(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
         {
             string sqlStatement = "UPDATE Tables,Clients,Orders,TableOrders,Menus,Persons";
