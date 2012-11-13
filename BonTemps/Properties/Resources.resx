@@ -121,13 +121,16 @@
   <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\mainmenu\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="closebutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\MainMenu\closebutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="menustrip2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\mainmenu\menstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minimizebutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\MainMenu\minimizebutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="menustrip2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\mainmenu\menstrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="closebutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\mainmenu\closebutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

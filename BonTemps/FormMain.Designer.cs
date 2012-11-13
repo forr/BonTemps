@@ -28,15 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.lbxOverview = new System.Windows.Forms.ListBox();
-            this.menuMain = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportClientsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,7 +38,6 @@
             this.alterMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkStockedSuppliesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlOverview = new System.Windows.Forms.Panel();
             this.pnlOrder = new System.Windows.Forms.Panel();
             this.lbl1_pnlOrder = new System.Windows.Forms.Label();
             this.lblClientName_pnlOrder = new System.Windows.Forms.Label();
@@ -57,10 +49,19 @@
             this.tbxClientName_pnlOrder = new System.Windows.Forms.TextBox();
             this.tbxClientID_pnlOrder = new System.Windows.Forms.TextBox();
             this.tbxTableID_pnlOrder = new System.Windows.Forms.TextBox();
+            this.pnlOverview = new System.Windows.Forms.Panel();
+            this.menuMain = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportClientsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMain.SuspendLayout();
             this.pnlOrder.SuspendLayout();
+            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbxOverview
@@ -71,85 +72,6 @@
             this.lbxOverview.Name = "lbxOverview";
             this.lbxOverview.Size = new System.Drawing.Size(161, 336);
             this.lbxOverview.TabIndex = 0;
-            // 
-            // menuMain
-            // 
-            this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
-            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem1,
-            this.menuToolStripMenuItem1,
-            this.exitbuttonToolStripMenuItem,
-            this.minimizeToolStripMenuItem});
-            this.menuMain.Location = new System.Drawing.Point(0, 0);
-            this.menuMain.Name = "menuMain";
-            this.menuMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuMain.Size = new System.Drawing.Size(785, 24);
-            this.menuMain.TabIndex = 1;
-            this.menuMain.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem1
-            // 
-            this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportClientsToolStripMenuItem1,
-            this.toolStripMenuItem3,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem1.Text = "File";
-            this.fileToolStripMenuItem1.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem1_DropDownClosed);
-            this.fileToolStripMenuItem1.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem1_DropDownOpened);
-            // 
-            // exportClientsToolStripMenuItem1
-            // 
-            this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.exportClientsToolStripMenuItem1.Text = "Export Clients";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // menuToolStripMenuItem1
-            // 
-            this.menuToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.menuToolStripMenuItem1.Name = "menuToolStripMenuItem1";
-            this.menuToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
-            this.menuToolStripMenuItem1.Text = "Menu";
-            this.menuToolStripMenuItem1.DropDownClosed += new System.EventHandler(this.menuToolStripMenuItem1_DropDownClosed);
-            this.menuToolStripMenuItem1.DropDownOpened += new System.EventHandler(this.menuToolStripMenuItem1_DropDownOpened);
-            // 
-            // exitbuttonToolStripMenuItem
-            // 
-            this.exitbuttonToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.exitbuttonToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.exitbuttonToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.exitbuttonToolStripMenuItem.Image = global::BonTemps.Properties.Resources.closebutton;
-            this.exitbuttonToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.exitbuttonToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.exitbuttonToolStripMenuItem.Name = "exitbuttonToolStripMenuItem";
-            this.exitbuttonToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.exitbuttonToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-            this.exitbuttonToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.exitbuttonToolStripMenuItem.Click += new System.EventHandler(this.exitbuttonToolStripMenuItem_Click);
-            // 
-            // minimizeToolStripMenuItem
-            // 
-            this.minimizeToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.minimizeToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.minimizeToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.minimizeToolStripMenuItem.Image = global::BonTemps.Properties.Resources.minimizebutton;
-            this.minimizeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             // 
             // fileToolStripMenuItem
             // 
@@ -201,17 +123,10 @@
             this.checkStockedSuppliesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.checkStockedSuppliesToolStripMenuItem.Text = "Check Stocked Supplies";
             // 
-            // pnlOverview
-            // 
-            this.pnlOverview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlOverview.Location = new System.Drawing.Point(161, 24);
-            this.pnlOverview.Name = "pnlOverview";
-            this.pnlOverview.Size = new System.Drawing.Size(624, 336);
-            this.pnlOverview.TabIndex = 2;
-            // 
             // pnlOrder
             // 
             this.pnlOrder.AutoScroll = true;
+            this.pnlOrder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlOrder.BackgroundImage")));
             this.pnlOrder.Controls.Add(this.lbl1_pnlOrder);
             this.pnlOrder.Controls.Add(this.lblClientName_pnlOrder);
             this.pnlOrder.Controls.Add(this.lblClientID_pnlOrder);
@@ -310,12 +225,100 @@
             this.tbxTableID_pnlOrder.Size = new System.Drawing.Size(163, 20);
             this.tbxTableID_pnlOrder.TabIndex = 0;
             // 
+            // pnlOverview
+            // 
+            this.pnlOverview.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlOverview.BackgroundImage")));
+            this.pnlOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlOverview.Location = new System.Drawing.Point(161, 24);
+            this.pnlOverview.Name = "pnlOverview";
+            this.pnlOverview.Size = new System.Drawing.Size(624, 336);
+            this.pnlOverview.TabIndex = 2;
+            // 
+            // menuMain
+            // 
+            this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
+            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem1,
+            this.menuToolStripMenuItem1,
+            this.exitbuttonToolStripMenuItem,
+            this.minimizeToolStripMenuItem});
+            this.menuMain.Location = new System.Drawing.Point(0, 0);
+            this.menuMain.Name = "menuMain";
+            this.menuMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuMain.Size = new System.Drawing.Size(785, 24);
+            this.menuMain.TabIndex = 1;
+            this.menuMain.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem1
+            // 
+            this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportClientsToolStripMenuItem1,
+            this.toolStripMenuItem3,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem1.Text = "File";
+            this.fileToolStripMenuItem1.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem1_DropDownClosed);
+            this.fileToolStripMenuItem1.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem1_DropDownOpened);
+            // 
+            // exportClientsToolStripMenuItem1
+            // 
+            this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem1.Text = "Export Clients";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // menuToolStripMenuItem1
+            // 
+            this.menuToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.menuToolStripMenuItem1.Name = "menuToolStripMenuItem1";
+            this.menuToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem1.Text = "Menu";
+            this.menuToolStripMenuItem1.DropDownClosed += new System.EventHandler(this.menuToolStripMenuItem1_DropDownClosed);
+            this.menuToolStripMenuItem1.DropDownOpened += new System.EventHandler(this.menuToolStripMenuItem1_DropDownOpened);
+            // 
+            // exitbuttonToolStripMenuItem
+            // 
+            this.exitbuttonToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exitbuttonToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.exitbuttonToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.exitbuttonToolStripMenuItem.Image = global::BonTemps.Properties.Resources.closebutton;
+            this.exitbuttonToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.exitbuttonToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.exitbuttonToolStripMenuItem.Name = "exitbuttonToolStripMenuItem";
+            this.exitbuttonToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.exitbuttonToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.exitbuttonToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.exitbuttonToolStripMenuItem.Click += new System.EventHandler(this.exitbuttonToolStripMenuItem_Click);
+            // 
+            // minimizeToolStripMenuItem
+            // 
+            this.minimizeToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.minimizeToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.minimizeToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.minimizeToolStripMenuItem.Image = global::BonTemps.Properties.Resources.minimizebutton;
+            this.minimizeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
+            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            // 
             // closeMenuToolStripMenuItem
             // 
             this.closeMenuToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.closeMenuToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.closeMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.closeMenuToolStripMenuItem.Image = global::BonTemps.Properties.Resources.closebutton;
+            this.closeMenuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("closeMenuToolStripMenuItem.Image")));
             this.closeMenuToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.closeMenuToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.closeMenuToolStripMenuItem.Name = "closeMenuToolStripMenuItem";
@@ -346,10 +349,10 @@
             this.MainMenuStrip = this.menuMain;
             this.Name = "formMain";
             this.Text = "Form1";
-            this.menuMain.ResumeLayout(false);
-            this.menuMain.PerformLayout();
             this.pnlOrder.ResumeLayout(false);
             this.pnlOrder.PerformLayout();
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

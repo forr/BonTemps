@@ -60,6 +60,13 @@ namespace BonTemps.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap background {
+            get {
+                object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap closebutton {
             get {
                 object obj = ResourceManager.GetObject("closebutton", resourceCulture);

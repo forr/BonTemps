@@ -154,6 +154,8 @@
     <Content Include="Images\MainMenu\closebutton.png" />
     <Content Include="Images\MainMenu\menstrip.png" />
     <Content Include="Images\MainMenu\minimizebutton.png" />
+    <None Include="Resources\background.png" />
+    <None Include="Resources\background.bmp" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
