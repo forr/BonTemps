@@ -79,8 +79,7 @@ namespace BonTemps
                     sqlQuery.Parameters.AddWithValue("@table", table);
                     sqlQuery.Parameters.AddWithValue("@statement", selectColumns);
                     sqlQuery.Parameters.AddWithValue("@id", id);
-                    int success = sqlQuery.ExecuteNonQuery();
-                    return success == 1;
+                    return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
             catch { return false; }
