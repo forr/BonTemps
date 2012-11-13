@@ -67,6 +67,13 @@ namespace BonTemps.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap menustrip2 {
+            get {
+                object obj = ResourceManager.GetObject("menustrip2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap minimizebutton {
             get {
                 object obj = ResourceManager.GetObject("minimizebutton", resourceCulture);

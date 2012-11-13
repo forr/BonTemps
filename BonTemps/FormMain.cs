@@ -109,7 +109,7 @@ namespace BonTemps
 
         private void menuClose_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Application.Exit();
         }
 
         private void menuNewOrder_Click(object sender, EventArgs e)
@@ -251,22 +251,42 @@ namespace BonTemps
 
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void closeMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure that you want to exit?", "Exit Program", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-            {
-                Environment.Exit(0);
-            }
-        }
-
         private void minimizeMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void exitbuttonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure that you want to exit?", "Exit Program", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void fileToolStripMenuItem1_DropDownOpened(object sender, EventArgs e)
+        {
+            fileToolStripMenuItem1.ForeColor = Color.Black;
+        }
+
+        private void fileToolStripMenuItem1_DropDownClosed(object sender, EventArgs e)
+        {
+            fileToolStripMenuItem1.ForeColor = Color.White;
+        }
+
+        private void menuToolStripMenuItem1_DropDownOpened(object sender, EventArgs e)
+        {
+            menuToolStripMenuItem1.ForeColor = Color.Black;
+        }
+
+        private void menuToolStripMenuItem1_DropDownClosed(object sender, EventArgs e)
+        {
+            menuToolStripMenuItem1.ForeColor = Color.White;
         }
     }
 }

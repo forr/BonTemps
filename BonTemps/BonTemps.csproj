@@ -87,6 +87,7 @@
       <DependentUpon>FormSplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI.cs" />
+    <Compile Include="MD5Encryption.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Orders.cs" />
     <Compile Include="Persons.cs" />
@@ -151,6 +152,7 @@
       <DependentUpon>Data.mdf</DependentUpon>
     </Content>
     <Content Include="Images\MainMenu\closebutton.png" />
+    <Content Include="Images\MainMenu\menstrip.png" />
     <Content Include="Images\MainMenu\minimizebutton.png" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +187,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
