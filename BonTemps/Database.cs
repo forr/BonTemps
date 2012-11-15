@@ -11,7 +11,7 @@ namespace BonTemps
 {
     public static class Database
     {
-        private enum TableName { Tables, Clients, Orders, TableOrders, Menus, Persons };
+        public enum TableName { Tables, Clients, Orders, TableOrders, Menus, Persons };
 
         private static string GetConnectionString()
         {
@@ -20,6 +20,7 @@ namespace BonTemps
 
         public static bool Insert(string[] tableNames, string[] values)
         {
+            // INSERT INTO <TABLE> <VALUES(X,Y)>
             string sqlCmd = String.Empty;
             string tables = String.Empty;
             string statement = String.Empty;
@@ -31,6 +32,7 @@ namespace BonTemps
                     if (selectIndex == 0) statement += String.Format("INSERT INTO {0} VALUES({1})", str, str2);
                 }
             }
+            return false;
         }
         public static bool Update(TableName tableName, string[] argsCol, string[] argsVal, int id)
         {
@@ -66,6 +68,7 @@ namespace BonTemps
                     if (selectIndex == 0) selectColumns += String.Format("{0}='{1}'", str, str2);
                     else selectColumns += String.Format(",{0}='{1}'", str, str2);
                     selectIndex++;
+                    
                 }
             }
 
@@ -120,8 +123,7 @@ namespace BonTemps
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
                     sqlQuery.Parameters.AddWithValue("@table", table);
                     sqlQuery.Parameters.AddWithValue("@id", id);
-                    int success = sqlQuery.ExecuteNonQuery();
-                    return success == 1;
+                    return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
             catch { return false; }
@@ -138,10 +140,6 @@ namespace BonTemps
         //R version
         #region Example1
         /*
-        
-
-            sqlcmd = string.Format("SELECT {0} FROM {1} WHERE {2}", selectables, table, ArgsWhere);
-
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
