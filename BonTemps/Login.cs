@@ -2,28 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace BonTemps
 {
     public class Login
     {
-        public string EmployeeType { get { return EmployeeType; } set { EmployeeType = value; } }
-        public string Password { get { return Password; } set { Password = MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(value)); } }
-        public bool Active { get { return Active; } set { Active = value; } }
+        private string employeeType;
+        private string password;
+        private bool isActive;
+
+        public string EmployeeType { get { return this.employeeType; } set { this.employeeType = value; } }
+        public string Password { get { return this.password; } set { this.password = value; } }
+        public bool IsActive { get { return this.isActive; } set { this.isActive = value; } }
 
         /// <param name="employeeType">To which department/area of expertize does he/she belong.</param>
         /// <param name="password">Password that's also encrypted on creation.</param>
         public Login(string employeeType, string password)
         {
-            this.EmployeeType = employeeType;
-            this.Password = password;
-            Active = false;
+            this.employeeType = employeeType;
+            this.password = password;
+            this.isActive = false;
         }
 
-        public static bool CanLogin(string password)
+        public static bool CanLogin(string employeeType, string password)
         {
+            if (String.IsNullOrWhiteSpace(employeeType)) return false;
+            if (employeeType.IndexOf(' ') == 0) return false;
+            if (String.IsNullOrWhiteSpace(password)) return false;
+            if (password.IndexOf(' ') >= 0) return false;
+
+            DataTable dt = Database.Select(employeeType, MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password)));
+
+            if (dt.Rows.Count != 1) return false;
+
             return true;
         }
-
     }
 }

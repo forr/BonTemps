@@ -128,13 +128,26 @@ namespace BonTemps
             }
             catch { return false; }
         }
-        public static DataTable Select()
+        public static DataTable Select(string employeeType, string password)
         {
-            return null;
-        }
-        public static DataTable Select(Tables t, Clients c, Orders o, TableOrders to, Menus m, Persons p)
-        {
-            return null;
+            DataTable dt = null;
+            string statement = "SELECT * FROM Users WHERE EmployeeType=@employeeType AND Password=@password";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    
+                    using (SqlDataAdapter sqlDA = new SqlDataAdapter(statement, sqlConn))
+                    {
+                        sqlDA.SelectCommand.Parameters.AddWithValue("@employeeType", employeeType);
+                        sqlDA.SelectCommand.Parameters.AddWithValue("@password", password);
+                        sqlDA.Fill(dt);
+                        if (dt.Rows.Count == 0) return null;
+                        return dt;
+                    }
+                }
+            }
+            catch { return null; }
         }
 
         //R version
