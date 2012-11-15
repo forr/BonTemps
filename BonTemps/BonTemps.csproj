@@ -87,6 +87,7 @@
       <DependentUpon>FormSplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="MD5Encryption.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Orders.cs" />

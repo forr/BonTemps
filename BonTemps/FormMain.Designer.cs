@@ -51,6 +51,13 @@
             this.tbxTableID_pnlOrder = new System.Windows.Forms.TextBox();
             this.pnlOverview = new System.Windows.Forms.Panel();
             this.menuMain = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportClientsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -126,7 +133,6 @@
             // pnlOrder
             // 
             this.pnlOrder.AutoScroll = true;
-            this.pnlOrder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlOrder.BackgroundImage")));
             this.pnlOrder.Controls.Add(this.lbl1_pnlOrder);
             this.pnlOrder.Controls.Add(this.lblClientName_pnlOrder);
             this.pnlOrder.Controls.Add(this.lblClientID_pnlOrder);
@@ -227,7 +233,6 @@
             // 
             // pnlOverview
             // 
-            this.pnlOverview.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlOverview.BackgroundImage")));
             this.pnlOverview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlOverview.Location = new System.Drawing.Point(161, 24);
             this.pnlOverview.Name = "pnlOverview";
@@ -238,16 +243,73 @@
             // 
             this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem1,
-            this.menuToolStripMenuItem1,
-            this.exitbuttonToolStripMenuItem,
-            this.minimizeToolStripMenuItem});
+            this.fileToolStripMenuItem2,
+            this.menuToolStripMenuItem2,
+            this.exitToolStripMenuItem1,
+            this.minimizeToolStripMenuItem1});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
             this.menuMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuMain.Size = new System.Drawing.Size(785, 24);
             this.menuMain.TabIndex = 1;
             this.menuMain.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem2
+            // 
+            this.fileToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportClientsToolStripMenuItem2,
+            this.toolStripMenuItem4,
+            this.exitToolStripMenuItem2});
+            this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
+            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem2.Text = "File";
+            this.fileToolStripMenuItem2.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem2_DropDownClosed);
+            this.fileToolStripMenuItem2.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem2_DropDownOpened);
+            // 
+            // exportClientsToolStripMenuItem2
+            // 
+            this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exportClientsToolStripMenuItem2.Text = "Export Clients";
+            this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            // 
+            // exitToolStripMenuItem2
+            // 
+            this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem2.Text = "Exit";
+            this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
+            // 
+            // menuToolStripMenuItem2
+            // 
+            this.menuToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.menuToolStripMenuItem2.Name = "menuToolStripMenuItem2";
+            this.menuToolStripMenuItem2.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem2.Text = "Menu";
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(62, 20);
+            this.exitToolStripMenuItem1.Text = "close";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // minimizeToolStripMenuItem1
+            // 
+            this.minimizeToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.minimizeToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.minimizebutton;
+            this.minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
+            this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
+            this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
             // 
             // fileToolStripMenuItem1
             // 
@@ -259,8 +321,6 @@
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem1.Text = "File";
-            this.fileToolStripMenuItem1.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem1_DropDownClosed);
-            this.fileToolStripMenuItem1.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem1_DropDownOpened);
             // 
             // exportClientsToolStripMenuItem1
             // 
@@ -278,7 +338,6 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // menuToolStripMenuItem1
             // 
@@ -286,8 +345,6 @@
             this.menuToolStripMenuItem1.Name = "menuToolStripMenuItem1";
             this.menuToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem1.Text = "Menu";
-            this.menuToolStripMenuItem1.DropDownClosed += new System.EventHandler(this.menuToolStripMenuItem1_DropDownClosed);
-            this.menuToolStripMenuItem1.DropDownOpened += new System.EventHandler(this.menuToolStripMenuItem1_DropDownOpened);
             // 
             // exitbuttonToolStripMenuItem
             // 
@@ -301,7 +358,6 @@
             this.exitbuttonToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.exitbuttonToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.exitbuttonToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.exitbuttonToolStripMenuItem.Click += new System.EventHandler(this.exitbuttonToolStripMenuItem_Click);
             // 
             // minimizeToolStripMenuItem
             // 
@@ -334,7 +390,6 @@
             this.minimizeMenuToolStripMenuItem.Name = "minimizeMenuToolStripMenuItem";
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.minimizeMenuToolStripMenuItem.Click += new System.EventHandler(this.minimizeMenuToolStripMenuItem_Click);
             // 
             // formMain
             // 
@@ -391,6 +446,13 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitbuttonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem exportClientsToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem minimizeToolStripMenuItem1;
     }
 }
 

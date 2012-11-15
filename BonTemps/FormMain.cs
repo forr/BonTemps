@@ -107,16 +107,6 @@ namespace BonTemps
             this.ShowTables();
         }
 
-        private void menuClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void menuNewOrder_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private Point GetClientIDLocation()
         {
             //centered on Location (sizes(100%,100%))
@@ -247,21 +237,20 @@ namespace BonTemps
             {
                 tbxClientName_pnlOrder.Text = "unknown";
             }
-
-
         }
 
-        private void minimizeMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        #region MenuStrip
+        private void fileToolStripMenuItem2_DropDownOpened(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            fileToolStripMenuItem2.ForeColor = Color.Black;
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void fileToolStripMenuItem2_DropDownClosed(object sender, EventArgs e)
         {
-            Application.Exit();
+            fileToolStripMenuItem2.ForeColor = Color.White;
         }
 
-        private void exitbuttonToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure that you want to exit?", "Exit Program", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -269,24 +258,25 @@ namespace BonTemps
             }
         }
 
-        private void fileToolStripMenuItem1_DropDownOpened(object sender, EventArgs e)
+        private void exitToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            fileToolStripMenuItem1.ForeColor = Color.Black;
+            Application.Exit();
         }
 
-        private void fileToolStripMenuItem1_DropDownClosed(object sender, EventArgs e)
+        private void minimizeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            fileToolStripMenuItem1.ForeColor = Color.White;
+            this.WindowState = FormWindowState.Minimized;
         }
 
-        private void menuToolStripMenuItem1_DropDownOpened(object sender, EventArgs e)
+        private void exportClientsToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            menuToolStripMenuItem1.ForeColor = Color.Black;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Richtext file (*.rtf)|*.rtf";
+            sfd.DefaultExt = "rtf";
+            sfd.AddExtension = true;
+            sfd.FileName = "ClientListExport_" + DateTime.Now.ToShortDateString().ToString();
+            sfd.ShowDialog();
         }
-
-        private void menuToolStripMenuItem1_DropDownClosed(object sender, EventArgs e)
-        {
-            menuToolStripMenuItem1.ForeColor = Color.White;
-        }
+        #endregion MenuStrip
     }
 }

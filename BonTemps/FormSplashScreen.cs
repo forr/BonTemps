@@ -35,25 +35,9 @@ namespace BonTemps
 
         public bool CanLogin(string name, string password)
         {
-            Byte[] hashedPassword = MD5Encryption.CreateMD5Hash(password);
-            string passwordResult = String.Empty;
+            string passwordResult = MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password));
 
-            foreach (byte b in hashedPassword)
-            {
-                passwordResult += b.ToString();
-            }
-
-            //-----------
-            Byte[] hashedTempPassword = MD5Encryption.CreateMD5Hash("");
-            string tempPassword = String.Empty;
-            
-            foreach (byte b in hashedTempPassword)
-            {
-                tempPassword += b.ToString();
-            }
-            //-----------
-
-            if (passwordResult == tempPassword)
+            if (Login.CanLogin(passwordResult))
                 return true;
             else
                 return false;

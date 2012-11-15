@@ -34,5 +34,17 @@ namespace BonTemps
 
             return result;
         }
+
+        public static string MD5HashToString(Byte[] value)
+        {
+            string stringResult = String.Empty;
+
+            foreach (byte b in value)
+            {
+                stringResult += b.ToString();
+            }
+
+            return stringResult;
+        }
     }
 }
