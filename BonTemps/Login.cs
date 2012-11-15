@@ -34,7 +34,11 @@ namespace BonTemps
 
             DataTable dt = Database.Select(employeeType, MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password)));
 
-            if (dt.Rows.Count != 1) return false;
+            try
+            {
+                if (dt.Rows.Count != 1) return false;
+            }
+            catch { return false; }
 
             return true;
         }

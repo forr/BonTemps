@@ -128,15 +128,21 @@ namespace BonTemps
             }
             catch { return false; }
         }
+        /// <summary>
+        /// Select method for login (Users Table)
+        /// </summary>
+        /// <param name="employeeType"></param>
+        /// <param name="password"></param>
+        /// <returns>DataTable</returns>
         public static DataTable Select(string employeeType, string password)
         {
-            DataTable dt = null;
-            string statement = "SELECT * FROM Users WHERE EmployeeType=@employeeType AND Password=@password";
+            DataTable dt = new DataTable();
+            string statement = "SELECT * FROM Users WHERE (EmployeeType=@employeeType) AND (Password=@password)";
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
-                    
+                    sqlConn.Open();
                     using (SqlDataAdapter sqlDA = new SqlDataAdapter(statement, sqlConn))
                     {
                         sqlDA.SelectCommand.Parameters.AddWithValue("@employeeType", employeeType);
@@ -149,37 +155,29 @@ namespace BonTemps
             }
             catch { return null; }
         }
-
-        //R version
-        #region Example1
-        /*
+        public static DataTable Select(object[] input)
+        {
+            DataTable dt = new DataTable();
+            string statement = "SELECT @obj1 FROM @obj2 WHERE @obj3=@obj4";
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
-                    using(SqlDataAdapter sqlda = new SqlDataAdapter("", sqlConn))
+                    sqlConn.Open();
+                    using (SqlDataAdapter sqlDA = new SqlDataAdapter(statement, sqlConn))
                     {
-                        sqlda.Fill(dt);
-                    }
-                    if (dt.Rows.Count > 0)
-                    {
+                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj1", input[0]);
+                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj2", input[1]);
+                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj3", input[2]);
+                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj4", input[3]);
+                        sqlDA.Fill(dt);
+                        if (dt.Rows.Count == 0) return null;
                         return dt;
-                    }
-                    else
-                    {
-
-                        return null;
                     }
                 }
             }
-            catch
-            {
-                return null;
-            }
+            catch { return null; }
         }
-        */
-        #endregion
-
 
         #region Example2
         /*

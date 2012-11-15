@@ -35,7 +35,7 @@ namespace BonTemps
             return result;
         }
 
-        public static string MD5HashToString(Byte[] value)
+        public static string MD5HashToString(byte[] value)
         {
             string stringResult = String.Empty;
 
