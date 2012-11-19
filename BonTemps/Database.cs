@@ -67,8 +67,7 @@ namespace BonTemps
                 {
                     if (selectIndex == 0) selectColumns += String.Format("{0}='{1}'", str, str2);
                     else selectColumns += String.Format(",{0}='{1}'", str, str2);
-                    selectIndex++;
-                    
+                    selectIndex++;                    
                 }
             }
 
@@ -128,6 +127,7 @@ namespace BonTemps
             }
             catch { return false; }
         }
+
         /// <summary>
         /// Password Check – Constraints are that EmployeeType given must equal the 
         /// corresponding Password in order to return bool==true
