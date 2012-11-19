@@ -127,7 +127,35 @@ namespace BonTemps
             }
             catch { return false; }
         }
-
+        public static Users[] GetAllUsers()
+        {
+            List<Users> usr = new List<Users>();
+            string statement = "SELECT * FROM Users";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        do
+                        {
+                            Users u = new Users();
+                            u.UserID = Convert.ToUInt64(sqlDR["UserID"]);
+                            u.Username = sqlDR["EmployeeType"].ToString();
+                            u.Password = sqlDR["Password"].ToString();
+                            usr.Add(u);
+                        }
+                        while (sqlDR.Read());
+                        return usr.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
         /// <summary>
         /// Password Check – Constraints are that EmployeeType given must equal the 
         /// corresponding Password in order to return bool==true
