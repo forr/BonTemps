@@ -100,7 +100,6 @@ namespace BonTemps
             //======================================================================================
             //======================================================================================
             #endregion Temp
-
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.pnlOverview.AutoScroll = true;

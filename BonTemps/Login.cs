@@ -32,15 +32,7 @@ namespace BonTemps
             if (String.IsNullOrWhiteSpace(password)) return false;
             if (password.IndexOf(' ') >= 0) return false;
 
-            DataTable dt = Database.Select(employeeType, MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password)));
-
-            try
-            {
-                if (dt.Rows.Count != 1) return false;
-            }
-            catch { return false; }
-
-            return true;
+            return Database.IsPasswordValid(employeeType, MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password)));
         }
     }
 }
