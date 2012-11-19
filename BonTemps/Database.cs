@@ -129,54 +129,29 @@ namespace BonTemps
             catch { return false; }
         }
         /// <summary>
-        /// Select method for login (Users Table)
+        /// Password Check – Constraints are that EmployeeType given must equal the 
+        /// corresponding Password in order to return bool==true
         /// </summary>
         /// <param name="employeeType"></param>
         /// <param name="password"></param>
-        /// <returns>DataTable</returns>
-        public static DataTable Select(string employeeType, string password)
+        /// <returns>boolean</returns>
+        public static bool IsPasswordValid(string employeeType, string password)
         {
-            DataTable dt = new DataTable();
-            string statement = "SELECT * FROM Users WHERE (EmployeeType=@employeeType) AND (Password=@password)";
+            string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
                     sqlConn.Open();
-                    using (SqlDataAdapter sqlDA = new SqlDataAdapter(statement, sqlConn))
-                    {
-                        sqlDA.SelectCommand.Parameters.AddWithValue("@employeeType", employeeType);
-                        sqlDA.SelectCommand.Parameters.AddWithValue("@password", password);
-                        sqlDA.Fill(dt);
-                        if (dt.Rows.Count == 0) return null;
-                        return dt;
-                    }
+                    SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                    sqlQuery.Parameters.AddWithValue("@employeeType", employeeType);
+
+                    string pwd = (string)sqlQuery.ExecuteScalar();
+
+                    return pwd == password;
                 }
             }
-            catch { return null; }
-        }
-        public static DataTable Select(object[] input)
-        {
-            DataTable dt = new DataTable();
-            string statement = "SELECT @obj1 FROM @obj2 WHERE @obj3=@obj4";
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    using (SqlDataAdapter sqlDA = new SqlDataAdapter(statement, sqlConn))
-                    {
-                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj1", input[0]);
-                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj2", input[1]);
-                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj3", input[2]);
-                        sqlDA.SelectCommand.Parameters.AddWithValue("@obj4", input[3]);
-                        sqlDA.Fill(dt);
-                        if (dt.Rows.Count == 0) return null;
-                        return dt;
-                    }
-                }
-            }
-            catch { return null; }
+            catch { return false; }
         }
 
         #region Example2
