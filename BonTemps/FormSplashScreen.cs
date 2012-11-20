@@ -21,9 +21,19 @@ namespace BonTemps
         {
             if (CanLogin(comboBoxOccupation.Text, tbxPassword.Text))
             {
-                formMain frmMain = new formMain();
-                frmMain.CreateControl();
-                frmMain.Show();
+                switch (comboBoxOccupation.Text)
+                {
+                    case "Manager":
+                        formManager frmManager = new formManager();
+                        frmManager.CreateControl();
+                        frmManager.Show();
+                        break;
+                    default:
+                        formMain frmMain = new formMain();
+                        frmMain.CreateControl();
+                        frmMain.Show();
+                        break;
+                }
                 this.Hide();
             }
             lblLoginStatus.Text = "Login Failed.";

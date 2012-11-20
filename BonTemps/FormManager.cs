@@ -7,17 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace BonTemps
 {
     public partial class formManager : Form
     {
+        enum TypeOfExport
+        {
+            Clients,
+            Tables,
+            Menus,
+            Orders,
+            Users
+        }
         public formManager()
         {
             InitializeComponent();
 
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.TopMost = true;
         }
 
         #region MenuStrip
@@ -51,13 +59,29 @@ namespace BonTemps
 
         private void exportClientsToolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            this.CreateCsvFile(Database.GetAllUsers());
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Richtext file (*.rtf)|*.rtf";
-            sfd.DefaultExt = "rtf";
+            sfd.Filter = "Comma-separated Values (*.csv)|*.csv";
+            sfd.DefaultExt = "csv";
             sfd.AddExtension = true;
             sfd.FileName = "ClientListExport_" + DateTime.Now.ToShortDateString().ToString();
             sfd.ShowDialog();
         }
+
+        private void CreateCsvFile(Users[] clientlist)
+        {
+            List<String> csvClients = new List<String>();
+            foreach (Users c in clientlist)
+            {
+                csvClients.Add(c.ToString());
+            }
+            foreach (String s in csvClients)
+            {
+                s.Replace(";", ";;");
+                s.Replace("\n", ";");
+            }
+        }
+
         #endregion MenuStrip
     }
 }

@@ -49,6 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -166,6 +167,7 @@
     <Content Include="Images\MainMenu\closebutton.png" />
     <Content Include="Images\MainMenu\menstrip.png" />
     <Content Include="Images\MainMenu\minimizebutton.png" />
+    <Content Include="Images\SplashScreen\splashscreenbg.png" />
     <None Include="Resources\background.png" />
     <None Include="Resources\background.bmp" />
   </ItemGroup>

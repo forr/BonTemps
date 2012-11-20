@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSplashScreen));
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -49,10 +50,10 @@
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(13, 103);
+            this.tbxPassword.Location = new System.Drawing.Point(24, 103);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
-            this.tbxPassword.Size = new System.Drawing.Size(335, 20);
+            this.tbxPassword.Size = new System.Drawing.Size(306, 20);
             this.tbxPassword.TabIndex = 1;
             // 
             // btnCancel
@@ -68,7 +69,9 @@
             // lblOccupation
             // 
             this.lblOccupation.AutoSize = true;
-            this.lblOccupation.Location = new System.Drawing.Point(12, 39);
+            this.lblOccupation.BackColor = System.Drawing.Color.Transparent;
+            this.lblOccupation.ForeColor = System.Drawing.Color.Black;
+            this.lblOccupation.Location = new System.Drawing.Point(21, 40);
             this.lblOccupation.Name = "lblOccupation";
             this.lblOccupation.Size = new System.Drawing.Size(65, 13);
             this.lblOccupation.TabIndex = 2;
@@ -77,7 +80,9 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(12, 87);
+            this.lblPassword.BackColor = System.Drawing.Color.Transparent;
+            this.lblPassword.ForeColor = System.Drawing.Color.Black;
+            this.lblPassword.Location = new System.Drawing.Point(21, 87);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 2;
@@ -87,9 +92,9 @@
             // 
             this.comboBoxOccupation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOccupation.FormattingEnabled = true;
-            this.comboBoxOccupation.Location = new System.Drawing.Point(13, 56);
+            this.comboBoxOccupation.Location = new System.Drawing.Point(24, 56);
             this.comboBoxOccupation.Name = "comboBoxOccupation";
-            this.comboBoxOccupation.Size = new System.Drawing.Size(335, 21);
+            this.comboBoxOccupation.Size = new System.Drawing.Size(306, 21);
             this.comboBoxOccupation.TabIndex = 0;
             // 
             // lblLoginStatus
@@ -106,6 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(360, 240);
             this.ControlBox = false;
             this.Controls.Add(this.lblLoginStatus);
