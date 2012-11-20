@@ -1,4 +1,6 @@
-﻿namespace BonTemps
+﻿using System;
+
+namespace BonTemps
 {
     public struct Persons
     {
@@ -15,6 +17,13 @@
             this.personID = personID;
             this.menuID = menuID;
             this.orderID = orderID;
+        }
+        public override string ToString()
+        {
+            object[] info = new object[] {
+                this.personID.ToString(), this.menuID.ToString(), this.orderID.ToString()
+            };
+            return String.Format("{0}\n{1}\n{2}\n", info);
         }
     }
 }

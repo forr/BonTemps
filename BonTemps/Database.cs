@@ -10,30 +10,16 @@ namespace BonTemps
 {
     public static class Database
     {
-        /// <summary>
-        /// Enum which contains the database table names
-        /// Needs a ToString() call to parse the values of this enum as a string
-        /// </summary>
         public enum TableName { Tables, Clients, Orders, TableOrders, Menus, Persons };
 
-        /// <summary>
-        /// Retrieves database connection string from app.config and returns it
-        /// </summary>
-        /// <returns>String</returns>
         private static string GetConnectionString()
-        {
+        {            
             return global::BonTemps.Properties.Settings.Default.DataConnectionString;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="values"></param>
-        /// <returns>Boolean</returns>
+        #region Usual Insert/Delete/Update methods
         public static bool Insert(TableName tableName, string[] values)
         {
-            // INSERT INTO <TABLE> VALUES(...)
             string sqlCmd = String.Empty;
             string statement = String.Empty;
             int selectIndex = 0;
@@ -110,6 +96,25 @@ namespace BonTemps
             }
             catch { return false; }
         }
+        #endregion
+
+        #region GetA_X methods
+        public static Clients GetAClient(ulong clientID)
+        {
+            Clients result = Clients.Null;
+
+            string statement = "SELECT * FROM Clients WHERE ClientID=@ID";
+            try
+            {
+
+            }
+            catch { result = Clients.Null; }
+            return result;
+
+        }
+        #endregion
+
+        #region GetAllX methods
         public static Clients[] GetAllClients()
         {
             List<Clients> clnt = new List<Clients>();
@@ -127,6 +132,14 @@ namespace BonTemps
                         {
                             Clients c = new Clients();
                             c.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
+                            c.FirstName = sqlDR["Name"].ToString().Split(' ')[0];
+                            c.LastName = (sqlDR["Name"].ToString().Replace(c.FirstName, "")).Remove(0,1);
+                            c.Address = sqlDR["Address"].ToString();
+                            c.PostalCode = sqlDR["PostalCode"].ToString();
+                            c.City = sqlDR["City"].ToString();
+                            c.PhoneNumber = sqlDR["PhoneNumber"].ToString();
+                            c.Email = sqlDR["Email"].ToString();
+                            clnt.Add(c);
                         }
                         return clnt.ToArray();
                     }
@@ -135,10 +148,149 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Users class array</returns>
+        public static Menus[] GetAllMenus()
+        {
+            List<Menus> menus = new List<Menus>();
+            string statement = "SELECT * FROM Menus";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            Menus m = new Menus();
+                            m.MenuID = Convert.ToUInt64(sqlDR["MenuID"]);
+                            m.Entree = sqlDR["Entree"].ToString();
+                            m.MainCourse = sqlDR["MainCourse"].ToString();
+                            m.Dessert = sqlDR["Dessert"].ToString();
+                            m.Price = (int)sqlDR["Price"];
+                            menus.Add(m);
+                        }
+                        return menus.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
+        public static Orders[] GetAllOrders()
+        {
+            List<Orders> orders = new List<Orders>();
+            string statement = "SELECT * FROM Orders";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            Orders o = new Orders();
+                            o.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
+                            o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
+                            o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
+                            o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
+                            orders.Add(o);
+                        }
+                        return orders.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
+        public static Persons[] GetAllPersons()
+        {
+            List<Persons> persons = new List<Persons>();
+            string statement = "SELECT * FROM Persons";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            Persons p = new Persons();
+                            p.PersonID = Convert.ToUInt64(sqlDR["PersonID"]);
+                            p.MenuID = Convert.ToUInt64(sqlDR["MenuID"]);
+                            p.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
+                            persons.Add(p);
+                        }
+                        return persons.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
+        public static TableOrders[] GetAllTableOrders()
+        {
+            List<TableOrders> tableOrders = new List<TableOrders>();
+            string statement = "SELECT * FROM TableOrders";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            TableOrders to = new TableOrders();
+                            to.TableOrderID = Convert.ToUInt64(sqlDR["TableOrderID"]);
+                            to.TableID = Convert.ToUInt64(sqlDR["TableID"]);
+                            to.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
+                            tableOrders.Add(to);
+                        }
+                        return tableOrders.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
+        public static Tables[] GetAllTables()
+        {
+            List<Tables> tables = new List<Tables>();
+            string statement = "SELECT * FROM Tables";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            Tables t = new Tables();
+                            t.TableID = Convert.ToUInt64(sqlDR["TableID"]);
+                            t.TableNumber = (uint)sqlDR["TableNumber"];
+                            t.AmountOfChairs = (uint)sqlDR["AmountOfChairs"];
+                            tables.Add(t);
+                        }
+                        return tables.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
         public static Users[] GetAllUsers()
         {
             List<Users> usr = new List<Users>();
@@ -167,13 +319,8 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        /// <summary>
-        /// Password Check – Constraints are that EmployeeType given must equal the 
-        /// corresponding Password in order to return bool==true
-        /// </summary>
-        /// <param name="employeeType"></param>
-        /// <param name="password"></param>
-        /// <returns>Boolean</returns>
+        #endregion
+
         public static bool IsPasswordValid(string employeeType, string password)
         {
             string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";

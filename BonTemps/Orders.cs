@@ -21,5 +21,12 @@ namespace BonTemps
             this.startDateTime = startDateTime;
             this.endDateTime = endDateTime;
         }
+        public override string ToString()
+        {
+            object[] info = new object[] {
+                this.orderID.ToString(), this.clientID.ToString(), this.startDateTime.ToLongDateString(), this.endDateTime.ToLongDateString()
+            };
+            return String.Format("{0}\n{1}\n{2}\n{3}\n", info);
+        }
     }
 }

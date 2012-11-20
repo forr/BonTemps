@@ -14,7 +14,7 @@ namespace BonTemps
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Application.Exit();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
