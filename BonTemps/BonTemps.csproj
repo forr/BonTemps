@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients.cs" />
+    <Compile Include="FormManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManager.Designer.cs">
+      <DependentUpon>FormManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="DataDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -97,6 +103,9 @@
     <Compile Include="TableOrders.cs" />
     <Compile Include="Tables.cs" />
     <Compile Include="Users.cs" />
+    <EmbeddedResource Include="FormManager.resx">
+      <DependentUpon>FormManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

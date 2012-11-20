@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BonTemps", "BonTemps\BonTemps.csproj", "{CEB7DAF0-CCCE-478A-82DC-2A64221B8B9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordCreator", "PasswordCreator\PasswordCreator.csproj", "{4D1A9974-1908-4BE7-9582-01E8FAC5AAB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{CEB7DAF0-CCCE-478A-82DC-2A64221B8B9D}.Debug|x86.Build.0 = Debug|x86
 		{CEB7DAF0-CCCE-478A-82DC-2A64221B8B9D}.Release|x86.ActiveCfg = Release|x86
 		{CEB7DAF0-CCCE-478A-82DC-2A64221B8B9D}.Release|x86.Build.0 = Release|x86
+		{4D1A9974-1908-4BE7-9582-01E8FAC5AAB4}.Debug|x86.ActiveCfg = Debug|x86
+		{4D1A9974-1908-4BE7-9582-01E8FAC5AAB4}.Debug|x86.Build.0 = Debug|x86
+		{4D1A9974-1908-4BE7-9582-01E8FAC5AAB4}.Release|x86.ActiveCfg = Release|x86
+		{4D1A9974-1908-4BE7-9582-01E8FAC5AAB4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

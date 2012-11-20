@@ -34,6 +34,7 @@
             this.lblOccupation = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.comboBoxOccupation = new System.Windows.Forms.ComboBox();
+            this.lblLoginStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -41,7 +42,7 @@
             this.btnLogin.Location = new System.Drawing.Point(140, 129);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -59,7 +60,7 @@
             this.btnCancel.Location = new System.Drawing.Point(113, 158);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 23);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -84,11 +85,22 @@
             // 
             // comboBoxOccupation
             // 
+            this.comboBoxOccupation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOccupation.FormattingEnabled = true;
             this.comboBoxOccupation.Location = new System.Drawing.Point(13, 56);
             this.comboBoxOccupation.Name = "comboBoxOccupation";
             this.comboBoxOccupation.Size = new System.Drawing.Size(335, 21);
-            this.comboBoxOccupation.TabIndex = 3;
+            this.comboBoxOccupation.TabIndex = 0;
+            // 
+            // lblLoginStatus
+            // 
+            this.lblLoginStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblLoginStatus.AutoSize = true;
+            this.lblLoginStatus.Location = new System.Drawing.Point(149, 184);
+            this.lblLoginStatus.Name = "lblLoginStatus";
+            this.lblLoginStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblLoginStatus.TabIndex = 4;
+            this.lblLoginStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormSplashScreen
             // 
@@ -96,6 +108,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 240);
             this.ControlBox = false;
+            this.Controls.Add(this.lblLoginStatus);
             this.Controls.Add(this.comboBoxOccupation);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblOccupation);
@@ -122,5 +135,6 @@
         private System.Windows.Forms.Label lblOccupation;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.ComboBox comboBoxOccupation;
+        private System.Windows.Forms.Label lblLoginStatus;
     }
 }
