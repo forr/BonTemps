@@ -6,9 +6,9 @@
         private ulong? menuID;
         private ulong? orderID;
 
-        public ulong? PersonID { get { return this.personID; } }
-        public ulong? MenuID { get { return this.menuID; } }
-        public ulong? OrderID { get { return this.orderID; } }
+        public ulong? PersonID { get { return this.personID; } set { this.personID = value; } }
+        public ulong? MenuID { get { return this.menuID; } set { this.menuID = value; } }
+        public ulong? OrderID { get { return this.orderID; } set { this.orderID = value; } }
 
         public Persons(ulong personID, ulong menuID, ulong orderID):this()
         {

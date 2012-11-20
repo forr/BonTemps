@@ -10,28 +10,54 @@ namespace BonTemps
 {
     public static class Database
     {
+        /// <summary>
+        /// Enum which contains the database table names
+        /// Needs a ToString() call to parse the values of this enum as a string
+        /// </summary>
         public enum TableName { Tables, Clients, Orders, TableOrders, Menus, Persons };
 
+        /// <summary>
+        /// Retrieves database connection string from app.config and returns it
+        /// </summary>
+        /// <returns>String</returns>
         private static string GetConnectionString()
         {
             return global::BonTemps.Properties.Settings.Default.DataConnectionString;
         }
 
-        public static bool Insert(string[] tableNames, string[] values)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="values"></param>
+        /// <returns>Boolean</returns>
+        public static bool Insert(TableName tableName, string[] values)
         {
-            // INSERT INTO <TABLE> <VALUES(X,Y)>
+            // INSERT INTO <TABLE> VALUES(...)
             string sqlCmd = String.Empty;
-            string tables = String.Empty;
             string statement = String.Empty;
             int selectIndex = 0;
-            foreach (String str in tableNames)
+
+            foreach (string str in values)
             {
-                foreach (String str2 in values)
+                if (selectIndex == 0) statement += str;
+                else statement += String.Format(",{0}", str);
+                selectIndex++;
+            }
+
+            sqlCmd = "INSERT INTO @table VALUES(@values)";
+
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
-                    if (selectIndex == 0) statement += String.Format("INSERT INTO {0} VALUES({1})", str, str2);
+                    SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
+                    sqlQuery.Parameters.AddWithValue("@table", tableName.ToString());
+                    sqlQuery.Parameters.AddWithValue("@values", statement);
+                    return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
-            return false;
+            catch { return false; }
         }
         public static bool Update(TableName tableName, string[] argsCol, string[] argsVal, int id)
         {
@@ -39,30 +65,9 @@ namespace BonTemps
             string table = String.Empty;
             string selectColumns = String.Empty;
             int selectIndex = 0;
-            switch (tableName)
+            foreach (string str in argsCol)
             {
-                case TableName.Tables:
-                    table = "Tables";
-                    break;
-                case TableName.Clients:
-                    table = "Clients";
-                    break;
-                case TableName.Orders:
-                    table = "Orders";
-                    break;
-                case TableName.TableOrders:
-                    table = "TableOrders";
-                    break;
-                case TableName.Menus:
-                    table = "Menus";
-                    break;
-                case TableName.Persons:
-                    table = "Persons";
-                    break;
-            }
-            foreach (String str in argsCol)
-            {
-                foreach (String str2 in argsVal)
+                foreach (string str2 in argsVal)
                 {
                     if (selectIndex == 0) selectColumns += String.Format("{0}='{1}'", str, str2);
                     else selectColumns += String.Format(",{0}='{1}'", str, str2);
@@ -77,7 +82,7 @@ namespace BonTemps
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@table", table);
+                    sqlQuery.Parameters.AddWithValue("@table", tableName.ToString());
                     sqlQuery.Parameters.AddWithValue("@statement", selectColumns);
                     sqlQuery.Parameters.AddWithValue("@id", id);
                     return sqlQuery.ExecuteNonQuery() == 1;
@@ -90,27 +95,6 @@ namespace BonTemps
             string sqlCmd = String.Empty;
             string table = String.Empty;
             string selectColumns = String.Empty;
-            switch (tableName)
-            {
-                case TableName.Tables:
-                    table = "Tables";
-                    break;
-                case TableName.Clients:
-                    table = "Clients";
-                    break;
-                case TableName.Orders:
-                    table = "Orders";
-                    break;
-                case TableName.TableOrders:
-                    table = "TableOrders";
-                    break;
-                case TableName.Menus:
-                    table = "Menus";
-                    break;
-                case TableName.Persons:
-                    table = "Persons";
-                    break;
-            }
 
             sqlCmd = "DELETE FROM @table WHERE ID=@id";
 
@@ -119,13 +103,42 @@ namespace BonTemps
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@table", table);
+                    sqlQuery.Parameters.AddWithValue("@table", tableName.ToString());
                     sqlQuery.Parameters.AddWithValue("@id", id);
                     return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
             catch { return false; }
         }
+        public static Clients[] GetAllClients()
+        {
+            List<Clients> clnt = new List<Clients>();
+            string statement = "SELECT * FROM Clients";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            Clients c = new Clients();
+                            c.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
+                        }
+                        return clnt.ToArray();
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Users class array</returns>
         public static Users[] GetAllUsers()
         {
             List<Users> usr = new List<Users>();
@@ -139,7 +152,7 @@ namespace BonTemps
                     {
                         SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        do
+                        while(sqlDR.Read())
                         {
                             Users u = new Users();
                             u.UserID = Convert.ToUInt64(sqlDR["UserID"]);
@@ -147,7 +160,6 @@ namespace BonTemps
                             u.Password = sqlDR["Password"].ToString();
                             usr.Add(u);
                         }
-                        while (sqlDR.Read());
                         return usr.ToArray();
                     }
                     return null;
@@ -161,7 +173,7 @@ namespace BonTemps
         /// </summary>
         /// <param name="employeeType"></param>
         /// <param name="password"></param>
-        /// <returns>boolean</returns>
+        /// <returns>Boolean</returns>
         public static bool IsPasswordValid(string employeeType, string password)
         {
             string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";
@@ -180,108 +192,5 @@ namespace BonTemps
             }
             catch { return false; }
         }
-
-        #region Example2
-        /*
-        public static DataTable SelectFromClients()
-        {
-            DataTable dt = null;
-            string sqlcmd = string.Format("SELECT * FROM Clients");
-
-            try
-            {
-
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    using (SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd, sqlConn))
-                    {
-                        sqlda.Fill(dt);
-                    }
-                    if (dt.Rows.Count > 0)
-                    {
-                        return dt;
-                    }
-                    else
-                    {
-
-                        return null;
-                    }
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public static DataTable SelectFromClients(int id)
-        {
-            DataTable dt = null;
-            string sqlcmd = string.Format("SELECT * FROM Clients WHERE ID={0}", id);
-
-            try
-            {
-
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    using (SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd, sqlConn))
-                    {
-                        sqlda.Fill(dt);
-                    }
-                    if (dt.Rows.Count > 0)
-                    {
-                        return dt;
-                    }
-                    else
-                    {
-
-                        return null;
-                    }
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public static DataTable SelectFromClients(string[] ArgsSelect, string[] ArgsWhere)
-        {
-            string selectables = "";
-            DataTable dt = null;
-
-            foreach (String s in ArgsSelect)
-            {
-                selectables = "'" + s + "'";
-            }
-
-            string sqlcmd = string.Format("SELECT {0} FROM Clients WHERE {1}", selectables, ArgsWhere);
-
-            try
-            {
-
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    using (SqlDataAdapter sqlda = new SqlDataAdapter(sqlcmd, sqlConn))
-                    {
-                        sqlda.Fill(dt);
-                    }
-                    if (dt.Rows.Count > 0)
-                    {
-                        return dt;
-                    }
-                    else
-                    {
-
-                        return null;
-                    }
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }*/
-        #endregion
     }
 }
