@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BonTemps
 {
-    public struct Menus
+    public struct Menu
     {
         private ulong? menuID;
         private string entree;
@@ -15,7 +15,7 @@ namespace BonTemps
         public string Dessert { get { return this.dessert; } set { this.dessert = value; } }
         public int Price { get { return this.price; } set { this.price = value; } }
 
-        public Menus(ulong menuID, string entree, string mainCourse, string dessert, int price)
+        public Menu(ulong menuID, string entree, string mainCourse, string dessert, int price)
         {
             this.menuID = menuID;
             this.entree = entree;

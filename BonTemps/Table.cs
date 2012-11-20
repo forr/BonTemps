@@ -2,7 +2,7 @@
 
 namespace BonTemps
 {
-    public struct Tables
+    public struct Table
     {
         private ulong? tableID;
         private uint tableNumber;
@@ -12,7 +12,7 @@ namespace BonTemps
         public uint TableNumber { get { return this.tableNumber; } set { this.tableNumber = value; } }
         public uint AmountOfChairs { get { return this.amountOfChairs; } set { this.amountOfChairs = value; } }
 
-        public Tables(ulong tableID, uint tableNumber, uint amountOfChairs)
+        public Table(ulong tableID, uint tableNumber, uint amountOfChairs)
         {
             this.tableID = tableID;
             this.tableNumber = tableNumber;

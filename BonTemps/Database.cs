@@ -99,25 +99,23 @@ namespace BonTemps
         #endregion
 
         #region GetA_X methods
-        public static Clients GetAClient(ulong clientID)
+        public static Client GetAClient(ulong clientID)
         {
-            Clients result = Clients.Null;
-
-            string statement = "SELECT * FROM Clients WHERE ClientID=@ID";
+            Client result = Client.Null;
+            //string statement = "SELECT * FROM Clients WHERE ClientID=@ID";
             try
             {
 
             }
-            catch { result = Clients.Null; }
+            catch { result = Client.Null; }
             return result;
-
         }
         #endregion
 
         #region GetAllX methods
-        public static Clients[] GetAllClients()
+        public static Client[] GetAllClients()
         {
-            List<Clients> clnt = new List<Clients>();
+            List<Client> clnt = new List<Client>();
             string statement = "SELECT * FROM Clients";
             try
             {
@@ -130,7 +128,7 @@ namespace BonTemps
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while (sqlDR.Read())
                         {
-                            Clients c = new Clients();
+                            Client c = new Client();
                             c.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
                             c.FirstName = sqlDR["Name"].ToString().Split(' ')[0];
                             c.LastName = (sqlDR["Name"].ToString().Replace(c.FirstName, "")).Remove(0,1);
@@ -148,9 +146,9 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Menus[] GetAllMenus()
+        public static Menu[] GetAllMenus()
         {
-            List<Menus> menus = new List<Menus>();
+            List<Menu> menus = new List<Menu>();
             string statement = "SELECT * FROM Menus";
             try
             {
@@ -163,7 +161,7 @@ namespace BonTemps
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while (sqlDR.Read())
                         {
-                            Menus m = new Menus();
+                            Menu m = new Menu();
                             m.MenuID = Convert.ToUInt64(sqlDR["MenuID"]);
                             m.Entree = sqlDR["Entree"].ToString();
                             m.MainCourse = sqlDR["MainCourse"].ToString();
@@ -178,9 +176,9 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Orders[] GetAllOrders()
+        public static Order[] GetAllOrders()
         {
-            List<Orders> orders = new List<Orders>();
+            List<Order> orders = new List<Order>();
             string statement = "SELECT * FROM Orders";
             try
             {
@@ -193,7 +191,7 @@ namespace BonTemps
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while (sqlDR.Read())
                         {
-                            Orders o = new Orders();
+                            Order o = new Order();
                             o.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
                             o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
@@ -207,9 +205,9 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Persons[] GetAllPersons()
+        public static Person[] GetAllPersons()
         {
-            List<Persons> persons = new List<Persons>();
+            List<Person> persons = new List<Person>();
             string statement = "SELECT * FROM Persons";
             try
             {
@@ -222,7 +220,7 @@ namespace BonTemps
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while (sqlDR.Read())
                         {
-                            Persons p = new Persons();
+                            Person p = new Person();
                             p.PersonID = Convert.ToUInt64(sqlDR["PersonID"]);
                             p.MenuID = Convert.ToUInt64(sqlDR["MenuID"]);
                             p.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
@@ -235,9 +233,9 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static TableOrders[] GetAllTableOrders()
+        public static TableOrder[] GetAllTableOrders()
         {
-            List<TableOrders> tableOrders = new List<TableOrders>();
+            List<TableOrder> tableOrders = new List<TableOrder>();
             string statement = "SELECT * FROM TableOrders";
             try
             {
@@ -250,7 +248,7 @@ namespace BonTemps
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while (sqlDR.Read())
                         {
-                            TableOrders to = new TableOrders();
+                            TableOrder to = new TableOrder();
                             to.TableOrderID = Convert.ToUInt64(sqlDR["TableOrderID"]);
                             to.TableID = Convert.ToUInt64(sqlDR["TableID"]);
                             to.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
@@ -263,9 +261,9 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Tables[] GetAllTables()
+        public static Table[] GetAllTables()
         {
-            List<Tables> tables = new List<Tables>();
+            List<Table> tables = new List<Table>();
             string statement = "SELECT * FROM Tables";
             try
             {
@@ -278,7 +276,7 @@ namespace BonTemps
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while (sqlDR.Read())
                         {
-                            Tables t = new Tables();
+                            Table t = new Table();
                             t.TableID = Convert.ToUInt64(sqlDR["TableID"]);
                             t.TableNumber = (uint)sqlDR["TableNumber"];
                             t.AmountOfChairs = (uint)sqlDR["AmountOfChairs"];
@@ -291,9 +289,9 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Users[] GetAllUsers()
+        public static User[] GetAllUsers()
         {
-            List<Users> usr = new List<Users>();
+            List<User> usr = new List<User>();
             string statement = "SELECT * FROM Users";
             try
             {
@@ -306,7 +304,7 @@ namespace BonTemps
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while(sqlDR.Read())
                         {
-                            Users u = new Users();
+                            User u = new User();
                             u.UserID = Convert.ToUInt64(sqlDR["UserID"]);
                             u.Username = sqlDR["EmployeeType"].ToString();
                             u.Password = sqlDR["Password"].ToString();

@@ -2,7 +2,7 @@
 
 namespace BonTemps
 {
-    public struct Users
+    public struct User
     {
         private ulong? userID;
         private string username;

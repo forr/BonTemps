@@ -21,14 +21,14 @@ namespace BonTemps
         //======================================================================================
         //======================================================================================
 
-        List<Clients> clients = new List<Clients>();
+        List<Client> clients = new List<Client>();
 
         private void CreateTempClientList()
         {
             
             for (int iClient = 1; (iClient - 1) < 2; iClient++)
             {
-                clients.Add(new Clients(null, "Name" + iClient.ToString(),
+                clients.Add(new Client(null, "Name" + iClient.ToString(),
                                            "LastName",
                                            "Address",
                                            "Postcode",
@@ -40,7 +40,7 @@ namespace BonTemps
 
         private void AddClient()
         {
-            clients.Add(new Clients(null, "tbxFirstName.Text",
+            clients.Add(new Client(null, "tbxFirstName.Text",
                                        "tbxLastName.Text",
                                        "tbxAddress.Text",
                                        "tbxPostcode.Text",

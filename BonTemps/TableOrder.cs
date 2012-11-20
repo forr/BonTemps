@@ -2,7 +2,7 @@
 
 namespace BonTemps
 {
-    public struct TableOrders
+    public struct TableOrder
     {
         private ulong? tableOrderID;
         private ulong? tableID;
@@ -12,7 +12,7 @@ namespace BonTemps
         public ulong? TableID { get { return this.tableID; } set { this.tableID = value; } }
         public ulong? OrderID { get { return this.orderID; } set { this.orderID = value; } }
 
-        public TableOrders(ulong tableOrderID, ulong tableID, ulong orderID)
+        public TableOrder(ulong tableOrderID, ulong tableID, ulong orderID)
         {
             this.tableOrderID = tableOrderID;
             this.tableID = tableID;

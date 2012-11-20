@@ -2,9 +2,9 @@
 
 namespace BonTemps
 {
-    public struct Clients
+    public struct Client
     {
-        public static Clients Null = new Clients(null);
+        public static Client Null = new Client(null);
         private ulong? clientID;
         private string firstName;
         private string lastName;
@@ -23,7 +23,7 @@ namespace BonTemps
         public string PhoneNumber { get { return this.phoneNumber; } set { this.phoneNumber = value; } }
         public string Email { get { return this.email; } set { this.email = value; } }
 
-        public Clients(ulong? cID)
+        public Client(ulong? cID)
         {
             clientID = cID;
             this.firstName = "";
@@ -36,7 +36,7 @@ namespace BonTemps
 
         }
 
-        public Clients(ulong? clientID, string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email): this(clientID)
+        public Client(ulong? clientID, string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email): this(clientID)
         {
             this.firstName = firstName;
             this.lastName = lastName;

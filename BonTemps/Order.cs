@@ -2,7 +2,7 @@
 
 namespace BonTemps
 {
-    public struct Orders
+    public struct Order
     {
         private ulong? orderID;
         private ulong? clientID;
@@ -14,7 +14,7 @@ namespace BonTemps
         public DateTime StartDateTime { get { return this.startDateTime; } set { this.startDateTime = value; } }
         public DateTime EndDateTime { get { return this.endDateTime; } set { this.endDateTime = value; } }
 
-        public Orders(ulong orderID, ulong clientID, DateTime startDateTime, DateTime endDateTime)
+        public Order(ulong orderID, ulong clientID, DateTime startDateTime, DateTime endDateTime)
         {
             this.orderID = orderID;
             this.clientID = clientID;

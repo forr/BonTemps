@@ -2,7 +2,7 @@
 
 namespace BonTemps
 {
-    public struct Persons
+    public struct Person
     {
         private ulong? personID;
         private ulong? menuID;
@@ -12,7 +12,7 @@ namespace BonTemps
         public ulong? MenuID { get { return this.menuID; } set { this.menuID = value; } }
         public ulong? OrderID { get { return this.orderID; } set { this.orderID = value; } }
 
-        public Persons(ulong personID, ulong menuID, ulong orderID):this()
+        public Person(ulong personID, ulong menuID, ulong orderID):this()
         {
             this.personID = personID;
             this.menuID = menuID;

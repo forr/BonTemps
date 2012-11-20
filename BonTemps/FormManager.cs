@@ -68,10 +68,10 @@ namespace BonTemps
             sfd.ShowDialog();
         }
 
-        private void CreateCsvFile(Users[] clientlist)
+        private void CreateCsvFile(User[] clientlist)
         {
             List<String> csvClients = new List<String>();
-            foreach (Users c in clientlist)
+            foreach (User c in clientlist)
             {
                 csvClients.Add(c.ToString());
             }

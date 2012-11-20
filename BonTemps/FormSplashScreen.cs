@@ -44,8 +44,8 @@ namespace BonTemps
             
             try
             {
-                Users[] userList = Database.GetAllUsers();
-                foreach (Users u in userList)
+                User[] userList = Database.GetAllUsers();
+                foreach (User u in userList)
                 {
                     comboBoxOccupation.Items.Add(u.Username);
                     comboBoxOccupation.SelectedIndex = 0;
