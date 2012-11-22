@@ -3,8 +3,7 @@
 namespace BonTemps
 {
     public struct Client
-    {
-        public static Client Null = new Client(null);
+    {        
         private ulong? clientID;
         private string firstName;
         private string lastName;
@@ -13,7 +12,8 @@ namespace BonTemps
         private string city;
         private string phoneNumber;
         private string email;
-
+        
+        public static Client Null = new Client(null);
         public ulong? ClientID { get { return this.clientID; } set { this.clientID = value; } }
         public string FirstName { get { return this.firstName; } set { this.firstName = value; } }
         public string LastName { get { return this.lastName; } set { this.lastName = value; } }
@@ -23,20 +23,20 @@ namespace BonTemps
         public string PhoneNumber { get { return this.phoneNumber; } set { this.phoneNumber = value; } }
         public string Email { get { return this.email; } set { this.email = value; } }
 
-        public Client(ulong? cID)
+        public Client(ulong? clientID)
         {
-            clientID = cID;
-            this.firstName = "";
-            this.lastName = "";
-            this.address = "";
-            this.postalCode = "";
-            this.city = "";
-            this.phoneNumber = ""; ;
-            this.email = "";
-
+            this.clientID = clientID;
+            this.firstName = String.Empty;
+            this.lastName = String.Empty;
+            this.address = String.Empty;
+            this.postalCode = String.Empty;
+            this.city = String.Empty;
+            this.phoneNumber = String.Empty;
+            this.email = String.Empty;
         }
 
-        public Client(ulong? clientID, string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email): this(clientID)
+        public Client(ulong? clientID, string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email)
+            : this(clientID)
         {
             this.firstName = firstName;
             this.lastName = lastName;

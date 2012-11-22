@@ -99,16 +99,43 @@ namespace BonTemps
         #endregion
 
         #region GetA_X methods
-        public static Client GetAClient(ulong clientID)
+        public static Client GetClient(ulong clientID)
         {
             Client result = Client.Null;
-            //string statement = "SELECT * FROM Clients WHERE ClientID=@ID";
+            string statement = "SELECT * FROM Clients WHERE ClientID=@ID";
             try
             {
-
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@ID", clientID);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            Client c = new Client();
+                            c.ClientID = (ulong)sqlDR["ClientID"];
+                            c.FirstName = sqlDR["Name"].ToString().Split(' ')[0];
+                            c.LastName = (sqlDR["Name"].ToString().Replace(c.FirstName, "")).Remove(0, 1);
+                            c.Address = sqlDR["Address"].ToString();
+                            c.PostalCode = sqlDR["PostalCode"].ToString();
+                            c.City = sqlDR["City"].ToString();
+                            c.PhoneNumber = sqlDR["PhoneNumber"].ToString();
+                            c.Email = sqlDR["Email"].ToString();
+                            return c;
+                        }
+                        result = Client.Null;
+                    }
+                }
             }
             catch { result = Client.Null; }
             return result;
+        }
+        public static Menu GetMenu(ulong menuID)
+        {
+            
         }
         #endregion
 
