@@ -8,13 +8,20 @@ namespace BonTemps
         private ulong? menuID;
         private ulong? orderID;
 
+        public static Person Null = new Person(null);
         public ulong? PersonID { get { return this.personID; } set { this.personID = value; } }
         public ulong? MenuID { get { return this.menuID; } set { this.menuID = value; } }
         public ulong? OrderID { get { return this.orderID; } set { this.orderID = value; } }
 
-        public Person(ulong personID, ulong menuID, ulong orderID):this()
+        public Person(ulong? personID)
         {
             this.personID = personID;
+            this.menuID = null;
+            this.orderID = null;
+        }
+        public Person(ulong personID, ulong menuID, ulong orderID)
+            : this(personID)
+        {
             this.menuID = menuID;
             this.orderID = orderID;
         }

@@ -135,7 +135,180 @@ namespace BonTemps
         }
         public static Menu GetMenu(ulong menuID)
         {
-            
+            Menu result = Menu.Null;
+            string statement = "SELECT * FROM Menus WHERE MenuID=@ID";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@ID", menuID);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            Menu m = new Menu();
+                            m.MenuID = (ulong)sqlDR["MenuID"];
+                            m.Entree = sqlDR["Entree"].ToString();
+                            m.MainCourse = sqlDR["MainCourse"].ToString();
+                            m.Dessert = sqlDR["Dessert"].ToString();
+                            m.Price = (int)sqlDR["Price"];
+                            return m;
+                        }
+                        result = Menu.Null;
+                    }                    
+                }
+            }
+            catch { result = Menu.Null; }
+            return result;
+        }
+        public static Order GetOrder(ulong orderID)
+        {
+            Order result = Order.Null;
+            string statement = "SELECT * FROM Orders WHERE OrderID=@ID";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@ID", orderID);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            Order o = new Order();
+                            o.OrderID = (ulong)sqlDR["OrderID"];
+                            o.ClientID = (ulong)sqlDR["ClientID"];
+                            o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
+                            o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
+                            return o;
+                        }
+                        result = Order.Null;
+                    }
+                }
+            }
+            catch { result = Order.Null; }
+            return result;
+        }
+        public static Person GetPerson(ulong personID)
+        {
+            Person result = Person.Null;
+            string statement = "SELECT * FROM Persons WHERE PersonID=@ID";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@ID", personID);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            Person p = new Person();
+                            p.PersonID = (ulong)sqlDR["PersonID"];
+                            p.MenuID = (ulong)sqlDR["MenuID"];
+                            p.OrderID = (ulong)sqlDR["OrderID"];
+                            return p;
+                        }
+                        result = Person.Null;
+                    }
+                }
+            }
+            catch { result = Person.Null; }
+            return result;
+        }
+        public static TableOrder GetTableOrder(ulong tableOrderID)
+        {
+            TableOrder result = TableOrder.Null;
+            string statement = "SELECT * FROM TableOrders WHERE TableOrderID=@ID";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@ID", tableOrderID);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            TableOrder to = new TableOrder();
+                            to.TableOrderID = (ulong)sqlDR["TableOrderID"];
+                            to.TableID = (ulong)sqlDR["TableID"];
+                            to.OrderID = (ulong)sqlDR["OrderID"];
+                            return to;
+                        }
+                        result = TableOrder.Null;
+                    }
+                }
+            }
+            catch { result = TableOrder.Null; }
+            return result;
+        }
+        public static Table GetTable(ulong tableID)
+        {
+            Table result = Table.Null;
+            string statement = "SELECT * FROM Tables WHERE TableID=@ID";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@ID", tableID);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            Table t = new Table();
+                            t.TableID = (ulong)sqlDR["TableID"];
+                            t.TableNumber = (uint)sqlDR["TableNumber"];
+                            t.AmountOfChairs = (uint)sqlDR["AmountOfChairs"];
+                            return t;
+                        }
+                        result = Table.Null;
+                    }
+                }
+            }
+            catch { result = Table.Null; }
+            return result;
+        }
+        public static User GetUser(ulong userID)
+        {
+            User result = User.Null;
+            string statement = "SELECT * FROM Users WHERE UserID=@ID";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@ID", userID);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            User u = new User();
+                            u.UserID = (ulong)sqlDR["UserID"];
+                            u.Username = sqlDR["EmployeeType"].ToString();
+                            u.Password = sqlDR["Password"].ToString();
+                            return u;
+                        }
+                        result = User.Null;
+                    }
+                }
+            }
+            catch { result = User.Null; }
+            return result;
         }
         #endregion
 

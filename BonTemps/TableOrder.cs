@@ -8,13 +8,20 @@ namespace BonTemps
         private ulong? tableID;
         private ulong? orderID;
 
+        public static TableOrder Null = new TableOrder(null);
         public ulong? TableOrderID { get { return this.tableOrderID; } set { this.tableOrderID = value; } }
         public ulong? TableID { get { return this.tableID; } set { this.tableID = value; } }
         public ulong? OrderID { get { return this.orderID; } set { this.orderID = value; } }
 
-        public TableOrder(ulong tableOrderID, ulong tableID, ulong orderID)
+        public TableOrder(ulong? tableOrderID)
         {
             this.tableOrderID = tableOrderID;
+            this.tableID = null;
+            this.orderID = null;
+        }
+        public TableOrder(ulong tableOrderID, ulong tableID, ulong orderID)
+            : this(tableOrderID)
+        {
             this.tableID = tableID;
             this.orderID = orderID;
         }

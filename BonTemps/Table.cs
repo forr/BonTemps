@@ -8,13 +8,20 @@ namespace BonTemps
         private uint tableNumber;
         private uint amountOfChairs;
 
+        public static Table Null = new Table(null);
         public ulong? TableID { get { return this.tableID; } set { this.tableID = value; } }
         public uint TableNumber { get { return this.tableNumber; } set { this.tableNumber = value; } }
         public uint AmountOfChairs { get { return this.amountOfChairs; } set { this.amountOfChairs = value; } }
 
-        public Table(ulong tableID, uint tableNumber, uint amountOfChairs)
+        public Table(ulong? tableID)
         {
             this.tableID = tableID;
+            this.tableNumber = 0;
+            this.amountOfChairs = 0;
+        }
+        public Table(ulong tableID, uint tableNumber, uint amountOfChairs)
+            : this(tableID)
+        {
             this.tableNumber = tableNumber;
             this.amountOfChairs = amountOfChairs;
         }

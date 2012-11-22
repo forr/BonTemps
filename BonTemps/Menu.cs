@@ -27,7 +27,6 @@ namespace BonTemps
         public Menu(ulong menuID, string entree, string mainCourse, string dessert, int price)
             : this(menuID)
         {
-            this.menuID = menuID;
             this.entree = entree;
             this.mainCourse = mainCourse;
             this.dessert = dessert;
