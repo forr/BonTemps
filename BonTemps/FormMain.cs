@@ -109,10 +109,9 @@ namespace BonTemps
 
         private Point GetClientIDLocation()
         {
-            //centered on Location (sizes(100%,100%))
+            //Centered on Location (sizes(100%,100%))
             double relevantWidth = 50;
             double relevantHeight = 75;
-
             double currentPanelSize = tableSize;
 
             Point p = new Point(Convert.ToInt32((relevantWidth / 100) * currentPanelSize), Convert.ToInt32((relevantHeight / 100) * currentPanelSize));
@@ -167,12 +166,12 @@ namespace BonTemps
                 pnlTable.Location = new Point(pos_x, pos_y);
                 pnlTable.BackgroundImage = this.tables[(i - 1)].bmpTableImage;
                 pnlTable.BackgroundImageLayout = ImageLayout.Stretch;
-                pnlTable.Name = TableLayout.GetTableName("pnlTable", (i-1));
+                pnlTable.Name = TableLayout.GetTableName("pnlTable", (i - 1));
                 pnlTable.BorderStyle = BorderStyle.FixedSingle;
                 pnlTable.Click += new EventHandler(this.pnlTable_Click);
 
                 Label lblTableStatus = new Label();
-                lblTableStatus.Text = TableLayout.GetTableName("pnlTable", (i - 1));
+                lblTableStatus.Text = TableLayout.GetTableName("Table ", (i)); // Removed - 1 from "(i - 1)"; still need to fix the array element part
                 lblTableStatus.AutoSize = true;
                 lblTableStatus.Location = new Point(((pos_x + table_width) - lblTableStatus.Width) - 1, (pos_y) + 1);
                 lblTableStatus.TextAlign = ContentAlignment.MiddleRight;
