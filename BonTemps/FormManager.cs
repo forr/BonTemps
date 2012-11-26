@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BonTemps
 {
@@ -22,10 +23,14 @@ namespace BonTemps
         public formManager()
         {
             InitializeComponent();
-
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.TopMost = true;
+
+            this.pnlOrder.Controls.AddRange(ManagerView.ObjectControlArray(ManagerView.menuPanel(), ManagerView.ObjectType.Panel));
+            this.pnlOrder.Update();
+            this.pnlOrder.BorderStyle = BorderStyle.Fixed3D;
+            this.pnlOrder.Width = ((System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 10) * 7);
         }
 
         #region MenuStrip
@@ -59,28 +64,31 @@ namespace BonTemps
 
         private void exportClientsToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            this.CreateCsvFile(Database.GetAllUsers());
+            List<String> csvClients = new List<String>();
+            foreach (Client c in Database.GetAllClients())
+            {
+                csvClients.Add(c.ToString());
+            }
+            string[] csvData = CSVFile.CreateCsvString(csvClients);
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Comma-separated Values (*.csv)|*.csv";
             sfd.DefaultExt = "csv";
             sfd.AddExtension = true;
-            sfd.FileName = "ClientListExport_" + DateTime.Now.ToShortDateString().ToString();
-            sfd.ShowDialog();
+            sfd.FileName = "ClientListExport_" + DateTime.Now.ToShortDateString().ToString().Replace("/", "-") + "_" + DateTime.Now.TimeOfDay.ToString().Replace(".", ",").Replace(":", ".");
+            if(sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    File.WriteAllLines(sfd.FileName, csvData);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
 
-        private void CreateCsvFile(User[] clientlist)
-        {
-            List<String> csvClients = new List<String>();
-            foreach (User c in clientlist)
-            {
-                csvClients.Add(c.ToString());
-            }
-            foreach (String s in csvClients)
-            {
-                s.Replace(";", ";;");
-                s.Replace("\n", ";");
-            }
-        }
+        
 
         #endregion MenuStrip
     }

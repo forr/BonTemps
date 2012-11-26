@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace BonTemps
 {
@@ -58,6 +60,74 @@ namespace BonTemps
             }
             int.TryParse(idConverted, out TableID);
             return TableID;
+        }
+    }
+
+    public sealed class ManagerView
+    {
+        public static Panel menuPanel()
+        {
+            int heightPos = 0;
+            int skipPos = 12;
+
+            //Top Layer
+            Panel pnlMain = new Panel();
+            pnlMain.Location = new System.Drawing.Point(0, 0);
+            pnlMain.AutoSize = true;
+            pnlMain.BorderStyle = BorderStyle.Fixed3D;
+
+            //Sub Layers
+            Label lblCurrentMenu = new Label();
+            lblCurrentMenu.Text = "Current Menu:";
+            lblCurrentMenu.AutoSize = true;
+            lblCurrentMenu.Location = new System.Drawing.Point(0, heightPos);
+            heightPos += lblCurrentMenu.Height;
+
+            ListBox lbxCurrentMenu = new ListBox();
+            foreach (Menu m in Database.GetAllMenus())
+            {
+                lbxCurrentMenu.Items.Add(m.ToString());
+            }
+            lbxCurrentMenu.Location = new System.Drawing.Point(0, heightPos);
+            heightPos += lbxCurrentMenu.Height;
+
+            heightPos += skipPos;
+             
+            pnlMain.Controls.Add(lblCurrentMenu);
+            pnlMain.Controls.Add(lbxCurrentMenu);
+
+
+            pnlMain.Show();
+
+            return pnlMain;
+        }
+
+        public enum ObjectType
+        {
+            Form,
+            Panel
+        };
+
+        public static Control[] ObjectControlArray(Object sender, ObjectType objType)
+        {
+            Control[] ctrl;
+            switch (objType)
+            {
+                case ObjectType.Panel:
+                    Panel pnlObj = (Panel)sender;
+                    ctrl = new Control[pnlObj.Controls.Count];
+                    pnlObj.Controls.CopyTo(ctrl, 0);
+                    break;
+                case ObjectType.Form:
+                    Form frmObj = (Form)sender;
+                    ctrl = new Control[frmObj.Controls.Count];
+                    frmObj.Controls.CopyTo(ctrl, 0);
+                    break;
+                default:
+                    ctrl = (ctrl = new Control[0]);
+                    break;
+            }
+            return ctrl;
         }
     }
 }

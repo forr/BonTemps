@@ -99,216 +99,18 @@ namespace BonTemps
         #endregion
 
         #region GetA_X methods
-        public static Client GetClient(ulong clientID)
+        public static Client GetAClient(ulong clientID)
         {
             Client result = Client.Null;
+
             string statement = "SELECT * FROM Clients WHERE ClientID=@ID";
             try
             {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    if (sqlConn.State == ConnectionState.Open)
-                    {
-                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", clientID);
-                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        if (sqlDR.Read())
-                        {
-                            Client c = new Client();
-                            c.ClientID = (ulong)sqlDR["ClientID"];
-                            c.FirstName = sqlDR["Name"].ToString().Split(' ')[0];
-                            c.LastName = (sqlDR["Name"].ToString().Replace(c.FirstName, "")).Remove(0, 1);
-                            c.Address = sqlDR["Address"].ToString();
-                            c.PostalCode = sqlDR["PostalCode"].ToString();
-                            c.City = sqlDR["City"].ToString();
-                            c.PhoneNumber = sqlDR["PhoneNumber"].ToString();
-                            c.Email = sqlDR["Email"].ToString();
-                            return c;
-                        }
-                        result = Client.Null;
-                    }
-                }
+
             }
             catch { result = Client.Null; }
             return result;
-        }
-        public static Menu GetMenu(ulong menuID)
-        {
-            Menu result = Menu.Null;
-            string statement = "SELECT * FROM Menus WHERE MenuID=@ID";
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    if (sqlConn.State == ConnectionState.Open)
-                    {
-                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", menuID);
-                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        if (sqlDR.Read())
-                        {
-                            Menu m = new Menu();
-                            m.MenuID = (ulong)sqlDR["MenuID"];
-                            m.Entree = sqlDR["Entree"].ToString();
-                            m.MainCourse = sqlDR["MainCourse"].ToString();
-                            m.Dessert = sqlDR["Dessert"].ToString();
-                            m.Price = (int)sqlDR["Price"];
-                            return m;
-                        }
-                        result = Menu.Null;
-                    }                    
-                }
-            }
-            catch { result = Menu.Null; }
-            return result;
-        }
-        public static Order GetOrder(ulong orderID)
-        {
-            Order result = Order.Null;
-            string statement = "SELECT * FROM Orders WHERE OrderID=@ID";
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    if (sqlConn.State == ConnectionState.Open)
-                    {
-                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", orderID);
-                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        if (sqlDR.Read())
-                        {
-                            Order o = new Order();
-                            o.OrderID = (ulong)sqlDR["OrderID"];
-                            o.ClientID = (ulong)sqlDR["ClientID"];
-                            o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
-                            o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
-                            return o;
-                        }
-                        result = Order.Null;
-                    }
-                }
-            }
-            catch { result = Order.Null; }
-            return result;
-        }
-        public static Person GetPerson(ulong personID)
-        {
-            Person result = Person.Null;
-            string statement = "SELECT * FROM Persons WHERE PersonID=@ID";
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    if (sqlConn.State == ConnectionState.Open)
-                    {
-                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", personID);
-                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        if (sqlDR.Read())
-                        {
-                            Person p = new Person();
-                            p.PersonID = (ulong)sqlDR["PersonID"];
-                            p.MenuID = (ulong)sqlDR["MenuID"];
-                            p.OrderID = (ulong)sqlDR["OrderID"];
-                            return p;
-                        }
-                        result = Person.Null;
-                    }
-                }
-            }
-            catch { result = Person.Null; }
-            return result;
-        }
-        public static TableOrder GetTableOrder(ulong tableOrderID)
-        {
-            TableOrder result = TableOrder.Null;
-            string statement = "SELECT * FROM TableOrders WHERE TableOrderID=@ID";
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    if (sqlConn.State == ConnectionState.Open)
-                    {
-                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", tableOrderID);
-                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        if (sqlDR.Read())
-                        {
-                            TableOrder to = new TableOrder();
-                            to.TableOrderID = (ulong)sqlDR["TableOrderID"];
-                            to.TableID = (ulong)sqlDR["TableID"];
-                            to.OrderID = (ulong)sqlDR["OrderID"];
-                            return to;
-                        }
-                        result = TableOrder.Null;
-                    }
-                }
-            }
-            catch { result = TableOrder.Null; }
-            return result;
-        }
-        public static Table GetTable(ulong tableID)
-        {
-            Table result = Table.Null;
-            string statement = "SELECT * FROM Tables WHERE TableID=@ID";
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    if (sqlConn.State == ConnectionState.Open)
-                    {
-                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", tableID);
-                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        if (sqlDR.Read())
-                        {
-                            Table t = new Table();
-                            t.TableID = (ulong)sqlDR["TableID"];
-                            t.TableNumber = (uint)sqlDR["TableNumber"];
-                            t.AmountOfChairs = (uint)sqlDR["AmountOfChairs"];
-                            return t;
-                        }
-                        result = Table.Null;
-                    }
-                }
-            }
-            catch { result = Table.Null; }
-            return result;
-        }
-        public static User GetUser(ulong userID)
-        {
-            User result = User.Null;
-            string statement = "SELECT * FROM Users WHERE UserID=@ID";
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
-                {
-                    sqlConn.Open();
-                    if (sqlConn.State == ConnectionState.Open)
-                    {
-                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", userID);
-                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        if (sqlDR.Read())
-                        {
-                            User u = new User();
-                            u.UserID = (ulong)sqlDR["UserID"];
-                            u.Username = sqlDR["EmployeeType"].ToString();
-                            u.Password = sqlDR["Password"].ToString();
-                            return u;
-                        }
-                        result = User.Null;
-                    }
-                }
-            }
-            catch { result = User.Null; }
-            return result;
+
         }
         #endregion
 
@@ -366,7 +168,9 @@ namespace BonTemps
                             m.Entree = sqlDR["Entree"].ToString();
                             m.MainCourse = sqlDR["MainCourse"].ToString();
                             m.Dessert = sqlDR["Dessert"].ToString();
-                            m.Price = (int)sqlDR["Price"];
+                            double priceOut = 0.00;
+                            double.TryParse(sqlDR["Price"].ToString(), out priceOut);
+                            m.Price = priceOut;
                             menus.Add(m);
                         }
                         return menus.ToArray();

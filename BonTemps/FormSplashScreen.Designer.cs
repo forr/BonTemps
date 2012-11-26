@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSplashScreen));
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -36,6 +35,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.comboBoxOccupation = new System.Windows.Forms.ComboBox();
             this.lblLoginStatus = new System.Windows.Forms.Label();
+            this.llblAdminLogin = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -107,13 +107,33 @@
             this.lblLoginStatus.TabIndex = 4;
             this.lblLoginStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // llblAdminLogin
+            // 
+            this.llblAdminLogin.ActiveLinkColor = System.Drawing.Color.DarkGray;
+            this.llblAdminLogin.AutoSize = true;
+            this.llblAdminLogin.BackColor = System.Drawing.Color.Transparent;
+            this.llblAdminLogin.DisabledLinkColor = System.Drawing.Color.White;
+            this.llblAdminLogin.LinkColor = System.Drawing.Color.DarkGray;
+            this.llblAdminLogin.Location = new System.Drawing.Point(172, 214);
+            this.llblAdminLogin.Name = "llblAdminLogin";
+            this.llblAdminLogin.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.llblAdminLogin.Size = new System.Drawing.Size(12, 17);
+            this.llblAdminLogin.TabIndex = 5;
+            this.llblAdminLogin.TabStop = true;
+            this.llblAdminLogin.Text = "--";
+            this.llblAdminLogin.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.llblAdminLogin.UseCompatibleTextRendering = true;
+            this.llblAdminLogin.VisitedLinkColor = System.Drawing.Color.DarkGray;
+            this.llblAdminLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAdminLogin_LinkClicked);
+            // 
             // FormSplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::BonTemps.Properties.Resources.splashscreen_background;
             this.ClientSize = new System.Drawing.Size(360, 240);
             this.ControlBox = false;
+            this.Controls.Add(this.llblAdminLogin);
             this.Controls.Add(this.lblLoginStatus);
             this.Controls.Add(this.comboBoxOccupation);
             this.Controls.Add(this.lblPassword);
@@ -128,6 +148,7 @@
             this.Name = "FormSplashScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormSplashScreen";
+            this.TransparencyKey = System.Drawing.Color.Magenta;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +163,6 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.ComboBox comboBoxOccupation;
         private System.Windows.Forms.Label lblLoginStatus;
+        private System.Windows.Forms.LinkLabel llblAdminLogin;
     }
 }

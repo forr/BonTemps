@@ -95,6 +95,13 @@ namespace BonTemps.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap splashscreen_icon {
+            get {
+                object obj = ResourceManager.GetObject("splashscreen_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap table {
             get {
                 object obj = ResourceManager.GetObject("table", resourceCulture);

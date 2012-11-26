@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="CSVFile.cs" />
     <Compile Include="FormManager.cs">
       <SubType>Form</SubType>
     </Compile>

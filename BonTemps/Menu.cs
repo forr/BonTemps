@@ -7,14 +7,14 @@ namespace BonTemps
         private string entree;
         private string mainCourse;
         private string dessert;
-        private int price;
+        private double price;
 
         public static Menu Null = new Menu(null);
         public ulong? MenuID { get { return this.menuID; } set { this.menuID = value; } }
         public string Entree { get { return this.entree; } set { this.entree = value; } }
         public string MainCourse { get { return this.mainCourse; } set { this.mainCourse = value; } }
         public string Dessert { get { return this.dessert; } set { this.dessert = value; } }
-        public int Price { get { return this.price; } set { this.price = value; } }
+        public double Price { get { return this.price; } set { this.price = value; } }
 
         public Menu(ulong? menuID)
         {

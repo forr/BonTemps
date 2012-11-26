@@ -8,6 +8,7 @@ namespace BonTemps
         public FormSplashScreen()
         {
             InitializeComponent();
+            llblAdminLogin.Enabled = false;
             lblLoginStatus.ForeColor = System.Drawing.Color.Red;
             FillOccupationCombobox();
         }
@@ -15,6 +16,11 @@ namespace BonTemps
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FormShape()
+        {
+            this.Region = new System.Drawing.Region();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -47,8 +53,16 @@ namespace BonTemps
                 User[] userList = Database.GetAllUsers();
                 foreach (User u in userList)
                 {
-                    comboBoxOccupation.Items.Add(u.Username);
-                    comboBoxOccupation.SelectedIndex = 0;
+                    if (u.Username == "Admin")
+                    {
+                        llblAdminLogin.Enabled = true;
+                        llblAdminLogin.Text = "Admin Login(enter password).";
+                    }
+                    else
+                    {
+                        comboBoxOccupation.Items.Add(u.Username);
+                        comboBoxOccupation.SelectedIndex = 0;
+                    }
                 }
             }
             catch{}
@@ -58,6 +72,18 @@ namespace BonTemps
         {
             if (Login.CanLogin(name, password)) return true;
             return false;
+        }
+
+        private void llblAdminLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (CanLogin("Admin", tbxPassword.Text))
+            {
+                formMain frmMain = new formMain();
+                frmMain.CreateControl();
+                frmMain.Show();
+                this.Hide();
+            }
+            lblLoginStatus.Text = "Login Failed.";
         }
     }
 }

@@ -50,15 +50,15 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.jobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -196,19 +196,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -220,6 +220,12 @@
             this.menuToolStripMenuItem2.Name = "menuToolStripMenuItem2";
             this.menuToolStripMenuItem2.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem2.Text = "Menu";
+            // 
+            // changeMenuToolStripMenuItem
+            // 
+            this.changeMenuToolStripMenuItem.Name = "changeMenuToolStripMenuItem";
+            this.changeMenuToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.changeMenuToolStripMenuItem.Text = "Change Menu";
             // 
             // exitToolStripMenuItem1
             // 
@@ -238,6 +244,22 @@
             this.minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
             this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
             this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
+            // 
+            // jobsToolStripMenuItem
+            // 
+            this.jobsToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.jobsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordsToolStripMenuItem});
+            this.jobsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.jobsToolStripMenuItem.Name = "jobsToolStripMenuItem";
+            this.jobsToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.jobsToolStripMenuItem.Text = "Jobs";
+            // 
+            // changePasswordsToolStripMenuItem
+            // 
+            this.changePasswordsToolStripMenuItem.Name = "changePasswordsToolStripMenuItem";
+            this.changePasswordsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.changePasswordsToolStripMenuItem.Text = "Change Passwords";
             // 
             // exitbuttonToolStripMenuItem
             // 
@@ -283,28 +305,6 @@
             this.minimizeMenuToolStripMenuItem.Name = "minimizeMenuToolStripMenuItem";
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // changeMenuToolStripMenuItem
-            // 
-            this.changeMenuToolStripMenuItem.Name = "changeMenuToolStripMenuItem";
-            this.changeMenuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.changeMenuToolStripMenuItem.Text = "Change Menu";
-            // 
-            // jobsToolStripMenuItem
-            // 
-            this.jobsToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.jobsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePasswordsToolStripMenuItem});
-            this.jobsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.jobsToolStripMenuItem.Name = "jobsToolStripMenuItem";
-            this.jobsToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
-            this.jobsToolStripMenuItem.Text = "Jobs";
-            // 
-            // changePasswordsToolStripMenuItem
-            // 
-            this.changePasswordsToolStripMenuItem.Name = "changePasswordsToolStripMenuItem";
-            this.changePasswordsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.changePasswordsToolStripMenuItem.Text = "Change Passwords";
             // 
             // formManager
             // 
