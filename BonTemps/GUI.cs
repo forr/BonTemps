@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BonTemps
 {
-    public enum TableStatus { EMPTY, ORDERED, ONTIME, NOTONTIME }
+    public enum TableStatus { Empty, Ordered, OnTime, NotOnTime }
 
     public sealed class TableLayout
     {
@@ -63,12 +63,33 @@ namespace BonTemps
         }
     }
 
+    // There may be a few mistakes here, Ryan... check it :))
+    public sealed class ChefView
+    {
+        public static Panel MenuPanel()
+        {
+            Panel pnl = new Panel();
+            pnl.Location = new System.Drawing.Point(0, 0);
+            pnl.AutoSize = true;
+            pnl.BorderStyle = BorderStyle.Fixed3D;
+
+            ListBox lbxCurrentMenu = new ListBox();
+            foreach (Menu m in Database.GetAllMenus())
+            {
+                lbxCurrentMenu.Items.Add(m.ToString());
+            }
+            lbxCurrentMenu.Location = new System.Drawing.Point(0, 0);
+            lbxCurrentMenu.AutoSize = true;
+            return pnl;
+        }
+    }
+
     public sealed class ManagerView
     {
-        public static Panel menuPanel()
+        public static Panel MenuPanel()
         {
-            int heightPos = 0;
-            int skipPos = 12;
+            int iHeightPos = 0;
+            int iSkipPos = 12;
 
             //Top Layer
             Panel pnlMain = new Panel();
@@ -80,35 +101,30 @@ namespace BonTemps
             Label lblCurrentMenu = new Label();
             lblCurrentMenu.Text = "Current Menu:";
             lblCurrentMenu.AutoSize = true;
-            lblCurrentMenu.Location = new System.Drawing.Point(0, heightPos);
-            heightPos += lblCurrentMenu.Height;
+            lblCurrentMenu.Location = new System.Drawing.Point((int)0, (int)iHeightPos);
+            iHeightPos += lblCurrentMenu.Height;
 
             ListBox lbxCurrentMenu = new ListBox();
             foreach (Menu m in Database.GetAllMenus())
             {
                 lbxCurrentMenu.Items.Add(m.ToString());
             }
-            lbxCurrentMenu.Location = new System.Drawing.Point(0, heightPos);
-            heightPos += lbxCurrentMenu.Height;
+            lbxCurrentMenu.Location = new System.Drawing.Point(0, iHeightPos);
+            lbxCurrentMenu.AutoSize = true;
 
-            heightPos += skipPos;
+            iHeightPos += lbxCurrentMenu.Height;
+            iHeightPos += iSkipPos;
              
             pnlMain.Controls.Add(lblCurrentMenu);
             pnlMain.Controls.Add(lbxCurrentMenu);
-
-
             pnlMain.Show();
 
             return pnlMain;
         }
 
-        public enum ObjectType
-        {
-            Form,
-            Panel
-        };
+        public enum ObjectType { Form, Panel };
 
-        public static Control[] ObjectControlArray(Object sender, ObjectType objType)
+        public static Control[] ObjectControlArray(object sender, ObjectType objType)
         {
             Control[] ctrl;
             switch (objType)

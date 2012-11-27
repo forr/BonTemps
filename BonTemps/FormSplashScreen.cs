@@ -47,7 +47,6 @@ namespace BonTemps
 
         private void FillOccupationCombobox()
         {
-            
             try
             {
                 User[] userList = Database.GetAllUsers();
@@ -65,7 +64,7 @@ namespace BonTemps
                     }
                 }
             }
-            catch{}
+            catch { return; }
         }
 
         private bool CanLogin(string name, string password)

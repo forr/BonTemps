@@ -480,8 +480,8 @@ namespace BonTemps
                         {
                             Table t = new Table();
                             t.TableID = Convert.ToUInt64(sqlDR["TableID"]);
-                            t.TableNumber = (uint)sqlDR["TableNumber"];
-                            t.AmountOfChairs = (uint)sqlDR["AmountOfChairs"];
+                            t.TableNumber = Convert.ToUInt32(sqlDR["TableNumber"]);
+                            t.AmountOfChairs = Convert.ToUInt32(sqlDR["AmountOfChairs"]);
                             tables.Add(t);
                         }
                         return tables.ToArray();
@@ -538,6 +538,21 @@ namespace BonTemps
                 }
             }
             catch { return false; }
+        }
+        public static bool IsEmailValid(string email)
+        {
+            if (email.Length < 8) return false;
+            if (String.IsNullOrWhiteSpace(email)) return false;
+            if (email.IndexOf(' ') >= 0) return false;
+            return true;
+        }
+        public static bool IsPhoneNumberValid(string phoneNumber)
+        {
+            if (phoneNumber.Length < 9 || phoneNumber.Length > 17) return false;
+            if (String.IsNullOrWhiteSpace(phoneNumber)) return false;
+            if (phoneNumber.IndexOf('0') != 0)
+                if (phoneNumber.IndexOf('+') != 0) return false;
+            return true;            
         }
     }
 }

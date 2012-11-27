@@ -12,98 +12,26 @@ namespace BonTemps
 {
     public partial class formMain : Form
     {
-        TableLayout[] tables = new TableLayout[22];
+        List<TableLayout> tables;
         int tableSize = 0;
         int tableMultiplier = 0;
-
-        #region Temp
-        //======================================================================================
-        //======================================================================================
-        //======================================================================================
-
-        List<Client> clients = new List<Client>();
-
-        private void CreateTempClientList()
-        {
-            
-            for (int iClient = 1; (iClient - 1) < 2; iClient++)
-            {
-                clients.Add(new Client(null, "Name" + iClient.ToString(),
-                                           "LastName",
-                                           "Address",
-                                           "Postcode",
-                                           "Shitty",
-                                           "0492000000",
-                                           "Emairu"));
-            }
-        }
-
-        private void AddClient()
-        {
-            clients.Add(new Client(null, "tbxFirstName.Text",
-                                       "tbxLastName.Text",
-                                       "tbxAddress.Text",
-                                       "tbxPostcode.Text",
-                                       "tbxCity.Text",
-                                       "tbxPhoneNumber.Text",
-                                       "tbxEmail.Text"));
-        }
-
-        private void CreateTable()
-        {
-            for (int iTable = 0; iTable < tables.Count(); iTable++)
-            {
-                if (iTable == 4 | iTable == 5)
-                {
-                    this.tables[iTable] = new TableLayout(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[1].FirstName, TableStatus.NOTONTIME);
-                    continue;
-                }
-                else if (iTable == 2)
-                {
-                    this.tables[iTable] = new TableLayout(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, clients[0].FirstName, TableStatus.ORDERED);
-                    continue;
-                }
-                this.tables[iTable] = new TableLayout(Properties.Resources.table.GetThumbnailImage(tableSize, tableSize, null, IntPtr.Zero), iTable, "", TableStatus.EMPTY);
-            }
-        }
-
-        /*  Database Connect
-         *  private void GetClients()
-         *  {
-         *      ClientInfo[] NewClientList = Database.GetClients();
-         *      Foreach(ClientInfo ci in NewClientList)
-         *      {
-         *          clients.Add(ci); // clients <- List<typeof(ClientInfo)>
-         *      }
-         *  }
-         */
-
-        //======================================================================================
-        //======================================================================================
-        //======================================================================================
-        #endregion Temp
+        List<Client> clients;
 
         public formMain()
         {
             InitializeComponent();
 
-            this.tableSize = GetTableWidth();
-
-            #region Temp
-            //======================================================================================
-            //======================================================================================
-            //======================================================================================
-            this.CreateTempClientList();
-            this.CreateTable();
-
-            //======================================================================================
-            //======================================================================================
-            //======================================================================================
-            #endregion Temp
+            this.tableSize = GetTableWidth();            
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.TopMost = true;
             this.pnlOverview.AutoScroll = true;
+            this.clients = Database.GetAllClients().ToList<Client>();
+            this.tables = new List<TableLayout>();
+            for (int i = 0; i <= Database.GetAllTables().Count(); i++)
+            {
+                tables.Add(new TableLayout(Properties.Resources.table, i, "", TableStatus.Empty));
+            }
             this.ShowTables();
         }
 
@@ -189,18 +117,18 @@ namespace BonTemps
 
                 switch (this.tables[(i - 1)].tableStatus)
                 {
-                    case TableStatus.EMPTY:
+                    case TableStatus.Empty:
                         lblTableStatus.BackColor = System.Drawing.Color.Blue;
                         break;
-                    case TableStatus.NOTONTIME:
+                    case TableStatus.NotOnTime:
                         lblTableStatus.BackColor = System.Drawing.Color.FromArgb(255,99,25);
                         lblClientID.ForeColor = System.Drawing.Color.White;
                         lblClientID.BackColor = System.Drawing.Color.Red;
                         break;
-                    case TableStatus.ONTIME:
+                    case TableStatus.OnTime:
                         lblTableStatus.BackColor = System.Drawing.Color.Green;
                         break;
-                    case TableStatus.ORDERED:
+                    case TableStatus.Ordered:
                         lblTableStatus.BackColor = System.Drawing.Color.DarkRed;
                         break;
                 }

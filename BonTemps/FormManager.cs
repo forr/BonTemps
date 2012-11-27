@@ -12,14 +12,8 @@ namespace BonTemps
 {
     public partial class formManager : Form
     {
-        enum TypeOfExport
-        {
-            Clients,
-            Tables,
-            Menus,
-            Orders,
-            Users
-        }
+        private enum TypeOfExport { Clients }
+
         public formManager()
         {
             InitializeComponent();
@@ -27,7 +21,7 @@ namespace BonTemps
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.TopMost = true;
 
-            this.pnlOrder.Controls.AddRange(ManagerView.ObjectControlArray(ManagerView.menuPanel(), ManagerView.ObjectType.Panel));
+            this.pnlOrder.Controls.AddRange(ManagerView.ObjectControlArray(ManagerView.MenuPanel(), ManagerView.ObjectType.Panel));
             this.pnlOrder.Update();
             this.pnlOrder.BorderStyle = BorderStyle.Fixed3D;
             this.pnlOrder.Width = ((System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 10) * 7);
