@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace BonTemps
 {
-    public partial class formMain : Form
+    public partial class FormMain : Form
     {
         List<TableLayout> tables;
         int tableSize = 0;
         int tableMultiplier = 0;
         List<Client> clients;
 
-        public formMain()
+        public FormMain()
         {
             InitializeComponent();
 

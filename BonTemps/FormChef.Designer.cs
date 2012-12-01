@@ -1,6 +1,6 @@
 ﻿namespace BonTemps
 {
-    partial class FormManager
+    partial class FormChef
     {
         /// <summary>
         /// Required designer variable.

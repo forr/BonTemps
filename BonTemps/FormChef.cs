@@ -10,18 +10,18 @@ using System.IO;
 
 namespace BonTemps
 {
-    public partial class FormManager : Form
+    public partial class FormChef : Form
     {
         private enum TypeOfExport { Clients }
 
-        public FormManager()
+        public FormChef()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.TopMost = true;
 
-            this.pnlOrder.Controls.AddRange(ManagerView.ObjectControlArray(ManagerView.MenuPanel(), ManagerView.ObjectType.Panel));
+            this.pnlOrder.Controls.AddRange(ManagerView.ObjectControlArray(ChefView.MenuPanel(), ManagerView.ObjectType.Panel));
             this.pnlOrder.Update();
             this.pnlOrder.BorderStyle = BorderStyle.Fixed3D;
             this.pnlOrder.Width = ((System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 10) * 7);

@@ -63,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="FormChef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChef.Designer.cs">
+      <DependentUpon>FormChef.cs</DependentUpon>
+    </Compile>
     <Compile Include="CSVFile.cs" />
     <Compile Include="FormManager.cs">
       <SubType>Form</SubType>
@@ -105,6 +111,9 @@
     <Compile Include="TableOrder.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="FormChef.resx">
+      <DependentUpon>FormChef.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormManager.resx">
       <DependentUpon>FormManager.cs</DependentUpon>
     </EmbeddedResource>

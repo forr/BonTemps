@@ -30,13 +30,15 @@ namespace BonTemps
                 switch (comboBoxOccupation.Text)
                 {
                     case "Manager":
-                        formManager frmManager = new formManager();
-                        frmManager.CreateControl();
+                        FormManager frmManager = new FormManager();
                         frmManager.Show();
                         break;
+                    case "Chef":
+                        FormChef frmChef = new FormChef();
+                        frmChef.Show();
+                        break;
                     default:
-                        formMain frmMain = new formMain();
-                        frmMain.CreateControl();
+                        FormMain frmMain = new FormMain();
                         frmMain.Show();
                         break;
                 }
@@ -77,7 +79,7 @@ namespace BonTemps
         {
             if (CanLogin("Admin", tbxPassword.Text))
             {
-                formMain frmMain = new formMain();
+                FormMain frmMain = new FormMain();
                 frmMain.CreateControl();
                 frmMain.Show();
                 this.Hide();
