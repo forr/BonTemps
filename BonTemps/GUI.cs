@@ -111,8 +111,8 @@ namespace BonTemps
             }
             lbxCurrentMenu.Location = new System.Drawing.Point(0, iHeightPos);
             lbxCurrentMenu.AutoSize = true;
-
             iHeightPos += lbxCurrentMenu.Height;
+
             iHeightPos += iSkipPos;
              
             pnlMain.Controls.Add(lblCurrentMenu);

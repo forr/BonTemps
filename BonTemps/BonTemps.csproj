@@ -62,6 +62,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADatabase.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="FormChef.cs">
       <SubType>Form</SubType>
@@ -101,6 +102,7 @@
       <DependentUpon>FormSplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI.cs" />
+    <Compile Include="IDatabase.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MD5Encryption.cs" />
     <Compile Include="Menu.cs" />

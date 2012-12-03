@@ -8,17 +8,17 @@ using System.Data;
 
 namespace BonTemps
 {
-    public static class Database
+    public sealed class Database : ADatabase
     {
         public enum TableName { Tables, Clients, Orders, TableOrders, Menus, Persons };
 
-        private static string GetConnectionString()
-        {            
+        public override string GetConnectionString()
+        {
             return global::BonTemps.Properties.Settings.Default.DataConnectionString;
         }
 
         #region Usual Insert/Delete/Update methods
-        public static bool Insert(TableName tableName, string[] values)
+        public override bool Insert(TableName tableName, string[] values)
         {
             string sqlCmd = String.Empty;
             string statement = String.Empty;
@@ -45,7 +45,7 @@ namespace BonTemps
             }
             catch { return false; }
         }
-        public static bool Update(TableName tableName, string[] argsCol, string[] argsVal, int id)
+        public override bool Update(TableName tableName, string[] argsCol, string[] argsVal, int id)
         {
             string sqlCmd = String.Empty;
             string table = String.Empty;
@@ -76,7 +76,7 @@ namespace BonTemps
             }
             catch { return false; }
         }
-        public static bool Delete(TableName tableName, int id)
+        public override bool Delete(TableName tableName, int id)
         {
             string sqlCmd = String.Empty;
             string table = String.Empty;
@@ -99,7 +99,7 @@ namespace BonTemps
         #endregion
 
         #region GetA_X methods
-        public static Client GetClient(ulong clientID)
+        public override Client GetClient(ulong clientID)
         {
             Client result = Client.Null;
             string statement = "SELECT * FROM Clients WHERE ClientID=@ID";
@@ -133,7 +133,7 @@ namespace BonTemps
             catch { result = Client.Null; }
             return result;
         }
-        public static Menu GetMenu(ulong menuID)
+        public override Menu GetMenu(ulong menuID)
         {
             Menu result = Menu.Null;
             string statement = "SELECT * FROM Menus WHERE MenuID=@ID";
@@ -164,7 +164,7 @@ namespace BonTemps
             catch { result = Menu.Null; }
             return result;
         }
-        public static Order GetOrder(ulong orderID)
+        public override Order GetOrder(ulong orderID)
         {
             Order result = Order.Null;
             string statement = "SELECT * FROM Orders WHERE OrderID=@ID";
@@ -194,7 +194,7 @@ namespace BonTemps
             catch { result = Order.Null; }
             return result;
         }
-        public static Person GetPerson(ulong personID)
+        public override Person GetPerson(ulong personID)
         {
             Person result = Person.Null;
             string statement = "SELECT * FROM Persons WHERE PersonID=@ID";
@@ -223,7 +223,7 @@ namespace BonTemps
             catch { result = Person.Null; }
             return result;
         }
-        public static TableOrder GetTableOrder(ulong tableOrderID)
+        public override TableOrder GetTableOrder(ulong tableOrderID)
         {
             TableOrder result = TableOrder.Null;
             string statement = "SELECT * FROM TableOrders WHERE TableOrderID=@ID";
@@ -252,7 +252,7 @@ namespace BonTemps
             catch { result = TableOrder.Null; }
             return result;
         }
-        public static Table GetTable(ulong tableID)
+        public override Table GetTable(ulong tableID)
         {
             Table result = Table.Null;
             string statement = "SELECT * FROM Tables WHERE TableID=@ID";
@@ -281,7 +281,7 @@ namespace BonTemps
             catch { result = Table.Null; }
             return result;
         }
-        public static User GetUser(ulong userID)
+        public override User GetUser(ulong userID)
         {
             User result = User.Null;
             string statement = "SELECT * FROM Users WHERE UserID=@ID";
@@ -313,7 +313,7 @@ namespace BonTemps
         #endregion
 
         #region GetAllX methods
-        public static Client[] GetAllClients()
+        public override Client[] GetAllClients()
         {
             List<Client> clnt = new List<Client>();
             string statement = "SELECT * FROM Clients";
@@ -346,7 +346,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Menu[] GetAllMenus()
+        public override Menu[] GetAllMenus()
         {
             List<Menu> menus = new List<Menu>();
             string statement = "SELECT * FROM Menus";
@@ -378,7 +378,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Order[] GetAllOrders()
+        public override Order[] GetAllOrders()
         {
             List<Order> orders = new List<Order>();
             string statement = "SELECT * FROM Orders";
@@ -407,7 +407,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Person[] GetAllPersons()
+        public override Person[] GetAllPersons()
         {
             List<Person> persons = new List<Person>();
             string statement = "SELECT * FROM Persons";
@@ -435,7 +435,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static TableOrder[] GetAllTableOrders()
+        public override TableOrder[] GetAllTableOrders()
         {
             List<TableOrder> tableOrders = new List<TableOrder>();
             string statement = "SELECT * FROM TableOrders";
@@ -463,7 +463,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static Table[] GetAllTables()
+        public override Table[] GetAllTables()
         {
             List<Table> tables = new List<Table>();
             string statement = "SELECT * FROM Tables";
@@ -491,7 +491,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public static User[] GetAllUsers()
+        public override User[] GetAllUsers()
         {
             List<User> usr = new List<User>();
             string statement = "SELECT * FROM Users";
@@ -521,7 +521,7 @@ namespace BonTemps
         }
         #endregion
 
-        public static bool IsPasswordValid(string employeeType, string password)
+        public override bool IsPasswordValid(string employeeType, string password)
         {
             string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";
             try
@@ -539,14 +539,14 @@ namespace BonTemps
             }
             catch { return false; }
         }
-        public static bool IsEmailValid(string email)
+        public override bool IsEmailValid(string email)
         {
             if (email.Length < 8) return false;
             if (String.IsNullOrWhiteSpace(email)) return false;
             if (email.IndexOf(' ') >= 0) return false;
             return true;
         }
-        public static bool IsPhoneNumberValid(string phoneNumber)
+        public override bool IsPhoneNumberValid(string phoneNumber)
         {
             if (phoneNumber.Length < 9 || phoneNumber.Length > 17) return false;
             if (String.IsNullOrWhiteSpace(phoneNumber)) return false;
