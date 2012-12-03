@@ -4,6 +4,7 @@ namespace BonTemps
 {
     public class Login
     {
+        private static Database db = new Database();
         private string employeeType;
         private string password;
         private bool isActive;
@@ -28,7 +29,7 @@ namespace BonTemps
             if (String.IsNullOrWhiteSpace(password)) return false;
             if (password.IndexOf(' ') >= 0) return false;
 
-            return Database.IsPasswordValid(employeeType, MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password)));
+            return db.IsPasswordValid(employeeType, MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password)));
         }
     }
 }

@@ -5,6 +5,8 @@ namespace BonTemps
 {
     public partial class FormSplashScreen : Form
     {
+        private Database db = new Database();
+
         public FormSplashScreen()
         {
             InitializeComponent();
@@ -51,7 +53,7 @@ namespace BonTemps
         {
             try
             {
-                User[] userList = Database.GetAllUsers();
+                User[] userList = db.GetAllUsers();
                 foreach (User u in userList)
                 {
                     if (u.Username == "Admin")

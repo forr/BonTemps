@@ -12,6 +12,7 @@ namespace BonTemps
 {
     public partial class FormMain : Form
     {
+        private Database db = new Database();
         List<TableLayout> tables;
         int tableSize = 0;
         int tableMultiplier = 0;
@@ -26,9 +27,9 @@ namespace BonTemps
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.TopMost = true;
             this.pnlOverview.AutoScroll = true;
-            this.clients = Database.GetAllClients().ToList<Client>();
+            this.clients = db.GetAllClients().ToList<Client>();
             this.tables = new List<TableLayout>();
-            for (int i = 0; i <= Database.GetAllTables().Count(); i++)
+            for (int i = 0; i <= db.GetAllTables().Count(); i++)
             {
                 tables.Add(new TableLayout(Properties.Resources.table, i, "", TableStatus.Empty));
             }

@@ -12,7 +12,9 @@ namespace BonTemps
 {
     public partial class FormManager : Form
     {
-        private enum TypeOfExport { Clients }
+
+        private Database db = new Database();
+        private enum TypeOfExport { Clients };
 
         public FormManager()
         {
@@ -59,7 +61,7 @@ namespace BonTemps
         private void exportClientsToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             List<String> csvClients = new List<String>();
-            foreach (Client c in Database.GetAllClients())
+            foreach (Client c in db.GetAllClients())
             {
                 csvClients.Add(c.ToString());
             }

@@ -12,6 +12,7 @@ namespace BonTemps
         public int tableID;
         public string clientID; //Can be empty
         public TableStatus tableStatus;
+        private Database db = new Database();
 
         /// <summary>
         /// Table Data
@@ -66,6 +67,7 @@ namespace BonTemps
     // There may be a few mistakes here, Ryan... check it :))
     public sealed class ChefView
     {
+        public static Database db = new Database();
         public static Panel MenuPanel()
         {
             Panel pnl = new Panel();
@@ -74,7 +76,7 @@ namespace BonTemps
             pnl.BorderStyle = BorderStyle.Fixed3D;
 
             ListBox lbxCurrentMenu = new ListBox();
-            foreach (Menu m in Database.GetAllMenus())
+            foreach (Menu m in db.GetAllMenus())
             {
                 lbxCurrentMenu.Items.Add(m.ToString());
             }
@@ -86,6 +88,8 @@ namespace BonTemps
 
     public sealed class ManagerView
     {
+        private static Database db = new Database();
+
         public static Panel MenuPanel()
         {
             int iHeightPos = 0;
@@ -105,7 +109,7 @@ namespace BonTemps
             iHeightPos += lblCurrentMenu.Height;
 
             ListBox lbxCurrentMenu = new ListBox();
-            foreach (Menu m in Database.GetAllMenus())
+            foreach (Menu m in db.GetAllMenus())
             {
                 lbxCurrentMenu.Items.Add(m.ToString());
             }
