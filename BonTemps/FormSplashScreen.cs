@@ -43,7 +43,7 @@ namespace BonTemps
         {
             string machineName = System.Environment.MachineName;
 
-            if (CheckIfBlocked(machineName))
+            if (!CheckIfBlocked(machineName))
             {
                 if (this.attempts == 3)
                 {
@@ -76,6 +76,10 @@ namespace BonTemps
                     }
                     lblLoginStatus.Text = "Login Failed.";
                 }
+            }
+            else
+            {
+                MessageBox.Show("Blocked");
             }
         }
 
