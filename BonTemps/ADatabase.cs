@@ -20,6 +20,7 @@ namespace BonTemps
         public abstract Table GetTable(ulong tableID);
         public abstract User GetUser(ulong userID);
 
+        public abstract List<AccessDenied> GetAllAccessDenied();
         public abstract List<Client> GetAllClients();
         public abstract List<Menu> GetAllMenus();
         public abstract List<Order> GetAllOrders();
