@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace BonTemps
 {
@@ -53,7 +54,7 @@ namespace BonTemps
         {
             try
             {
-                User[] userList = db.GetAllUsers();
+                List<User> userList = db.GetAllUsers();
                 foreach (User u in userList)
                 {
                     if (u.Username == "Admin")
