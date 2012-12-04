@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.lbxOverview = new System.Windows.Forms.ListBox();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -49,7 +48,6 @@
             this.tbxClientName_pnlOrder = new System.Windows.Forms.TextBox();
             this.tbxClientID_pnlOrder = new System.Windows.Forms.TextBox();
             this.tbxTableID_pnlOrder = new System.Windows.Forms.TextBox();
-            this.pnlOverview = new System.Windows.Forms.Panel();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,18 +65,20 @@
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlOverview = new System.Windows.Forms.Panel();
             this.pnlOrder.SuspendLayout();
             this.menuMain.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lbxOverview
-            // 
-            this.lbxOverview.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbxOverview.FormattingEnabled = true;
-            this.lbxOverview.Location = new System.Drawing.Point(0, 24);
-            this.lbxOverview.Name = "lbxOverview";
-            this.lbxOverview.Size = new System.Drawing.Size(161, 336);
-            this.lbxOverview.TabIndex = 0;
             // 
             // fileToolStripMenuItem
             // 
@@ -143,16 +143,16 @@
             this.pnlOrder.Controls.Add(this.tbxClientName_pnlOrder);
             this.pnlOrder.Controls.Add(this.tbxClientID_pnlOrder);
             this.pnlOrder.Controls.Add(this.tbxTableID_pnlOrder);
-            this.pnlOrder.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlOrder.Location = new System.Drawing.Point(585, 24);
+            this.pnlOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlOrder.Location = new System.Drawing.Point(0, 66);
             this.pnlOrder.Name = "pnlOrder";
-            this.pnlOrder.Size = new System.Drawing.Size(200, 336);
+            this.pnlOrder.Size = new System.Drawing.Size(230, 236);
             this.pnlOrder.TabIndex = 0;
             // 
             // lbl1_pnlOrder
             // 
             this.lbl1_pnlOrder.AutoSize = true;
-            this.lbl1_pnlOrder.Location = new System.Drawing.Point(3, 132);
+            this.lbl1_pnlOrder.Location = new System.Drawing.Point(32, 126);
             this.lbl1_pnlOrder.Name = "lbl1_pnlOrder";
             this.lbl1_pnlOrder.Size = new System.Drawing.Size(36, 13);
             this.lbl1_pnlOrder.TabIndex = 2;
@@ -161,7 +161,7 @@
             // lblClientName_pnlOrder
             // 
             this.lblClientName_pnlOrder.AutoSize = true;
-            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(3, 93);
+            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(32, 87);
             this.lblClientName_pnlOrder.Name = "lblClientName_pnlOrder";
             this.lblClientName_pnlOrder.Size = new System.Drawing.Size(67, 13);
             this.lblClientName_pnlOrder.TabIndex = 2;
@@ -170,7 +170,7 @@
             // lblClientID_pnlOrder
             // 
             this.lblClientID_pnlOrder.AutoSize = true;
-            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(3, 54);
+            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(32, 48);
             this.lblClientID_pnlOrder.Name = "lblClientID_pnlOrder";
             this.lblClientID_pnlOrder.Size = new System.Drawing.Size(50, 13);
             this.lblClientID_pnlOrder.TabIndex = 2;
@@ -179,7 +179,7 @@
             // lblTableID_pnlOrder
             // 
             this.lblTableID_pnlOrder.AutoSize = true;
-            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(3, 15);
+            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(32, 9);
             this.lblTableID_pnlOrder.Name = "lblTableID_pnlOrder";
             this.lblTableID_pnlOrder.Size = new System.Drawing.Size(37, 13);
             this.lblTableID_pnlOrder.TabIndex = 2;
@@ -187,7 +187,7 @@
             // 
             // btnCancelNewOrder
             // 
-            this.btnCancelNewOrder.Location = new System.Drawing.Point(3, 203);
+            this.btnCancelNewOrder.Location = new System.Drawing.Point(32, 197);
             this.btnCancelNewOrder.Name = "btnCancelNewOrder";
             this.btnCancelNewOrder.Size = new System.Drawing.Size(163, 23);
             this.btnCancelNewOrder.TabIndex = 1;
@@ -196,7 +196,7 @@
             // 
             // btnCreateNewOrder
             // 
-            this.btnCreateNewOrder.Location = new System.Drawing.Point(3, 174);
+            this.btnCreateNewOrder.Location = new System.Drawing.Point(32, 168);
             this.btnCreateNewOrder.Name = "btnCreateNewOrder";
             this.btnCreateNewOrder.Size = new System.Drawing.Size(163, 23);
             this.btnCreateNewOrder.TabIndex = 1;
@@ -205,39 +205,31 @@
             // 
             // tbx1_pnlOrder
             // 
-            this.tbx1_pnlOrder.Location = new System.Drawing.Point(3, 148);
+            this.tbx1_pnlOrder.Location = new System.Drawing.Point(32, 142);
             this.tbx1_pnlOrder.Name = "tbx1_pnlOrder";
             this.tbx1_pnlOrder.Size = new System.Drawing.Size(163, 20);
             this.tbx1_pnlOrder.TabIndex = 0;
             // 
             // tbxClientName_pnlOrder
             // 
-            this.tbxClientName_pnlOrder.Location = new System.Drawing.Point(3, 109);
+            this.tbxClientName_pnlOrder.Location = new System.Drawing.Point(32, 103);
             this.tbxClientName_pnlOrder.Name = "tbxClientName_pnlOrder";
             this.tbxClientName_pnlOrder.Size = new System.Drawing.Size(163, 20);
             this.tbxClientName_pnlOrder.TabIndex = 0;
             // 
             // tbxClientID_pnlOrder
             // 
-            this.tbxClientID_pnlOrder.Location = new System.Drawing.Point(3, 70);
+            this.tbxClientID_pnlOrder.Location = new System.Drawing.Point(32, 64);
             this.tbxClientID_pnlOrder.Name = "tbxClientID_pnlOrder";
             this.tbxClientID_pnlOrder.Size = new System.Drawing.Size(163, 20);
             this.tbxClientID_pnlOrder.TabIndex = 0;
             // 
             // tbxTableID_pnlOrder
             // 
-            this.tbxTableID_pnlOrder.Location = new System.Drawing.Point(3, 31);
+            this.tbxTableID_pnlOrder.Location = new System.Drawing.Point(32, 25);
             this.tbxTableID_pnlOrder.Name = "tbxTableID_pnlOrder";
             this.tbxTableID_pnlOrder.Size = new System.Drawing.Size(163, 20);
             this.tbxTableID_pnlOrder.TabIndex = 0;
-            // 
-            // pnlOverview
-            // 
-            this.pnlOverview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlOverview.Location = new System.Drawing.Point(161, 24);
-            this.pnlOverview.Name = "pnlOverview";
-            this.pnlOverview.Size = new System.Drawing.Size(624, 336);
-            this.pnlOverview.TabIndex = 2;
             // 
             // menuMain
             // 
@@ -270,19 +262,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -391,23 +383,95 @@
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // formMain
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(785, 336);
+            this.tabControl1.TabIndex = 3;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(777, 310);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(230, 66);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pnlOverview);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(771, 304);
+            this.panel3.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.pnlOrder);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(232, 304);
+            this.panel1.TabIndex = 1;
+            // 
+            // pnlOverview
+            // 
+            this.pnlOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlOverview.Location = new System.Drawing.Point(232, 0);
+            this.pnlOverview.Name = "pnlOverview";
+            this.pnlOverview.Size = new System.Drawing.Size(539, 304);
+            this.pnlOverview.TabIndex = 2;
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 360);
-            this.Controls.Add(this.pnlOrder);
-            this.Controls.Add(this.pnlOverview);
-            this.Controls.Add(this.lbxOverview);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuMain;
-            this.Name = "formMain";
-            this.Text = "Form1";
+            this.Name = "FormMain";
+            this.Text = "w";
             this.pnlOrder.ResumeLayout(false);
             this.pnlOrder.PerformLayout();
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,9 +479,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lbxOverview;
         private System.Windows.Forms.MenuStrip menuMain;
-        private System.Windows.Forms.Panel pnlOverview;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportClientsToolStripMenuItem;
@@ -453,6 +515,13 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem minimizeToolStripMenuItem1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlOverview;
     }
 }
 

@@ -51,7 +51,7 @@ namespace BonTemps
 
         private int GetTableWidth()
         {
-            int screen_width = (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width - this.pnlOrder.Width - this.lbxOverview.Width) - 11;
+            int screen_width = (this.tabControl1.Width) - 11;
             if(screen_width < 240)
             {
                 this.tableMultiplier = 2;
