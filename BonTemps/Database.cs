@@ -10,7 +10,7 @@ namespace BonTemps
 {
     public sealed class Database : ADatabase
     {
-        public enum TableName { Tables, Clients, Orders, TableOrders, Menus, Persons };
+        public enum TableName { AccessDenied, Clients, Menus, Orders, Persons, TableOrders, Tables, Users };
 
         public override string GetConnectionString()
         {
@@ -21,29 +21,32 @@ namespace BonTemps
         public override bool Insert(TableName tableName, string[] values)
         {
             string sqlCmd = String.Empty;
+            bool isDateTime = false;
             string statement = String.Empty;
             int selectIndex = 0;
 
             foreach (string str in values)
             {
+                if (str.GetType() == typeof(DateTime)) isDateTime = true;
                 if (selectIndex == 0) statement += str;
                 else statement += String.Format(",{0}", str);
                 selectIndex++;
-            }
-
-            sqlCmd = "INSERT INTO @table VALUES(@values)";
+            }           
 
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
+                    if(tableName == TableName.AccessDenied) sqlCmd = String.Format("INSERT INTO AccessDenied (MachineID,BlockedSince,BlockedUntil) VALUES (@values)");
+                    else sqlCmd = String.Format("INSERT INTO {0} VALUES(@values)", tableName.ToString());
+
+                    sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@table", tableName.ToString());
                     sqlQuery.Parameters.AddWithValue("@values", statement);
                     return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
-            catch { return false; }
+            catch( Exception ex ) { return false; }
         }
         public override bool Update(TableName tableName, string[] argsCol, string[] argsVal, int id)
         {
@@ -313,6 +316,38 @@ namespace BonTemps
         #endregion
 
         #region GetAllX methods
+        public override List<AccessDenied> GetAllAccessDenied()
+        {
+            List<AccessDenied> ad = new List<AccessDenied>();
+            string statement = "SELECT * FROM AccessDenied";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            AccessDenied a = new AccessDenied();
+                            a.BlockedID = Convert.ToUInt32(sqlDR["BlockedID"]);
+                            a.MachineID = sqlDR["MachineID"].ToString();
+                            a.BlockedSince = (DateTime)sqlDR["BlockedSince"];
+                            a.BlockedUntil = (DateTime)sqlDR["BlockedUntil"];
+                            ad.Add(a);
+                        }
+                        return ad;
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public override List<Client> GetAllClients()
         {
             List<Client> clnt = new List<Client>();

@@ -31,7 +31,7 @@ namespace BonTemps
             this.tables = new List<TableLayout>();
             for (int i = 0; i <= db.GetAllTables().Count(); i++)
             {
-                tables.Add(new TableLayout(Properties.Resources.table, i, "", TableStatus.Empty));
+                tables.Add(new TableLayout(Properties.Resources.table, i, String.Empty, TableStatus.Empty));
             }
             this.ShowTables();
         }
@@ -164,7 +164,7 @@ namespace BonTemps
             }
             catch
             {
-                tbxClientName_pnlOrder.Text = "unknown";
+                tbxClientName_pnlOrder.Text = "Unknown";
             }
         }
 

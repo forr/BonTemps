@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Management;
+using System.Text;
 
 namespace BonTemps
 {
     public partial class FormSplashScreen : Form
     {
-        private Database db = new Database();
+        private uint attempts = 0;
+        private enum Occupation { Manager, Chef, Ober, Receptionist };
 
         public FormSplashScreen()
         {
@@ -26,35 +29,61 @@ namespace BonTemps
             this.Region = new System.Drawing.Region();
         }
 
+        public static bool CheckIfBlocked(string uid)
+        {
+            List<AccessDenied> adList = new Database().GetAllAccessDenied();
+            foreach (AccessDenied ad in adList)
+            {
+                if (ad.MachineID == uid) return true;
+            }
+            return false;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (CanLogin(comboBoxOccupation.Text, tbxPassword.Text))
+            string machineName = System.Environment.MachineName;
+
+            if (CheckIfBlocked(machineName))
             {
-                switch (comboBoxOccupation.Text)
+                if (this.attempts == 3)
                 {
-                    case "Manager":
-                        FormManager frmManager = new FormManager();
-                        frmManager.Show();
-                        break;
-                    case "Chef":
-                        FormChef frmChef = new FormChef();
-                        frmChef.Show();
-                        break;
-                    default:
-                        FormMain frmMain = new FormMain();
-                        frmMain.Show();
-                        break;
+                    new Database().Insert(Database.TableName.AccessDenied, new string[] { machineName, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), DateTime.Now.AddMinutes(15).ToString("yyyy-MM-dd hh:mm:ss") });
                 }
-                this.Hide();
+                else
+                {
+                    if (CanLogin(comboBoxOccupation.Text, tbxPassword.Text))
+                    {
+                        switch (comboBoxOccupation.Text)
+                        {
+                            case "Manager":
+                                FormManager frmManager = new FormManager();
+                                frmManager.Show();
+                                break;
+                            case "Chef":
+                                FormChef frmChef = new FormChef();
+                                frmChef.Show();
+                                break;
+                            default:
+                                FormMain frmMain = new FormMain();
+                                frmMain.Show();
+                                break;
+                        }
+                        this.Hide();
+                    }
+                    else
+                    {
+                        ++this.attempts;
+                    }
+                    lblLoginStatus.Text = "Login Failed.";
+                }
             }
-            lblLoginStatus.Text = "Login Failed.";
         }
 
         private void FillOccupationCombobox()
         {
             try
             {
-                List<User> userList = db.GetAllUsers();
+                List<User> userList = new Database().GetAllUsers();
                 foreach (User u in userList)
                 {
                     if (u.Username == "Admin")

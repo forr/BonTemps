@@ -31,5 +31,7 @@ namespace BonTemps
 
             return db.IsPasswordValid(employeeType, MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(password)));
         }
+
+
     }
 }
