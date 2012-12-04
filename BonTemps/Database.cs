@@ -313,7 +313,7 @@ namespace BonTemps
         #endregion
 
         #region GetAllX methods
-        public override Client[] GetAllClients()
+        public override List<Client> GetAllClients()
         {
             List<Client> clnt = new List<Client>();
             string statement = "SELECT * FROM Clients";
@@ -339,14 +339,14 @@ namespace BonTemps
                             c.Email = sqlDR["Email"].ToString();
                             clnt.Add(c);
                         }
-                        return clnt.ToArray();
+                        return clnt;
                     }
                     return null;
                 }
             }
             catch { return null; }
         }
-        public override Menu[] GetAllMenus()
+        public override List<Menu> GetAllMenus()
         {
             List<Menu> menus = new List<Menu>();
             string statement = "SELECT * FROM Menus";
@@ -371,14 +371,14 @@ namespace BonTemps
                             m.Price = priceOut;
                             menus.Add(m);
                         }
-                        return menus.ToArray();
+                        return menus;
                     }
                     return null;
                 }
             }
             catch { return null; }
         }
-        public override Order[] GetAllOrders()
+        public override List<Order> GetAllOrders()
         {
             List<Order> orders = new List<Order>();
             string statement = "SELECT * FROM Orders";
@@ -400,14 +400,14 @@ namespace BonTemps
                             o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
                             orders.Add(o);
                         }
-                        return orders.ToArray();
+                        return orders;
                     }
                     return null;
                 }
             }
             catch { return null; }
         }
-        public override Person[] GetAllPersons()
+        public override List<Person> GetAllPersons()
         {
             List<Person> persons = new List<Person>();
             string statement = "SELECT * FROM Persons";
@@ -428,14 +428,14 @@ namespace BonTemps
                             p.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             persons.Add(p);
                         }
-                        return persons.ToArray();
+                        return persons;
                     }
                     return null;
                 }
             }
             catch { return null; }
         }
-        public override TableOrder[] GetAllTableOrders()
+        public override List<TableOrder> GetAllTableOrders()
         {
             List<TableOrder> tableOrders = new List<TableOrder>();
             string statement = "SELECT * FROM TableOrders";
@@ -456,14 +456,14 @@ namespace BonTemps
                             to.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             tableOrders.Add(to);
                         }
-                        return tableOrders.ToArray();
+                        return tableOrders;
                     }
                     return null;
                 }
             }
             catch { return null; }
         }
-        public override Table[] GetAllTables()
+        public override List<Table> GetAllTables()
         {
             List<Table> tables = new List<Table>();
             string statement = "SELECT * FROM Tables";
@@ -484,14 +484,14 @@ namespace BonTemps
                             t.AmountOfChairs = Convert.ToUInt32(sqlDR["AmountOfChairs"]);
                             tables.Add(t);
                         }
-                        return tables.ToArray();
+                        return tables;
                     }
                     return null;
                 }
             }
             catch { return null; }
         }
-        public override User[] GetAllUsers()
+        public override List<User> GetAllUsers()
         {
             List<User> usr = new List<User>();
             string statement = "SELECT * FROM Users";
@@ -512,7 +512,7 @@ namespace BonTemps
                             u.Password = sqlDR["Password"].ToString();
                             usr.Add(u);
                         }
-                        return usr.ToArray();
+                        return usr;
                     }
                     return null;
                 }

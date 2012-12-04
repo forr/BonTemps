@@ -20,13 +20,13 @@ namespace BonTemps
         Table GetTable(ulong tableID);
         User GetUser(ulong userID);
 
-        Client[] GetAllClients();
-        Menu[] GetAllMenus();
-        Order[] GetAllOrders();
-        Person[] GetAllPersons();
-        TableOrder[] GetAllTableOrders();
-        Table[] GetAllTables();
-        User[] GetAllUsers();
+        List<Client> GetAllClients();
+        List<Menu> GetAllMenus();
+        List<Order> GetAllOrders();
+        List<Person> GetAllPersons();
+        List<TableOrder> GetAllTableOrders();
+        List<Table> GetAllTables();
+        List<User> GetAllUsers();
 
         bool IsPasswordValid(string employeeType, string password);
         bool IsEmailValid(string email);

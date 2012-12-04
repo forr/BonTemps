@@ -20,13 +20,13 @@ namespace BonTemps
         public abstract Table GetTable(ulong tableID);
         public abstract User GetUser(ulong userID);
 
-        public abstract Client[] GetAllClients();
-        public abstract Menu[] GetAllMenus();
-        public abstract Order[] GetAllOrders();
-        public abstract Person[] GetAllPersons();
-        public abstract TableOrder[] GetAllTableOrders();
-        public abstract Table[] GetAllTables();
-        public abstract User[] GetAllUsers();
+        public abstract List<Client> GetAllClients();
+        public abstract List<Menu> GetAllMenus();
+        public abstract List<Order> GetAllOrders();
+        public abstract List<Person> GetAllPersons();
+        public abstract List<TableOrder> GetAllTableOrders();
+        public abstract List<Table> GetAllTables();
+        public abstract List<User> GetAllUsers();
 
         public abstract bool IsPasswordValid(string employeeType, string password);
         public abstract bool IsEmailValid(string email);
