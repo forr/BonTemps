@@ -101,7 +101,7 @@
             // 
             this.lblLoginStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblLoginStatus.AutoSize = true;
-            this.lblLoginStatus.Location = new System.Drawing.Point(149, 184);
+            this.lblLoginStatus.Location = new System.Drawing.Point(130, 184);
             this.lblLoginStatus.Name = "lblLoginStatus";
             this.lblLoginStatus.Size = new System.Drawing.Size(0, 13);
             this.lblLoginStatus.TabIndex = 4;

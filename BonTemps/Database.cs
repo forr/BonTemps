@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
+using System.Globalization;
 
 namespace BonTemps
 {
@@ -37,8 +38,8 @@ namespace BonTemps
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
-                    if(tableName == TableName.AccessDenied) sqlCmd = String.Format("INSERT INTO AccessDenied (MachineID,BlockedSince,BlockedUntil) VALUES (@values)");
-                    else sqlCmd = String.Format("INSERT INTO {0} VALUES(@values)", tableName.ToString());
+                    if(tableName == TableName.AccessDenied) sqlCmd = String.Format("INSERT INTO AccessDenied (MachineID,BlockedSince,BlockedUntil) VALUES ({0})", statement);
+                    else sqlCmd = String.Format("INSERT INTO {0} VALUES({1})", tableName.ToString(), statement);
 
                     sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
@@ -85,19 +86,21 @@ namespace BonTemps
             string table = String.Empty;
             string selectColumns = String.Empty;
 
-            sqlCmd = "DELETE FROM @table WHERE ID=@id";
+
+            if (tableName == TableName.AccessDenied) sqlCmd = "DELETE FROM AccessDenied WHERE BlockedID=@id";
+            else sqlCmd = String.Format("DELETE FROM {0} WHERE ID=@id", tableName.ToString());
 
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
+                    sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@table", tableName.ToString());
                     sqlQuery.Parameters.AddWithValue("@id", id);
                     return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
-            catch { return false; }
+            catch(Exception ex) { return false; }
         }
         #endregion
 
@@ -319,6 +322,10 @@ namespace BonTemps
         public override List<AccessDenied> GetAllAccessDenied()
         {
             List<AccessDenied> ad = new List<AccessDenied>();
+
+            DateTimeFormatInfo dtfi = new DateTimeFormatInfo();
+            dtfi.ShortDatePattern = "yyyy-MM-dd HH:mm:ss";
+
             string statement = "SELECT * FROM AccessDenied";
             try
             {
@@ -334,8 +341,8 @@ namespace BonTemps
                             AccessDenied a = new AccessDenied();
                             a.BlockedID = Convert.ToUInt32(sqlDR["BlockedID"]);
                             a.MachineID = sqlDR["MachineID"].ToString();
-                            a.BlockedSince = (DateTime)sqlDR["BlockedSince"];
-                            a.BlockedUntil = (DateTime)sqlDR["BlockedUntil"];
+                            a.BlockedSince = System.DateTime.Parse(((DateTime)sqlDR["BlockedSince"]).ToString("yyyy-MM-dd hh:mm:ss tt"));
+                            a.BlockedUntil = Convert.ToDateTime(sqlDR["BlockedUntil"], dtfi);
                             ad.Add(a);
                         }
                         return ad;
