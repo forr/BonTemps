@@ -66,19 +66,7 @@
     <Compile Include="AccessDenied.cs" />
     <Compile Include="ADatabase.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="FormChef.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormChef.Designer.cs">
-      <DependentUpon>FormChef.cs</DependentUpon>
-    </Compile>
     <Compile Include="CSVFile.cs" />
-    <Compile Include="FormManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormManager.Designer.cs">
-      <DependentUpon>FormManager.cs</DependentUpon>
-    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="DataDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -115,12 +103,6 @@
     <Compile Include="TableOrder.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="FormChef.resx">
-      <DependentUpon>FormChef.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormManager.resx">
-      <DependentUpon>FormManager.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +159,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Data.mdf</DependentUpon>
     </Content>
+    <Content Include="Images\MainMenu\loop.png" />
     <Content Include="Images\MainMenu\closebutton.png" />
     <Content Include="Images\MainMenu\menstrip.png" />
     <Content Include="Images\MainMenu\minimizebutton.png" />

@@ -73,21 +73,8 @@ namespace BonTemps
                 {
                     if (CanLogin(comboBoxOccupation.Text, tbxPassword.Text))
                     {
-                        switch (comboBoxOccupation.Text)
-                        {
-                            case "Manager":
-                                FormManager frmManager = new FormManager();
-                                frmManager.Show();
-                                break;
-                            case "Chef":
-                                FormChef frmChef = new FormChef();
-                                frmChef.Show();
-                                break;
-                            default:
-                                FormMain frmMain = new FormMain();
-                                frmMain.Show();
-                                break;
-                        }
+                        FormMain frmMain = new FormMain(comboBoxOccupation.Text);
+                        frmMain.Show();
                         this.Hide();
                     }
                     lblLoginStatus.Text = String.Format("Login attempt {0} of 3.", attempts);
@@ -132,7 +119,7 @@ namespace BonTemps
         {
             if (CanLogin("Admin", tbxPassword.Text))
             {
-                FormMain frmMain = new FormMain();
+                FormMain frmMain = new FormMain("Admin");
                 frmMain.CreateControl();
                 frmMain.Show();
                 this.Hide();

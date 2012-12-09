@@ -102,6 +102,45 @@ namespace BonTemps
         }
         #endregion
 
+        #region GetListOf_X methods
+        public override List<Client> GetClientListByName(string name)
+        {
+            List<Client> result = new List<Client>();
+            string statement = String.Format("SELECT * FROM Clients WHERE Name LIKE @Name");
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@Name", "%" + name + "%");
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            Client c = new Client();
+                            c.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
+                            c.FirstName = sqlDR["Name"].ToString().Split(' ')[0];
+                            c.LastName = (sqlDR["Name"].ToString().Replace(c.FirstName, "")).Remove(0, 1);
+                            c.Address = sqlDR["Address"].ToString();
+                            c.PostalCode = sqlDR["PostalCode"].ToString();
+                            c.City = sqlDR["City"].ToString();
+                            c.PhoneNumber = sqlDR["PhoneNumber"].ToString();
+                            c.Email = sqlDR["Email"].ToString();
+                            result.Add(c);
+                        }
+                    }
+                    return result;
+                }
+            }
+            catch(Exception e)
+            {
+                return result;
+            }
+        }
+        #endregion GetListOf_X methods
+
         #region GetA_X methods
         public override Client GetClient(ulong clientID)
         {
@@ -120,7 +159,7 @@ namespace BonTemps
                         if (sqlDR.Read())
                         {
                             Client c = new Client();
-                            c.ClientID = (ulong)sqlDR["ClientID"];
+                            c.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
                             c.FirstName = sqlDR["Name"].ToString().Split(' ')[0];
                             c.LastName = (sqlDR["Name"].ToString().Replace(c.FirstName, "")).Remove(0, 1);
                             c.Address = sqlDR["Address"].ToString();
@@ -154,7 +193,7 @@ namespace BonTemps
                         if (sqlDR.Read())
                         {
                             Menu m = new Menu();
-                            m.MenuID = (ulong)sqlDR["MenuID"];
+                            m.MenuID = Convert.ToUInt64(sqlDR["MenuID"]);
                             m.Entree = sqlDR["Entree"].ToString();
                             m.MainCourse = sqlDR["MainCourse"].ToString();
                             m.Dessert = sqlDR["Dessert"].ToString();
@@ -185,8 +224,8 @@ namespace BonTemps
                         if (sqlDR.Read())
                         {
                             Order o = new Order();
-                            o.OrderID = (ulong)sqlDR["OrderID"];
-                            o.ClientID = (ulong)sqlDR["ClientID"];
+                            o.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
+                            o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
                             o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
                             o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
                             return o;
