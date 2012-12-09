@@ -22,13 +22,11 @@ namespace BonTemps
         public override bool Insert(TableName tableName, string[] values)
         {
             string sqlCmd = String.Empty;
-            bool isDateTime = false;
             string statement = String.Empty;
             int selectIndex = 0;
 
             foreach (string str in values)
             {
-                if (str.GetType() == typeof(DateTime)) isDateTime = true;
                 if (selectIndex == 0) statement += str;
                 else statement += String.Format(",{0}", str);
                 selectIndex++;
