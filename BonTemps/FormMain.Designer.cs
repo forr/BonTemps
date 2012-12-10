@@ -83,6 +83,7 @@
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -414,6 +415,7 @@
             // 
             // lvOrders
             // 
+            this.lvOrders.CheckBoxes = true;
             this.lvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvOrders.Location = new System.Drawing.Point(3, 3);
             this.lvOrders.Name = "lvOrders";
@@ -681,6 +683,7 @@
         private System.Windows.Forms.Panel pnlMenuSelectionTableInfo;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
     }
 }
 

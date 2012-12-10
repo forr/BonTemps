@@ -65,19 +65,12 @@ namespace BonTemps
 
         private void InitializeOrders()
         {
-            ListViewItem item1 = new ListViewItem("Something");
-            item1.SubItems.Add("SubItem1a");
-            item1.SubItems.Add("SubItem1b");
-
-            ListViewItem item2 = new ListViewItem("Something2");
-            item2.SubItems.Add("SubItem2a");
-            item2.SubItems.Add("SubItem2a");
-
-            ListViewItem item3 = new ListViewItem("Somethin3");
-            item3.SubItems.Add("SubItem3a");
-            item3.SubItems.Add("SubItem3a");
-
-            this.lvOrders.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
+            string[] array = new string[] { "Order 1", "Order 2", "Order 3" };
+            var items = this.lvOrders.Items;
+            foreach (var val in array)
+            {
+                items.Add(val);
+            }
         }
 
         private void InitializeTabData()
