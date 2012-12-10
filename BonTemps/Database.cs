@@ -13,11 +13,6 @@ namespace BonTemps
     {
         public enum TableName { AccessDenied, Clients, Menus, Orders, Persons, TableOrders, Tables, Users };
 
-        public override string GetConnectionString()
-        {
-            return global::BonTemps.Properties.Settings.Default.DataConnectionString;
-        }
-
         #region Usual Insert/Delete/Update methods
         public override bool Insert(TableName tableName, string[] values)
         {

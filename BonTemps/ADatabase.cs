@@ -7,7 +7,10 @@ namespace BonTemps
 {
     public abstract class ADatabase : IDatabase
     {
-        public abstract string GetConnectionString();
+        public virtual string GetConnectionString()
+        {
+            return global::BonTemps.Properties.Settings.Default.DataConnectionString;
+        }
         public abstract bool Insert(Database.TableName tableName, string[] values);
         public abstract bool Update(Database.TableName tableName, string[] argsCol, string[] argsVal, int id);
         public abstract bool Delete(Database.TableName tableName, int id);
