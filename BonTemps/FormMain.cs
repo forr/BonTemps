@@ -297,7 +297,8 @@ namespace BonTemps
             }
             else if (this.lbxClientList.GetItemText(this.lbxClientList.SelectedItem) == String.Empty)
             {
-                // Do Nothing.
+                // Do nothing
+                return;
             }
             else
             {
@@ -408,7 +409,7 @@ namespace BonTemps
         private void btnMenuItemsAdd_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            Control[] a = this.pnlMenuSelectContainer.Controls.Find("tbxAmmount" + btn.Name.Remove(0, btn.Name.Length-1) , true);
+            List<Control> a = this.pnlMenuSelectContainer.Controls.Find("tbxAmmount" + btn.Name.Remove(0, btn.Name.Length-1) , true).ToList<Control>();
             foreach (Control tb in a)
             {
                 int i = 0;
@@ -419,7 +420,8 @@ namespace BonTemps
         private void btnMenuItemsRemove_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            Control[] a = this.pnlMenuSelectContainer.Controls.Find("tbxAmmount" + btn.Name.Remove(0, btn.Name.Length - 1), true);
+            
+            List<Control> a = this.pnlMenuSelectContainer.Controls.Find("tbxAmmount" + btn.Name.Remove(0, btn.Name.Length - 1), true).ToList<Control>();
             foreach (Control tb in a)
             {
                 int i = 0;

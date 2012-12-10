@@ -38,6 +38,8 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkStockedSuppliesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.btnSelectMenuItems = new System.Windows.Forms.Button();
+            this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
             this.lbl1_pnlOrder = new System.Windows.Forms.Label();
             this.lblClientName_pnlOrder = new System.Windows.Forms.Label();
             this.lblClientID_pnlOrder = new System.Windows.Forms.Label();
@@ -64,6 +66,12 @@
             this.plnSearchName = new System.Windows.Forms.Panel();
             this.tpOrders = new System.Windows.Forms.TabPage();
             this.lvOrders = new System.Windows.Forms.ListView();
+            this.tpMenuSelection = new System.Windows.Forms.TabPage();
+            this.pnlMenuSelectContainer = new System.Windows.Forms.Panel();
+            this.pnlMenuSelectionTableInfo = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSetOrder = new System.Windows.Forms.Button();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,14 +83,6 @@
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
-            this.btnSelectMenuItems = new System.Windows.Forms.Button();
-            this.tpMenuSelection = new System.Windows.Forms.TabPage();
-            this.pnlMenuSelectContainer = new System.Windows.Forms.Panel();
-            this.btnSetOrder = new System.Windows.Forms.Button();
-            this.pnlMenuSelectionTableInfo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -91,9 +91,9 @@
             this.panel2.SuspendLayout();
             this.plnSearchContainer.SuspendLayout();
             this.tpOrders.SuspendLayout();
-            this.menuMain.SuspendLayout();
             this.tpMenuSelection.SuspendLayout();
             this.pnlMenuSelectionTableInfo.SuspendLayout();
+            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -166,6 +166,24 @@
             this.pnlOrder.Name = "pnlOrder";
             this.pnlOrder.Size = new System.Drawing.Size(230, 236);
             this.pnlOrder.TabIndex = 0;
+            // 
+            // btnSelectMenuItems
+            // 
+            this.btnSelectMenuItems.Location = new System.Drawing.Point(158, 139);
+            this.btnSelectMenuItems.Name = "btnSelectMenuItems";
+            this.btnSelectMenuItems.Size = new System.Drawing.Size(37, 23);
+            this.btnSelectMenuItems.TabIndex = 4;
+            this.btnSelectMenuItems.Text = "...";
+            this.btnSelectMenuItems.UseVisualStyleBackColor = true;
+            this.btnSelectMenuItems.Click += new System.EventHandler(this.btnSelectMenuItems_Click);
+            // 
+            // lbxSelectedMenuItems
+            // 
+            this.lbxSelectedMenuItems.FormattingEnabled = true;
+            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(32, 142);
+            this.lbxSelectedMenuItems.Name = "lbxSelectedMenuItems";
+            this.lbxSelectedMenuItems.Size = new System.Drawing.Size(120, 17);
+            this.lbxSelectedMenuItems.TabIndex = 3;
             // 
             // lbl1_pnlOrder
             // 
@@ -257,18 +275,18 @@
             // exportClientsToolStripMenuItem1
             // 
             this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.exportClientsToolStripMenuItem1.Text = "Export Clients";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // menuToolStripMenuItem1
@@ -403,6 +421,69 @@
             this.lvOrders.TabIndex = 0;
             this.lvOrders.UseCompatibleStateImageBehavior = false;
             // 
+            // tpMenuSelection
+            // 
+            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectContainer);
+            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectionTableInfo);
+            this.tpMenuSelection.Controls.Add(this.btnSetOrder);
+            this.tpMenuSelection.Location = new System.Drawing.Point(4, 22);
+            this.tpMenuSelection.Name = "tpMenuSelection";
+            this.tpMenuSelection.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMenuSelection.Size = new System.Drawing.Size(777, 310);
+            this.tpMenuSelection.TabIndex = 2;
+            this.tpMenuSelection.Text = "MenuSelection";
+            this.tpMenuSelection.UseVisualStyleBackColor = true;
+            // 
+            // pnlMenuSelectContainer
+            // 
+            this.pnlMenuSelectContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMenuSelectContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenuSelectContainer.Location = new System.Drawing.Point(3, 30);
+            this.pnlMenuSelectContainer.Name = "pnlMenuSelectContainer";
+            this.pnlMenuSelectContainer.Size = new System.Drawing.Size(771, 229);
+            this.pnlMenuSelectContainer.TabIndex = 0;
+            // 
+            // pnlMenuSelectionTableInfo
+            // 
+            this.pnlMenuSelectionTableInfo.Controls.Add(this.comboBox1);
+            this.pnlMenuSelectionTableInfo.Controls.Add(this.label1);
+            this.pnlMenuSelectionTableInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMenuSelectionTableInfo.Location = new System.Drawing.Point(3, 3);
+            this.pnlMenuSelectionTableInfo.Name = "pnlMenuSelectionTableInfo";
+            this.pnlMenuSelectionTableInfo.Size = new System.Drawing.Size(771, 27);
+            this.pnlMenuSelectionTableInfo.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(71, 0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(700, 21);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Current Table";
+            // 
+            // btnSetOrder
+            // 
+            this.btnSetOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSetOrder.Location = new System.Drawing.Point(3, 259);
+            this.btnSetOrder.MinimumSize = new System.Drawing.Size(0, 48);
+            this.btnSetOrder.Name = "btnSetOrder";
+            this.btnSetOrder.Size = new System.Drawing.Size(771, 48);
+            this.btnSetOrder.TabIndex = 0;
+            this.btnSetOrder.Text = "COLLECT ORDER";
+            this.btnSetOrder.UseVisualStyleBackColor = false;
+            // 
             // menuMain
             // 
             this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
@@ -425,7 +506,7 @@
             this.exitToolStripMenuItem2});
             this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
-            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(39, 20);
             this.fileToolStripMenuItem2.Text = "File";
             this.fileToolStripMenuItem2.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem2_DropDownClosed);
             this.fileToolStripMenuItem2.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem2_DropDownOpened);
@@ -433,19 +514,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(145, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -455,7 +536,7 @@
             this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(62, 20);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
             this.exitToolStripMenuItem1.Text = "close";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -512,87 +593,6 @@
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // lbxSelectedMenuItems
-            // 
-            this.lbxSelectedMenuItems.FormattingEnabled = true;
-            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(32, 142);
-            this.lbxSelectedMenuItems.Name = "lbxSelectedMenuItems";
-            this.lbxSelectedMenuItems.Size = new System.Drawing.Size(120, 17);
-            this.lbxSelectedMenuItems.TabIndex = 3;
-            // 
-            // btnSelectMenuItems
-            // 
-            this.btnSelectMenuItems.Location = new System.Drawing.Point(158, 139);
-            this.btnSelectMenuItems.Name = "btnSelectMenuItems";
-            this.btnSelectMenuItems.Size = new System.Drawing.Size(37, 23);
-            this.btnSelectMenuItems.TabIndex = 4;
-            this.btnSelectMenuItems.Text = "...";
-            this.btnSelectMenuItems.UseVisualStyleBackColor = true;
-            this.btnSelectMenuItems.Click += new System.EventHandler(this.btnSelectMenuItems_Click);
-            // 
-            // tpMenuSelection
-            // 
-            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectContainer);
-            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectionTableInfo);
-            this.tpMenuSelection.Controls.Add(this.btnSetOrder);
-            this.tpMenuSelection.Location = new System.Drawing.Point(4, 22);
-            this.tpMenuSelection.Name = "tpMenuSelection";
-            this.tpMenuSelection.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMenuSelection.Size = new System.Drawing.Size(777, 310);
-            this.tpMenuSelection.TabIndex = 2;
-            this.tpMenuSelection.Text = "MenuSelection";
-            this.tpMenuSelection.UseVisualStyleBackColor = true;
-            // 
-            // pnlMenuSelectContainer
-            // 
-            this.pnlMenuSelectContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMenuSelectContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenuSelectContainer.Location = new System.Drawing.Point(3, 30);
-            this.pnlMenuSelectContainer.Name = "pnlMenuSelectContainer";
-            this.pnlMenuSelectContainer.Size = new System.Drawing.Size(771, 229);
-            this.pnlMenuSelectContainer.TabIndex = 0;
-            // 
-            // btnSetOrder
-            // 
-            this.btnSetOrder.BackColor = System.Drawing.Color.Transparent;
-            this.btnSetOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSetOrder.Location = new System.Drawing.Point(3, 259);
-            this.btnSetOrder.MinimumSize = new System.Drawing.Size(0, 48);
-            this.btnSetOrder.Name = "btnSetOrder";
-            this.btnSetOrder.Size = new System.Drawing.Size(771, 48);
-            this.btnSetOrder.TabIndex = 0;
-            this.btnSetOrder.Text = "COLLECT ORDER";
-            this.btnSetOrder.UseVisualStyleBackColor = false;
-            // 
-            // pnlMenuSelectionTableInfo
-            // 
-            this.pnlMenuSelectionTableInfo.Controls.Add(this.comboBox1);
-            this.pnlMenuSelectionTableInfo.Controls.Add(this.label1);
-            this.pnlMenuSelectionTableInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenuSelectionTableInfo.Location = new System.Drawing.Point(3, 3);
-            this.pnlMenuSelectionTableInfo.Name = "pnlMenuSelectionTableInfo";
-            this.pnlMenuSelectionTableInfo.Size = new System.Drawing.Size(771, 27);
-            this.pnlMenuSelectionTableInfo.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Current Table";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(71, 0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(700, 21);
-            this.comboBox1.TabIndex = 1;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -614,11 +614,11 @@
             this.plnSearchContainer.ResumeLayout(false);
             this.plnSearchContainer.PerformLayout();
             this.tpOrders.ResumeLayout(false);
-            this.menuMain.ResumeLayout(false);
-            this.menuMain.PerformLayout();
             this.tpMenuSelection.ResumeLayout(false);
             this.pnlMenuSelectionTableInfo.ResumeLayout(false);
             this.pnlMenuSelectionTableInfo.PerformLayout();
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
