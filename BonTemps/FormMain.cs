@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace BonTemps
 {
     public partial class FormMain : Form
@@ -27,6 +26,7 @@ namespace BonTemps
             InitializeComponent();
 
             this.InitializeTabData();
+            this.InitializeOrders();
 
 
             if (tpNewOrder.Tag.ToString().Contains(initialUser))
@@ -63,6 +63,23 @@ namespace BonTemps
             }
         }
 
+        private void InitializeOrders()
+        {
+            ListViewItem item1 = new ListViewItem("Something");
+            item1.SubItems.Add("SubItem1a");
+            item1.SubItems.Add("SubItem1b");
+
+            ListViewItem item2 = new ListViewItem("Something2");
+            item2.SubItems.Add("SubItem2a");
+            item2.SubItems.Add("SubItem2a");
+
+            ListViewItem item3 = new ListViewItem("Somethin3");
+            item3.SubItems.Add("SubItem3a");
+            item3.SubItems.Add("SubItem3a");
+
+            this.lvOrders.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
+        }
+
         private void InitializeTabData()
         {
             foreach(TabPage tp in tctrlInterface.TabPages)
@@ -78,6 +95,10 @@ namespace BonTemps
                             delete = false;
                         }
                     }
+                    if (allowedUsers.Count() == 0)
+                    {
+                        delete = false;
+                    }
                     if (delete == true)
                     {
                         tctrlInterface.TabPages.Remove(tp);
@@ -86,6 +107,7 @@ namespace BonTemps
                 catch
                 {
                     // tag is null, it's allowed to be used by all.
+                    return;
                 }
             }
         }
@@ -345,7 +367,7 @@ namespace BonTemps
                 Button btnRemove = new Button();
                 Button btnAdd = new Button();
 
-                lblItemID.Name = "lblItemID" + currentIndexOf.ToString();
+                lblItemID.Name = String.Format("lblItemID{0}", currentIndexOf.ToString());
                 lblItemName.Name = "lblItemName" + currentIndexOf.ToString();
                 lblItemPrice.Name = "lblItemPrice" + currentIndexOf.ToString();
                 tbxAmmount.Name = "tbxAmmount" + currentIndexOf.ToString();
