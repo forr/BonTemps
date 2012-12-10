@@ -275,18 +275,18 @@
             // exportClientsToolStripMenuItem1
             // 
             this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem1.Text = "Export Clients";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // menuToolStripMenuItem1
@@ -483,6 +483,7 @@
             this.btnSetOrder.TabIndex = 0;
             this.btnSetOrder.Text = "COLLECT ORDER";
             this.btnSetOrder.UseVisualStyleBackColor = false;
+            this.btnSetOrder.Click += new System.EventHandler(this.btnSetOrder_Click);
             // 
             // menuMain
             // 
@@ -506,7 +507,7 @@
             this.exitToolStripMenuItem2});
             this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
-            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(39, 20);
+            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem2.Text = "File";
             this.fileToolStripMenuItem2.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem2_DropDownClosed);
             this.fileToolStripMenuItem2.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem2_DropDownOpened);
@@ -514,19 +515,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -536,7 +537,7 @@
             this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(62, 20);
             this.exitToolStripMenuItem1.Text = "close";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 

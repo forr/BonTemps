@@ -79,12 +79,6 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNewOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormNewOrder.Designer.cs">
-      <DependentUpon>FormNewOrder.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormSplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,9 +99,6 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormNewOrder.resx">
-      <DependentUpon>FormNewOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSplashScreen.resx">
       <DependentUpon>FormSplashScreen.cs</DependentUpon>

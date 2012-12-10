@@ -451,5 +451,44 @@ namespace BonTemps
                 if(i>0) tb.Text = (i-=1).ToString();
             }
         }
+
+        private void btnSetOrder_Click(object sender, EventArgs e)
+        {
+            if (initialUser == "Receptionist")
+            {
+                this.tctrlInterface.SelectedTab = this.tpNewOrder;
+                this.lbxSelectedMenuItems.Items.Clear();
+            }
+
+            List<String> OrderSelection = new List<String>();
+            List<Control> lblControls = new List<Control>();
+            foreach(Control c in this.pnlMenuSelectContainer.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    if (c.Text != "0")
+                    {
+                        int i;
+                        int.TryParse(c.Text, out i);
+                        while (i > 0)
+                        {
+                            lblControls.Add(this.pnlMenuSelectContainer.Controls.Find(String.Format("lblItemID{0}", c.Name.Remove(0, c.Name.Length - 1)), true)[0]);
+                            i--;
+                        }
+                    }
+                }
+            }
+            foreach (Control c in lblControls)
+            {
+                if (lblControls[lblControls.Count()-1] == c)
+                {
+                    this.lbxSelectedMenuItems.Items.Add(c.Text);
+                }
+                else
+                {
+                    this.lbxSelectedMenuItems.Items.Add(c.Text + ",");
+                }
+            }
+        }
     }
 }
