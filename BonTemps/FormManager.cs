@@ -10,9 +10,8 @@ using System.IO;
 
 namespace BonTemps
 {
-    public partial class FormManager : Form
+    public partial class FormManager
     {
-
         private Database db = new Database();
         private enum TypeOfExport { Clients };
 

@@ -20,6 +20,8 @@ namespace BonTemps
         Table GetTable(ulong tableID);
         User GetUser(ulong userID);
 
+        List<Client> GetClientListByName(string name);
+
         List<AccessDenied> GetAllAccessDenied();
         List<Client> GetAllClients();
         List<Menu> GetAllMenus();
