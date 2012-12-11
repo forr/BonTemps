@@ -45,13 +45,39 @@ namespace BonTemps
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
-                    if(tableName == TableName.AccessDenied) sqlCmd = String.Format("INSERT INTO AccessDenied (MachineID,BlockedSince,BlockedUntil) VALUES ({0})", statement);
-                    else if (tableName == TableName.Clients) sqlCmd = String.Format("INSERT INTO Clients (Name,Address,PostalCode,City,PhoneNumber,Email) VALUES ({0})", statement);
-                    else sqlCmd = String.Format("INSERT INTO {0} VALUES({1})", tableName.ToString(), statement);
+                    switch (tableName)
+                    {
+                        case TableName.AccessDenied:
+                            sqlCmd = String.Format("INSERT INTO AccessDenied (MachineID,BlockedSince,BlockedUntil) VALUES ({0})", statement);
+                            break;
+                        case TableName.Clients:
+                            sqlCmd = String.Format("INSERT INTO Clients (Name,Address,PostalCode,City,PhoneNumber,Email) VALUES ({0})", statement);
+                            break;
+                        case TableName.Menus:
+                            sqlCmd = String.Format("INSERT INTO Menus (Entree,MainCourse,Dessert,Price) VALUES ({0})", statement);
+                            break;
+                        case TableName.Orders:
+                            sqlCmd = String.Format("INSERT INTO Orders (ClientID,StartDateTime,EndDateTime) VALUES ({0})", statement);
+                            break;
+                        case TableName.Persons:
+                            sqlCmd = String.Format("INSERT INTO Persons (MenuID,OrderID,TableID) VALUES ({0})", statement);
+                            break;
+                        case TableName.TableOrders:
+                            sqlCmd = String.Format("INSERT INTO TableOrders (TableID,OrderID,OrderReady) VALUES ({0})", statement);
+                            break;
+                        case TableName.Tables:
+                            sqlCmd = String.Format("INSERT INTO Tables (TableNumber,AmountOfChairs) VALUES ({0})", statement);
+                            break;
+                        case TableName.Users:
+                            sqlCmd = String.Format("INSERT INTO Users (EmployeeType,Password) VALUES ({0})", statement);
+                            break;
+                        default: 
+                            sqlCmd = String.Format("INSERT INTO {0} VALUES({1})", tableName.ToString(), statement); 
+                            break;
+                    }
 
                     sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
-                    //sqlQuery.Parameters.AddWithValue("@values", statement);
                     return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
@@ -486,7 +512,6 @@ namespace BonTemps
                             Order o = new Order();
                             o.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
-                            o.MenuItemIDs = (String)sqlDR["MenuItemIDs"];
                             o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
                             o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
                             orders.Add(o);
@@ -612,6 +637,10 @@ namespace BonTemps
         }
         #endregion
 
+        #region Select methods
+        
+        #endregion
+
         public override bool IsPasswordValid(string employeeType, string password)
         {
             string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";
@@ -629,21 +658,6 @@ namespace BonTemps
                 }
             }
             catch { return false; }
-        }
-        public override bool IsEmailValid(string email)
-        {
-            if (email.Length < 8) return false;
-            if (String.IsNullOrWhiteSpace(email)) return false;
-            if (email.IndexOf(' ') >= 0) return false;
-            return true;
-        }
-        public override bool IsPhoneNumberValid(string phoneNumber)
-        {
-            if (phoneNumber.Length < 9 || phoneNumber.Length > 17) return false;
-            if (String.IsNullOrWhiteSpace(phoneNumber)) return false;
-            if (phoneNumber.IndexOf('0') != 0)
-                if (phoneNumber.IndexOf('+') != 0) return false;
-            return true;            
         }
     }
 }

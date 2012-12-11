@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
 
 namespace BonTemps
 {
@@ -34,8 +35,38 @@ namespace BonTemps
         public abstract List<Table> GetAllTables();
         public abstract List<User> GetAllUsers();
 
-        public abstract bool IsPasswordValid(string employeeType, string password);
-        public abstract bool IsEmailValid(string email);
-        public abstract bool IsPhoneNumberValid(string phoneNumber);
+        public virtual bool IsPasswordValid(string employeeType, string password)
+        {
+            string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                    sqlQuery.Parameters.AddWithValue("@employeeType", employeeType);
+
+                    string pwd = (string)sqlQuery.ExecuteScalar();
+
+                    return pwd == password;
+                }
+            }
+            catch { return false; }
+        }
+        public virtual bool IsEmailValid(string email)
+        {
+            if (email.Length < 8) return false;
+            if (String.IsNullOrWhiteSpace(email)) return false;
+            if (email.IndexOf(' ') >= 0) return false;
+            return true;
+        }
+        public virtual bool IsPhoneNumberValid(string phoneNumber)
+        {
+            if (phoneNumber.Length < 9 || phoneNumber.Length > 17) return false;
+            if (String.IsNullOrWhiteSpace(phoneNumber)) return false;
+            if (phoneNumber.IndexOf('0') != 0)
+                if (phoneNumber.IndexOf('+') != 0) return false;
+            return true; 
+        }
     }
 }

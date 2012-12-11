@@ -38,6 +38,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkStockedSuppliesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.btnNewClient = new System.Windows.Forms.Button();
             this.btnSelectMenuItems = new System.Windows.Forms.Button();
             this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
             this.lbl1_pnlOrder = new System.Windows.Forms.Label();
@@ -84,7 +85,6 @@
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.btnNewClient = new System.Windows.Forms.Button();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -169,6 +169,16 @@
             this.pnlOrder.Name = "pnlOrder";
             this.pnlOrder.Size = new System.Drawing.Size(230, 256);
             this.pnlOrder.TabIndex = 0;
+            // 
+            // btnNewClient
+            // 
+            this.btnNewClient.Location = new System.Drawing.Point(32, 51);
+            this.btnNewClient.Name = "btnNewClient";
+            this.btnNewClient.Size = new System.Drawing.Size(163, 23);
+            this.btnNewClient.TabIndex = 5;
+            this.btnNewClient.Text = "Add New Client";
+            this.btnNewClient.UseVisualStyleBackColor = true;
+            this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
             // 
             // btnSelectMenuItems
             // 
@@ -281,18 +291,18 @@
             // exportClientsToolStripMenuItem1
             // 
             this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.exportClientsToolStripMenuItem1.Text = "Export Clients";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // menuToolStripMenuItem1
@@ -414,7 +424,7 @@
             this.tpOrders.Padding = new System.Windows.Forms.Padding(3);
             this.tpOrders.Size = new System.Drawing.Size(777, 310);
             this.tpOrders.TabIndex = 1;
-            this.tpOrders.Tag = "";
+            this.tpOrders.Tag = "Chef,Ober";
             this.tpOrders.Text = "Orders";
             this.tpOrders.UseVisualStyleBackColor = true;
             // 
@@ -515,7 +525,7 @@
             this.exitToolStripMenuItem2});
             this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
-            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(39, 20);
             this.fileToolStripMenuItem2.Text = "File";
             this.fileToolStripMenuItem2.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem2_DropDownClosed);
             this.fileToolStripMenuItem2.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem2_DropDownOpened);
@@ -523,19 +533,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(145, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -545,7 +555,7 @@
             this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(62, 20);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
             this.exitToolStripMenuItem1.Text = "close";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -601,16 +611,6 @@
             this.minimizeMenuToolStripMenuItem.Name = "minimizeMenuToolStripMenuItem";
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // btnNewClient
-            // 
-            this.btnNewClient.Location = new System.Drawing.Point(32, 51);
-            this.btnNewClient.Name = "btnNewClient";
-            this.btnNewClient.Size = new System.Drawing.Size(163, 23);
-            this.btnNewClient.TabIndex = 5;
-            this.btnNewClient.Text = "Add New Client";
-            this.btnNewClient.UseVisualStyleBackColor = true;
-            this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
             // 
             // FormMain
             // 

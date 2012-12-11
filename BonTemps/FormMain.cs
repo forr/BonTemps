@@ -64,10 +64,7 @@ namespace BonTemps
 
                 switch (initialUser)
                 {
-<<<<<<< HEAD
                     // no tables
-                    return;
-=======
                     case "Manager":
                         this.ManagerINI(); //Manager's Initial methods
                         break;
@@ -80,7 +77,6 @@ namespace BonTemps
                     case "Receptionist":
                         this.ReceptionistINI(); //Receptionist's Initial methods
                         break;
->>>>>>> Version 1.08.2
                 }
                 
             }
@@ -132,6 +128,10 @@ namespace BonTemps
 
         private void InitializeOrdersView()
         {
+            string[] array = new string[] { "Item 1", "Item 2", "Item 3" };
+            var items = this.lvOrders.Items;
+            foreach (var val in array)
+                items.Add(val);
             this.lvOrders.Bounds = new Rectangle(0, 0, this.lvOrders.ClientSize.Width, this.lvOrders.ClientSize.Height);
             this.lvOrders.View = View.Details;
             this.lvOrders.LabelEdit = false;
@@ -139,39 +139,39 @@ namespace BonTemps
             this.lvOrders.FullRowSelect = (initialUser == "Chef") ? true : false;
             this.lvOrders.GridLines = true;
 
-            List<Order> orderList = new Database().GetAllOrders();
-            List<Client> clientList = new Database().GetAllClients();
-            List<ListViewItem> lviList = new List<ListViewItem>();
-            foreach (TableOrder tOrder in new Database().GetAllTableOrders())
-            {
-                ListViewItem itemx = new ListViewItem(string.Format("Table {0}", tOrder.TableID), 0);
-                foreach (Order o in orderList)
-                {
-                    if (o.OrderID == tOrder.OrderID)
-                    {
-                        string[] tempMenuSelection = o.MenuItemIDs.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                        string menuSelection = String.Empty;
-                        int indexMenuSelection = 0;
-                        foreach (string s in tempMenuSelection)
-                        {
-                            //string result = new Database().GetMenu(Convert.ToUInt64(s)).ToString();
-                            menuSelection += ((((indexMenuSelection % 4) == 0) && (indexMenuSelection != 0)) ? "\n" : "") + "Menu nr:";
-                            if ((tempMenuSelection.Length - 1) == indexMenuSelection)
-                                menuSelection += s;
-                            else
-                                menuSelection += s + ", ";
-                            indexMenuSelection++;
-                        }
-                        itemx.SubItems.Add(menuSelection);
-                    }
-                    lviList.Add(itemx);
-                }
-            }
+            //List<Order> orderList = new Database().GetAllOrders();
+            //List<Client> clientList = new Database().GetAllClients();
+            //List<ListViewItem> lviList = new List<ListViewItem>();
+            //foreach (TableOrder tOrder in new Database().GetAllTableOrders())
+            //{
+            //    ListViewItem itemx = new ListViewItem(string.Format("Table {0}", tOrder.TableID), 0);
+            //    foreach (Order o in orderList)
+            //    {
+            //        if (o.OrderID == tOrder.OrderID)
+            //        {
+            //            //string[] tempMenuSelection = o.MenuItemIDs.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            //            string menuSelection = String.Empty;
+            //            int indexMenuSelection = 0;
+            //            foreach (string s in tempMenuSelection)
+            //            {
+            //                //string result = new Database().GetMenu(Convert.ToUInt64(s)).ToString();
+            //                menuSelection += ((((indexMenuSelection % 4) == 0) && (indexMenuSelection != 0)) ? "\n" : "") + "Menu nr:";
+            //                if ((tempMenuSelection.Length - 1) == indexMenuSelection)
+            //                    menuSelection += s;
+            //                else
+            //                    menuSelection += s + ", ";
+            //                indexMenuSelection++;
+            //            }
+            //            itemx.SubItems.Add(menuSelection);
+            //        }
+            //        lviList.Add(itemx);
+            //    }
+            //}
 
             // Create columns for the items and subitems.
-            lvOrders.Columns.Add("Table Number", this.lvOrders.ClientSize.Width / 3, HorizontalAlignment.Left);
-            lvOrders.Columns.Add("Ordered Menus", this.lvOrders.ClientSize.Width / 2 , HorizontalAlignment.Left);
-            lvOrders.Items.AddRange(lviList.ToArray<ListViewItem>());
+            //lvOrders.Columns.Add("Table Number", this.lvOrders.ClientSize.Width / 3, HorizontalAlignment.Left);
+            //lvOrders.Columns.Add("Ordered Menus", this.lvOrders.ClientSize.Width / 2, HorizontalAlignment.Left);
+            //lvOrders.Items.AddRange(lviList.ToArray<ListViewItem>());
         }
 
         private void InitializeTabData()
