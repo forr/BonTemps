@@ -22,8 +22,22 @@ namespace BonTemps
 
             foreach (string str in values)
             {
-                if (selectIndex == 0) statement += str;
-                else statement += String.Format(",{0}", str);
+                bool hasletters = false;
+                foreach(Char c in str)
+                {
+                    if(Char.IsLetter(c))
+                        hasletters = true;
+                }
+                if (str.Contains(" ") || hasletters)
+                {
+                    if (selectIndex == 0) statement += String.Format("'{0}'",str);
+                    else statement += String.Format(",'{0}'", str);
+                }
+                else
+                {
+                    if (selectIndex == 0) statement += str;
+                    else statement += String.Format(",{0}", str);
+                }
                 selectIndex++;
             }           
 
@@ -32,11 +46,12 @@ namespace BonTemps
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
                     if(tableName == TableName.AccessDenied) sqlCmd = String.Format("INSERT INTO AccessDenied (MachineID,BlockedSince,BlockedUntil) VALUES ({0})", statement);
+                    else if (tableName == TableName.Clients) sqlCmd = String.Format("INSERT INTO Clients (Name,Address,PostalCode,City,PhoneNumber,Email) VALUES ({0})", statement);
                     else sqlCmd = String.Format("INSERT INTO {0} VALUES({1})", tableName.ToString(), statement);
 
                     sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@values", statement);
+                    //sqlQuery.Parameters.AddWithValue("@values", statement);
                     return sqlQuery.ExecuteNonQuery() == 1;
                 }
             }
@@ -221,6 +236,7 @@ namespace BonTemps
                             Order o = new Order();
                             o.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
+                            o.MenuItemIDs = (String)sqlDR["MenuItemIDs"];
                             o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
                             o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
                             return o;
@@ -470,6 +486,7 @@ namespace BonTemps
                             Order o = new Order();
                             o.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
+                            o.MenuItemIDs = (String)sqlDR["MenuItemIDs"];
                             o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
                             o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
                             orders.Add(o);

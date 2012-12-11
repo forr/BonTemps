@@ -52,7 +52,7 @@ namespace BonTemps
                 this.clientID.ToString(), this.firstName, this.lastName, this.address, 
                 this.postalCode, this.city, this.phoneNumber, this.email 
             };
-            return String.Format("{0},{1},{2},{3},{4},{5},{6},{7}", info);
+            return String.Format("{0},{1} {2},{3},{4},{5},{6},{7}", info);
         } 
     }
 }

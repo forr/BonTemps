@@ -24,54 +24,154 @@ namespace BonTemps
             this.initialUser = initialValue;
 
             InitializeComponent();
+            InitializeFormProperties();
+            InitializeRules();
 
-            this.InitializeTabData();
-            this.InitializeOrders();
+        }
 
-
-            if (tpNewOrder.Tag.ToString().Contains(initialUser))
-            {
-                this.fillLbxClientList();
-            }
-            this.tableSize = GetTableWidth();            
+        private void InitializeFormProperties()
+        {
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             //this.TopMost = true;
-            this.pnlOverview.AutoScroll = true;
-            this.clients = db.GetAllClients().ToList<Client>();
-            this.tables = new List<TableLayout>();
-            for (int i = 0; i <= db.GetAllTables().Count(); i++)
+        }
+
+        private void InitializeRules()
+        {
+            if (initialUser == "Admin")
             {
-                tables.Add(new TableLayout(Properties.Resources.table, i, String.Empty, TableStatus.Empty));
+                //Admin POOL
+                //Flushing Data if needed
+                //Adding additional value changes to a Database when a critical error arises.
             }
-            this.ShowTables();
-            foreach (Table t in new Database().GetAllTables())
+            else
             {
-                this.comboBox1.Items.Add(t.TableNumber);
-                try
+                this.InitializeTabData(); //Removes all Unrelated Tabpages for the current user.
+                this.InitializeOrdersView(); //Displays all current orders and is allowed to be seen by everyone.
+                
+                foreach (Table t in new Database().GetAllTables())
                 {
-                    this.comboBox1.SelectedIndex = 1;
+                    this.comboBox1.Items.Add(t.TableNumber);
+                    try
+                    {
+                        this.comboBox1.SelectedIndex = 1;
+                    }
+                    catch
+                    {
+                        // no tables
+                    }
                 }
-                catch
+
+                switch (initialUser)
                 {
+<<<<<<< HEAD
                     // no tables
                     return;
+=======
+                    case "Manager":
+                        this.ManagerINI(); //Manager's Initial methods
+                        break;
+                    case "Chef":
+                        this.ChefINI(); //Chef's Initial methods
+                        break;
+                    case "Ober":
+                        this.OberINI(); //Ober's Initial methods
+                        break;
+                    case "Receptionist":
+                        this.ReceptionistINI(); //Receptionist's Initial methods
+                        break;
+>>>>>>> Version 1.08.2
                 }
+                
             }
+        }
+
+        #region INI's
+        private void ManagerINI()
+        {
+        }
+
+        private void ChefINI()
+        {
+        }
+
+        private void OberINI()
+        {
             for (int i = 0; i < this.DisplayMenuItems().Controls.Count; i++)
             {
                 this.pnlMenuSelectContainer.Controls.Add(this.DisplayMenuItems().Controls[i]);
             }
         }
 
-        private void InitializeOrders()
+        private void ReceptionistINI()
         {
-            string[] array = new string[] { "Order 1", "Order 2", "Order 3" };
-            var items = this.lvOrders.Items;
-            foreach (var val in array)
+            this.tableSize = GetTableWidth();
+            this.fillLbxClientList(); //Load a Full List of Clients - might get to be called obsolete when integrated.
+            this.pnlOverview.AutoScroll = true; //
+            this.clients = db.GetAllClients().ToList<Client>();
+            this.tables = new List<TableLayout>();
+            
+            for (int i = 0; i <= db.GetAllTables().Count(); i++)
             {
-                items.Add(val);
+                tables.Add(new TableLayout(Properties.Resources.table, i, String.Empty, TableStatus.Empty));
             }
+            
+            this.ShowTables();
+
+            for (int i = 0; i < this.DisplayMenuItems().Controls.Count; i++)
+            {
+                this.pnlMenuSelectContainer.Controls.Add(this.DisplayMenuItems().Controls[i]);
+            }
+
+            //////if (tpNewOrder.Tag.ToString().Contains(initialUser))
+            //////{
+            //////    this.fillLbxClientList();
+            //////}
+        }
+        #endregion INI's
+
+        private void InitializeOrdersView()
+        {
+            this.lvOrders.Bounds = new Rectangle(0, 0, this.lvOrders.ClientSize.Width, this.lvOrders.ClientSize.Height);
+            this.lvOrders.View = View.Details;
+            this.lvOrders.LabelEdit = false;
+            this.lvOrders.CheckBoxes = true;
+            this.lvOrders.FullRowSelect = (initialUser == "Chef") ? true : false;
+            this.lvOrders.GridLines = true;
+
+            List<Order> orderList = new Database().GetAllOrders();
+            List<Client> clientList = new Database().GetAllClients();
+            List<ListViewItem> lviList = new List<ListViewItem>();
+            foreach (TableOrder tOrder in new Database().GetAllTableOrders())
+            {
+                ListViewItem itemx = new ListViewItem(string.Format("Table {0}", tOrder.TableID), 0);
+                foreach (Order o in orderList)
+                {
+                    if (o.OrderID == tOrder.OrderID)
+                    {
+                        string[] tempMenuSelection = o.MenuItemIDs.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                        string menuSelection = String.Empty;
+                        int indexMenuSelection = 0;
+                        foreach (string s in tempMenuSelection)
+                        {
+                            //string result = new Database().GetMenu(Convert.ToUInt64(s)).ToString();
+                            menuSelection += ((((indexMenuSelection % 4) == 0) && (indexMenuSelection != 0)) ? "\n" : "") + "Menu nr:";
+                            if ((tempMenuSelection.Length - 1) == indexMenuSelection)
+                                menuSelection += s;
+                            else
+                                menuSelection += s + ", ";
+                            indexMenuSelection++;
+                        }
+                        itemx.SubItems.Add(menuSelection);
+                    }
+                    lviList.Add(itemx);
+                }
+            }
+
+            // Create columns for the items and subitems.
+            lvOrders.Columns.Add("Table Number", this.lvOrders.ClientSize.Width / 3, HorizontalAlignment.Left);
+            lvOrders.Columns.Add("Ordered Menus", this.lvOrders.ClientSize.Width / 2 , HorizontalAlignment.Left);
+            lvOrders.Items.AddRange(lviList.ToArray<ListViewItem>());
         }
 
         private void InitializeTabData()
@@ -483,6 +583,13 @@ namespace BonTemps
                     this.lbxSelectedMenuItems.Items.Add(c.Text + ",");
                 }
             }
+        }
+
+        private void btnNewClient_Click(object sender, EventArgs e)
+        {
+            FormNewClient frmNewClient = new FormNewClient();
+            frmNewClient.CreateControl();
+            frmNewClient.Show();
         }
     }
 }
