@@ -21,6 +21,7 @@ namespace BonTemps
         User GetUser(ulong userID);
 
         List<Client> GetClientListByName(string name);
+        List<UInt64> GetMenuIDs();
 
         List<AccessDenied> GetAllAccessDenied();
         List<Client> GetAllClients();

@@ -23,11 +23,9 @@ namespace BonTemps
             foreach (string str in values)
             {
                 bool hasletters = false;
-                foreach(Char c in str)
-                {
-                    if(Char.IsLetter(c))
-                        hasletters = true;
-                }
+                foreach (Char c in str) 
+                    if (Char.IsLetter(c)) hasletters = true;
+
                 if (str.Contains(" ") || hasletters)
                 {
                     if (selectIndex == 0) statement += String.Format("'{0}'",str);
@@ -137,6 +135,34 @@ namespace BonTemps
             catch(Exception ex) { return false; }
         }
         #endregion
+
+        public override List<UInt64> GetMenuIDs()
+        {
+            List<UInt64> menuIDs = new List<UInt64>();
+            string statement = "SELECT p.MenuID FROM TableOrders AS t INNER JOIN Orders AS o ON t.OrderID = o.OrderID INNER JOIN Persons AS p ON o.OrderID = p.OrderID";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            menuIDs.Add(Convert.ToUInt64(sqlDR["MenuID"]));
+                        }
+                        return menuIDs;
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         #region GetListOf_X methods
         public override List<Client> GetClientListByName(string name)
@@ -494,7 +520,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
-        public override List<Order> GetAllOrders()
+         public override List<Order> GetAllOrders()
         {
             List<Order> orders = new List<Order>();
             string statement = "SELECT * FROM Orders";

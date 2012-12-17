@@ -25,6 +25,7 @@ namespace BonTemps
         public abstract User GetUser(ulong userID);
 
         public abstract List<Client> GetClientListByName(string name);
+        public abstract List<UInt64> GetMenuIDs();
 
         public abstract List<AccessDenied> GetAllAccessDenied();
         public abstract List<Client> GetAllClients();
