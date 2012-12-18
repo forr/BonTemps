@@ -428,7 +428,11 @@ namespace BonTemps
 
         private void btnCreateNewOrder_Click(object sender, EventArgs e)
         {
+            ulong clientid = Convert.ToUInt64(tbxClientID_pnlOrder.Text);
+            ulong tableid = Convert.ToUInt64(tbxTableID_pnlOrder.Text);
+            ulong? orderid = null;
 
+            string orders = lbxSelectedMenuItems.Text.Replace("\n", "");
         }
 
         private void btnSelectMenuItems_Click(object sender, EventArgs e)
