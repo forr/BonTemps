@@ -69,5 +69,16 @@ namespace BonTemps
                 if (phoneNumber.IndexOf('+') != 0) return false;
             return true; 
         }
+        public virtual bool IsPostalCodeValid(string postalCode)
+        {
+            if (String.IsNullOrWhiteSpace(postalCode)) return false;
+            if (postalCode.IndexOf(' ').Equals(4)) postalCode = postalCode.Remove(4, 1);
+            if (postalCode.Length != 6) return false;
+            for (int i = 0; i < 4; i++)
+                if (!char.IsNumber(postalCode[i])) return false;
+            for (int i = 4; i < 6; i++)
+                if (!char.IsLetter(postalCode[i])) return false;
+            return true;
+        }
     }
 }

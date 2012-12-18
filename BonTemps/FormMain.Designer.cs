@@ -73,6 +73,13 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSetOrder = new System.Windows.Forms.Button();
+            this.tpManagement = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblEditMenus = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lblEditClients = new System.Windows.Forms.Label();
+            this.lblEditUsers = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +102,15 @@
             this.tpOrders.SuspendLayout();
             this.tpMenuSelection.SuspendLayout();
             this.pnlMenuSelectionTableInfo.SuspendLayout();
+            this.tpManagement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -317,6 +333,7 @@
             this.tctrlInterface.Controls.Add(this.tpNewOrder);
             this.tctrlInterface.Controls.Add(this.tpOrders);
             this.tctrlInterface.Controls.Add(this.tpMenuSelection);
+            this.tctrlInterface.Controls.Add(this.tpManagement);
             this.tctrlInterface.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tctrlInterface.Location = new System.Drawing.Point(0, 24);
             this.tctrlInterface.Name = "tctrlInterface";
@@ -503,6 +520,97 @@
             this.btnSetOrder.UseVisualStyleBackColor = false;
             this.btnSetOrder.Click += new System.EventHandler(this.btnSetOrder_Click);
             // 
+            // tpManagement
+            // 
+            this.tpManagement.BackColor = System.Drawing.Color.Transparent;
+            this.tpManagement.Controls.Add(this.splitContainer1);
+            this.tpManagement.Controls.Add(this.label2);
+            this.tpManagement.Location = new System.Drawing.Point(4, 22);
+            this.tpManagement.Name = "tpManagement";
+            this.tpManagement.Padding = new System.Windows.Forms.Padding(3);
+            this.tpManagement.Size = new System.Drawing.Size(777, 310);
+            this.tpManagement.TabIndex = 3;
+            this.tpManagement.Text = "Management";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblEditMenus);
+            this.splitContainer1.Panel1.Tag = "11";
+            this.splitContainer1.Panel1.SizeChanged += new System.EventHandler(this.splitContainer1_Panel1_SizeChanged);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(771, 304);
+            this.splitContainer1.SplitterDistance = 258;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // lblEditMenus
+            // 
+            this.lblEditMenus.AutoSize = true;
+            this.lblEditMenus.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditMenus.Location = new System.Drawing.Point(63, 13);
+            this.lblEditMenus.Name = "lblEditMenus";
+            this.lblEditMenus.Size = new System.Drawing.Size(130, 27);
+            this.lblEditMenus.TabIndex = 0;
+            this.lblEditMenus.Text = "EDIT MENUS";
+            this.lblEditMenus.Layout += new System.Windows.Forms.LayoutEventHandler(this.lblEditMenus_Layout);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.splitContainer2.Panel1.Controls.Add(this.lblEditClients);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.lblEditUsers);
+            this.splitContainer2.Size = new System.Drawing.Size(509, 304);
+            this.splitContainer2.SplitterDistance = 241;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // lblEditClients
+            // 
+            this.lblEditClients.AutoSize = true;
+            this.lblEditClients.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditClients.Location = new System.Drawing.Point(49, 13);
+            this.lblEditClients.Name = "lblEditClients";
+            this.lblEditClients.Size = new System.Drawing.Size(144, 27);
+            this.lblEditClients.TabIndex = 1;
+            this.lblEditClients.Text = "EDIT CLIENTS";
+            this.lblEditClients.Layout += new System.Windows.Forms.LayoutEventHandler(this.lblEditMenus_Layout);
+            // 
+            // lblEditUsers
+            // 
+            this.lblEditUsers.AutoSize = true;
+            this.lblEditUsers.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditUsers.Location = new System.Drawing.Point(74, 13);
+            this.lblEditUsers.Name = "lblEditUsers";
+            this.lblEditUsers.Size = new System.Drawing.Size(124, 27);
+            this.lblEditUsers.TabIndex = 2;
+            this.lblEditUsers.Text = "EDIT USERS";
+            this.lblEditUsers.Layout += new System.Windows.Forms.LayoutEventHandler(this.lblEditMenus_Layout);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Menus";
+            // 
             // menuMain
             // 
             this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
@@ -636,6 +744,19 @@
             this.tpMenuSelection.ResumeLayout(false);
             this.pnlMenuSelectionTableInfo.ResumeLayout(false);
             this.pnlMenuSelectionTableInfo.PerformLayout();
+            this.tpManagement.ResumeLayout(false);
+            this.tpManagement.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.ResumeLayout(false);
@@ -701,6 +822,13 @@
         private System.Windows.Forms.Label label1;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.Button btnNewClient;
+        private System.Windows.Forms.TabPage tpManagement;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblEditMenus;
+        private System.Windows.Forms.Label lblEditClients;
+        private System.Windows.Forms.Label lblEditUsers;
     }
 }
 

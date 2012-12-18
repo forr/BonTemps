@@ -13,11 +13,13 @@ namespace BonTemps
 
         public FormSplashScreen()
         {
-            InitializeComponent();
-            attempts = 0;
-            llblAdminLogin.Enabled = false;
-            lblLoginStatus.ForeColor = System.Drawing.Color.Red;
-            FillOccupationCombobox();
+            this.InitializeComponent();
+            this.attempts = 0;
+            this.llblAdminLogin.Enabled = false;
+            this.lblLoginStatus.ForeColor = System.Drawing.Color.Red;
+            this.FillOccupationCombobox();
+            this.ActiveControl = this.tbxPassword; // @Ryan: I've set it to focus on load, so users can type immediately
+            this.tbxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckEnter);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -125,6 +127,18 @@ namespace BonTemps
                 this.Hide();
             }
             lblLoginStatus.Text = "Login Failed.";
+        }
+
+        private void CheckEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                this.btnLogin_Click(sender, e);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

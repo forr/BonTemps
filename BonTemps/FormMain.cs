@@ -12,21 +12,17 @@ namespace BonTemps
     public partial class FormMain : Form
     {
         private string initialUser;
-
-        private Database db = new Database();
-        List<TableLayout> tables;
-        int tableSize = 0;
-        int tableMultiplier = 0;
-        List<Client> clients;
+        private int tableSize = 0;
+        private int tableMultiplier = 0;
+        private List<Client> clients;
+        private List<TableLayout> tables;
 
         public FormMain(string initialValue)
         {
             this.initialUser = initialValue;
-
-            InitializeComponent();
-            InitializeFormProperties();
-            InitializeRules();
-
+            this.InitializeComponent();
+            this.InitializeFormProperties();
+            this.InitializeRules();
         }
 
         private void InitializeFormProperties()
@@ -37,16 +33,17 @@ namespace BonTemps
 
         private void InitializeRules()
         {
-            if (initialUser == "Admin")
+            if (this.initialUser == "Admin")
             {
                 //Admin POOL
                 //Flushing Data if needed
                 //Adding additional value changes to a Database when a critical error arises.
+                return; // @Ryan, added return for now... -Alain
             }
             else
             {
-                this.InitializeTabData(); //Removes all Unrelated Tabpages for the current user.
-                this.InitializeOrdersView(); //Displays all current orders and is allowed to be seen by everyone.
+                this.IniTabData(); //Removes all Unrelated Tabpages for the current user.
+                this.IniOrderView(); //Displays all current orders and is allowed to be seen by everyone.
                 
                 foreach (Table t in new Database().GetAllTables())
                 {
@@ -57,7 +54,7 @@ namespace BonTemps
                     }
                     catch
                     {
-                        // no tables
+                        return;
                     }
                 }
 
@@ -65,32 +62,38 @@ namespace BonTemps
                 {
                     // no tables
                     case "Manager":
-                        this.ManagerINI(); //Manager's Initial methods
+                        this.IniManager(); //Manager's Initial methods
                         break;
                     case "Chef":
-                        this.ChefINI(); //Chef's Initial methods
+                        this.IniChef(); //Chef's Initial methods
                         break;
                     case "Ober":
-                        this.OberINI(); //Ober's Initial methods
+                        this.IniWaiter(); //Ober's Initial methods
                         break;
                     case "Receptionist":
-                        this.ReceptionistINI(); //Receptionist's Initial methods
+                        this.IniReceptionist(); //Receptionist's Initial methods
                         break;
-                }
-                
+                }                
             }
         }
 
         #region INI's
-        private void ManagerINI()
+        private void IniManager()
+        {
+            // @Ryan: not sure whether you mean the view initialization or the manager ini... e.g. like you did with IniOrderView & IniChef/Waiter.. 
+            // Made IniManagerView() instead... see below
+        }
+
+        private void IniManagerView()
+        {
+
+        }
+
+        private void IniChef()
         {
         }
 
-        private void ChefINI()
-        {
-        }
-
-        private void OberINI()
+        private void IniWaiter()
         {
             for (int i = 0; i < this.DisplayMenuItems().Controls.Count; i++)
             {
@@ -98,17 +101,17 @@ namespace BonTemps
             }
         }
 
-        private void ReceptionistINI()
+        private void IniReceptionist()
         {
-            this.tableSize = GetTableWidth();
-            this.fillLbxClientList(); //Load a Full List of Clients - might get to be called obsolete when integrated.
+            this.tableSize = this.GetTableWidth();
+            this.FillLbxClientList(); //Load a Full List of Clients - might get to be called obsolete when integrated.
             this.pnlOverview.AutoScroll = true; //
-            this.clients = db.GetAllClients().ToList<Client>();
+            this.clients = new Database().GetAllClients().ToList<Client>();
             this.tables = new List<TableLayout>();
             
-            for (int i = 0; i <= db.GetAllTables().Count(); i++)
+            for (int i = 0; i <= new Database().GetAllTables().Count(); i++)
             {
-                tables.Add(new TableLayout(Properties.Resources.table, i, String.Empty, TableStatus.Empty));
+                tables.Add(new TableLayout(global::BonTemps.Properties.Resources.table, i, String.Empty, TableStatus.Empty));
             }
             
             this.ShowTables();
@@ -125,7 +128,7 @@ namespace BonTemps
         }
         #endregion INI's
 
-        private void InitializeOrdersView()
+        private void IniOrderView()
         {
             string[] array = new string[] { "Item 1", "Item 2", "Item 3" };
             var items = this.lvOrders.Items;
@@ -148,7 +151,6 @@ namespace BonTemps
                 {
                     if (o.OrderID == tOrder.OrderID)
                     {
-
                         List<string> tempMenuSelection = new List<string>();
                         foreach (UInt64 ui in new Database().GetMenuIDs())
                         {
@@ -177,7 +179,7 @@ namespace BonTemps
             lvOrders.Items.AddRange(lviList.ToArray<ListViewItem>());
         }
 
-        private void InitializeTabData()
+        private void IniTabData()
         {
             foreach(TabPage tp in tctrlInterface.TabPages)
             {
@@ -209,7 +211,7 @@ namespace BonTemps
             }
         }
 
-        private void fillLbxClientList()
+        private void FillLbxClientList()
         {
             foreach (Client cl in new Database().GetAllClients())
             {
@@ -225,9 +227,7 @@ namespace BonTemps
 
             double currentPanelSize = tableSize;
 
-            Point p = new Point(Convert.ToInt32((relevantWidth / 100) * currentPanelSize), Convert.ToInt32((relevantHeight / 100) * currentPanelSize));
-
-            return p;
+            return new Point(Convert.ToInt32((relevantWidth / 100) * currentPanelSize), Convert.ToInt32((relevantHeight / 100) * currentPanelSize));
         }
 
         private int GetTableWidth()
@@ -254,9 +254,7 @@ namespace BonTemps
                 this.tableMultiplier = 10;
             }
 
-            int table_width = ((screen_width / this.tableMultiplier) - 4);
-
-            return table_width;
+            return ((screen_width / this.tableMultiplier) - 4);
         }
 
         private void ShowTables()
@@ -412,7 +410,7 @@ namespace BonTemps
             if (this.lbxClientList.GetItemText(this.lbxClientList.SelectedItem).Contains("/.."))
             {
                 this.lbxClientList.Items.Clear();
-                this.fillLbxClientList();
+                this.FillLbxClientList();
             }
             else if (this.lbxClientList.GetItemText(this.lbxClientList.SelectedItem) == String.Empty)
             {
@@ -593,6 +591,30 @@ namespace BonTemps
             FormNewClient frmNewClient = new FormNewClient();
             frmNewClient.CreateControl();
             frmNewClient.Show();
+        }
+
+        private void lblEditMenus_Layout(object sender, LayoutEventArgs e)
+        {
+
+        }
+
+        private static void CenterControlInContainer(object sender)
+        {
+            Control c = sender as Control;
+            int labelsize = c.Width;
+
+            Control container = c.Parent;
+            
+            int containersize = container.Width;
+
+            c.Left = (containersize - labelsize) / 2;
+        }
+
+        private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
+        {
+            CenterControlInContainer(this.lblEditMenus);
+            CenterControlInContainer(this.lblEditClients);
+            CenterControlInContainer(this.lblEditUsers);
         }
     }
 }

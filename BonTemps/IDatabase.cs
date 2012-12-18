@@ -22,7 +22,6 @@ namespace BonTemps
 
         List<Client> GetClientListByName(string name);
         List<UInt64> GetMenuIDs();
-
         List<AccessDenied> GetAllAccessDenied();
         List<Client> GetAllClients();
         List<Menu> GetAllMenus();
@@ -31,7 +30,6 @@ namespace BonTemps
         List<TableOrder> GetAllTableOrders();
         List<Table> GetAllTables();
         List<User> GetAllUsers();
-
 
         bool IsPasswordValid(string employeeType, string password);
         bool IsEmailValid(string email);
