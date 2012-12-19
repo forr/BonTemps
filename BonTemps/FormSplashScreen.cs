@@ -121,9 +121,9 @@ namespace BonTemps
         {
             if (CanLogin("Admin", tbxPassword.Text))
             {
-                FormMain frmMain = new FormMain("Admin");
-                frmMain.CreateControl();
-                frmMain.Show();
+                FormAdminControls frmAdminControls = new FormAdminControls();
+                frmAdminControls.CreateControl();
+                frmAdminControls.Show();
                 this.Hide();
             }
             lblLoginStatus.Text = "Login Failed.";

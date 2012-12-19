@@ -66,6 +66,12 @@
   <ItemGroup>
     <Compile Include="AccessDenied.cs" />
     <Compile Include="ADatabase.cs" />
+    <Compile Include="FormAdminControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdminControls.Designer.cs">
+      <DependentUpon>FormAdminControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="CSVFile.cs" />
     <Compile Include="Database.cs" />
@@ -104,6 +110,9 @@
     <Compile Include="TableOrder.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="FormAdminControls.resx">
+      <DependentUpon>FormAdminControls.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

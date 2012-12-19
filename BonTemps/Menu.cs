@@ -24,7 +24,7 @@ namespace BonTemps
             this.dessert = String.Empty;
             this.price = -1;
         }
-        public Menu(ulong menuID, string entree, string mainCourse, string dessert, int price)
+        public Menu(ulong menuID, string entree, string mainCourse, string dessert, double price)
             : this(menuID)
         {
             this.entree = entree;
@@ -32,6 +32,23 @@ namespace BonTemps
             this.dessert = dessert;
             this.price = price;
         }
+
+        public static void AddMenu(string entree, string mainCourse, string dessert, double price)
+        {
+            string[] sArray = {
+                                entree,
+                                mainCourse,
+                                dessert,
+                                price.ToString()
+                              };
+            new Database().Insert(Database.TableName.Menus, sArray);
+        }
+
+        public static void DeleteMenu(int id)
+        {
+            new Database().Delete(Database.TableName.Menus, id);
+        }
+
         public override string ToString()
         {
             object[] info = new object[] {

@@ -604,14 +604,21 @@ namespace BonTemps
 
         private static void CenterControlInContainer(object sender)
         {
-            Control c = sender as Control;
-            int labelsize = c.Width;
+            if (FormMain.ActiveForm.IsHandleCreated == true)
+            {
+                Control c = sender as Control;
 
-            Control container = c.Parent;
-            
-            int containersize = container.Width;
+                if (c.Parent != null)
+                {
+                    int labelsize = c.Width;
 
-            c.Left = (containersize - labelsize) / 2;
+                    Control container = c.Parent;
+
+                    int containersize = container.Width;
+
+                    c.Left = (containersize - labelsize) / 2;
+                }
+            }
         }
 
         private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)

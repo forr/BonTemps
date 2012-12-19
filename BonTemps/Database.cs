@@ -288,7 +288,6 @@ namespace BonTemps
                             Order o = new Order();
                             o.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
-                            o.MenuItemIDs = (String)sqlDR["MenuItemIDs"];
                             o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
                             o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
                             return o;

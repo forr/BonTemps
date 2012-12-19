@@ -25,6 +25,21 @@ namespace BonTemps
             this.tableNumber = tableNumber;
             this.amountOfChairs = amountOfChairs;
         }
+
+        public static void AddTable(uint tableNumber, uint amountOfChairs)
+        {
+            string[] sArray = {
+                                tableNumber.ToString(),
+                                amountOfChairs.ToString()
+                              };
+            new Database().Insert(Database.TableName.Tables, sArray);
+        }
+
+        public static void DeleteTable(int id)
+        {
+            new Database().Delete(Database.TableName.Tables, id);
+        }
+
         public override string ToString()
         {
             object[] info = new object[] {

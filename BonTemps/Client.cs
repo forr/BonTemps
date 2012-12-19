@@ -46,6 +46,26 @@ namespace BonTemps
             this.phoneNumber = phoneNumber;
             this.email = email;
         }
+
+        public static void AddClient(string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email)
+        {
+            string[] sArray = {
+                             firstName,
+                             lastName,
+                             address,
+                             postalCode,
+                             city,
+                             phoneNumber,
+                             email
+                         };
+            new Database().Insert(Database.TableName.Clients, sArray);
+        }
+
+        public static void DeleteClient(int id)
+        {
+            new Database().Delete(Database.TableName.Clients, id);
+        }
+
         public override string ToString()
         {
             object[] info = new object[] { 

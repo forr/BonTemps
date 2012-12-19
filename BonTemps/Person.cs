@@ -25,6 +25,21 @@ namespace BonTemps
             this.menuID = menuID;
             this.orderID = orderID;
         }
+
+        public static void AddPerson(ulong menuID, ulong orderID)
+        {
+            string[] sArray = {
+                                menuID.ToString(),
+                                orderID.ToString()
+                              };
+            new Database().Insert(Database.TableName.Persons, sArray);
+        }
+
+        public static void DeletePerson(int id)
+        {
+            new Database().Delete(Database.TableName.Persons, id);
+        }
+
         public override string ToString()
         {
             object[] info = new object[] {
