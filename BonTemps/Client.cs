@@ -47,21 +47,12 @@ namespace BonTemps
             this.email = email;
         }
 
-        public static void AddClient(string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email)
+        public static void Add(string firstName, string lastName, string address, string postalCode, string city, string phoneNumber, string email)
         {
-            string[] sArray = {
-                             firstName,
-                             lastName,
-                             address,
-                             postalCode,
-                             city,
-                             phoneNumber,
-                             email
-                         };
-            new Database().Insert(Database.TableName.Clients, sArray);
+            new Database().Insert(Database.TableName.Clients, new string[] { firstName, lastName, address, postalCode, city, phoneNumber, email });
         }
 
-        public static void DeleteClient(int id)
+        public static void Delete(int id)
         {
             new Database().Delete(Database.TableName.Clients, id);
         }

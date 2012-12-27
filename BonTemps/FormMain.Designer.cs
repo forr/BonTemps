@@ -92,6 +92,8 @@
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -112,6 +114,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.menuMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -540,6 +543,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel1.Controls.Add(this.lblEditMenus);
             this.splitContainer1.Panel1.Tag = "11";
             this.splitContainer1.Panel1.SizeChanged += new System.EventHandler(this.splitContainer1_Panel1_SizeChanged);
@@ -572,10 +577,12 @@
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.splitContainer2.Panel1.Controls.Add(this.lblEditClients);
+            this.splitContainer2.Panel1.SizeChanged += new System.EventHandler(this.splitContainer1_Panel1_SizeChanged);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.lblEditUsers);
+            this.splitContainer2.Panel2.SizeChanged += new System.EventHandler(this.splitContainer1_Panel1_SizeChanged);
             this.splitContainer2.Size = new System.Drawing.Size(509, 304);
             this.splitContainer2.SplitterDistance = 241;
             this.splitContainer2.TabIndex = 0;
@@ -641,19 +648,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -720,6 +727,21 @@
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(5, 43);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(250, 81);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(5, 130);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,7 +752,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuMain;
             this.Name = "FormMain";
-            this.Text = "w";
+            this.Text = "Main Form";
             this.pnlOrder.ResumeLayout(false);
             this.pnlOrder.PerformLayout();
             this.tctrlInterface.ResumeLayout(false);
@@ -759,6 +781,7 @@
             this.splitContainer2.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -829,6 +852,8 @@
         private System.Windows.Forms.Label lblEditMenus;
         private System.Windows.Forms.Label lblEditClients;
         private System.Windows.Forms.Label lblEditUsers;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

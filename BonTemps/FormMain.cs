@@ -82,6 +82,7 @@ namespace BonTemps
         {
             // @Ryan: not sure whether you mean the view initialization or the manager ini... e.g. like you did with IniOrderView & IniChef/Waiter.. 
             // Made IniManagerView() instead... see below
+            
         }
 
         private void IniManagerView()
@@ -561,7 +562,7 @@ namespace BonTemps
 
             List<String> OrderSelection = new List<String>();
             List<Control> lblControls = new List<Control>();
-            foreach(Control c in this.pnlMenuSelectContainer.Controls)
+            foreach (Control c in this.pnlMenuSelectContainer.Controls)
             {
                 if (c.GetType() == typeof(TextBox))
                 {
@@ -579,7 +580,7 @@ namespace BonTemps
             }
             foreach (Control c in lblControls)
             {
-                if (lblControls[lblControls.Count()-1] == c)
+                if (lblControls[lblControls.Count() - 1] == c)
                 {
                     this.lbxSelectedMenuItems.Items.Add(c.Text);
                 }
@@ -601,31 +602,44 @@ namespace BonTemps
         {
 
         }
-
-        private static void CenterControlInContainer(object sender)
+        private void CenterLabelsInPanels(object sender)
         {
-            if (FormMain.ActiveForm.IsHandleCreated == true)
+            if (this.IsHandleCreated == true)
             {
                 Control c = sender as Control;
 
                 if (c.Parent != null)
                 {
                     int labelsize = c.Width;
-
                     Control container = c.Parent;
-
                     int containersize = container.Width;
-
                     c.Left = (containersize - labelsize) / 2;
                 }
             }
         }
-
+        private int dothis()
+        {
+            return 2++;
+        }
         private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
         {
-            CenterControlInContainer(this.lblEditMenus);
-            CenterControlInContainer(this.lblEditClients);
-            CenterControlInContainer(this.lblEditUsers);
+            this.CenterControls(splitContainer1.Panel1);
+        }
+
+        private void CenterControls(Control p)
+        {
+            foreach (Control c in p.Controls)
+            {
+                if (c.Parent != null)
+                {
+                    int labelsize = c.Width;
+                    Control container = c.Parent;
+                    int containersize = container.Width;
+                    c.Width = containersize - 10;
+                    c.Left = (containersize - labelsize) / 2;
+                }
+
+            }
         }
     }
 }
