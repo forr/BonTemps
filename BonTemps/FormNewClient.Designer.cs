@@ -114,14 +114,14 @@
             this.tbxFirstName.Location = new System.Drawing.Point(12, 25);
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(153, 20);
-            this.tbxFirstName.TabIndex = 2;
+            this.tbxFirstName.TabIndex = 0;
             // 
             // tbxLastName
             // 
             this.tbxLastName.Location = new System.Drawing.Point(12, 65);
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(234, 20);
-            this.tbxLastName.TabIndex = 2;
+            this.tbxLastName.TabIndex = 1;
             // 
             // tbxAddress
             // 
@@ -135,35 +135,35 @@
             this.tbxPostalCode.Location = new System.Drawing.Point(12, 143);
             this.tbxPostalCode.Name = "tbxPostalCode";
             this.tbxPostalCode.Size = new System.Drawing.Size(153, 20);
-            this.tbxPostalCode.TabIndex = 2;
+            this.tbxPostalCode.TabIndex = 3;
             // 
             // tbxCity
             // 
             this.tbxCity.Location = new System.Drawing.Point(12, 182);
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(153, 20);
-            this.tbxCity.TabIndex = 2;
+            this.tbxCity.TabIndex = 4;
             // 
             // tbxPhoneNumber
             // 
             this.tbxPhoneNumber.Location = new System.Drawing.Point(12, 221);
             this.tbxPhoneNumber.Name = "tbxPhoneNumber";
             this.tbxPhoneNumber.Size = new System.Drawing.Size(234, 20);
-            this.tbxPhoneNumber.TabIndex = 2;
+            this.tbxPhoneNumber.TabIndex = 5;
             // 
             // tbxEmail
             // 
             this.tbxEmail.Location = new System.Drawing.Point(12, 260);
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(234, 20);
-            this.tbxEmail.TabIndex = 2;
+            this.tbxEmail.TabIndex = 6;
             // 
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(171, 286);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 3;
+            this.btnOk.TabIndex = 7;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -173,12 +173,12 @@
             this.btnCancel.Location = new System.Drawing.Point(90, 286);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // NewClient
+            // FormNewClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -199,7 +199,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "NewClient";
+            this.Name = "FormNewClient";
             this.Text = "NewClient";
             this.ResumeLayout(false);
             this.PerformLayout();

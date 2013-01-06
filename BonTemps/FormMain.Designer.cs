@@ -75,6 +75,8 @@
             this.btnSetOrder = new System.Windows.Forms.Button();
             this.tpManagement = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblEditMenus = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lblEditClients = new System.Windows.Forms.Label();
@@ -92,8 +94,9 @@
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
+            this.tbxAmountOfPersons_pnlOrder = new System.Windows.Forms.TextBox();
+            this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -109,12 +112,12 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.menuMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -171,6 +174,9 @@
             // 
             this.pnlOrder.AutoScroll = true;
             this.pnlOrder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlOrder.Controls.Add(this.btnClearTableIDs_pnlOrder);
+            this.pnlOrder.Controls.Add(this.tbxAmountOfPersons_pnlOrder);
+            this.pnlOrder.Controls.Add(this.lblAmmountOfPersons_pnlOrder);
             this.pnlOrder.Controls.Add(this.btnNewClient);
             this.pnlOrder.Controls.Add(this.btnSelectMenuItems);
             this.pnlOrder.Controls.Add(this.lbxSelectedMenuItems);
@@ -191,7 +197,7 @@
             // 
             // btnNewClient
             // 
-            this.btnNewClient.Location = new System.Drawing.Point(32, 51);
+            this.btnNewClient.Location = new System.Drawing.Point(30, 8);
             this.btnNewClient.Name = "btnNewClient";
             this.btnNewClient.Size = new System.Drawing.Size(163, 23);
             this.btnNewClient.TabIndex = 5;
@@ -201,7 +207,7 @@
             // 
             // btnSelectMenuItems
             // 
-            this.btnSelectMenuItems.Location = new System.Drawing.Point(158, 168);
+            this.btnSelectMenuItems.Location = new System.Drawing.Point(156, 164);
             this.btnSelectMenuItems.Name = "btnSelectMenuItems";
             this.btnSelectMenuItems.Size = new System.Drawing.Size(37, 23);
             this.btnSelectMenuItems.TabIndex = 4;
@@ -212,7 +218,7 @@
             // lbxSelectedMenuItems
             // 
             this.lbxSelectedMenuItems.FormattingEnabled = true;
-            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(32, 171);
+            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(30, 167);
             this.lbxSelectedMenuItems.Name = "lbxSelectedMenuItems";
             this.lbxSelectedMenuItems.Size = new System.Drawing.Size(120, 17);
             this.lbxSelectedMenuItems.TabIndex = 3;
@@ -220,7 +226,7 @@
             // lbl1_pnlOrder
             // 
             this.lbl1_pnlOrder.AutoSize = true;
-            this.lbl1_pnlOrder.Location = new System.Drawing.Point(32, 155);
+            this.lbl1_pnlOrder.Location = new System.Drawing.Point(30, 151);
             this.lbl1_pnlOrder.Name = "lbl1_pnlOrder";
             this.lbl1_pnlOrder.Size = new System.Drawing.Size(36, 13);
             this.lbl1_pnlOrder.TabIndex = 2;
@@ -229,7 +235,7 @@
             // lblClientName_pnlOrder
             // 
             this.lblClientName_pnlOrder.AutoSize = true;
-            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(32, 116);
+            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(30, 73);
             this.lblClientName_pnlOrder.Name = "lblClientName_pnlOrder";
             this.lblClientName_pnlOrder.Size = new System.Drawing.Size(67, 13);
             this.lblClientName_pnlOrder.TabIndex = 2;
@@ -238,7 +244,7 @@
             // lblClientID_pnlOrder
             // 
             this.lblClientID_pnlOrder.AutoSize = true;
-            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(32, 77);
+            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(30, 34);
             this.lblClientID_pnlOrder.Name = "lblClientID_pnlOrder";
             this.lblClientID_pnlOrder.Size = new System.Drawing.Size(50, 13);
             this.lblClientID_pnlOrder.TabIndex = 2;
@@ -247,15 +253,15 @@
             // lblTableID_pnlOrder
             // 
             this.lblTableID_pnlOrder.AutoSize = true;
-            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(32, 9);
+            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(30, 112);
             this.lblTableID_pnlOrder.Name = "lblTableID_pnlOrder";
-            this.lblTableID_pnlOrder.Size = new System.Drawing.Size(37, 13);
+            this.lblTableID_pnlOrder.Size = new System.Drawing.Size(42, 13);
             this.lblTableID_pnlOrder.TabIndex = 2;
-            this.lblTableID_pnlOrder.Text = "Table:";
+            this.lblTableID_pnlOrder.Text = "Tables:";
             // 
             // btnCancelNewOrder
             // 
-            this.btnCancelNewOrder.Location = new System.Drawing.Point(32, 226);
+            this.btnCancelNewOrder.Location = new System.Drawing.Point(30, 222);
             this.btnCancelNewOrder.Name = "btnCancelNewOrder";
             this.btnCancelNewOrder.Size = new System.Drawing.Size(163, 23);
             this.btnCancelNewOrder.TabIndex = 1;
@@ -264,7 +270,7 @@
             // 
             // btnCreateNewOrder
             // 
-            this.btnCreateNewOrder.Location = new System.Drawing.Point(32, 197);
+            this.btnCreateNewOrder.Location = new System.Drawing.Point(30, 193);
             this.btnCreateNewOrder.Name = "btnCreateNewOrder";
             this.btnCreateNewOrder.Size = new System.Drawing.Size(163, 23);
             this.btnCreateNewOrder.TabIndex = 1;
@@ -274,7 +280,7 @@
             // 
             // tbxClientName_pnlOrder
             // 
-            this.tbxClientName_pnlOrder.Location = new System.Drawing.Point(32, 132);
+            this.tbxClientName_pnlOrder.Location = new System.Drawing.Point(30, 89);
             this.tbxClientName_pnlOrder.Name = "tbxClientName_pnlOrder";
             this.tbxClientName_pnlOrder.ReadOnly = true;
             this.tbxClientName_pnlOrder.Size = new System.Drawing.Size(163, 20);
@@ -282,18 +288,18 @@
             // 
             // tbxClientID_pnlOrder
             // 
-            this.tbxClientID_pnlOrder.Location = new System.Drawing.Point(32, 93);
+            this.tbxClientID_pnlOrder.Location = new System.Drawing.Point(30, 50);
             this.tbxClientID_pnlOrder.Name = "tbxClientID_pnlOrder";
             this.tbxClientID_pnlOrder.ReadOnly = true;
-            this.tbxClientID_pnlOrder.Size = new System.Drawing.Size(163, 20);
+            this.tbxClientID_pnlOrder.Size = new System.Drawing.Size(100, 20);
             this.tbxClientID_pnlOrder.TabIndex = 0;
             // 
             // tbxTableID_pnlOrder
             // 
-            this.tbxTableID_pnlOrder.Location = new System.Drawing.Point(32, 25);
+            this.tbxTableID_pnlOrder.Location = new System.Drawing.Point(30, 128);
             this.tbxTableID_pnlOrder.Name = "tbxTableID_pnlOrder";
             this.tbxTableID_pnlOrder.ReadOnly = true;
-            this.tbxTableID_pnlOrder.Size = new System.Drawing.Size(163, 20);
+            this.tbxTableID_pnlOrder.Size = new System.Drawing.Size(100, 20);
             this.tbxTableID_pnlOrder.TabIndex = 0;
             // 
             // fileToolStripMenuItem1
@@ -310,18 +316,18 @@
             // exportClientsToolStripMenuItem1
             // 
             this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem1.Text = "Export Clients";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // menuToolStripMenuItem1
@@ -556,6 +562,21 @@
             this.splitContainer1.SplitterDistance = 258;
             this.splitContainer1.TabIndex = 1;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(5, 130);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(5, 43);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(250, 81);
+            this.dataGridView1.TabIndex = 1;
+            // 
             // lblEditMenus
             // 
             this.lblEditMenus.AutoSize = true;
@@ -640,7 +661,7 @@
             this.exitToolStripMenuItem2});
             this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
-            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(39, 20);
+            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem2.Text = "File";
             this.fileToolStripMenuItem2.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem2_DropDownClosed);
             this.fileToolStripMenuItem2.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem2_DropDownOpened);
@@ -648,19 +669,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -670,7 +691,7 @@
             this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(62, 20);
             this.exitToolStripMenuItem1.Text = "close";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -727,20 +748,31 @@
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // dataGridView1
+            // lblAmmountOfPersons_pnlOrder
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(250, 81);
-            this.dataGridView1.TabIndex = 1;
+            this.lblAmmountOfPersons_pnlOrder.AutoSize = true;
+            this.lblAmmountOfPersons_pnlOrder.Location = new System.Drawing.Point(133, 34);
+            this.lblAmmountOfPersons_pnlOrder.Name = "lblAmmountOfPersons_pnlOrder";
+            this.lblAmmountOfPersons_pnlOrder.Size = new System.Drawing.Size(48, 13);
+            this.lblAmmountOfPersons_pnlOrder.TabIndex = 6;
+            this.lblAmmountOfPersons_pnlOrder.Text = "Persons:";
             // 
-            // textBox1
+            // tbxAmmountOfPersons_pnlOrder
             // 
-            this.textBox1.Location = new System.Drawing.Point(5, 130);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.tbxAmountOfPersons_pnlOrder.Location = new System.Drawing.Point(136, 50);
+            this.tbxAmountOfPersons_pnlOrder.Name = "tbxAmmountOfPersons_pnlOrder";
+            this.tbxAmountOfPersons_pnlOrder.Size = new System.Drawing.Size(57, 20);
+            this.tbxAmountOfPersons_pnlOrder.TabIndex = 7;
+            // 
+            // btnClearTableIDs_pnlOrder
+            // 
+            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(136, 126);
+            this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
+            this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(57, 23);
+            this.btnClearTableIDs_pnlOrder.TabIndex = 8;
+            this.btnClearTableIDs_pnlOrder.Text = "Clear";
+            this.btnClearTableIDs_pnlOrder.UseVisualStyleBackColor = true;
+            this.btnClearTableIDs_pnlOrder.Click += new System.EventHandler(this.btnClearTableIDs_pnlOrder_Click);
             // 
             // FormMain
             // 
@@ -773,6 +805,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -781,7 +814,6 @@
             this.splitContainer2.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -854,6 +886,9 @@
         private System.Windows.Forms.Label lblEditUsers;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox tbxAmountOfPersons_pnlOrder;
+        private System.Windows.Forms.Label lblAmmountOfPersons_pnlOrder;
+        private System.Windows.Forms.Button btnClearTableIDs_pnlOrder;
     }
 }
 

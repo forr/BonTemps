@@ -50,7 +50,7 @@ namespace BonTemps
                     this.comboBox1.Items.Add(t.TableNumber);
                     try
                     {
-                        this.comboBox1.SelectedIndex = 1;
+                        this.comboBox1.SelectedIndex = 0;
                     }
                     catch
                     {
@@ -131,10 +131,13 @@ namespace BonTemps
 
         private void IniOrderView()
         {
-            string[] array = new string[] { "Item 1", "Item 2", "Item 3" };
-            var items = this.lvOrders.Items;
-            foreach (var val in array)
-                items.Add(val);
+            //Test Example for filling the lvOrders Listview:
+            //
+            //string[] array = new string[] { "Item 1", "Item 2", "Item 3" };
+            //var items = this.lvOrders.Items;
+            //foreach (var val in array)
+            //    items.Add(val);
+
             this.lvOrders.Bounds = new Rectangle(0, 0, this.lvOrders.ClientSize.Width, this.lvOrders.ClientSize.Height);
             this.lvOrders.View = View.Details;
             this.lvOrders.LabelEdit = false;
@@ -161,8 +164,7 @@ namespace BonTemps
                         int indexMenuSelection = 0;
                         foreach (string s in tempMenuSelection)
                         {
-                            //string result = new Database().GetMenu(Convert.ToUInt64(s)).ToString();
-                            menuSelection += ((((indexMenuSelection % 4) == 0) && (indexMenuSelection != 0)) ? "\n" : "") + "Menu nr:";
+                            menuSelection += ((((indexMenuSelection % 4) == 0) && (indexMenuSelection != 0)) ? ";" : "") + "Menu nr:";
                             if ((tempMenuSelection.Count - 1) == indexMenuSelection)
                                 menuSelection += s;
                             else
@@ -333,18 +335,43 @@ namespace BonTemps
 
         private void pnlTable_Click(object sender, EventArgs e)
         {
-            Panel pnlSender = (Panel)sender;
-            int currentTableID = 0;
-            currentTableID = TableLayout.GetTableID(pnlSender.Name);
-            this.tbxTableID_pnlOrder.Text = this.tables[currentTableID].tableID.ToString();
-            this.tbxClientID_pnlOrder.Text = this.tables[currentTableID].clientID;
-            try
+            if (tbxAmountOfPersons_pnlOrder.Text != String.Empty)
             {
-                this.tbxClientName_pnlOrder.Text = this.clients[Convert.ToInt32(this.tables[currentTableID].clientID)].FirstName;
+                Panel pnlSender = (Panel)sender;
+                int currentTableID = 0;
+                currentTableID = TableLayout.GetTableID(pnlSender.Name);
+
+                Table tb = new Database().GetTable(Convert.ToUInt64(currentTableID));
+                try
+                {
+                    if (this.clients[Convert.ToInt32(this.tables[currentTableID].clientID)].FirstName == String.Empty)
+                    {
+                        MessageBox.Show("Table Already in use", "In use", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
+                        return;
+                    }
+                }
+                catch (Exception ex) { }
+
+                if (tbxTableID_pnlOrder.Text.Contains(currentTableID.ToString() + ",") || (tbxTableID_pnlOrder.Text.Contains(currentTableID.ToString()) && (tbxTableID_pnlOrder.Text.Length == currentTableID.ToString().Length)) && !tbxTableID_pnlOrder.Text.Contains(","))
+                {
+                    return;
+                }
+
+                this.tbxTableID_pnlOrder.Text += (this.tbxTableID_pnlOrder.Text == String.Empty) ?
+                    this.tables[currentTableID].tableID.ToString() : ", " + this.tables[currentTableID].tableID.ToString();
+                //this.tbxClientID_pnlOrder.Text = this.tables[currentTableID].clientID;
+                //try
+                //{
+                //    this.tbxClientName_pnlOrder.Text = this.clients[Convert.ToInt32(this.tables[currentTableID].clientID)].FirstName;
+                //}
+                //catch
+                //{
+                //    this.tbxClientName_pnlOrder.Text = "Unknown";
+                //}
             }
-            catch
+            else
             {
-                this.tbxClientName_pnlOrder.Text = "Unknown";
+                MessageBox.Show("Add the amount of accompanies first.");
             }
         }
 
@@ -429,11 +456,45 @@ namespace BonTemps
 
         private void btnCreateNewOrder_Click(object sender, EventArgs e)
         {
-            ulong clientid = Convert.ToUInt64(tbxClientID_pnlOrder.Text);
-            ulong tableid = Convert.ToUInt64(tbxTableID_pnlOrder.Text);
-            ulong? orderid = null;
+            try
+            {
+                ulong clientid = Convert.ToUInt64(tbxClientID_pnlOrder.Text);
+                int personsCount = 0;
+                int.TryParse(tbxAmountOfPersons_pnlOrder.Text, out personsCount);
+                List<ulong> tableidList = new List<ulong>();
+                string[] TableIds = tbxTableID_pnlOrder.Text.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (String s in TableIds)
+                {
+                    tableidList.Add(Convert.ToUInt64(s));
+                }
 
-            string orders = lbxSelectedMenuItems.Text.Replace("\n", "");
+                foreach (ulong ul in tableidList)
+                {
+                    //personsCount -= new Database().GetAllTables().Find(new Predicate<Table>(new Table() { TableID = ul })).AmountOfChairs;
+                    Table tb = new Table();
+                    foreach(Table t in new Database().GetAllTables())
+                    {
+                        if(t.TableID == ul)
+                        tb = t;
+                    }
+                    personsCount -= (int)tb.AmountOfChairs; 
+                }
+
+                if (personsCount > 0)
+                {
+                    MessageBox.Show("Please select the table(s) first");
+                    return;
+                }
+
+                ulong? orderid = null;
+
+                string orders = lbxSelectedMenuItems.Text.Replace("\n", "");
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show("Please fill the records with valid data.");
+                return;
+            }
         }
 
         private void btnSelectMenuItems_Click(object sender, EventArgs e)
@@ -619,7 +680,7 @@ namespace BonTemps
         }
         private int dothis()
         {
-            return 2++;
+            return 0;
         }
         private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
         {
@@ -640,6 +701,11 @@ namespace BonTemps
                 }
 
             }
+        }
+
+        private void btnClearTableIDs_pnlOrder_Click(object sender, EventArgs e)
+        {
+            tbxTableID_pnlOrder.Text = String.Empty;
         }
     }
 }
