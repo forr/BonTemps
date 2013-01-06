@@ -269,6 +269,33 @@ namespace BonTemps
             catch { result = Menu.Null; }
             return result;
         }
+        public int GetOrderID(ulong ClientID, string StartDateTime, string EndDateTime)
+        {
+            int result = -1;
+            string statement = "SELECT OrderID FROM Orders WHERE ClientID=@clientID AND StartDateTime=@startDateTime AND EndDateTime=@endDateTimeOrder";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        sqlQuery.Parameters.AddWithValue("@clientID", (int)ClientID);
+                        sqlQuery.Parameters.AddWithValue("@startDateTime", StartDateTime);
+                        sqlQuery.Parameters.AddWithValue("@endDateTimeOrder", EndDateTime);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        if (sqlDR.Read())
+                        {
+                            result = int.Parse(sqlDR["OrderID"].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception Exception) { }
+            return result;
+        }
+
         public override Order GetOrder(ulong orderID)
         {
             Order result = Order.Null;

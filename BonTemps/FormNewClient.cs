@@ -11,9 +11,11 @@ namespace BonTemps
 {
     public partial class FormNewClient : Form
     {
-        public FormNewClient()
+        Form fmOrigin = new Form();
+        public FormNewClient(Form fm)
         {
             InitializeComponent();
+            fmOrigin = fm;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -28,9 +30,16 @@ namespace BonTemps
                                       this.tbxCity.Text,
                                       this.tbxPhoneNumber.Text,
                                       this.tbxEmail.Text);
-            
-                if(new Database().Insert(Database.TableName.Clients, c.ToString().Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)))
+
+                if (new Database().Insert(Database.TableName.Clients, c.ToString().Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)))
+                {
+                    if (fmOrigin.GetType() == typeof(FormMain))
+                    {
+                        FormMain fm = (FormMain)fmOrigin;
+                        fm.FormNewClient_CloseOnAdd();
+                    }
                     this.Close();
+                }
                 else
                     MessageBox.Show("Failed to add new user");
             }

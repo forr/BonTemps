@@ -460,6 +460,7 @@ namespace BonTemps
             {
                 ulong clientid = Convert.ToUInt64(tbxClientID_pnlOrder.Text);
                 int personsCount = 0;
+                List<Table> tableCount = new List<Table>();
                 int.TryParse(tbxAmountOfPersons_pnlOrder.Text, out personsCount);
                 List<ulong> tableidList = new List<ulong>();
                 string[] TableIds = tbxTableID_pnlOrder.Text.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
@@ -474,8 +475,11 @@ namespace BonTemps
                     Table tb = new Table();
                     foreach(Table t in new Database().GetAllTables())
                     {
-                        if(t.TableID == ul)
-                        tb = t;
+                        if (t.TableID == ul)
+                        {
+                            tb = t;
+                            tableCount.Add(t);
+                        }
                     }
                     personsCount -= (int)tb.AmountOfChairs; 
                 }
@@ -488,13 +492,57 @@ namespace BonTemps
 
                 ulong? orderid = null;
 
-                string orders = lbxSelectedMenuItems.Text.Replace("\n", "");
+                //string orders = lbxSelectedMenuItems.Text.Replace("\n", "");
+                List<String> orders = new List<String>();
+                foreach (Object o in lbxSelectedMenuItems.Items)
+                {
+                    orders.Add(o.ToString().Replace(",", ""));
+                }
+                //lbxSelectedMenuItems.Items.CopyTo(orders.ToArray<String>(), 0);
+
+                DateTime TimeToInject = DateTime.Now;
+
+                new Database().Insert(Database.TableName.Orders, new String[] { tbxClientID_pnlOrder.Text, TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss") });  //Injects Succesfull
+                orderid = (ulong)new Database().GetOrderID((ulong)int.Parse(tbxClientID_pnlOrder.Text), TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss"));
+                for(int i = 0; i < int.Parse(tbxAmountOfPersons_pnlOrder.Text); i++)
+                {
+                    int tablenr = GetTableNumber(tableCount);
+                    if (orders.Count > i)
+                        new Database().Insert(Database.TableName.Persons, new String[] { orders[i].ToString(), orderid.ToString(), tablenr.ToString() });
+                    else
+                        new Database().Insert(Database.TableName.Persons, new String[] { "NULL", orderid.ToString(), tablenr.ToString() });
+                    int decreasedAmountOfChairs = (Convert.ToInt32(tableCount[tablenr].AmountOfChairs) - 1);
+                    int decreasedID = (int)tableCount[tablenr].TableID;
+                    int decreasedTableNR = (int)tableCount[tablenr].TableNumber;
+                    List<Table> TempTableList = tableCount;
+                    tableCount.Clear();
+                    foreach (Table t in tableCount)
+                    {
+                        if ((int)t.TableID == tablenr)
+                            TempTableList.Add(new Table((ulong)decreasedID, (uint)decreasedTableNR, (uint)decreasedAmountOfChairs));
+                        else
+                            TempTableList.Add(t);
+                    }
+                    tableCount.AddRange(TempTableList);
+                }
             }
             catch ( Exception ex )
             {
                 MessageBox.Show("Please fill the records with valid data.");
                 return;
             }
+        }
+
+        private int GetTableNumber(List<Table> tb)
+        {
+            for (int i = 0; i < tb.Count; i++)
+            {
+                if (tb[i].AmountOfChairs > 0)
+                {
+                    return (int)tb[i].TableID;
+                }
+            }
+            return -1;
         }
 
         private void btnSelectMenuItems_Click(object sender, EventArgs e)
@@ -654,9 +702,15 @@ namespace BonTemps
 
         private void btnNewClient_Click(object sender, EventArgs e)
         {
-            FormNewClient frmNewClient = new FormNewClient();
+            FormNewClient frmNewClient = new FormNewClient(this);
             frmNewClient.CreateControl();
             frmNewClient.Show();
+        }
+
+        public void FormNewClient_CloseOnAdd()
+        {
+            lbxClientList.Items.Clear();
+            FillLbxClientList();
         }
 
         private void lblEditMenus_Layout(object sender, LayoutEventArgs e)
