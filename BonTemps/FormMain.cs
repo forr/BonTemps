@@ -11,15 +11,17 @@ namespace BonTemps
 {
     public partial class FormMain : Form
     {
+        private Form parentForm;
         private string initialUser;
         private int tableSize = 0;
         private int tableMultiplier = 0;
         private List<Client> clients;
         private List<TableLayout> tables;
 
-        public FormMain(string initialValue)
+        public FormMain(string initialValue, Form parentForm)
         {
             this.initialUser = initialValue;
+            this.parentForm = parentForm;
             this.InitializeComponent();
             this.InitializeFormProperties();
             this.InitializeRules();
@@ -463,7 +465,7 @@ namespace BonTemps
                 List<Table> tableCount = new List<Table>();
                 int.TryParse(tbxAmountOfPersons_pnlOrder.Text, out personsCount);
                 List<ulong> tableidList = new List<ulong>();
-                string[] TableIds = tbxTableID_pnlOrder.Text.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                string[] TableIds = this.tbxTableID_pnlOrder.Text.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (String s in TableIds)
                 {
                     tableidList.Add(Convert.ToUInt64(s));
@@ -494,7 +496,7 @@ namespace BonTemps
 
                 //string orders = lbxSelectedMenuItems.Text.Replace("\n", "");
                 List<String> orders = new List<String>();
-                foreach (Object o in lbxSelectedMenuItems.Items)
+                foreach (Object o in this.lbxSelectedMenuItems.Items)
                 {
                     orders.Add(o.ToString().Replace(",", ""));
                 }
@@ -502,8 +504,8 @@ namespace BonTemps
 
                 DateTime TimeToInject = DateTime.Now;
 
-                new Database().Insert(Database.TableName.Orders, new String[] { tbxClientID_pnlOrder.Text, TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss") });  //Injects Succesfull
-                orderid = (ulong)new Database().GetOrderID((ulong)int.Parse(tbxClientID_pnlOrder.Text), TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss"));
+                new Database().Insert(Database.TableName.Orders, new String[] { this.tbxClientID_pnlOrder.Text, TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss") });  //Injects Succesfull
+                orderid = (ulong)new Database().GetOrderID((ulong)int.Parse(this.tbxClientID_pnlOrder.Text), TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss"));
                 for(int i = 0; i < int.Parse(tbxAmountOfPersons_pnlOrder.Text); i++)
                 {
                     int tablenr = GetTableNumber(tableCount);
@@ -709,8 +711,8 @@ namespace BonTemps
 
         public void FormNewClient_CloseOnAdd()
         {
-            lbxClientList.Items.Clear();
-            FillLbxClientList();
+            this.lbxClientList.Items.Clear();
+            this.FillLbxClientList();
         }
 
         private void lblEditMenus_Layout(object sender, LayoutEventArgs e)
@@ -759,7 +761,13 @@ namespace BonTemps
 
         private void btnClearTableIDs_pnlOrder_Click(object sender, EventArgs e)
         {
-            tbxTableID_pnlOrder.Text = String.Empty;
+            this.tbxTableID_pnlOrder.Text = String.Empty;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.parentForm.Show();
+            this.Close();
         }
     }
 }

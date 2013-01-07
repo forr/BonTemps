@@ -33,6 +33,7 @@
             this.bChange = new System.Windows.Forms.Button();
             this.dgvResult = new System.Windows.Forms.DataGridView();
             this.bDeleteSelectedRow = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,11 +81,22 @@
             this.bDeleteSelectedRow.Text = "Delete Selected";
             this.bDeleteSelectedRow.UseVisualStyleBackColor = true;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(12, 356);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(335, 23);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // FormAdminControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 391);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.bDeleteSelectedRow);
             this.Controls.Add(this.dgvResult);
             this.Controls.Add(this.bChange);
@@ -104,5 +116,6 @@
         private System.Windows.Forms.Button bChange;
         private System.Windows.Forms.DataGridView dgvResult;
         private System.Windows.Forms.Button bDeleteSelectedRow;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

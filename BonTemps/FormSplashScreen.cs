@@ -75,7 +75,7 @@ namespace BonTemps
                 {
                     if (CanLogin(comboBoxOccupation.Text, tbxPassword.Text))
                     {
-                        FormMain frmMain = new FormMain(comboBoxOccupation.Text);
+                        FormMain frmMain = new FormMain(comboBoxOccupation.Text, this);
                         frmMain.Show();
                         this.Hide();
                     }
@@ -121,7 +121,7 @@ namespace BonTemps
         {
             if (CanLogin("Admin", tbxPassword.Text))
             {
-                FormAdminControls frmAdminControls = new FormAdminControls();
+                FormAdminControls frmAdminControls = new FormAdminControls(this);
                 frmAdminControls.CreateControl();
                 frmAdminControls.Show();
                 this.Hide();

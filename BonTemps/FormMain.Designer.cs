@@ -38,6 +38,9 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkStockedSuppliesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
+            this.tbxAmountOfPersons_pnlOrder = new System.Windows.Forms.TextBox();
+            this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
             this.btnNewClient = new System.Windows.Forms.Button();
             this.btnSelectMenuItems = new System.Windows.Forms.Button();
             this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
@@ -94,9 +97,7 @@
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
-            this.tbxAmountOfPersons_pnlOrder = new System.Windows.Forms.TextBox();
-            this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -194,6 +195,32 @@
             this.pnlOrder.Name = "pnlOrder";
             this.pnlOrder.Size = new System.Drawing.Size(230, 256);
             this.pnlOrder.TabIndex = 0;
+            // 
+            // btnClearTableIDs_pnlOrder
+            // 
+            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(136, 126);
+            this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
+            this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(57, 23);
+            this.btnClearTableIDs_pnlOrder.TabIndex = 8;
+            this.btnClearTableIDs_pnlOrder.Text = "Clear";
+            this.btnClearTableIDs_pnlOrder.UseVisualStyleBackColor = true;
+            this.btnClearTableIDs_pnlOrder.Click += new System.EventHandler(this.btnClearTableIDs_pnlOrder_Click);
+            // 
+            // tbxAmountOfPersons_pnlOrder
+            // 
+            this.tbxAmountOfPersons_pnlOrder.Location = new System.Drawing.Point(136, 50);
+            this.tbxAmountOfPersons_pnlOrder.Name = "tbxAmountOfPersons_pnlOrder";
+            this.tbxAmountOfPersons_pnlOrder.Size = new System.Drawing.Size(57, 20);
+            this.tbxAmountOfPersons_pnlOrder.TabIndex = 7;
+            // 
+            // lblAmmountOfPersons_pnlOrder
+            // 
+            this.lblAmmountOfPersons_pnlOrder.AutoSize = true;
+            this.lblAmmountOfPersons_pnlOrder.Location = new System.Drawing.Point(133, 34);
+            this.lblAmmountOfPersons_pnlOrder.Name = "lblAmmountOfPersons_pnlOrder";
+            this.lblAmmountOfPersons_pnlOrder.Size = new System.Drawing.Size(48, 13);
+            this.lblAmmountOfPersons_pnlOrder.TabIndex = 6;
+            this.lblAmmountOfPersons_pnlOrder.Text = "Persons:";
             // 
             // btnNewClient
             // 
@@ -658,7 +685,8 @@
             this.fileToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportClientsToolStripMenuItem2,
             this.toolStripMenuItem4,
-            this.exitToolStripMenuItem2});
+            this.exitToolStripMenuItem2,
+            this.logoutToolStripMenuItem});
             this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
             this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
@@ -669,19 +697,19 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
@@ -748,31 +776,12 @@
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // lblAmmountOfPersons_pnlOrder
+            // logoutToolStripMenuItem
             // 
-            this.lblAmmountOfPersons_pnlOrder.AutoSize = true;
-            this.lblAmmountOfPersons_pnlOrder.Location = new System.Drawing.Point(133, 34);
-            this.lblAmmountOfPersons_pnlOrder.Name = "lblAmmountOfPersons_pnlOrder";
-            this.lblAmmountOfPersons_pnlOrder.Size = new System.Drawing.Size(48, 13);
-            this.lblAmmountOfPersons_pnlOrder.TabIndex = 6;
-            this.lblAmmountOfPersons_pnlOrder.Text = "Persons:";
-            // 
-            // tbxAmmountOfPersons_pnlOrder
-            // 
-            this.tbxAmountOfPersons_pnlOrder.Location = new System.Drawing.Point(136, 50);
-            this.tbxAmountOfPersons_pnlOrder.Name = "tbxAmmountOfPersons_pnlOrder";
-            this.tbxAmountOfPersons_pnlOrder.Size = new System.Drawing.Size(57, 20);
-            this.tbxAmountOfPersons_pnlOrder.TabIndex = 7;
-            // 
-            // btnClearTableIDs_pnlOrder
-            // 
-            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(136, 126);
-            this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
-            this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(57, 23);
-            this.btnClearTableIDs_pnlOrder.TabIndex = 8;
-            this.btnClearTableIDs_pnlOrder.Text = "Clear";
-            this.btnClearTableIDs_pnlOrder.UseVisualStyleBackColor = true;
-            this.btnClearTableIDs_pnlOrder.Click += new System.EventHandler(this.btnClearTableIDs_pnlOrder_Click);
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -889,6 +898,7 @@
         private System.Windows.Forms.TextBox tbxAmountOfPersons_pnlOrder;
         private System.Windows.Forms.Label lblAmmountOfPersons_pnlOrder;
         private System.Windows.Forms.Button btnClearTableIDs_pnlOrder;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
 

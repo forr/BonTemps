@@ -11,8 +11,10 @@ namespace BonTemps
 {
     public partial class FormAdminControls : Form
     {
-        public FormAdminControls()
+        private Form parentForm;
+        public FormAdminControls(Form parentForm)
         {
+            this.parentForm = parentForm;
             InitializeComponent();
             cbDatabases.Items.AddRange(new string[]{
                                                         "Clients Database",
@@ -81,6 +83,12 @@ namespace BonTemps
         private void cbDatabases_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillDBResult(cbDatabases.SelectedItem.ToString());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.parentForm.Show();
+            this.Close();
         }
     }
 }
