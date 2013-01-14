@@ -52,7 +52,6 @@ namespace BonTemps
                     break;
                 case "Persons Database":
                     dgvResult.DataSource = typeof(Person);
-                    dgvResult.ReadOnly = true;
                     dgvResult.DataSource = new Database().GetAllPersons();
                     dgvResult.ReadOnly = true;
                     break;

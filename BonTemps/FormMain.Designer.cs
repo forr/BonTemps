@@ -38,6 +38,10 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkStockedSuppliesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.lbltime = new System.Windows.Forms.Label();
+            this.cbxOrderMinute = new System.Windows.Forms.ComboBox();
+            this.cbxOrderHour = new System.Windows.Forms.ComboBox();
+            this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
             this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
             this.tbxAmountOfPersons_pnlOrder = new System.Windows.Forms.TextBox();
             this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
@@ -90,6 +94,8 @@
             this.exportClientsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,8 +103,6 @@
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -176,6 +180,10 @@
             // 
             this.pnlOrder.AutoScroll = true;
             this.pnlOrder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlOrder.Controls.Add(this.lbltime);
+            this.pnlOrder.Controls.Add(this.cbxOrderMinute);
+            this.pnlOrder.Controls.Add(this.cbxOrderHour);
+            this.pnlOrder.Controls.Add(this.dtpOrderDate);
             this.pnlOrder.Controls.Add(this.btnClearTableIDs_pnlOrder);
             this.pnlOrder.Controls.Add(this.tbxAmountOfPersons_pnlOrder);
             this.pnlOrder.Controls.Add(this.lblAmmountOfPersons_pnlOrder);
@@ -192,14 +200,84 @@
             this.pnlOrder.Controls.Add(this.tbxClientID_pnlOrder);
             this.pnlOrder.Controls.Add(this.tbxTableID_pnlOrder);
             this.pnlOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlOrder.Location = new System.Drawing.Point(0, 46);
+            this.pnlOrder.Location = new System.Drawing.Point(0, 41);
             this.pnlOrder.Name = "pnlOrder";
-            this.pnlOrder.Size = new System.Drawing.Size(230, 256);
+            this.pnlOrder.Size = new System.Drawing.Size(230, 261);
             this.pnlOrder.TabIndex = 0;
+            // 
+            // lbltime
+            // 
+            this.lbltime.AutoSize = true;
+            this.lbltime.Location = new System.Drawing.Point(61, 31);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(30, 13);
+            this.lbltime.TabIndex = 11;
+            this.lbltime.Text = "Time";
+            // 
+            // cbxOrderMinute
+            // 
+            this.cbxOrderMinute.FormattingEnabled = true;
+            this.cbxOrderMinute.Items.AddRange(new object[] {
+            "00",
+            "05",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55"});
+            this.cbxOrderMinute.Location = new System.Drawing.Point(148, 28);
+            this.cbxOrderMinute.Name = "cbxOrderMinute";
+            this.cbxOrderMinute.Size = new System.Drawing.Size(45, 21);
+            this.cbxOrderMinute.TabIndex = 10;
+            // 
+            // cbxOrderHour
+            // 
+            this.cbxOrderHour.FormattingEnabled = true;
+            this.cbxOrderHour.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"});
+            this.cbxOrderHour.Location = new System.Drawing.Point(97, 28);
+            this.cbxOrderHour.Name = "cbxOrderHour";
+            this.cbxOrderHour.Size = new System.Drawing.Size(45, 21);
+            this.cbxOrderHour.TabIndex = 10;
+            // 
+            // dtpOrderDate
+            // 
+            this.dtpOrderDate.Location = new System.Drawing.Point(20, 2);
+            this.dtpOrderDate.Name = "dtpOrderDate";
+            this.dtpOrderDate.Size = new System.Drawing.Size(179, 20);
+            this.dtpOrderDate.TabIndex = 9;
             // 
             // btnClearTableIDs_pnlOrder
             // 
-            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(136, 126);
+            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(136, 172);
             this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
             this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(57, 23);
             this.btnClearTableIDs_pnlOrder.TabIndex = 8;
@@ -209,7 +287,7 @@
             // 
             // tbxAmountOfPersons_pnlOrder
             // 
-            this.tbxAmountOfPersons_pnlOrder.Location = new System.Drawing.Point(136, 50);
+            this.tbxAmountOfPersons_pnlOrder.Location = new System.Drawing.Point(136, 97);
             this.tbxAmountOfPersons_pnlOrder.Name = "tbxAmountOfPersons_pnlOrder";
             this.tbxAmountOfPersons_pnlOrder.Size = new System.Drawing.Size(57, 20);
             this.tbxAmountOfPersons_pnlOrder.TabIndex = 7;
@@ -217,7 +295,7 @@
             // lblAmmountOfPersons_pnlOrder
             // 
             this.lblAmmountOfPersons_pnlOrder.AutoSize = true;
-            this.lblAmmountOfPersons_pnlOrder.Location = new System.Drawing.Point(133, 34);
+            this.lblAmmountOfPersons_pnlOrder.Location = new System.Drawing.Point(133, 81);
             this.lblAmmountOfPersons_pnlOrder.Name = "lblAmmountOfPersons_pnlOrder";
             this.lblAmmountOfPersons_pnlOrder.Size = new System.Drawing.Size(48, 13);
             this.lblAmmountOfPersons_pnlOrder.TabIndex = 6;
@@ -225,7 +303,7 @@
             // 
             // btnNewClient
             // 
-            this.btnNewClient.Location = new System.Drawing.Point(30, 8);
+            this.btnNewClient.Location = new System.Drawing.Point(30, 55);
             this.btnNewClient.Name = "btnNewClient";
             this.btnNewClient.Size = new System.Drawing.Size(163, 23);
             this.btnNewClient.TabIndex = 5;
@@ -235,7 +313,7 @@
             // 
             // btnSelectMenuItems
             // 
-            this.btnSelectMenuItems.Location = new System.Drawing.Point(156, 164);
+            this.btnSelectMenuItems.Location = new System.Drawing.Point(156, 209);
             this.btnSelectMenuItems.Name = "btnSelectMenuItems";
             this.btnSelectMenuItems.Size = new System.Drawing.Size(37, 23);
             this.btnSelectMenuItems.TabIndex = 4;
@@ -246,7 +324,7 @@
             // lbxSelectedMenuItems
             // 
             this.lbxSelectedMenuItems.FormattingEnabled = true;
-            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(30, 167);
+            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(30, 212);
             this.lbxSelectedMenuItems.Name = "lbxSelectedMenuItems";
             this.lbxSelectedMenuItems.Size = new System.Drawing.Size(120, 17);
             this.lbxSelectedMenuItems.TabIndex = 3;
@@ -254,7 +332,7 @@
             // lbl1_pnlOrder
             // 
             this.lbl1_pnlOrder.AutoSize = true;
-            this.lbl1_pnlOrder.Location = new System.Drawing.Point(30, 151);
+            this.lbl1_pnlOrder.Location = new System.Drawing.Point(30, 196);
             this.lbl1_pnlOrder.Name = "lbl1_pnlOrder";
             this.lbl1_pnlOrder.Size = new System.Drawing.Size(36, 13);
             this.lbl1_pnlOrder.TabIndex = 2;
@@ -263,7 +341,7 @@
             // lblClientName_pnlOrder
             // 
             this.lblClientName_pnlOrder.AutoSize = true;
-            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(30, 73);
+            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(30, 119);
             this.lblClientName_pnlOrder.Name = "lblClientName_pnlOrder";
             this.lblClientName_pnlOrder.Size = new System.Drawing.Size(67, 13);
             this.lblClientName_pnlOrder.TabIndex = 2;
@@ -272,7 +350,7 @@
             // lblClientID_pnlOrder
             // 
             this.lblClientID_pnlOrder.AutoSize = true;
-            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(30, 34);
+            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(30, 81);
             this.lblClientID_pnlOrder.Name = "lblClientID_pnlOrder";
             this.lblClientID_pnlOrder.Size = new System.Drawing.Size(50, 13);
             this.lblClientID_pnlOrder.TabIndex = 2;
@@ -281,7 +359,7 @@
             // lblTableID_pnlOrder
             // 
             this.lblTableID_pnlOrder.AutoSize = true;
-            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(30, 112);
+            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(30, 158);
             this.lblTableID_pnlOrder.Name = "lblTableID_pnlOrder";
             this.lblTableID_pnlOrder.Size = new System.Drawing.Size(42, 13);
             this.lblTableID_pnlOrder.TabIndex = 2;
@@ -289,7 +367,7 @@
             // 
             // btnCancelNewOrder
             // 
-            this.btnCancelNewOrder.Location = new System.Drawing.Point(30, 222);
+            this.btnCancelNewOrder.Location = new System.Drawing.Point(30, 263);
             this.btnCancelNewOrder.Name = "btnCancelNewOrder";
             this.btnCancelNewOrder.Size = new System.Drawing.Size(163, 23);
             this.btnCancelNewOrder.TabIndex = 1;
@@ -298,7 +376,7 @@
             // 
             // btnCreateNewOrder
             // 
-            this.btnCreateNewOrder.Location = new System.Drawing.Point(30, 193);
+            this.btnCreateNewOrder.Location = new System.Drawing.Point(30, 234);
             this.btnCreateNewOrder.Name = "btnCreateNewOrder";
             this.btnCreateNewOrder.Size = new System.Drawing.Size(163, 23);
             this.btnCreateNewOrder.TabIndex = 1;
@@ -308,7 +386,7 @@
             // 
             // tbxClientName_pnlOrder
             // 
-            this.tbxClientName_pnlOrder.Location = new System.Drawing.Point(30, 89);
+            this.tbxClientName_pnlOrder.Location = new System.Drawing.Point(30, 135);
             this.tbxClientName_pnlOrder.Name = "tbxClientName_pnlOrder";
             this.tbxClientName_pnlOrder.ReadOnly = true;
             this.tbxClientName_pnlOrder.Size = new System.Drawing.Size(163, 20);
@@ -316,7 +394,7 @@
             // 
             // tbxClientID_pnlOrder
             // 
-            this.tbxClientID_pnlOrder.Location = new System.Drawing.Point(30, 50);
+            this.tbxClientID_pnlOrder.Location = new System.Drawing.Point(30, 97);
             this.tbxClientID_pnlOrder.Name = "tbxClientID_pnlOrder";
             this.tbxClientID_pnlOrder.ReadOnly = true;
             this.tbxClientID_pnlOrder.Size = new System.Drawing.Size(100, 20);
@@ -324,7 +402,7 @@
             // 
             // tbxTableID_pnlOrder
             // 
-            this.tbxTableID_pnlOrder.Location = new System.Drawing.Point(30, 128);
+            this.tbxTableID_pnlOrder.Location = new System.Drawing.Point(30, 174);
             this.tbxTableID_pnlOrder.Name = "tbxTableID_pnlOrder";
             this.tbxTableID_pnlOrder.ReadOnly = true;
             this.tbxTableID_pnlOrder.Size = new System.Drawing.Size(100, 20);
@@ -429,7 +507,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 46);
+            this.panel2.Size = new System.Drawing.Size(230, 41);
             this.panel2.TabIndex = 2;
             // 
             // lbxClientList
@@ -438,7 +516,7 @@
             this.lbxClientList.FormattingEnabled = true;
             this.lbxClientList.Location = new System.Drawing.Point(0, 20);
             this.lbxClientList.Name = "lbxClientList";
-            this.lbxClientList.Size = new System.Drawing.Size(226, 22);
+            this.lbxClientList.Size = new System.Drawing.Size(226, 17);
             this.lbxClientList.TabIndex = 2;
             this.lbxClientList.SelectedIndexChanged += new System.EventHandler(this.lbxClientList_SelectedIndexChanged);
             // 
@@ -699,21 +777,35 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // lockToolStripMenuItem
+            // 
+            this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
+            this.lockToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.lockToolStripMenuItem.Text = "Lock";
+            this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
@@ -777,20 +869,6 @@
             this.minimizeMenuToolStripMenuItem.Name = "minimizeMenuToolStripMenuItem";
             this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // lockToolStripMenuItem
-            // 
-            this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
-            this.lockToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.lockToolStripMenuItem.Text = "Lock";
-            this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -909,6 +987,10 @@
         private System.Windows.Forms.Button btnClearTableIDs_pnlOrder;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem;
+        private System.Windows.Forms.Label lbltime;
+        private System.Windows.Forms.ComboBox cbxOrderMinute;
+        private System.Windows.Forms.ComboBox cbxOrderHour;
+        private System.Windows.Forms.DateTimePicker dtpOrderDate;
     }
 }
 

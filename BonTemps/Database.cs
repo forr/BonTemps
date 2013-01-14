@@ -26,7 +26,7 @@ namespace BonTemps
                 foreach (Char c in str) 
                     if (Char.IsLetter(c)) hasletters = true;
 
-                if (str.Contains(" ") || hasletters)
+                if (str.Contains(" ") || hasletters && str!="NULL")
                 {
                     if (selectIndex == 0) statement += String.Format("'{0}'",str);
                     else statement += String.Format(",'{0}'", str);
@@ -73,7 +73,6 @@ namespace BonTemps
                             sqlCmd = String.Format("INSERT INTO {0} VALUES({1})", tableName.ToString(), statement); 
                             break;
                     }
-
                     sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
                     return sqlQuery.ExecuteNonQuery() == 1;
@@ -706,7 +705,7 @@ namespace BonTemps
                         {
                             Person p = new Person();
                             p.PersonID = Convert.ToUInt64(sqlDR["PersonID"]);
-                            p.MenuID = Convert.ToUInt64(sqlDR["MenuID"]);
+                            p.MenuID = (sqlDR["MenuID"] != DBNull.Value) ? Convert.ToUInt64(sqlDR["MenuID"]) : (ulong?)null;
                             p.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
                             persons.Add(p);
                         }

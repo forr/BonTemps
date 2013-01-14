@@ -106,15 +106,18 @@ namespace BonTemps
 
         private void IniReceptionist()
         {
+            this.IniTimeData();
             this.tableSize = this.GetTableWidth();
             this.FillLbxClientList(); //Load a Full List of Clients - might get to be called obsolete when integrated.
             this.pnlOverview.AutoScroll = true; //
             this.clients = new Database().GetAllClients().ToList<Client>();
             this.tables = new List<TableLayout>();
             
-            for (int i = 0; i <= new Database().GetAllTables().Count(); i++)
+            List<Table> tbs = new Database().GetAllTables();
+
+            for (int i = 0; i < tbs.Count; i++)
             {
-                tables.Add(new TableLayout(global::BonTemps.Properties.Resources.table, i, String.Empty, TableStatus.Empty));
+                tables.Add(new TableLayout(global::BonTemps.Properties.Resources.table, (int)tbs[i].TableID, String.Empty, TableStatus.Empty));
             }
             
             this.ShowTables();
@@ -130,6 +133,32 @@ namespace BonTemps
             //////}
         }
         #endregion INI's
+
+        private void IniTimeData()
+        {
+            int minuteIndex = 0;
+            int currentMinute = DateTime.Now.Minute;
+            cbxOrderHour.SelectedIndex = DateTime.Now.Hour;
+
+            if(currentMinute < 55) // if its higher then 55 minutes it resets to index 0 which it is by default
+            {
+                for(int i = 0; i < currentMinute; i++)
+                {
+                    if(i%5 == 0)
+                    {
+                        minuteIndex++;
+                        currentMinute--;
+                    }
+                }
+                if (currentMinute > 0)
+                    if (currentMinute > 2 && currentMinute != 5)
+                        minuteIndex+=2;
+                    else
+                        minuteIndex++;
+            }
+
+            cbxOrderMinute.SelectedIndex = minuteIndex;
+        }
 
         private void IniOrderView()
         {
@@ -280,14 +309,14 @@ namespace BonTemps
                 pnlTable.Location = new Point(pos_x, pos_y);
                 pnlTable.BackgroundImage = this.tables[(i - 1)].bmpTableImage;
                 pnlTable.BackgroundImageLayout = ImageLayout.Stretch;
-                pnlTable.Name = TableLayout.GetTableName("pnlTable", (i-1));
+                pnlTable.Name = TableLayout.GetTableName("pnlTable", this.tables[i-1].tableID);
                 pnlTable.BorderStyle = BorderStyle.FixedSingle;
                 pnlTable.Click += new EventHandler(this.pnlTable_Click);
 
                 Label lblTableStatus = new Label();
-                lblTableStatus.Text = TableLayout.GetTableName("pnlTable", (i - 1));
+                lblTableStatus.Text = TableLayout.GetTableName("pnlTable", this.tables[i - 1].tableID);
                 lblTableStatus.AutoSize = true;
-                lblTableStatus.Location = new Point(((pos_x + table_width) - lblTableStatus.Width) - 1, (pos_y) + 1);
+                lblTableStatus.Location = new Point((pos_x + ((table_width/2) - (lblTableStatus.Width/3 ))) - 1, (pos_y) + 1);
                 lblTableStatus.TextAlign = ContentAlignment.MiddleRight;
                 lblTableStatus.ForeColor = System.Drawing.Color.White;
                 lblTableStatus.Font = new Font(SystemFonts.CaptionFont.FontFamily, SystemFonts.CaptionFont.Size, FontStyle.Bold);
@@ -354,22 +383,15 @@ namespace BonTemps
                 }
                 catch (Exception ex) { }
 
-                if (tbxTableID_pnlOrder.Text.Contains(currentTableID.ToString() + ",") || (tbxTableID_pnlOrder.Text.Contains(currentTableID.ToString()) && (tbxTableID_pnlOrder.Text.Length == currentTableID.ToString().Length)) && !tbxTableID_pnlOrder.Text.Contains(","))
+                if (tbxTableID_pnlOrder.Text.Contains(" " + currentTableID.ToString() + ",") ||
+                    tbxTableID_pnlOrder.Text.Contains(", " + currentTableID.ToString()) ||
+                    (tbxTableID_pnlOrder.Text.Contains(currentTableID.ToString()) && (tbxTableID_pnlOrder.Text.Length == currentTableID.ToString().Length)) && !tbxTableID_pnlOrder.Text.Contains(","))
                 {
                     return;
                 }
 
                 this.tbxTableID_pnlOrder.Text += (this.tbxTableID_pnlOrder.Text == String.Empty) ?
-                    this.tables[currentTableID].tableID.ToString() : ", " + this.tables[currentTableID].tableID.ToString();
-                //this.tbxClientID_pnlOrder.Text = this.tables[currentTableID].clientID;
-                //try
-                //{
-                //    this.tbxClientName_pnlOrder.Text = this.clients[Convert.ToInt32(this.tables[currentTableID].clientID)].FirstName;
-                //}
-                //catch
-                //{
-                //    this.tbxClientName_pnlOrder.Text = "Unknown";
-                //}
+                    currentTableID.ToString() : ", " + currentTableID.ToString().ToString();
             }
             else
             {
@@ -502,7 +524,9 @@ namespace BonTemps
                 }
                 //lbxSelectedMenuItems.Items.CopyTo(orders.ToArray<String>(), 0);
 
-                DateTime TimeToInject = DateTime.Now;
+                DateTime TimeToInject = dtpOrderDate.Value;
+                TimeToInject = TimeToInject.AddHours(Convert.ToInt32(cbxOrderHour.SelectedItem) - TimeToInject.Hour);
+                TimeToInject = TimeToInject.AddMinutes(Convert.ToInt32(cbxOrderMinute.SelectedItem) - TimeToInject.Minute);
 
                 new Database().Insert(Database.TableName.Orders, new String[] { this.tbxClientID_pnlOrder.Text, TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss") });  //Injects Succesfull
                 orderid = (ulong)new Database().GetOrderID((ulong)int.Parse(this.tbxClientID_pnlOrder.Text), TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss"));
