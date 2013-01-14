@@ -29,7 +29,8 @@ namespace BonTemps
                                       this.tbxPostalCode.Text,
                                       this.tbxCity.Text,
                                       this.tbxPhoneNumber.Text,
-                                      this.tbxEmail.Text);
+                                      this.tbxEmail.Text,
+                                      0);
 
                 if (new Database().Insert(Database.TableName.Clients, c.ToString().Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)))
                 {

@@ -75,16 +75,25 @@ namespace BonTemps
                 {
                     if (CanLogin(comboBoxOccupation.Text, tbxPassword.Text))
                     {
-                        FormMain frmMain = new FormMain(comboBoxOccupation.Text, this);
-                        frmMain.Show();
-                        this.Hide();
+                        if (lblLoginStatus.Text.Contains("Account Locked"))
+                        {
+                            Application.OpenForms["FormMain"].Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            FormMain frmMain = new FormMain(comboBoxOccupation.Text, this);
+                            frmMain.Show();
+                            this.Hide();
+                            this.attempts = 0;
+                        }
                     }
-                    lblLoginStatus.Text = String.Format("Login attempt {0} of 3.", attempts);
+                    if(attempts > 0)
+                        lblLoginStatus.Text = String.Format("Login attempt {0} of 3.", attempts);
                 }
             }
             else
             {
-
                 MessageBox.Show(string.Format("Blocked {0}m:{1}s", ((TimeSpan)(blockedUntil - DateTime.Now)).Minutes, ((TimeSpan)(DateTime.Now - blockedUntil)).Seconds.ToString().Remove(0,1)));
             }
         }
@@ -126,7 +135,8 @@ namespace BonTemps
                 frmAdminControls.Show();
                 this.Hide();
             }
-            lblLoginStatus.Text = "Login Failed.";
+            else
+                lblLoginStatus.Text = "Login Failed.";
         }
 
         private void CheckEnter(object sender, KeyPressEventArgs e)

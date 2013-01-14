@@ -98,6 +98,7 @@
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlOrder.SuspendLayout();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
@@ -686,7 +687,8 @@
             this.exportClientsToolStripMenuItem2,
             this.toolStripMenuItem4,
             this.exitToolStripMenuItem2,
-            this.logoutToolStripMenuItem});
+            this.logoutToolStripMenuItem,
+            this.lockToolStripMenuItem});
             this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
             this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
@@ -782,6 +784,13 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // lockToolStripMenuItem
+            // 
+            this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
+            this.lockToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lockToolStripMenuItem.Text = "Lock";
+            this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -899,6 +908,7 @@
         private System.Windows.Forms.Label lblAmmountOfPersons_pnlOrder;
         private System.Windows.Forms.Button btnClearTableIDs_pnlOrder;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem;
     }
 }
 

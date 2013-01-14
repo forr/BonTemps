@@ -147,42 +147,42 @@ namespace BonTemps
             this.lvOrders.FullRowSelect = (initialUser == "Chef") ? true : false;
             this.lvOrders.GridLines = true;
 
-            List<Order> orderList = new Database().GetAllOrders();
-            List<Client> clientList = new Database().GetAllClients();
-            List<ListViewItem> lviList = new List<ListViewItem>();
-            foreach (TableOrder tOrder in new Database().GetAllTableOrders())
-            {
-                ListViewItem itemx = new ListViewItem(string.Format("Table {0}", tOrder.TableID), 0);
-                foreach (Order o in orderList)
-                {
-                    if (o.OrderID == tOrder.OrderID)
-                    {
-                        List<string> tempMenuSelection = new List<string>();
-                        foreach (UInt64 ui in new Database().GetMenuIDs())
-                        {
-                            tempMenuSelection.Add(Convert.ToString(ui));
-                        }
-                        string menuSelection = String.Empty;
-                        int indexMenuSelection = 0;
-                        foreach (string s in tempMenuSelection)
-                        {
-                            menuSelection += ((((indexMenuSelection % 4) == 0) && (indexMenuSelection != 0)) ? ";" : "") + "Menu nr:";
-                            if ((tempMenuSelection.Count - 1) == indexMenuSelection)
-                                menuSelection += s;
-                            else
-                                menuSelection += s + ", ";
-                            indexMenuSelection++;
-                        }
-                        itemx.SubItems.Add(menuSelection);
-                    }
-                    lviList.Add(itemx);
-                }
-            }
 
-            lvOrders.Columns.Add("Table Number", this.lvOrders.ClientSize.Width / 3, HorizontalAlignment.Left);
+            //DataTable orderList = new Database().GetAllCurrentOrders();
+            List<ListViewItem> lviList = new List<ListViewItem>();
+            ListViewItem itemx = null;
+            foreach (DataRow dr in new Database().GetAllCurrentOrders().Rows)
+            {
+                itemx = new ListViewItem(string.Format("Order nr.{0}", dr["OrderID"] ), 0);
+                itemx.Checked = (bool)dr["OrderReady"];
+
+                itemx.SubItems.Add(dr["TableID"].ToString());
+                List<string> tempMenuSelection = new List<string>();
+                foreach (UInt64 ui in new Database().GetMenuIDs())
+                {
+                    tempMenuSelection.Add(Convert.ToString(ui));
+                }
+                string menuSelection = String.Empty;
+                int indexMenuSelection = 0;
+                foreach (string s in tempMenuSelection)
+                {
+                    menuSelection += ((((indexMenuSelection % 4) == 0) && (indexMenuSelection != 0)) ? ";" : "") + "Menu nr:";
+                    if ((tempMenuSelection.Count - 1) == indexMenuSelection)
+                        menuSelection += s;
+                    else
+                        menuSelection += s + ", ";
+                    indexMenuSelection++;
+                }
+                itemx.SubItems.Add(menuSelection);
+            }
+            lviList.Add(itemx);
+
+            lvOrders.Columns.Add("Order Number", this.lvOrders.ClientSize.Width / 3, HorizontalAlignment.Left);
+            lvOrders.Columns.Add("Table Number", this.lvOrders.ClientSize.Width / 2, HorizontalAlignment.Left);
             lvOrders.Columns.Add("Ordered Menus", this.lvOrders.ClientSize.Width / 2, HorizontalAlignment.Left);
             lvOrders.Items.AddRange(lviList.ToArray<ListViewItem>());
         }
+
 
         private void IniTabData()
         {
@@ -508,16 +508,16 @@ namespace BonTemps
                 orderid = (ulong)new Database().GetOrderID((ulong)int.Parse(this.tbxClientID_pnlOrder.Text), TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss"));
                 for(int i = 0; i < int.Parse(tbxAmountOfPersons_pnlOrder.Text); i++)
                 {
-                    int tablenr = GetTableNumber(tableCount);
+                    int tableindex;
+                    int tablenr = GetTableNumber(tableCount, out tableindex);
                     if (orders.Count > i)
                         new Database().Insert(Database.TableName.Persons, new String[] { orders[i].ToString(), orderid.ToString(), tablenr.ToString() });
                     else
                         new Database().Insert(Database.TableName.Persons, new String[] { "NULL", orderid.ToString(), tablenr.ToString() });
-                    int decreasedAmountOfChairs = (Convert.ToInt32(tableCount[tablenr].AmountOfChairs) - 1);
-                    int decreasedID = (int)tableCount[tablenr].TableID;
-                    int decreasedTableNR = (int)tableCount[tablenr].TableNumber;
-                    List<Table> TempTableList = tableCount;
-                    tableCount.Clear();
+                    int decreasedAmountOfChairs = (Convert.ToInt32(tableCount[tableindex].AmountOfChairs) - 1);
+                    int decreasedID = (int)tableCount[tableindex].TableID;
+                    int decreasedTableNR = (int)tableCount[tableindex].TableNumber;
+                    List<Table> TempTableList = new List<Table>();
                     foreach (Table t in tableCount)
                     {
                         if ((int)t.TableID == tablenr)
@@ -525,8 +525,10 @@ namespace BonTemps
                         else
                             TempTableList.Add(t);
                     }
+                    tableCount.Clear();
                     tableCount.AddRange(TempTableList);
                 }
+                new Database().UpdateClientVisit(ulong.Parse(this.tbxClientID_pnlOrder.Text));
             }
             catch ( Exception ex )
             {
@@ -535,15 +537,17 @@ namespace BonTemps
             }
         }
 
-        private int GetTableNumber(List<Table> tb)
+        private int GetTableNumber(List<Table> tb, out int CurrentIndex)
         {
             for (int i = 0; i < tb.Count; i++)
             {
                 if (tb[i].AmountOfChairs > 0)
                 {
+                    CurrentIndex = i;
                     return (int)tb[i].TableID;
                 }
             }
+            CurrentIndex = -1;
             return -1;
         }
 
@@ -767,7 +771,27 @@ namespace BonTemps
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.parentForm.Show();
+
+            Control[] cs = this.parentForm.Controls.Find("tbxPassword", true);
+            cs[0].Text = String.Empty;
+
             this.Close();
+        }
+
+        private void lockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.parentForm.Show();
+
+            Control[] cs = this.parentForm.Controls.Find("lblLoginStatus", true);
+            cs[0].Text = "Account Locked";
+
+            Control[] cs2 = this.parentForm.Controls.Find("comboBoxOccupation", true);
+            cs2[0].Enabled = false;
+
+            Control[] cs3 = this.parentForm.Controls.Find("tbxPassword", true);
+            cs3[0].Text = String.Empty;
+
+            this.Hide();
         }
     }
 }

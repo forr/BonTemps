@@ -136,6 +136,31 @@ namespace BonTemps
         }
         #endregion
 
+        public bool UpdateClientVisit(ulong id)
+        {
+            string sqlCmd = string.Format("UPDATE Clients " +
+                                          "SET           Visits = " +
+                                          "(SELECT         COUNT(*) AS Visits " +
+                                          "FROM            Clients AS c INNER JOIN " +
+                                          "Orders AS o ON c.ClientID = o.ClientID " +
+                                          "WHERE           (c.ClientID={0}) " +
+                                          "GROUP BY c.ClientID) " +
+                                          "WHERE        (ClientID={1})", id, id);
+
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
+                    //sqlQuery.Parameters.AddWithValue("@cClientID", (int)id);
+                    //sqlQuery.Parameters.AddWithValue("@ClientID", (int)id);
+                    return sqlQuery.ExecuteNonQuery() == 1;
+                }
+            }
+            catch { return false; }
+        }
+
         public override List<UInt64> GetMenuIDs()
         {
             List<UInt64> menuIDs = new List<UInt64>();
@@ -190,6 +215,7 @@ namespace BonTemps
                             c.City = sqlDR["City"].ToString();
                             c.PhoneNumber = sqlDR["PhoneNumber"].ToString();
                             c.Email = sqlDR["Email"].ToString();
+                            c.Visits = (int)sqlDR["Visits"];
                             result.Add(c);
                         }
                     }
@@ -229,6 +255,7 @@ namespace BonTemps
                             c.City = sqlDR["City"].ToString();
                             c.PhoneNumber = sqlDR["PhoneNumber"].ToString();
                             c.Email = sqlDR["Email"].ToString();
+                            c.Visits = (int)sqlDR["Visits"];
                             return c;
                         }
                         result = Client.Null;
@@ -481,6 +508,7 @@ namespace BonTemps
                 return null;
             }
         }
+
         public override List<Client> GetAllClients()
         {
             List<Client> clnt = new List<Client>();
@@ -505,6 +533,7 @@ namespace BonTemps
                             c.City = sqlDR["City"].ToString();
                             c.PhoneNumber = sqlDR["PhoneNumber"].ToString();
                             c.Email = sqlDR["Email"].ToString();
+                            c.Visits = (int)sqlDR["Visits"];
                             clnt.Add(c);
                         }
                         return clnt;
@@ -514,6 +543,7 @@ namespace BonTemps
             }
             catch { return null; }
         }
+
         public override List<Menu> GetAllMenus()
         {
             List<Menu> menus = new List<Menu>();
@@ -546,7 +576,8 @@ namespace BonTemps
             }
             catch { return null; }
         }
-         public override List<Order> GetAllOrders()
+        
+        public override List<Order> GetAllOrders()
         {
             List<Order> orders = new List<Order>();
             string statement = "SELECT * FROM Orders";
@@ -575,6 +606,89 @@ namespace BonTemps
             }
             catch { return null; }
         }
+
+        public double GetTotalPrice()
+        {
+            double result = -1;
+            string statement = "SELECT SUM(m.Price) AS TotalPrice" +
+                               "FROM Clients AS c CROSS JOIN" +
+                               "Persons AS p INNER JOIN" +
+                               "Orders AS o ON p.OrderID = o.OrderID INNER JOIN" +
+                               "Menus AS m ON p.MenuID = m.MenuID" +
+                               "WHERE (c.ClientID = 2)";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        result = (double)sqlDR[0];
+                        return result;
+                    }
+                    return result;
+                }
+            }
+            catch { return result; }
+        }
+
+        public int GetVisitorCount()
+        {
+            int result = -1;
+            string statement = "SELECT COUNT(*) AS Visitors FROM Persons";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        result = (int)sqlDR[0];
+                        return result;
+                    }
+                    return result;
+                }
+            }
+            catch { return result; }
+        }
+
+        public DataTable GetAllCurrentOrders()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[] { new DataColumn("OrderID", typeof(Int32)),
+                                                   new DataColumn("MenuID",  typeof(Int32)),
+                                                   new DataColumn("TableID",  typeof(Int32)),
+                                                   new DataColumn("OrderReady",  typeof(Boolean))});
+            string statement = "SELECT p.OrderID, p.MenuID, p.TableID, t.OrderReady " +
+                               "FROM TableOrders AS t INNER JOIN " +
+                               "Persons AS p ON t.TableID = p.TableID AND t.OrderID = p.OrderID CROSS JOIN " +
+                               "Orders AS o " +
+                               "WHERE (o.Seated = 1)";
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    if (sqlConn.State == ConnectionState.Open)
+                    {
+                        SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
+                        SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                        while (sqlDR.Read())
+                        {
+                            dt.Rows.Add(sqlDR[0], sqlDR[1], sqlDR[2], sqlDR[3]);
+                        }
+                        return dt;
+                    }
+                    return null;
+                }
+            }
+            catch { return null; }
+        }
+
         public override List<Person> GetAllPersons()
         {
             List<Person> persons = new List<Person>();

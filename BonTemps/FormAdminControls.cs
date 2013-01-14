@@ -90,5 +90,10 @@ namespace BonTemps
             this.parentForm.Show();
             this.Close();
         }
+
+        private void bFlush_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

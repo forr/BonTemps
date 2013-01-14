@@ -54,6 +54,7 @@
             this.bFlush.TabIndex = 1;
             this.bFlush.Text = "Flush";
             this.bFlush.UseVisualStyleBackColor = true;
+            this.bFlush.Click += new System.EventHandler(this.bFlush_Click);
             // 
             // bChange
             // 
