@@ -22,11 +22,11 @@ namespace BonTemps
 
             foreach (string str in values)
             {
-                bool hasletters = false;
+                bool hasLetters = false;
                 foreach (Char c in str) 
-                    if (Char.IsLetter(c)) hasletters = true;
+                    if (Char.IsLetter(c)) hasLetters = true;
 
-                if (str.Contains(" ") || hasletters && str!="NULL")
+                if (str.Contains(" ") || hasLetters && str != "NULL")
                 {
                     if (selectIndex == 0) statement += String.Format("'{0}'",str);
                     else statement += String.Format(",'{0}'", str);
@@ -86,25 +86,48 @@ namespace BonTemps
             string table = String.Empty;
             string selectColumns = String.Empty;
             int selectIndex = 0;
-            foreach (string str in argsCol)
+            string idName = String.Empty;
+            switch (tableName)
             {
-                foreach (string str2 in argsVal)
-                {
-                    if (selectIndex == 0) selectColumns += String.Format("{0}='{1}'", str, str2);
-                    else selectColumns += String.Format(",{0}='{1}'", str, str2);
-                    selectIndex++;                    
-                }
+                case TableName.Menus:
+                    idName = "MenuID";
+                    break;
+                case TableName.Clients:
+                    idName = "ClientID";
+                    break;
+                case TableName.Orders:
+                    idName = "OrderID";
+                    break;
+                case TableName.Persons:
+                    idName = "PersonID";
+                    break;
+                case TableName.TableOrders:
+                    idName = "TableOrderID";
+                    break;
+                case TableName.Tables:
+                    idName = "TableID";
+                    break;
+                case TableName.Users:
+                    idName = "UserID";
+                    break;
+                default:
+                    idName = "ID";
+                    break;
+            }
+            for (int i = 0; i < argsCol.Count(); i++)
+            {
+                if (i == 0) selectColumns += String.Format("{0}='{1}'", argsCol[i], argsVal[i]);
+                else selectColumns += String.Format(",{0}='{1}'", argsCol[i], argsVal[i]);
             }
 
-            sqlCmd = "UPDATE @table SET @statement WHERE ID=@id";
+            sqlCmd = String.Format("UPDATE {0} SET {1} WHERE {2}=@id", tableName.ToString(), selectColumns, idName);
 
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
+                    sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@table", tableName.ToString());
-                    sqlQuery.Parameters.AddWithValue("@statement", selectColumns);
                     sqlQuery.Parameters.AddWithValue("@id", id);
                     return sqlQuery.ExecuteNonQuery() == 1;
                 }
@@ -139,12 +162,12 @@ namespace BonTemps
         {
             string sqlCmd = string.Format("UPDATE Clients " +
                                           "SET           Visits = " +
-                                          "(SELECT         COUNT(*) AS Visits " +
-                                          "FROM            Clients AS c INNER JOIN " +
+                                          "(SELECT       COUNT(*) AS Visits " +
+                                          "FROM          Clients AS c INNER JOIN " +
                                           "Orders AS o ON c.ClientID = o.ClientID " +
-                                          "WHERE           (c.ClientID={0}) " +
+                                          "WHERE         (c.ClientID={0}) " +
                                           "GROUP BY c.ClientID) " +
-                                          "WHERE        (ClientID={1})", id, id);
+                                          "WHERE         (ClientID={1})", id, id);
 
             try
             {
@@ -624,7 +647,8 @@ namespace BonTemps
                     {
                         SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        result = (double)sqlDR[0];
+                        while (sqlDR.Read())
+                            result = (double)sqlDR[0];
                         return result;
                     }
                     return result;
@@ -635,7 +659,7 @@ namespace BonTemps
 
         public int GetVisitorCount()
         {
-            int result = -1;
+            int result = 0;
             string statement = "SELECT COUNT(*) AS Visitors FROM Persons";
             try
             {
@@ -646,7 +670,8 @@ namespace BonTemps
                     {
                         SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
-                        result = (int)sqlDR[0];
+                        while(sqlDR.Read())
+                            result = Convert.ToInt32(sqlDR["Visitors"]);
                         return result;
                     }
                     return result;
@@ -677,9 +702,7 @@ namespace BonTemps
                         SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         while (sqlDR.Read())
-                        {
                             dt.Rows.Add(sqlDR[0], sqlDR[1], sqlDR[2], sqlDR[3]);
-                        }
                         return dt;
                     }
                     return null;

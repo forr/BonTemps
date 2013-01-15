@@ -21,10 +21,27 @@ namespace BonTemps
         public FormMain(string initialValue, Form parentForm)
         {
             this.initialUser = initialValue;
+            //this.dgvMenus.MultiSelect = false;
             this.parentForm = parentForm;
             this.InitializeComponent();
             this.InitializeFormProperties();
             this.InitializeRules();
+            this.InitializeTabManagement();
+            this.splitContainer2.SplitterDistance = 1;
+            this.lblVisitorCount.Text = new Database().GetVisitorCount().ToString();
+        }
+        private void InitializeTabManagement()
+        {
+            // @ Ryan...
+            // DGV related to Menus
+            this.dgvMenus.DataSource = new Database().GetAllMenus();
+            this.dgvMenus.ReadOnly = true;
+            this.tbxID.ReadOnly = true;
+
+            // DGV related to Users (not Clients)
+            this.dgvUsers.DataSource = new Database().GetAllUsers();
+            this.dgvUsers.ReadOnly = true;
+            this.tbxUserID.ReadOnly = true;
         }
 
         private void InitializeFormProperties()
@@ -816,6 +833,79 @@ namespace BonTemps
             cs3[0].Text = String.Empty;
 
             this.Hide();
+        }
+
+        private void dgvMenus_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+        }
+
+        private void dgvMenus_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dgvMenus.Rows[this.dgvMenus.SelectedCells[0].RowIndex].Selected = true;
+        }
+
+        private void dgvMenus_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tbxID.Text = this.dgvMenus.SelectedRows[0].Cells["MenuID"].Value.ToString();
+                this.tbxEntree.Text = this.dgvMenus.SelectedRows[0].Cells["Entree"].Value.ToString();
+                this.tbxMainCourse.Text = this.dgvMenus.SelectedRows[0].Cells["MainCourse"].Value.ToString();
+                this.tbxDessert.Text = this.dgvMenus.SelectedRows[0].Cells["Dessert"].Value.ToString();
+                this.tbxPrice.Text = this.dgvMenus.SelectedRows[0].Cells["Price"].Value.ToString();
+            }
+            catch (Exception ex) 
+            {
+                return;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            new Database().Update(Database.TableName.Menus, new string[] { "Entree", "MainCourse", "Dessert", "Price" }, new string[] { this.tbxEntree.Text, this.tbxMainCourse.Text, this.tbxDessert.Text, this.tbxPrice.Text }, Convert.ToInt32(this.tbxID.Text));
+        }
+
+        private void dgvMenus_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            new Database().Delete(Database.TableName.Menus, Convert.ToInt32(this.tbxID.Text));
+        }
+
+        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dgvUsers.Rows[this.dgvUsers.SelectedCells[0].RowIndex].Selected = true;
+        }
+
+        private void dgvUsers_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tbxUserID.Text = this.dgvUsers.SelectedRows[0].Cells["UserID"].Value.ToString();
+                this.tbxPass.Text = MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(this.dgvUsers.SelectedRows[0].Cells["Password"].Value.ToString()));
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            new Database().Update(Database.TableName.Users, new string[] { "Password" }, new string[] { MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(this.tbxPass.Text)) }, Convert.ToInt32(this.tbxUserID.Text));
+        }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            new Database().Delete(Database.TableName.Users, Convert.ToInt32(this.tbxUserID.Text));
         }
     }
 }
