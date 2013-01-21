@@ -31,11 +31,11 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblOccupation = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.comboBoxOccupation = new System.Windows.Forms.ComboBox();
             this.lblLoginStatus = new System.Windows.Forms.Label();
             this.llblAdminLogin = new System.Windows.Forms.LinkLabel();
+            this.tbxUsername = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -43,7 +43,7 @@
             this.btnLogin.Location = new System.Drawing.Point(140, 129);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 2;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -54,28 +54,28 @@
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(306, 20);
-            this.tbxPassword.TabIndex = 1;
+            this.tbxPassword.TabIndex = 2;
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(113, 158);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(127, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // lblOccupation
+            // lblUsername
             // 
-            this.lblOccupation.AutoSize = true;
-            this.lblOccupation.BackColor = System.Drawing.Color.Transparent;
-            this.lblOccupation.ForeColor = System.Drawing.Color.Black;
-            this.lblOccupation.Location = new System.Drawing.Point(21, 40);
-            this.lblOccupation.Name = "lblOccupation";
-            this.lblOccupation.Size = new System.Drawing.Size(65, 13);
-            this.lblOccupation.TabIndex = 2;
-            this.lblOccupation.Text = "Occupation:";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lblUsername.ForeColor = System.Drawing.Color.Black;
+            this.lblUsername.Location = new System.Drawing.Point(21, 40);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(58, 13);
+            this.lblUsername.TabIndex = 7;
+            this.lblUsername.Text = "Username:";
             // 
             // lblPassword
             // 
@@ -85,17 +85,8 @@
             this.lblPassword.Location = new System.Drawing.Point(21, 87);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
-            this.lblPassword.TabIndex = 2;
+            this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "Password:";
-            // 
-            // comboBoxOccupation
-            // 
-            this.comboBoxOccupation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOccupation.FormattingEnabled = true;
-            this.comboBoxOccupation.Location = new System.Drawing.Point(24, 56);
-            this.comboBoxOccupation.Name = "comboBoxOccupation";
-            this.comboBoxOccupation.Size = new System.Drawing.Size(306, 21);
-            this.comboBoxOccupation.TabIndex = 0;
             // 
             // lblLoginStatus
             // 
@@ -126,6 +117,13 @@
             this.llblAdminLogin.VisitedLinkColor = System.Drawing.Color.DarkGray;
             this.llblAdminLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAdminLogin_LinkClicked);
             // 
+            // tbxUsername
+            // 
+            this.tbxUsername.Location = new System.Drawing.Point(24, 57);
+            this.tbxUsername.Name = "tbxUsername";
+            this.tbxUsername.Size = new System.Drawing.Size(306, 20);
+            this.tbxUsername.TabIndex = 1;
+            // 
             // FormSplashScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,11 +131,11 @@
             this.BackgroundImage = global::BonTemps.Properties.Resources.splashscreen_background;
             this.ClientSize = new System.Drawing.Size(360, 240);
             this.ControlBox = false;
+            this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.llblAdminLogin);
             this.Controls.Add(this.lblLoginStatus);
-            this.Controls.Add(this.comboBoxOccupation);
             this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblOccupation);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
@@ -159,10 +157,10 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lblOccupation;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.ComboBox comboBoxOccupation;
         private System.Windows.Forms.Label lblLoginStatus;
         private System.Windows.Forms.LinkLabel llblAdminLogin;
+        private System.Windows.Forms.TextBox tbxUsername;
     }
 }

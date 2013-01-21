@@ -97,11 +97,11 @@
     <Compile Include="Login.cs" />
     <Compile Include="MD5Encryption.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="FormNewClient.cs">
+    <Compile Include="FormClientNav.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNewClient.Designer.cs">
-      <DependentUpon>FormNewClient.cs</DependentUpon>
+    <Compile Include="FormClientNav.Designer.cs">
+      <DependentUpon>FormClientNav.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs" />
     <Compile Include="Person.cs" />
@@ -119,8 +119,8 @@
     <EmbeddedResource Include="FormSplashScreen.resx">
       <DependentUpon>FormSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNewClient.resx">
-      <DependentUpon>FormNewClient.cs</DependentUpon>
+    <EmbeddedResource Include="FormClientNav.resx">
+      <DependentUpon>FormClientNav.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -17,8 +17,8 @@ namespace BonTemps
             this.attempts = 0;
             this.llblAdminLogin.Enabled = false;
             this.lblLoginStatus.ForeColor = System.Drawing.Color.Red;
-            this.FillOccupationCombobox();
-            this.ActiveControl = this.tbxPassword; // @Ryan: I've set it to focus on load, so users can type immediately
+            this.CheckForAdminControl();
+            //this.ActiveControl = this.tbxPassword; // @Ryan: I've set it to focus on load, so users can type immediately
             this.tbxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckEnter);
         }
 
@@ -59,6 +59,7 @@ namespace BonTemps
             string machineName = System.Environment.MachineName;
             DateTime? blockedUntil = null;
             bool deblock = false;
+            string employeeType = string.Empty;
 
             if (!CheckIfBlocked(machineName, out blockedUntil, out deblock))
             {
@@ -73,7 +74,7 @@ namespace BonTemps
                 }
                 else
                 {
-                    if (CanLogin(comboBoxOccupation.Text, tbxPassword.Text))
+                    if (CanLogin(tbxUsername.Text, tbxPassword.Text, out employeeType) && tbxUsername.Text != "Admin")
                     {
                         if (lblLoginStatus.Text.Contains("Account Locked"))
                         {
@@ -82,7 +83,7 @@ namespace BonTemps
                         }
                         else
                         {
-                            FormMain frmMain = new FormMain(comboBoxOccupation.Text, this);
+                            FormMain frmMain = new FormMain(employeeType, this);
                             frmMain.Show();
                             this.Hide();
                             this.attempts = 0;
@@ -98,7 +99,8 @@ namespace BonTemps
             }
         }
 
-        private void FillOccupationCombobox()
+        
+        private void CheckForAdminControl()
         {
             try
             {
@@ -110,25 +112,21 @@ namespace BonTemps
                         llblAdminLogin.Enabled = true;
                         llblAdminLogin.Text = "Admin Login(enter password).";
                     }
-                    else
-                    {
-                        comboBoxOccupation.Items.Add(u.Username);
-                        comboBoxOccupation.SelectedIndex = 0;
-                    }
                 }
             }
             catch { return; }
         }
 
-        private bool CanLogin(string name, string password)
+        private bool CanLogin(string name, string password, out string employeeType)
         {
-            if (Login.CanLogin(name, password)) return true;
+            if (Login.CanLogin(name, password, out employeeType)) return true;
             return false;
         }
 
         private void llblAdminLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (CanLogin("Admin", tbxPassword.Text))
+            string employeeType = String.Empty;
+            if (CanLogin("Admin", tbxPassword.Text, out employeeType))
             {
                 FormAdminControls frmAdminControls = new FormAdminControls(this);
                 frmAdminControls.CreateControl();

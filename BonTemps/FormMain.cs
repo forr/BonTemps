@@ -124,9 +124,7 @@ namespace BonTemps
         private void IniReceptionist()
         {
             this.IniTimeData();
-            this.tableSize = this.GetTableWidth();
             this.FillLbxClientList(); //Load a Full List of Clients - might get to be called obsolete when integrated.
-            this.pnlOverview.AutoScroll = true; //
             this.clients = new Database().GetAllClients().ToList<Client>();
             this.tables = new List<TableLayout>();
             
@@ -179,6 +177,11 @@ namespace BonTemps
 
         private void IniOrderView()
         {
+            tbxClientID_tpClientSelect.Text = "";
+            tbxClientName_tpClientSelect.Text = "";
+
+            btnEditClient_ClientSelect.Enabled = false;
+
             //Test Example for filling the lvOrders Listview:
             //
             //string[] array = new string[] { "Item 1", "Item 2", "Item 3" };
@@ -281,33 +284,6 @@ namespace BonTemps
             return new Point(Convert.ToInt32((relevantWidth / 100) * currentPanelSize), Convert.ToInt32((relevantHeight / 100) * currentPanelSize));
         }
 
-        private int GetTableWidth()
-        {
-            int screen_width = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - this.pnlOrder.Width) - 11;
-            if(screen_width < 240)
-            {
-                this.tableMultiplier = 2;
-            }
-            else if (screen_width >=240 && screen_width < 480)
-            {
-                this.tableMultiplier = 4;
-            }
-            else if (screen_width >= 480 && screen_width < 1024)
-            {
-                this.tableMultiplier = 6;
-            }
-            else if (screen_width >= 1024 && screen_width < 1440)
-            {
-                this.tableMultiplier = 8;
-            }
-            else
-            {
-                this.tableMultiplier = 10;
-            }
-
-            return ((screen_width / this.tableMultiplier) - 4);
-        }
-
         private void ShowTables()
         {
             int pos_x = 0;
@@ -364,18 +340,6 @@ namespace BonTemps
                         break;
                 }
 
-                pos_x += table_width + 2;
-
-                if (i % this.tableMultiplier == 0 && i != 0)
-                {
-                    pos_y += 2;
-                    pos_y += table_height;
-                    pos_x = 0;
-                }
-
-                this.pnlOverview.Controls.Add(lblTableStatus);
-                this.pnlOverview.Controls.Add(lblClientID);
-                this.pnlOverview.Controls.Add(pnlTable);
             }
 
             pos_y += 4;
@@ -383,7 +347,7 @@ namespace BonTemps
 
         private void pnlTable_Click(object sender, EventArgs e)
         {
-            if (tbxAmountOfPersons_pnlOrder.Text != String.Empty)
+            if (tbxAmountOfPersons_tpOrderCreation.Text != String.Empty)
             {
                 Panel pnlSender = (Panel)sender;
                 int currentTableID = 0;
@@ -400,14 +364,14 @@ namespace BonTemps
                 }
                 catch (Exception ex) { }
 
-                if (tbxTableID_pnlOrder.Text.Contains(" " + currentTableID.ToString() + ",") ||
-                    tbxTableID_pnlOrder.Text.Contains(", " + currentTableID.ToString()) ||
-                    (tbxTableID_pnlOrder.Text.Contains(currentTableID.ToString()) && (tbxTableID_pnlOrder.Text.Length == currentTableID.ToString().Length)) && !tbxTableID_pnlOrder.Text.Contains(","))
+                if (tbxTableID_tpOrderCreation.Text.Contains(" " + currentTableID.ToString() + ",") ||
+                    tbxTableID_tpOrderCreation.Text.Contains(", " + currentTableID.ToString()) ||
+                    (tbxTableID_tpOrderCreation.Text.Contains(currentTableID.ToString()) && (tbxTableID_tpOrderCreation.Text.Length == currentTableID.ToString().Length)) && !tbxTableID_tpOrderCreation.Text.Contains(","))
                 {
                     return;
                 }
 
-                this.tbxTableID_pnlOrder.Text += (this.tbxTableID_pnlOrder.Text == String.Empty) ?
+                this.tbxTableID_tpOrderCreation.Text += (this.tbxTableID_tpOrderCreation.Text == String.Empty) ?
                     currentTableID.ToString() : ", " + currentTableID.ToString().ToString();
             }
             else
@@ -490,8 +454,9 @@ namespace BonTemps
             {
                 String[] FillInfo = this.lbxClientList.GetItemText(this.lbxClientList.SelectedItem).Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
-                this.tbxClientID_pnlOrder.Text = FillInfo[0]; // ID
-                this.tbxClientName_pnlOrder.Text = FillInfo[1] + " " + FillInfo[2]; // FirstName + LastName
+                this.tbxClientID_tpClientSelect.Text = FillInfo[0]; // ID
+                this.tbxClientName_tpClientSelect.Text = FillInfo[1]; // FirstName + LastName
+                this.tbxClientVisits_ClientSelect.Text = FillInfo[7];
             }
         }
 
@@ -499,12 +464,12 @@ namespace BonTemps
         {
             try
             {
-                ulong clientid = Convert.ToUInt64(tbxClientID_pnlOrder.Text);
+                ulong clientid = Convert.ToUInt64(tbxClientID_tpOrderCreation.Text);
                 int personsCount = 0;
                 List<Table> tableCount = new List<Table>();
-                int.TryParse(tbxAmountOfPersons_pnlOrder.Text, out personsCount);
+                int.TryParse(tbxAmountOfPersons_tpOrderCreation.Text, out personsCount);
                 List<ulong> tableidList = new List<ulong>();
-                string[] TableIds = this.tbxTableID_pnlOrder.Text.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                string[] TableIds = this.tbxTableID_tpOrderCreation.Text.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (String s in TableIds)
                 {
                     tableidList.Add(Convert.ToUInt64(s));
@@ -545,9 +510,9 @@ namespace BonTemps
                 TimeToInject = TimeToInject.AddHours(Convert.ToInt32(cbxOrderHour.SelectedItem) - TimeToInject.Hour);
                 TimeToInject = TimeToInject.AddMinutes(Convert.ToInt32(cbxOrderMinute.SelectedItem) - TimeToInject.Minute);
 
-                new Database().Insert(Database.TableName.Orders, new String[] { this.tbxClientID_pnlOrder.Text, TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss") });  //Injects Succesfull
-                orderid = (ulong)new Database().GetOrderID((ulong)int.Parse(this.tbxClientID_pnlOrder.Text), TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss"));
-                for(int i = 0; i < int.Parse(tbxAmountOfPersons_pnlOrder.Text); i++)
+                new Database().Insert(Database.TableName.Orders, new String[] { this.tbxClientID_tpOrderCreation.Text, TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss") });  //Injects Succesfull
+                orderid = (ulong)new Database().GetOrderID((ulong)int.Parse(this.tbxClientID_tpOrderCreation.Text), TimeToInject.ToString("yyyy-MM-dd HH:mm:ss"), TimeToInject.AddMinutes(30).ToString("yyyy-MM-dd HH:mm:ss"));
+                for(int i = 0; i < int.Parse(tbxAmountOfPersons_tpOrderCreation.Text); i++)
                 {
                     int tableindex;
                     int tablenr = GetTableNumber(tableCount, out tableindex);
@@ -569,7 +534,7 @@ namespace BonTemps
                     tableCount.Clear();
                     tableCount.AddRange(TempTableList);
                 }
-                new Database().UpdateClientVisit(ulong.Parse(this.tbxClientID_pnlOrder.Text));
+                new Database().UpdateClientVisit(ulong.Parse(this.tbxClientID_tpOrderCreation.Text));
             }
             catch ( Exception ex )
             {
@@ -594,7 +559,8 @@ namespace BonTemps
 
         private void btnSelectMenuItems_Click(object sender, EventArgs e)
         {
-            this.tctrlInterface.SelectedTab = this.tpMenuSelection;
+            this.tpMenuSelection.Enabled = true;
+            this.tctrlCreateOrder.SelectedTab = this.tpMenuSelection;
         }
 
         private Panel DisplayMenuItems()
@@ -712,7 +678,7 @@ namespace BonTemps
         {
             if (initialUser == "Receptionist")
             {
-                this.tctrlInterface.SelectedTab = this.tpNewOrder;
+                this.tctrlCreateOrder.SelectedTab = this.tpTableSelection;
                 this.lbxSelectedMenuItems.Items.Clear();
             }
 
@@ -749,7 +715,7 @@ namespace BonTemps
 
         private void btnNewClient_Click(object sender, EventArgs e)
         {
-            FormNewClient frmNewClient = new FormNewClient(this);
+            FormClientNav frmNewClient = new FormClientNav(this);
             frmNewClient.CreateControl();
             frmNewClient.Show();
         }
@@ -806,7 +772,7 @@ namespace BonTemps
 
         private void btnClearTableIDs_pnlOrder_Click(object sender, EventArgs e)
         {
-            this.tbxTableID_pnlOrder.Text = String.Empty;
+            this.tbxTableID_tpOrderCreation.Text = String.Empty;
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -906,6 +872,74 @@ namespace BonTemps
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
             new Database().Delete(Database.TableName.Users, Convert.ToInt32(this.tbxUserID.Text));
+        }
+
+        private void btnEditClient_Click(object sender, EventArgs e)
+        {
+            if (lbxClientList.SelectedItem != null)
+            {
+                FormClientNav frmClientNav = new FormClientNav(this, true, int.Parse(this.tbxClientID_tpClientSelect.Text));
+                frmClientNav.Show();
+            }
+        }
+
+        private void btnClientSelect_OK_Click(object sender, EventArgs e)
+        {
+            this.tbxClientID_tpOrderCreation.Text = tbxClientID_tpClientSelect.Text;
+            this.tbxClientName_tpOrderCreation.Text = tbxClientName_tpClientSelect.Text;
+
+            this.tbxClientID_tpClientSelect.Text = "";
+            this.tbxClientName_tpClientSelect.Text = "";
+
+            this.btnEditClient_ClientSelect.Enabled = false;
+
+            this.tpOrderCreation.Enabled = true;
+            this.tctrlCreateOrder.SelectedTab = this.tpOrderCreation;
+        }
+
+        private void btnClientSelect_Cancel_Click(object sender, EventArgs e)
+        {
+            this.tbxClientID_tpClientSelect.Text = "";
+            this.tbxClientName_tpClientSelect.Text = "";
+
+            this.btnEditClient_ClientSelect.Enabled = false;
+        }
+
+        private void tbxClientID_tpClientSelect_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxClientID_tpClientSelect.Text != String.Empty)
+            {
+                this.btnEditClient_ClientSelect.Enabled = true;
+            }
+            else
+            {
+                this.btnEditClient_ClientSelect.Enabled = false;
+            }
+        }
+
+        private void tpNewOrder_Enter(object sender, EventArgs e)
+        {
+            this.tpClientSelect.Enabled = true;
+            this.tpOrderCreation.Enabled = false;
+            this.tpMenuSelection.Enabled = false;
+            this.tpTableSelection.Enabled = false;
+        }
+
+        private void btnDeleteClient_ClientSelect_Click(object sender, EventArgs e)
+        {
+            if (int.Parse(this.tbxClientVisits_ClientSelect.Text) == 0)
+            {
+                if (new Database().Delete(Database.TableName.Clients, int.Parse(this.tbxClientID_tpClientSelect.Text)))
+                {
+                    MessageBox.Show("Succesfully deleted the current user.");
+                    this.FillLbxClientList();
+                    this.btnClientSelect_Cancel_Click(sender, e);
+                }
+                else
+                    MessageBox.Show("Failed to Delete current client.");
+            }
+            else
+                MessageBox.Show("You may only delete those that aren't listed (A client with 0 visits).", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
     }
 }

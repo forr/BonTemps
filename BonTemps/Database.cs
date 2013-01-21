@@ -139,10 +139,36 @@ namespace BonTemps
             string sqlCmd = String.Empty;
             string table = String.Empty;
             string selectColumns = String.Empty;
-
-
-            if (tableName == TableName.AccessDenied) sqlCmd = "DELETE FROM AccessDenied WHERE BlockedID=@id";
-            else sqlCmd = String.Format("DELETE FROM {0} WHERE ID=@id", tableName.ToString());
+            switch (tableName)
+            {
+                case TableName.AccessDenied:
+                    sqlCmd = "DELETE FROM AccessDenied WHERE BlockedID=@id";
+                    break;
+                case TableName.Menus:
+                    sqlCmd = "DELETE FROM Menus WHERE MenuID=@id";
+                    break;
+                case TableName.Clients:
+                    sqlCmd = "DELETE FROM Clients WHERE ClientID=@id";
+                    break;
+                case TableName.Orders:
+                    sqlCmd = "DELETE FROM Orders WHERE OrderID=@id";
+                    break;
+                case TableName.Persons:
+                    sqlCmd = "DELETE FROM Persons WHERE PersonID=@id";
+                    break;
+                case TableName.TableOrders:
+                    sqlCmd = "DELETE FROM TableOrders WHERE TableOrderID=@id";
+                    break;
+                case TableName.Tables:
+                    sqlCmd = "DELETE FROM Tables WHERE TableID=@id";
+                    break;
+                case TableName.Users:
+                    sqlCmd = "DELETE FROM Users WHERE UserID=@id";
+                    break;
+                default:
+                    sqlCmd = String.Format("DELETE FROM {0} WHERE ID=@id", tableName.ToString());
+                    break;
+            }
 
             try
             {
@@ -264,7 +290,7 @@ namespace BonTemps
                     if (sqlConn.State == ConnectionState.Open)
                     {
                         SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", clientID);
+                        sqlQuery.Parameters.AddWithValue("@ID", (int)clientID);
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         if (sqlDR.Read())
                         {
@@ -829,18 +855,25 @@ namespace BonTemps
         
         #endregion
 
-        public override bool IsPasswordValid(string employeeType, string password)
+        public override bool IsPasswordValid(string username, string password, out string employeeType)
         {
-            string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";
+            string statement = "SELECT EmployeeType,Password FROM Users WHERE (UserName=@username)";
+            employeeType = "";
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
                     sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@employeeType", employeeType);
+                    sqlQuery.Parameters.AddWithValue("@username", username);
+                    string pwd = String.Empty;
 
-                    string pwd = (string)sqlQuery.ExecuteScalar();
+                    SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                    while (sqlDR.Read())
+                    {
+                        pwd = sqlDR["Password"].ToString();
+                        employeeType = sqlDR["EmployeeType"].ToString();
+                    }
 
                     return pwd == password;
                 }

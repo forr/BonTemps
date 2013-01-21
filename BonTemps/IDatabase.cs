@@ -31,7 +31,7 @@ namespace BonTemps
         List<Table> GetAllTables();
         List<User> GetAllUsers();
 
-        bool IsPasswordValid(string employeeType, string password);
+        bool IsPasswordValid(string username, string password, out string employeeType);
         bool IsEmailValid(string email);
         bool IsPhoneNumberValid(string phoneNumber);
     }

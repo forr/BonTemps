@@ -36,18 +36,25 @@ namespace BonTemps
         public abstract List<Table> GetAllTables();
         public abstract List<User> GetAllUsers();
 
-        public virtual bool IsPasswordValid(string employeeType, string password)
+        public virtual bool IsPasswordValid(string username, string password, out string employeeType)
         {
-            string statement = "SELECT Password FROM Users WHERE (EmployeeType=@employeeType)";
+            string statement = "SELECT EmployeeType,Password FROM Users WHERE (UserName=@username)";
+            employeeType = "";
             try
             {
                 using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
                 {
                     sqlConn.Open();
                     SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                    sqlQuery.Parameters.AddWithValue("@employeeType", employeeType);
+                    sqlQuery.Parameters.AddWithValue("@username", username);
+                    string pwd = String.Empty;
 
-                    string pwd = (string)sqlQuery.ExecuteScalar();
+                    SqlDataReader sqlDR = sqlQuery.ExecuteReader();
+                    while (sqlDR.Read())
+                    {
+                        pwd = sqlDR["Password"].ToString();
+                        employeeType = sqlDR["EmployeeType"].ToString();
+                    }
 
                     return pwd == password;
                 }

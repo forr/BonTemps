@@ -1,6 +1,6 @@
 ﻿namespace BonTemps
 {
-    partial class FormNewClient
+    partial class FormClientNav
     {
         /// <summary>
         /// Required designer variable.
@@ -178,11 +178,12 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // FormNewClient
+            // FormClientNav
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(258, 324);
+            this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.tbxEmail);
@@ -199,8 +200,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "FormNewClient";
-            this.Text = "NewClient";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "FormClientNav";
+            this.Text = "Client NAV";
             this.ResumeLayout(false);
             this.PerformLayout();
 

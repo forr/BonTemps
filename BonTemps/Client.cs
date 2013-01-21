@@ -65,9 +65,9 @@ namespace BonTemps
         {
             object[] info = new object[] { 
                 this.clientID.ToString(), this.firstName, this.lastName, this.address, 
-                this.postalCode, this.city, this.phoneNumber, this.email 
+                this.postalCode, this.city, this.phoneNumber, this.email, this.visits.ToString()
             };
-            return String.Format("{0},{1} {2},{3},{4},{5},{6},{7}", info);
+            return String.Format("{0},{1} {2},{3},{4},{5},{6},{7},{8}", info);
         } 
     }
 }
