@@ -70,7 +70,7 @@ namespace BonTemps
                 if (this.attempts == 3)
                 {
                     new Database().Insert(Database.TableName.AccessDenied, new string[] { "'" + machineName + "'", "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'", "'" + DateTime.Now.AddMinutes(15).ToString("yyyy-MM-dd HH:mm:ss") + "'" });
-                    lblLoginStatus.Text=("Login Blocked.");
+                    lblLoginStatus.Text = ("Login Blocked.");
                 }
                 else
                 {
@@ -89,17 +89,17 @@ namespace BonTemps
                             this.attempts = 0;
                         }
                     }
-                    if(attempts > 0)
+                    if (attempts > 0)
                         lblLoginStatus.Text = String.Format("Login attempt {0} of 3.", attempts);
                 }
             }
             else
             {
-                MessageBox.Show(string.Format("Blocked {0}m:{1}s", ((TimeSpan)(blockedUntil - DateTime.Now)).Minutes, ((TimeSpan)(DateTime.Now - blockedUntil)).Seconds.ToString().Remove(0,1)));
+                MessageBox.Show(string.Format("Blocked {0}m:{1}s", ((TimeSpan)(blockedUntil - DateTime.Now)).Minutes, ((TimeSpan)(DateTime.Now - blockedUntil)).Seconds.ToString().Remove(0, 1)));
             }
         }
 
-        
+
         private void CheckForAdminControl()
         {
             try

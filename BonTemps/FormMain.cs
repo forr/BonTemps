@@ -14,34 +14,58 @@ namespace BonTemps
         private Form parentForm;
         private string initialUser;
         private int tableSize = 0;
-        private int tableMultiplier = 0;
         private List<Client> clients;
         private List<TableLayout> tables;
 
         public FormMain(string initialValue, Form parentForm)
         {
             this.initialUser = initialValue;
-            //this.dgvMenus.MultiSelect = false;
             this.parentForm = parentForm;
             this.InitializeComponent();
             this.InitializeFormProperties();
             this.InitializeRules();
             this.InitializeTabManagement();
-            this.splitContainer2.SplitterDistance = 1;
-            this.lblVisitorCount.Text = new Database().GetVisitorCount().ToString();
         }
         private void InitializeTabManagement()
         {
-            // @ Ryan...
-            // DGV related to Menus
-            this.dgvMenus.DataSource = new Database().GetAllMenus();
-            this.dgvMenus.ReadOnly = true;
-            this.tbxID.ReadOnly = true;
+            this.rbEditMenus.Select();
+            this.dgvEditTables.DataSource = new Database().GetAllMenus();
+            int x = this.dgvEditTables.Location.X;
+            int y = this.dgvEditTables.Location.Y + this.dgvEditTables.ClientSize.Height + 20;
+            string[] lblText = new string[] { "Menu ID", "Entree", "Main Course", "Dessert", "Price" };
+            for (int i = 0; i < 6; i++)
+            {
+                TextBox txtbx = new TextBox();
+                Label lbl = new Label();
+                txtbx.Name = String.Format("txtbxEditItem{0}", i);
+                lbl.Name = String.Format("lblEditItem{0}", i);
 
-            // DGV related to Users (not Clients)
-            this.dgvUsers.DataSource = new Database().GetAllUsers();
-            this.dgvUsers.ReadOnly = true;
-            this.tbxUserID.ReadOnly = true;
+                if (i != 0)
+                {
+                    Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
+                    ctrlLbl[0].Text = lblText[i - 1];
+
+                    Control[] ctrlTbx = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
+
+                    if ((i + 1) % 2 == 0)
+                    {
+                        x += (this.dgvEditTables.ClientSize.Width / 2) + 4;
+                        y = ctrlTbx[0].Location.Y;
+                    }
+                    else
+                        y = (ctrlTbx[0].Location.Y + ctrlTbx[0].ClientSize.Height + 8);
+                }
+                lbl.Location = new Point(x, y);
+                lbl.AutoSize = true;
+                txtbx.Location = new Point(x + 2 + lbl.ClientSize.Width, y);
+
+                if (i != 5)
+                {
+                    this.tpManagement.Controls.Add(txtbx);
+                    this.tpManagement.Controls.Add(lbl);
+                    x = this.dgvEditTables.Location.X;
+                }
+            }
         }
 
         private void InitializeFormProperties()
@@ -155,11 +179,11 @@ namespace BonTemps
             int currentMinute = DateTime.Now.Minute;
             cbxOrderHour.SelectedIndex = DateTime.Now.Hour;
 
-            if(currentMinute < 55) // if its higher then 55 minutes it resets to index 0 which it is by default
+            if (currentMinute < 55) // if its higher then 55 minutes it resets to index 0 which it is by default
             {
-                for(int i = 0; i < currentMinute; i++)
+                for (int i = 0; i < currentMinute; i++)
                 {
-                    if(i%5 == 0)
+                    if (i % 5 == 0)
                     {
                         minuteIndex++;
                         currentMinute--;
@@ -167,7 +191,7 @@ namespace BonTemps
                 }
                 if (currentMinute > 0)
                     if (currentMinute > 2 && currentMinute != 5)
-                        minuteIndex+=2;
+                        minuteIndex += 2;
                     else
                         minuteIndex++;
             }
@@ -749,10 +773,6 @@ namespace BonTemps
         {
             return 0;
         }
-        private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
-        {
-            this.CenterControls(splitContainer1.Panel1);
-        }
 
         private void CenterControls(Control p)
         {
@@ -799,79 +819,6 @@ namespace BonTemps
             cs3[0].Text = String.Empty;
 
             this.Hide();
-        }
-
-        private void dgvMenus_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-        }
-
-        private void dgvMenus_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.dgvMenus.Rows[this.dgvMenus.SelectedCells[0].RowIndex].Selected = true;
-        }
-
-        private void dgvMenus_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                this.tbxID.Text = this.dgvMenus.SelectedRows[0].Cells["MenuID"].Value.ToString();
-                this.tbxEntree.Text = this.dgvMenus.SelectedRows[0].Cells["Entree"].Value.ToString();
-                this.tbxMainCourse.Text = this.dgvMenus.SelectedRows[0].Cells["MainCourse"].Value.ToString();
-                this.tbxDessert.Text = this.dgvMenus.SelectedRows[0].Cells["Dessert"].Value.ToString();
-                this.tbxPrice.Text = this.dgvMenus.SelectedRows[0].Cells["Price"].Value.ToString();
-            }
-            catch (Exception ex) 
-            {
-                return;
-            }
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            new Database().Update(Database.TableName.Menus, new string[] { "Entree", "MainCourse", "Dessert", "Price" }, new string[] { this.tbxEntree.Text, this.tbxMainCourse.Text, this.tbxDessert.Text, this.tbxPrice.Text }, Convert.ToInt32(this.tbxID.Text));
-        }
-
-        private void dgvMenus_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            new Database().Delete(Database.TableName.Menus, Convert.ToInt32(this.tbxID.Text));
-        }
-
-        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.dgvUsers.Rows[this.dgvUsers.SelectedCells[0].RowIndex].Selected = true;
-        }
-
-        private void dgvUsers_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                this.tbxUserID.Text = this.dgvUsers.SelectedRows[0].Cells["UserID"].Value.ToString();
-                this.tbxPass.Text = MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(this.dgvUsers.SelectedRows[0].Cells["Password"].Value.ToString()));
-            }
-            catch (Exception ex)
-            {
-                return;
-            }
-        }
-
-        private void btnUpdateUser_Click(object sender, EventArgs e)
-        {
-            new Database().Update(Database.TableName.Users, new string[] { "Password" }, new string[] { MD5Encryption.MD5HashToString(MD5Encryption.CreateMD5Hash(this.tbxPass.Text)) }, Convert.ToInt32(this.tbxUserID.Text));
-        }
-
-        private void btnDeleteUser_Click(object sender, EventArgs e)
-        {
-            new Database().Delete(Database.TableName.Users, Convert.ToInt32(this.tbxUserID.Text));
         }
 
         private void btnEditClient_Click(object sender, EventArgs e)
@@ -940,6 +887,30 @@ namespace BonTemps
             }
             else
                 MessageBox.Show("You may only delete those that aren't listed (A client with 0 visits).", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (this.rbEditMenus.Checked)
+            {
+                if (this.ProcessInfoMenu()) MessageBox.Show("Menu information successfully updated.");
+                else MessageBox.Show("Menu information update failed.");
+            }
+            else
+            {
+                if (this.ProcessInfoUsers()) MessageBox.Show("User information successfully updated.");
+                else MessageBox.Show("User information update failed.");
+            }
+        }
+
+        private bool ProcessInfoMenu()
+        {
+            Control[] ctrlTbx = this.Controls.Find("");
+        }
+
+        private bool ProcessInfoUsers()
+        {
+
         }
     }
 }
