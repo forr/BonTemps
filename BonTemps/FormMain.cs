@@ -87,19 +87,6 @@ namespace BonTemps
             {
                 this.IniTabData(); //Removes all Unrelated Tabpages for the current user.
                 this.IniOrderView(); //Displays all current orders and is allowed to be seen by everyone.
-                
-                foreach (Table t in new Database().GetAllTables())
-                {
-                    this.comboBox1.Items.Add(t.TableNumber);
-                    try
-                    {
-                        this.comboBox1.SelectedIndex = 0;
-                    }
-                    catch
-                    {
-                        return;
-                    }
-                }
 
                 switch (initialUser)
                 {
@@ -147,19 +134,12 @@ namespace BonTemps
 
         private void IniReceptionist()
         {
+            this.tableSize = this.GetTableWidth();
             this.IniTimeData();
             this.FillLbxClientList(); //Load a Full List of Clients - might get to be called obsolete when integrated.
             this.clients = new Database().GetAllClients().ToList<Client>();
             this.tables = new List<TableLayout>();
-            
-            List<Table> tbs = new Database().GetAllTables();
-
-            for (int i = 0; i < tbs.Count; i++)
-            {
-                tables.Add(new TableLayout(global::BonTemps.Properties.Resources.table, (int)tbs[i].TableID, String.Empty, TableStatus.Empty));
-            }
-            
-            this.ShowTables();
+            this.CreateTableLayoutData();
 
             for (int i = 0; i < this.DisplayMenuItems().Controls.Count; i++)
             {
@@ -171,6 +151,48 @@ namespace BonTemps
             //////    this.fillLbxClientList();
             //////}
         }
+
+        private void CreateTableLayoutData()
+        {
+            tables.Clear();
+            List<TableOrder> tbo = new Database().GetAllTableOrders();
+            List<Table> tbs = new Database().GetAllTables();
+
+            for (int i = 0; i < tbs.Count; i++)
+            {
+                TableStatus tableStatus = TableStatus.Empty;
+                string clientID = String.Empty;
+
+                for (int j = 0; j < tbo.Count; j++)
+                {
+                    if (tbo[j].TableID == tbs[i].TableID)
+                    {
+                        Order o = new Database().GetOrder((ulong)tbo[j].OrderID);
+                        if (o.Payed == true)
+                            tableStatus = TableStatus.Empty;
+                        else
+                        {
+                            if (o.StartDateTime > DateTime.Now)
+                                tableStatus = TableStatus.NotOnTime;
+                            else
+                            {
+                                if (o.Seated == true)
+                                    tableStatus = TableStatus.OnTime;
+                                else
+                                    tableStatus = TableStatus.Ordered;
+                            }
+                        }
+
+                        clientID = new Database().GetOrder((ulong)tbo[j].OrderID).ClientID.ToString();
+                    }
+                }
+
+                tables.Add(new TableLayout((int)tbs[i].TableID, clientID, tableStatus));
+            }
+
+            this.ShowTables();
+        }
+
         #endregion INI's
 
         private void IniTimeData()
@@ -308,6 +330,17 @@ namespace BonTemps
             return new Point(Convert.ToInt32((relevantWidth / 100) * currentPanelSize), Convert.ToInt32((relevantHeight / 100) * currentPanelSize));
         }
 
+        private int GetTableWidth()
+        {
+            int screen_width = (this.pnlOverview.Width) - 11;
+
+            this.tableMultiplier = 10;
+
+            int table_width = ((screen_width / this.tableMultiplier) - 4);
+
+            return table_width;
+        }
+
         private void ShowTables()
         {
             int pos_x = 0;
@@ -324,46 +357,63 @@ namespace BonTemps
                 pnlTable.Width = table_width;
                 pnlTable.Height = table_height;
                 pnlTable.Location = new Point(pos_x, pos_y);
-                pnlTable.BackgroundImage = this.tables[(i - 1)].bmpTableImage;
-                pnlTable.BackgroundImageLayout = ImageLayout.Stretch;
-                pnlTable.Name = TableLayout.GetTableName("pnlTable", this.tables[i-1].tableID);
+                pnlTable.BackColor = System.Drawing.Color.Blue;
+                pnlTable.Name = TableLayout.GetTableName("pnlTable", this.tables[i - 1].tableID);
                 pnlTable.BorderStyle = BorderStyle.FixedSingle;
                 pnlTable.Click += new EventHandler(this.pnlTable_Click);
 
                 Label lblTableStatus = new Label();
-                lblTableStatus.Text = TableLayout.GetTableName("pnlTable", this.tables[i - 1].tableID);
+                lblTableStatus.Text = TableLayout.GetTableName("pnlTable", (i - 1));
                 lblTableStatus.AutoSize = true;
-                lblTableStatus.Location = new Point((pos_x + ((table_width/2) - (lblTableStatus.Width/3 ))) - 1, (pos_y) + 1);
+                lblTableStatus.Location = new Point(pos_x + (this.tableSize / 2) - 24, pos_y);
                 lblTableStatus.TextAlign = ContentAlignment.MiddleRight;
                 lblTableStatus.ForeColor = System.Drawing.Color.White;
                 lblTableStatus.Font = new Font(SystemFonts.CaptionFont.FontFamily, SystemFonts.CaptionFont.Size, FontStyle.Bold);
+                //lblTableStatus.BackColor = Color.White;
 
                 Label lblClientID = new Label();
                 Point pLblClientID = this.GetClientIDLocation();
-                lblClientID.Location = new Point(((pos_x + pLblClientID.X) - (lblClientID.Width/2)), (pos_y + pLblClientID.Y));
+                lblClientID.Location = new Point(((pos_x + pLblClientID.X) - (lblClientID.Width / 2)), (pos_y + pLblClientID.Y));
                 lblClientID.TextAlign = ContentAlignment.MiddleCenter;
                 lblClientID.ForeColor = System.Drawing.Color.Black;
                 lblClientID.BackColor = System.Drawing.Color.White;
                 lblClientID.Text = this.tables[(i - 1)].clientID;
+                lblClientID.AutoSize = true;
 
                 switch (this.tables[(i - 1)].tableStatus)
                 {
                     case TableStatus.Empty:
+                        pnlTable.BackColor = System.Drawing.Color.Blue;
                         lblTableStatus.BackColor = System.Drawing.Color.Blue;
                         break;
                     case TableStatus.NotOnTime:
-                        lblTableStatus.BackColor = System.Drawing.Color.FromArgb(255,99,25);
+                        pnlTable.BackColor = System.Drawing.Color.FromArgb(255, 99, 25);
+                        lblTableStatus.BackColor = System.Drawing.Color.FromArgb(255, 99, 25);
                         lblClientID.ForeColor = System.Drawing.Color.White;
                         lblClientID.BackColor = System.Drawing.Color.Red;
                         break;
                     case TableStatus.OnTime:
+                        pnlTable.BackColor = System.Drawing.Color.Green;
                         lblTableStatus.BackColor = System.Drawing.Color.Green;
                         break;
                     case TableStatus.Ordered:
+                        pnlTable.BackColor = System.Drawing.Color.DarkRed;
                         lblTableStatus.BackColor = System.Drawing.Color.DarkRed;
                         break;
                 }
 
+                pos_x += table_width + 2;
+
+                if (i % this.tableMultiplier == 0 && i != 0)
+                {
+                    pos_y += 2;
+                    pos_y += table_height;
+                    pos_x = 0;
+                }
+
+                this.pnlOverview.Controls.Add(lblTableStatus);
+                this.pnlOverview.Controls.Add(lblClientID);
+                this.pnlOverview.Controls.Add(pnlTable);
             }
 
             pos_y += 4;
@@ -558,7 +608,26 @@ namespace BonTemps
                     tableCount.Clear();
                     tableCount.AddRange(TempTableList);
                 }
+                foreach (Table tb in tableCount)
+                {
+                    new Database().Insert(Database.TableName.TableOrders, new String[] { tb.TableID.ToString(), orderid.ToString(), false.ToString() });
+                }
                 new Database().UpdateClientVisit(ulong.Parse(this.tbxClientID_tpOrderCreation.Text));
+                this.pnlOverview.Controls.Clear();
+                this.pnlOverview.Update();
+                this.CreateTableLayoutData();
+
+
+                this.tpClientSelect.Enabled = true;
+                this.tpOrderCreation.Enabled = false;
+                this.tpMenuSelection.Enabled = false;
+                this.tpTableSelection.Enabled = false;
+
+                this.tctrlCreateOrder.SelectedTab = this.tpClientSelect;
+
+                MessageBox.Show("Order Succesful,\n"+
+                                "Mr./Ms. " + new Database().GetClient(clientid).LastName + "\n" +
+                                "Can seat around " + new Database().GetOrder((ulong)orderid).StartDateTime.Value.TimeOfDay.ToString(), "Order Succesfull", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1 );
             }
             catch ( Exception ex )
             {
@@ -703,6 +772,7 @@ namespace BonTemps
             if (initialUser == "Receptionist")
             {
                 this.tctrlCreateOrder.SelectedTab = this.tpTableSelection;
+                this.tpTableSelection.Enabled = true;
                 this.lbxSelectedMenuItems.Items.Clear();
             }
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+<<<<<<< HEAD
             this.tctrlInterface = new System.Windows.Forms.TabControl();
             this.tctrlCreateOrder = new System.Windows.Forms.TabControl();
             this.tpTableSelection = new System.Windows.Forms.TabPage();
@@ -83,6 +84,90 @@
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alterMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkStockedSuppliesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportClientsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.tpManagement = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.tbxPass = new System.Windows.Forms.TextBox();
+            this.tbxUserID = new System.Windows.Forms.TextBox();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.lblEditUsers = new System.Windows.Forms.Label();
+            this.tbxID = new System.Windows.Forms.TextBox();
+            this.btnDeleteMenu = new System.Windows.Forms.Button();
+            this.btnUpdateMenu = new System.Windows.Forms.Button();
+            this.tbxPrice = new System.Windows.Forms.TextBox();
+            this.tbxDessert = new System.Windows.Forms.TextBox();
+            this.tbxMainCourse = new System.Windows.Forms.TextBox();
+            this.tbxEntree = new System.Windows.Forms.TextBox();
+            this.dgvMenus = new System.Windows.Forms.DataGridView();
+            this.lblEditMenus = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lblCountVisitors = new System.Windows.Forms.Label();
+            this.lblVisitorCount = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tpOrders = new System.Windows.Forms.TabPage();
+            this.lvOrders = new System.Windows.Forms.ListView();
+            this.tpNewOrder = new System.Windows.Forms.TabPage();
+            this.tctrlCreateOrder = new System.Windows.Forms.TabControl();
+            this.tpClientSelect = new System.Windows.Forms.TabPage();
+            this.btnClientSelect_Cancel = new System.Windows.Forms.Button();
+            this.btnClientSelect_OK = new System.Windows.Forms.Button();
+            this.lblClientList = new System.Windows.Forms.Label();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.lblClientName_ClientSelect = new System.Windows.Forms.Label();
+            this.tbxClientName_tpClientSelect = new System.Windows.Forms.TextBox();
+            this.lblClientVisits_ClientSelect = new System.Windows.Forms.Label();
+            this.tbxClientVisits_ClientSelect = new System.Windows.Forms.TextBox();
+            this.lblClientID_ClientSelect = new System.Windows.Forms.Label();
+            this.tbxClientID_tpClientSelect = new System.Windows.Forms.TextBox();
+            this.lbxClientList = new System.Windows.Forms.ListBox();
+            this.tbxSearchName = new System.Windows.Forms.TextBox();
+            this.plnSearchName = new System.Windows.Forms.Panel();
+            this.btnEditClient_ClientSelect = new System.Windows.Forms.Button();
+            this.btnDeleteClient_ClientSelect = new System.Windows.Forms.Button();
+            this.btnNewClient_ClientSelect = new System.Windows.Forms.Button();
+            this.tpOrderCreation = new System.Windows.Forms.TabPage();
+            this.tbxAmountOfPersons_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.lbltime = new System.Windows.Forms.Label();
+            this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
+            this.btnSelectMenuItems = new System.Windows.Forms.Button();
+            this.cbxOrderMinute = new System.Windows.Forms.ComboBox();
+            this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
+            this.cbxOrderHour = new System.Windows.Forms.ComboBox();
+            this.lblClientName_pnlOrder = new System.Windows.Forms.Label();
+            this.lblClientID_pnlOrder = new System.Windows.Forms.Label();
+            this.tbxClientID_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.tbxClientName_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.tpMenuSelection = new System.Windows.Forms.TabPage();
+            this.pnlMenuSelectContainer = new System.Windows.Forms.Panel();
+            this.btnSetOrder = new System.Windows.Forms.Button();
+            this.tpTableSelection = new System.Windows.Forms.TabPage();
+            this.pnlOverview = new System.Windows.Forms.Panel();
+            this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
+            this.lbl1_pnlOrder = new System.Windows.Forms.Label();
+            this.lblTableID_pnlOrder = new System.Windows.Forms.Label();
+            this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
+            this.tbxTableID_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.btnCreateNewOrder = new System.Windows.Forms.Button();
+            this.btnCancelNewOrder = new System.Windows.Forms.Button();
+            this.tctrlInterface = new System.Windows.Forms.TabControl();
+            this.menuMain = new System.Windows.Forms.MenuStrip();
+>>>>>>> Version 3.01
             this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
@@ -91,6 +176,7 @@
             this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.menuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,9 +197,28 @@
             this.dgvEditTables = new System.Windows.Forms.DataGridView();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tctrlInterface.SuspendLayout();
+=======
+            this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tpManagement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMenus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.tpOrders.SuspendLayout();
+            this.tpNewOrder.SuspendLayout();
+>>>>>>> Version 3.01
             this.tctrlCreateOrder.SuspendLayout();
             this.tpTableSelection.SuspendLayout();
             this.tpMenuSelection.SuspendLayout();
+<<<<<<< HEAD
             this.pnlMenuSelectionTableInfo.SuspendLayout();
             this.tpOrderCreation.SuspendLayout();
             this.tpClientSelect.SuspendLayout();
@@ -122,6 +227,11 @@
             this.tpManagement.SuspendLayout();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditTables)).BeginInit();
+=======
+            this.tpTableSelection.SuspendLayout();
+            this.tctrlInterface.SuspendLayout();
+            this.menuMain.SuspendLayout();
+>>>>>>> Version 3.01
             this.SuspendLayout();
             // 
             // tctrlInterface
@@ -230,6 +340,7 @@
             // 
             // lbxSelectedMenuItems
             // 
+<<<<<<< HEAD
             this.lbxSelectedMenuItems.FormattingEnabled = true;
             this.lbxSelectedMenuItems.Location = new System.Drawing.Point(9, 32);
             this.lbxSelectedMenuItems.Name = "lbxSelectedMenuItems";
@@ -397,6 +508,20 @@
             this.dtpOrderDate.TabIndex = 9;
             // 
             // cbxOrderMinute
+=======
+            // tpManagement
+            // 
+            this.tpManagement.BackColor = System.Drawing.Color.Transparent;
+            this.tpManagement.Controls.Add(this.splitContainer1);
+            this.tpManagement.Controls.Add(this.label2);
+            this.tpManagement.Location = new System.Drawing.Point(4, 22);
+            this.tpManagement.Name = "tpManagement";
+            this.tpManagement.Padding = new System.Windows.Forms.Padding(3);
+            this.tpManagement.Size = new System.Drawing.Size(777, 569);
+            this.tpManagement.TabIndex = 3;
+            this.tpManagement.Tag = "Manager";
+            this.tpManagement.Text = "Management";
+>>>>>>> Version 3.01
             // 
             this.cbxOrderMinute.FormattingEnabled = true;
             this.cbxOrderMinute.Items.AddRange(new object[] {
@@ -419,6 +544,7 @@
             // 
             // btnSelectMenuItems
             // 
+<<<<<<< HEAD
             this.btnSelectMenuItems.Location = new System.Drawing.Point(21, 205);
             this.btnSelectMenuItems.Name = "btnSelectMenuItems";
             this.btnSelectMenuItems.Size = new System.Drawing.Size(170, 23);
@@ -426,6 +552,17 @@
             this.btnSelectMenuItems.Text = "Menu selection";
             this.btnSelectMenuItems.UseVisualStyleBackColor = true;
             this.btnSelectMenuItems.Click += new System.EventHandler(this.btnSelectMenuItems_Click);
+=======
+            this.tpOrders.Controls.Add(this.lvOrders);
+            this.tpOrders.Location = new System.Drawing.Point(4, 22);
+            this.tpOrders.Name = "tpOrders";
+            this.tpOrders.Padding = new System.Windows.Forms.Padding(3);
+            this.tpOrders.Size = new System.Drawing.Size(777, 569);
+            this.tpOrders.TabIndex = 1;
+            this.tpOrders.Tag = "";
+            this.tpOrders.Text = "Orders";
+            this.tpOrders.UseVisualStyleBackColor = true;
+>>>>>>> Version 3.01
             // 
             // lblAmmountOfPersons_pnlOrder
             // 
@@ -438,12 +575,25 @@
             // 
             // lbltime
             // 
+<<<<<<< HEAD
             this.lbltime.AutoSize = true;
             this.lbltime.Location = new System.Drawing.Point(21, 20);
             this.lbltime.Name = "lbltime";
             this.lbltime.Size = new System.Drawing.Size(65, 13);
             this.lbltime.TabIndex = 11;
             this.lbltime.Text = "Time - Date:";
+=======
+            this.tpNewOrder.Controls.Add(this.tctrlCreateOrder);
+            this.tpNewOrder.Location = new System.Drawing.Point(4, 22);
+            this.tpNewOrder.Name = "tpNewOrder";
+            this.tpNewOrder.Padding = new System.Windows.Forms.Padding(3);
+            this.tpNewOrder.Size = new System.Drawing.Size(777, 569);
+            this.tpNewOrder.TabIndex = 0;
+            this.tpNewOrder.Tag = "Receptionist, Manager";
+            this.tpNewOrder.Text = "Create Order";
+            this.tpNewOrder.UseVisualStyleBackColor = true;
+            this.tpNewOrder.Enter += new System.EventHandler(this.tpNewOrder_Enter);
+>>>>>>> Version 3.01
             // 
             // tbxAmountOfPersons_tpOrderCreation
             // 
@@ -770,6 +920,7 @@
             // 
             // exitToolStripMenuItem1
             // 
+<<<<<<< HEAD
             this.exitToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
@@ -777,9 +928,22 @@
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(109, 20);
             this.exitToolStripMenuItem1.Text = "LOOOOL XDD";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+=======
+            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectContainer);
+            this.tpMenuSelection.Controls.Add(this.btnSetOrder);
+            this.tpMenuSelection.Location = new System.Drawing.Point(4, 22);
+            this.tpMenuSelection.Name = "tpMenuSelection";
+            this.tpMenuSelection.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMenuSelection.Size = new System.Drawing.Size(758, 534);
+            this.tpMenuSelection.TabIndex = 3;
+            this.tpMenuSelection.Tag = "Receptionist,Ober";
+            this.tpMenuSelection.Text = "MenuSelection";
+            this.tpMenuSelection.UseVisualStyleBackColor = true;
+>>>>>>> Version 3.01
             // 
             // minimizeToolStripMenuItem1
             // 
+<<<<<<< HEAD
             this.minimizeToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.minimizeToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.minimizebutton;
             this.minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
@@ -817,6 +981,16 @@
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+=======
+            this.pnlMenuSelectContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMenuSelectContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenuSelectContainer.Location = new System.Drawing.Point(3, 3);
+            this.pnlMenuSelectContainer.Name = "pnlMenuSelectContainer";
+            this.pnlMenuSelectContainer.Size = new System.Drawing.Size(752, 480);
+            this.pnlMenuSelectContainer.TabIndex = 0;
+            // 
+            // btnSetOrder
+>>>>>>> Version 3.01
             // 
             // exitToolStripMenuItem
             // 
@@ -824,6 +998,7 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+<<<<<<< HEAD
             // fileToolStripMenuItem1
             // 
             this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -834,6 +1009,33 @@
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem1.Text = "File";
+=======
+            this.tpTableSelection.Controls.Add(this.pnlOverview);
+            this.tpTableSelection.Controls.Add(this.lbxSelectedMenuItems);
+            this.tpTableSelection.Controls.Add(this.lbl1_pnlOrder);
+            this.tpTableSelection.Controls.Add(this.lblTableID_pnlOrder);
+            this.tpTableSelection.Controls.Add(this.btnClearTableIDs_pnlOrder);
+            this.tpTableSelection.Controls.Add(this.tbxTableID_tpOrderCreation);
+            this.tpTableSelection.Controls.Add(this.btnCreateNewOrder);
+            this.tpTableSelection.Controls.Add(this.btnCancelNewOrder);
+            this.tpTableSelection.Location = new System.Drawing.Point(4, 22);
+            this.tpTableSelection.Name = "tpTableSelection";
+            this.tpTableSelection.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTableSelection.Size = new System.Drawing.Size(758, 534);
+            this.tpTableSelection.TabIndex = 4;
+            this.tpTableSelection.Text = "Table";
+            this.tpTableSelection.UseVisualStyleBackColor = true;
+            // 
+            // pnlOverview
+            // 
+            this.pnlOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOverview.Location = new System.Drawing.Point(9, 179);
+            this.pnlOverview.Name = "pnlOverview";
+            this.pnlOverview.Size = new System.Drawing.Size(563, 195);
+            this.pnlOverview.TabIndex = 12;
+            // 
+            // lbxSelectedMenuItems
+>>>>>>> Version 3.01
             // 
             // checkStockedSuppliesToolStripMenuItem
             // 
@@ -843,6 +1045,7 @@
             // 
             // toolStripMenuItem2
             // 
+<<<<<<< HEAD
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(196, 6);
             // 
@@ -852,6 +1055,9 @@
             this.alterMenuToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
             this.alterMenuToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.alterMenuToolStripMenuItem.Text = "Alter Menu";
+=======
+            // lblTableID_pnlOrder
+>>>>>>> Version 3.01
             // 
             // menuToolStripMenuItem
             // 
@@ -861,7 +1067,17 @@
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
+<<<<<<< HEAD
             // closeToolStripMenuItem
+=======
+            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(504, 380);
+            this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
+            this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(68, 23);
+            this.btnClearTableIDs_pnlOrder.TabIndex = 8;
+            this.btnClearTableIDs_pnlOrder.Text = "Clear";
+            this.btnClearTableIDs_pnlOrder.UseVisualStyleBackColor = true;
+            this.btnClearTableIDs_pnlOrder.Click += new System.EventHandler(this.btnClearTableIDs_pnlOrder_Click);
+>>>>>>> Version 3.01
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
@@ -871,7 +1087,17 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(183, 6);
             // 
+<<<<<<< HEAD
             // exportClientsToolStripMenuItem
+=======
+            this.btnCreateNewOrder.Location = new System.Drawing.Point(398, 408);
+            this.btnCreateNewOrder.Name = "btnCreateNewOrder";
+            this.btnCreateNewOrder.Size = new System.Drawing.Size(174, 23);
+            this.btnCreateNewOrder.TabIndex = 1;
+            this.btnCreateNewOrder.Text = "Create Order";
+            this.btnCreateNewOrder.UseVisualStyleBackColor = true;
+            this.btnCreateNewOrder.Click += new System.EventHandler(this.btnCreateNewOrder_Click);
+>>>>>>> Version 3.01
             // 
             this.exportClientsToolStripMenuItem.Name = "exportClientsToolStripMenuItem";
             this.exportClientsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
@@ -925,6 +1151,131 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // menuMain
+            // 
+            this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
+            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem2,
+            this.exitToolStripMenuItem1,
+            this.minimizeToolStripMenuItem1});
+            this.menuMain.Location = new System.Drawing.Point(0, 0);
+            this.menuMain.Name = "menuMain";
+            this.menuMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuMain.Size = new System.Drawing.Size(785, 24);
+            this.menuMain.TabIndex = 1;
+            this.menuMain.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem2
+            // 
+            this.fileToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportClientsToolStripMenuItem2,
+            this.toolStripMenuItem4,
+            this.exitToolStripMenuItem2,
+            this.logoutToolStripMenuItem,
+            this.lockToolStripMenuItem});
+            this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
+            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem2.Text = "File";
+            this.fileToolStripMenuItem2.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem2_DropDownClosed);
+            this.fileToolStripMenuItem2.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem2_DropDownOpened);
+            // 
+            // exportClientsToolStripMenuItem2
+            // 
+            this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem2.Text = "Export Clients";
+            this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            // 
+            // exitToolStripMenuItem2
+            // 
+            this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem2.Text = "Exit";
+            this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // lockToolStripMenuItem
+            // 
+            this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
+            this.lockToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.lockToolStripMenuItem.Text = "Lock";
+            this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
+            this.exitToolStripMenuItem1.Text = "Close";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // minimizeToolStripMenuItem1
+            // 
+            this.minimizeToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.minimizeToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.minimizebutton;
+            this.minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
+            this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
+            this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
+            // 
+            // exitbuttonToolStripMenuItem
+            // 
+            this.exitbuttonToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exitbuttonToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.exitbuttonToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.exitbuttonToolStripMenuItem.Image = global::BonTemps.Properties.Resources.closebutton;
+            this.exitbuttonToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.exitbuttonToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.exitbuttonToolStripMenuItem.Name = "exitbuttonToolStripMenuItem";
+            this.exitbuttonToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.exitbuttonToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.exitbuttonToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // minimizeToolStripMenuItem
+            // 
+            this.minimizeToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.minimizeToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.minimizeToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.minimizeToolStripMenuItem.Image = global::BonTemps.Properties.Resources.minimizebutton;
+            this.minimizeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
+            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            // 
+            // closeMenuToolStripMenuItem
+            // 
+            this.closeMenuToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.closeMenuToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.closeMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.closeMenuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("closeMenuToolStripMenuItem.Image")));
+            this.closeMenuToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.closeMenuToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.closeMenuToolStripMenuItem.Name = "closeMenuToolStripMenuItem";
+            this.closeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.closeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // minimizeMenuToolStripMenuItem
+            // 
+            this.minimizeMenuToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.minimizeMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.minimizeMenuToolStripMenuItem.Image = global::BonTemps.Properties.Resources.minimizebutton;
+            this.minimizeMenuToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.minimizeMenuToolStripMenuItem.Name = "minimizeMenuToolStripMenuItem";
+            this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -936,11 +1287,30 @@
             this.MainMenuStrip = this.menuMain;
             this.Name = "FormMain";
             this.Text = "Main Form";
+<<<<<<< HEAD
             this.tctrlInterface.ResumeLayout(false);
+=======
+            this.tpManagement.ResumeLayout(false);
+            this.tpManagement.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMenus)).EndInit();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.tpOrders.ResumeLayout(false);
+            this.tpNewOrder.ResumeLayout(false);
+>>>>>>> Version 3.01
             this.tctrlCreateOrder.ResumeLayout(false);
             this.tpTableSelection.ResumeLayout(false);
             this.tpTableSelection.PerformLayout();
             this.tpMenuSelection.ResumeLayout(false);
+<<<<<<< HEAD
             this.pnlMenuSelectionTableInfo.ResumeLayout(false);
             this.pnlMenuSelectionTableInfo.PerformLayout();
             this.tpOrderCreation.ResumeLayout(false);
@@ -954,6 +1324,13 @@
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditTables)).EndInit();
+=======
+            this.tpTableSelection.ResumeLayout(false);
+            this.tpTableSelection.PerformLayout();
+            this.tctrlInterface.ResumeLayout(false);
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
+>>>>>>> Version 3.01
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -995,19 +1372,20 @@
         private System.Windows.Forms.TextBox tbxClientName_tpOrderCreation;
         private System.Windows.Forms.TabPage tpMenuSelection;
         private System.Windows.Forms.Panel pnlMenuSelectContainer;
-        private System.Windows.Forms.Panel pnlMenuSelectionTableInfo;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSetOrder;
         private System.Windows.Forms.TabPage tpTableSelection;
+<<<<<<< HEAD
         private System.Windows.Forms.ListBox lbxSelectedMenuItems;
         private System.Windows.Forms.Label lbl1_pnlOrder;
         private System.Windows.Forms.ListView listView1;
+=======
+>>>>>>> Version 3.01
         private System.Windows.Forms.Label lblTableID_pnlOrder;
         private System.Windows.Forms.Button btnClearTableIDs_pnlOrder;
         private System.Windows.Forms.TextBox tbxTableID_tpOrderCreation;
         private System.Windows.Forms.Button btnCreateNewOrder;
         private System.Windows.Forms.Button btnCancelNewOrder;
+<<<<<<< HEAD
         private System.Windows.Forms.TabPage tpOrders;
         private System.Windows.Forms.ListView lvOrders;
         private System.Windows.Forms.TabPage tpManagement;
@@ -1043,6 +1421,15 @@
         private System.Windows.Forms.DataGridView dgvEditTables;
         private System.Windows.Forms.Button btnUpdate;
 
+=======
+        private System.Windows.Forms.TabControl tctrlInterface;
+        private System.Windows.Forms.Label lblClientVisits_ClientSelect;
+        private System.Windows.Forms.TextBox tbxClientVisits_ClientSelect;
+        private System.Windows.Forms.Button btnDeleteClient_ClientSelect;
+        private System.Windows.Forms.ListBox lbxSelectedMenuItems;
+        private System.Windows.Forms.Label lbl1_pnlOrder;
+        private System.Windows.Forms.Panel pnlOverview;
+>>>>>>> Version 3.01
     }
 }
 

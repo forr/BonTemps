@@ -383,7 +383,7 @@ namespace BonTemps
                     if (sqlConn.State == ConnectionState.Open)
                     {
                         SqlCommand sqlQuery = new SqlCommand(statement, sqlConn);
-                        sqlQuery.Parameters.AddWithValue("@ID", orderID);
+                        sqlQuery.Parameters.AddWithValue("@ID", (int)orderID);
                         SqlDataReader sqlDR = sqlQuery.ExecuteReader();
                         if (sqlDR.Read())
                         {
@@ -392,6 +392,8 @@ namespace BonTemps
                             o.ClientID = Convert.ToUInt64(sqlDR["ClientID"]);
                             o.StartDateTime = (DateTime)sqlDR["StartDateTime"];
                             o.EndDateTime = (DateTime)sqlDR["EndDateTime"];
+                            o.Seated = (Boolean)sqlDR["Seated"];
+                            o.Payed = (Boolean)sqlDR["Payed"];
                             return o;
                         }
                         result = Order.Null;

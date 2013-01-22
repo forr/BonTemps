@@ -21,9 +21,8 @@ namespace BonTemps
         /// <param name="TableID">Enter a particular ID</param>
         /// <param name="ClientID">Give used ClientID (Normally obtained by using the standart included ClientInfo Class/Structure).</param>
         /// <param name="tableStatus">Status of the current table (Use enum TableStatus)</param>
-        public TableLayout(System.Drawing.Image bmpTableImage, int tableID, string clientID, TableStatus tableStatus)
+        public TableLayout(int tableID, string clientID, TableStatus tableStatus)
         {
-            this.bmpTableImage = bmpTableImage;
             this.tableID = tableID;
             this.clientID = clientID;
             this.tableStatus = tableStatus;
@@ -37,7 +36,7 @@ namespace BonTemps
         /// <param name="id">Obtainable trough a For or Foreach Loop. (Table.clientID)</param>
         public static string GetTableName(string name, int id)
         {
-            string objectID = name + id.ToString();
+            string objectID = "Table " + id.ToString();
             return objectID;
         }
 
