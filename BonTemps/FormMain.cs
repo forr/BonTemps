@@ -44,6 +44,7 @@ namespace BonTemps
                 if (i != 0)
                 {
                     Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
+                    MessageBox.Show(ctrlLbl.Length.ToString());
                     ctrlLbl[0].Text = lblText[i - 1];
 
                     Control[] ctrlTbx = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
@@ -962,6 +963,47 @@ namespace BonTemps
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (this.rbEditMenus.Checked)
+                if (this.ProcessInfoMenu())
+                    MessageBox.Show("Update of menu information successful.");
+                else
+                    MessageBox.Show("Update of menu information failed.");
+            else
+                if (this.ProcessInfoUser())
+                    MessageBox.Show("Update of user information successful.");
+                else
+                    MessageBox.Show("Update of user information failed.");
+        }
+
+        private bool ProcessInfoMenu()
+        {
+            return true;
+        }
+
+        private bool ProcessInfoUser()
+        {
+            string[] lblText = new string[] { "User ID", "Username", "Employee Type", "Password" };
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (i != 0)
+                {
+                    Control[] ctrlLblOld = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
+                    Control[] ctrlTbxOld = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
+                    ctrlLblOld[0].Text = null;
+                    //this.Controls.Remove(ctrlTbxOld[4]);         
+                }
+            }
+            for (int j = 0; j < 4; j++)
+            {
+                if (j != 0)
+                {
+                    Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (j - 1).ToString(), true);
+                    ctrlLbl[0].Text = lblText[j - 1];
+                }
+            }
+
+            return true;
         }
     }
 }
