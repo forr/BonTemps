@@ -29,62 +29,61 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-<<<<<<< HEAD
             this.tctrlInterface = new System.Windows.Forms.TabControl();
-            this.tctrlCreateOrder = new System.Windows.Forms.TabControl();
-            this.tpTableSelection = new System.Windows.Forms.TabPage();
-            this.btnCancelNewOrder = new System.Windows.Forms.Button();
-            this.btnCreateNewOrder = new System.Windows.Forms.Button();
-            this.tbxTableID_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
-            this.lblTableID_pnlOrder = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.lbl1_pnlOrder = new System.Windows.Forms.Label();
-            this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
-            this.tpMenuSelection = new System.Windows.Forms.TabPage();
-            this.btnSetOrder = new System.Windows.Forms.Button();
-            this.pnlMenuSelectionTableInfo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.pnlMenuSelectContainer = new System.Windows.Forms.Panel();
-            this.tpOrderCreation = new System.Windows.Forms.TabPage();
-            this.tbxClientName_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.tbxClientID_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.lblClientID_pnlOrder = new System.Windows.Forms.Label();
-            this.lblClientName_pnlOrder = new System.Windows.Forms.Label();
-            this.cbxOrderHour = new System.Windows.Forms.ComboBox();
-            this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
-            this.cbxOrderMinute = new System.Windows.Forms.ComboBox();
-            this.btnSelectMenuItems = new System.Windows.Forms.Button();
-            this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
-            this.lbltime = new System.Windows.Forms.Label();
-            this.tbxAmountOfPersons_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.tpClientSelect = new System.Windows.Forms.TabPage();
-            this.btnNewClient_ClientSelect = new System.Windows.Forms.Button();
-            this.btnDeleteClient_ClientSelect = new System.Windows.Forms.Button();
-            this.btnEditClient_ClientSelect = new System.Windows.Forms.Button();
-            this.plnSearchName = new System.Windows.Forms.Panel();
-            this.tbxSearchName = new System.Windows.Forms.TextBox();
-            this.lbxClientList = new System.Windows.Forms.ListBox();
-            this.tbxClientID_tpClientSelect = new System.Windows.Forms.TextBox();
-            this.lblClientID_ClientSelect = new System.Windows.Forms.Label();
-            this.tbxClientVisits_ClientSelect = new System.Windows.Forms.TextBox();
-            this.lblClientVisits_ClientSelect = new System.Windows.Forms.Label();
-            this.tbxClientName_tpClientSelect = new System.Windows.Forms.TextBox();
-            this.lblClientName_ClientSelect = new System.Windows.Forms.Label();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.lblClientList = new System.Windows.Forms.Label();
-            this.btnClientSelect_OK = new System.Windows.Forms.Button();
-            this.btnClientSelect_Cancel = new System.Windows.Forms.Button();
             this.tpNewOrder = new System.Windows.Forms.TabPage();
-            this.lvOrders = new System.Windows.Forms.ListView();
+            this.tctrlCreateOrder = new System.Windows.Forms.TabControl();
+            this.tpClientSelect = new System.Windows.Forms.TabPage();
+            this.btnClientSelect_Cancel = new System.Windows.Forms.Button();
+            this.btnClientSelect_OK = new System.Windows.Forms.Button();
+            this.lblClientList = new System.Windows.Forms.Label();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.lblClientName_ClientSelect = new System.Windows.Forms.Label();
+            this.tbxClientName_tpClientSelect = new System.Windows.Forms.TextBox();
+            this.lblClientVisits_ClientSelect = new System.Windows.Forms.Label();
+            this.tbxClientVisits_ClientSelect = new System.Windows.Forms.TextBox();
+            this.lblClientID_ClientSelect = new System.Windows.Forms.Label();
+            this.tbxClientID_tpClientSelect = new System.Windows.Forms.TextBox();
+            this.lbxClientList = new System.Windows.Forms.ListBox();
+            this.tbxSearchName = new System.Windows.Forms.TextBox();
+            this.plnSearchName = new System.Windows.Forms.Panel();
+            this.btnEditClient_ClientSelect = new System.Windows.Forms.Button();
+            this.btnDeleteClient_ClientSelect = new System.Windows.Forms.Button();
+            this.btnNewClient_ClientSelect = new System.Windows.Forms.Button();
+            this.tpOrderCreation = new System.Windows.Forms.TabPage();
+            this.tbxAmountOfPersons_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.lbltime = new System.Windows.Forms.Label();
+            this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
+            this.btnSelectMenuItems = new System.Windows.Forms.Button();
+            this.cbxOrderMinute = new System.Windows.Forms.ComboBox();
+            this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
+            this.cbxOrderHour = new System.Windows.Forms.ComboBox();
+            this.lblClientName_pnlOrder = new System.Windows.Forms.Label();
+            this.lblClientID_pnlOrder = new System.Windows.Forms.Label();
+            this.tbxClientID_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.tbxClientName_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.tpMenuSelection = new System.Windows.Forms.TabPage();
+            this.pnlMenuSelectContainer = new System.Windows.Forms.Panel();
+            this.btnSetOrder = new System.Windows.Forms.Button();
+            this.tpTableSelection = new System.Windows.Forms.TabPage();
+            this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
+            this.lbl1_pnlOrder = new System.Windows.Forms.Label();
+            this.lblTableID_pnlOrder = new System.Windows.Forms.Label();
+            this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
+            this.tbxTableID_tpOrderCreation = new System.Windows.Forms.TextBox();
+            this.btnCreateNewOrder = new System.Windows.Forms.Button();
+            this.btnCancelNewOrder = new System.Windows.Forms.Button();
+            this.pnlOverview = new System.Windows.Forms.Panel();
             this.tpOrders = new System.Windows.Forms.TabPage();
+            this.lvOrders = new System.Windows.Forms.ListView();
             this.tpManagement = new System.Windows.Forms.TabPage();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.dgvEditTables = new System.Windows.Forms.DataGridView();
+            this.rbEditUsers = new System.Windows.Forms.RadioButton();
+            this.rbEditMenus = new System.Windows.Forms.RadioButton();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-=======
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -99,75 +98,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.tpManagement = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.btnUpdateUser = new System.Windows.Forms.Button();
-            this.tbxPass = new System.Windows.Forms.TextBox();
-            this.tbxUserID = new System.Windows.Forms.TextBox();
-            this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.lblEditUsers = new System.Windows.Forms.Label();
-            this.tbxID = new System.Windows.Forms.TextBox();
-            this.btnDeleteMenu = new System.Windows.Forms.Button();
-            this.btnUpdateMenu = new System.Windows.Forms.Button();
-            this.tbxPrice = new System.Windows.Forms.TextBox();
-            this.tbxDessert = new System.Windows.Forms.TextBox();
-            this.tbxMainCourse = new System.Windows.Forms.TextBox();
-            this.tbxEntree = new System.Windows.Forms.TextBox();
-            this.dgvMenus = new System.Windows.Forms.DataGridView();
-            this.lblEditMenus = new System.Windows.Forms.Label();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.lblCountVisitors = new System.Windows.Forms.Label();
-            this.lblVisitorCount = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tpOrders = new System.Windows.Forms.TabPage();
-            this.lvOrders = new System.Windows.Forms.ListView();
-            this.tpNewOrder = new System.Windows.Forms.TabPage();
-            this.tctrlCreateOrder = new System.Windows.Forms.TabControl();
-            this.tpClientSelect = new System.Windows.Forms.TabPage();
-            this.btnClientSelect_Cancel = new System.Windows.Forms.Button();
-            this.btnClientSelect_OK = new System.Windows.Forms.Button();
-            this.lblClientList = new System.Windows.Forms.Label();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.lblClientName_ClientSelect = new System.Windows.Forms.Label();
-            this.tbxClientName_tpClientSelect = new System.Windows.Forms.TextBox();
-            this.lblClientVisits_ClientSelect = new System.Windows.Forms.Label();
-            this.tbxClientVisits_ClientSelect = new System.Windows.Forms.TextBox();
-            this.lblClientID_ClientSelect = new System.Windows.Forms.Label();
-            this.tbxClientID_tpClientSelect = new System.Windows.Forms.TextBox();
-            this.lbxClientList = new System.Windows.Forms.ListBox();
-            this.tbxSearchName = new System.Windows.Forms.TextBox();
-            this.plnSearchName = new System.Windows.Forms.Panel();
-            this.btnEditClient_ClientSelect = new System.Windows.Forms.Button();
-            this.btnDeleteClient_ClientSelect = new System.Windows.Forms.Button();
-            this.btnNewClient_ClientSelect = new System.Windows.Forms.Button();
-            this.tpOrderCreation = new System.Windows.Forms.TabPage();
-            this.tbxAmountOfPersons_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.lbltime = new System.Windows.Forms.Label();
-            this.lblAmmountOfPersons_pnlOrder = new System.Windows.Forms.Label();
-            this.btnSelectMenuItems = new System.Windows.Forms.Button();
-            this.cbxOrderMinute = new System.Windows.Forms.ComboBox();
-            this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
-            this.cbxOrderHour = new System.Windows.Forms.ComboBox();
-            this.lblClientName_pnlOrder = new System.Windows.Forms.Label();
-            this.lblClientID_pnlOrder = new System.Windows.Forms.Label();
-            this.tbxClientID_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.tbxClientName_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.tpMenuSelection = new System.Windows.Forms.TabPage();
-            this.pnlMenuSelectContainer = new System.Windows.Forms.Panel();
-            this.btnSetOrder = new System.Windows.Forms.Button();
-            this.tpTableSelection = new System.Windows.Forms.TabPage();
-            this.pnlOverview = new System.Windows.Forms.Panel();
-            this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
-            this.lbl1_pnlOrder = new System.Windows.Forms.Label();
-            this.lblTableID_pnlOrder = new System.Windows.Forms.Label();
-            this.btnClearTableIDs_pnlOrder = new System.Windows.Forms.Button();
-            this.tbxTableID_tpOrderCreation = new System.Windows.Forms.TextBox();
-            this.btnCreateNewOrder = new System.Windows.Forms.Button();
-            this.btnCancelNewOrder = new System.Windows.Forms.Button();
-            this.tctrlInterface = new System.Windows.Forms.TabControl();
             this.menuMain = new System.Windows.Forms.MenuStrip();
->>>>>>> Version 3.01
             this.fileToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportClientsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
@@ -176,62 +107,17 @@
             this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< HEAD
-            this.menuMain = new System.Windows.Forms.MenuStrip();
-            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.menuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportClientsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkStockedSuppliesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.alterMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exportClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rbEditMenus = new System.Windows.Forms.RadioButton();
-            this.rbEditUsers = new System.Windows.Forms.RadioButton();
-            this.dgvEditTables = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.tctrlInterface.SuspendLayout();
-=======
-            this.exitbuttonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tpManagement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMenus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.tpOrders.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
->>>>>>> Version 3.01
             this.tctrlCreateOrder.SuspendLayout();
-            this.tpTableSelection.SuspendLayout();
-            this.tpMenuSelection.SuspendLayout();
-<<<<<<< HEAD
-            this.pnlMenuSelectionTableInfo.SuspendLayout();
-            this.tpOrderCreation.SuspendLayout();
             this.tpClientSelect.SuspendLayout();
-            this.tpNewOrder.SuspendLayout();
+            this.tpOrderCreation.SuspendLayout();
+            this.tpMenuSelection.SuspendLayout();
+            this.tpTableSelection.SuspendLayout();
             this.tpOrders.SuspendLayout();
             this.tpManagement.SuspendLayout();
-            this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditTables)).BeginInit();
-=======
-            this.tpTableSelection.SuspendLayout();
-            this.tctrlInterface.SuspendLayout();
             this.menuMain.SuspendLayout();
->>>>>>> Version 3.01
             this.SuspendLayout();
             // 
             // tctrlInterface
@@ -247,6 +133,19 @@
             this.tctrlInterface.TabIndex = 3;
             this.tctrlInterface.Tag = "";
             // 
+            // tpNewOrder
+            // 
+            this.tpNewOrder.Controls.Add(this.tctrlCreateOrder);
+            this.tpNewOrder.Location = new System.Drawing.Point(4, 22);
+            this.tpNewOrder.Name = "tpNewOrder";
+            this.tpNewOrder.Padding = new System.Windows.Forms.Padding(3);
+            this.tpNewOrder.Size = new System.Drawing.Size(777, 569);
+            this.tpNewOrder.TabIndex = 0;
+            this.tpNewOrder.Tag = "Receptionist";
+            this.tpNewOrder.Text = "Create Order";
+            this.tpNewOrder.UseVisualStyleBackColor = true;
+            this.tpNewOrder.Enter += new System.EventHandler(this.tpNewOrder_Enter);
+            // 
             // tctrlCreateOrder
             // 
             this.tctrlCreateOrder.Controls.Add(this.tpClientSelect);
@@ -259,158 +158,179 @@
             this.tctrlCreateOrder.Size = new System.Drawing.Size(766, 560);
             this.tctrlCreateOrder.TabIndex = 3;
             // 
-            // tpTableSelection
+            // tpClientSelect
             // 
-            this.tpTableSelection.Controls.Add(this.lbxSelectedMenuItems);
-            this.tpTableSelection.Controls.Add(this.lbl1_pnlOrder);
-            this.tpTableSelection.Controls.Add(this.listView1);
-            this.tpTableSelection.Controls.Add(this.lblTableID_pnlOrder);
-            this.tpTableSelection.Controls.Add(this.btnClearTableIDs_pnlOrder);
-            this.tpTableSelection.Controls.Add(this.tbxTableID_tpOrderCreation);
-            this.tpTableSelection.Controls.Add(this.btnCreateNewOrder);
-            this.tpTableSelection.Controls.Add(this.btnCancelNewOrder);
-            this.tpTableSelection.Location = new System.Drawing.Point(4, 22);
-            this.tpTableSelection.Name = "tpTableSelection";
-            this.tpTableSelection.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTableSelection.Size = new System.Drawing.Size(758, 534);
-            this.tpTableSelection.TabIndex = 4;
-            this.tpTableSelection.Text = "Table";
-            this.tpTableSelection.UseVisualStyleBackColor = true;
+            this.tpClientSelect.Controls.Add(this.btnClientSelect_Cancel);
+            this.tpClientSelect.Controls.Add(this.btnClientSelect_OK);
+            this.tpClientSelect.Controls.Add(this.lblClientList);
+            this.tpClientSelect.Controls.Add(this.lblSearch);
+            this.tpClientSelect.Controls.Add(this.lblClientName_ClientSelect);
+            this.tpClientSelect.Controls.Add(this.tbxClientName_tpClientSelect);
+            this.tpClientSelect.Controls.Add(this.lblClientVisits_ClientSelect);
+            this.tpClientSelect.Controls.Add(this.tbxClientVisits_ClientSelect);
+            this.tpClientSelect.Controls.Add(this.lblClientID_ClientSelect);
+            this.tpClientSelect.Controls.Add(this.tbxClientID_tpClientSelect);
+            this.tpClientSelect.Controls.Add(this.lbxClientList);
+            this.tpClientSelect.Controls.Add(this.tbxSearchName);
+            this.tpClientSelect.Controls.Add(this.plnSearchName);
+            this.tpClientSelect.Controls.Add(this.btnEditClient_ClientSelect);
+            this.tpClientSelect.Controls.Add(this.btnDeleteClient_ClientSelect);
+            this.tpClientSelect.Controls.Add(this.btnNewClient_ClientSelect);
+            this.tpClientSelect.Location = new System.Drawing.Point(4, 22);
+            this.tpClientSelect.Name = "tpClientSelect";
+            this.tpClientSelect.Padding = new System.Windows.Forms.Padding(3);
+            this.tpClientSelect.Size = new System.Drawing.Size(758, 534);
+            this.tpClientSelect.TabIndex = 0;
+            this.tpClientSelect.Text = "Client";
+            this.tpClientSelect.UseVisualStyleBackColor = true;
             // 
-            // btnCancelNewOrder
+            // btnClientSelect_Cancel
             // 
-            this.btnCancelNewOrder.Location = new System.Drawing.Point(218, 407);
-            this.btnCancelNewOrder.Name = "btnCancelNewOrder";
-            this.btnCancelNewOrder.Size = new System.Drawing.Size(174, 23);
-            this.btnCancelNewOrder.TabIndex = 1;
-            this.btnCancelNewOrder.Text = "Cancel";
-            this.btnCancelNewOrder.UseVisualStyleBackColor = true;
+            this.btnClientSelect_Cancel.Location = new System.Drawing.Point(537, 351);
+            this.btnClientSelect_Cancel.Name = "btnClientSelect_Cancel";
+            this.btnClientSelect_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.btnClientSelect_Cancel.TabIndex = 11;
+            this.btnClientSelect_Cancel.Text = "Cancel";
+            this.btnClientSelect_Cancel.UseVisualStyleBackColor = true;
+            this.btnClientSelect_Cancel.Click += new System.EventHandler(this.btnClientSelect_Cancel_Click);
             // 
-            // btnCreateNewOrder
+            // btnClientSelect_OK
             // 
-            this.btnCreateNewOrder.Location = new System.Drawing.Point(398, 408);
-            this.btnCreateNewOrder.Name = "btnCreateNewOrder";
-            this.btnCreateNewOrder.Size = new System.Drawing.Size(174, 23);
-            this.btnCreateNewOrder.TabIndex = 1;
-            this.btnCreateNewOrder.Text = "Create Order";
-            this.btnCreateNewOrder.UseVisualStyleBackColor = true;
+            this.btnClientSelect_OK.Location = new System.Drawing.Point(618, 351);
+            this.btnClientSelect_OK.Name = "btnClientSelect_OK";
+            this.btnClientSelect_OK.Size = new System.Drawing.Size(75, 23);
+            this.btnClientSelect_OK.TabIndex = 11;
+            this.btnClientSelect_OK.Text = "Ok";
+            this.btnClientSelect_OK.UseVisualStyleBackColor = true;
+            this.btnClientSelect_OK.Click += new System.EventHandler(this.btnClientSelect_OK_Click);
             // 
-            // tbxTableID_tpOrderCreation
+            // lblClientList
             // 
-            this.tbxTableID_tpOrderCreation.Location = new System.Drawing.Point(218, 382);
-            this.tbxTableID_tpOrderCreation.Name = "tbxTableID_tpOrderCreation";
-            this.tbxTableID_tpOrderCreation.ReadOnly = true;
-            this.tbxTableID_tpOrderCreation.Size = new System.Drawing.Size(280, 20);
-            this.tbxTableID_tpOrderCreation.TabIndex = 0;
+            this.lblClientList.AutoSize = true;
+            this.lblClientList.Location = new System.Drawing.Point(6, 42);
+            this.lblClientList.Name = "lblClientList";
+            this.lblClientList.Size = new System.Drawing.Size(52, 13);
+            this.lblClientList.TabIndex = 10;
+            this.lblClientList.Text = "ClientList:";
             // 
-            // btnClearTableIDs_pnlOrder
+            // lblSearch
             // 
-            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(504, 380);
-            this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
-            this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(68, 23);
-            this.btnClearTableIDs_pnlOrder.TabIndex = 8;
-            this.btnClearTableIDs_pnlOrder.Text = "Clear";
-            this.btnClearTableIDs_pnlOrder.UseVisualStyleBackColor = true;
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(6, 3);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(44, 13);
+            this.lblSearch.TabIndex = 10;
+            this.lblSearch.Text = "Search:";
             // 
-            // lblTableID_pnlOrder
+            // lblClientName_ClientSelect
             // 
-            this.lblTableID_pnlOrder.AutoSize = true;
-            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(6, 163);
-            this.lblTableID_pnlOrder.Name = "lblTableID_pnlOrder";
-            this.lblTableID_pnlOrder.Size = new System.Drawing.Size(37, 13);
-            this.lblTableID_pnlOrder.TabIndex = 2;
-            this.lblTableID_pnlOrder.Text = "Table:";
+            this.lblClientName_ClientSelect.AutoSize = true;
+            this.lblClientName_ClientSelect.Location = new System.Drawing.Point(534, 174);
+            this.lblClientName_ClientSelect.Name = "lblClientName_ClientSelect";
+            this.lblClientName_ClientSelect.Size = new System.Drawing.Size(67, 13);
+            this.lblClientName_ClientSelect.TabIndex = 9;
+            this.lblClientName_ClientSelect.Text = "Client Name:";
             // 
-            // listView1
+            // tbxClientName_tpClientSelect
             // 
-            this.listView1.Location = new System.Drawing.Point(6, 179);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(566, 195);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.tbxClientName_tpClientSelect.Location = new System.Drawing.Point(534, 190);
+            this.tbxClientName_tpClientSelect.Name = "tbxClientName_tpClientSelect";
+            this.tbxClientName_tpClientSelect.ReadOnly = true;
+            this.tbxClientName_tpClientSelect.Size = new System.Drawing.Size(162, 20);
+            this.tbxClientName_tpClientSelect.TabIndex = 8;
             // 
-            // lbl1_pnlOrder
+            // lblClientVisits_ClientSelect
             // 
-            this.lbl1_pnlOrder.AutoSize = true;
-            this.lbl1_pnlOrder.Location = new System.Drawing.Point(6, 16);
-            this.lbl1_pnlOrder.Name = "lbl1_pnlOrder";
-            this.lbl1_pnlOrder.Size = new System.Drawing.Size(47, 13);
-            this.lbl1_pnlOrder.TabIndex = 10;
-            this.lbl1_pnlOrder.Text = "Order(s):";
+            this.lblClientVisits_ClientSelect.AutoSize = true;
+            this.lblClientVisits_ClientSelect.Location = new System.Drawing.Point(534, 213);
+            this.lblClientVisits_ClientSelect.Name = "lblClientVisits_ClientSelect";
+            this.lblClientVisits_ClientSelect.Size = new System.Drawing.Size(34, 13);
+            this.lblClientVisits_ClientSelect.TabIndex = 7;
+            this.lblClientVisits_ClientSelect.Text = "Visits:";
             // 
-            // lbxSelectedMenuItems
+            // tbxClientVisits_ClientSelect
             // 
-<<<<<<< HEAD
-            this.lbxSelectedMenuItems.FormattingEnabled = true;
-            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(9, 32);
-            this.lbxSelectedMenuItems.Name = "lbxSelectedMenuItems";
-            this.lbxSelectedMenuItems.Size = new System.Drawing.Size(563, 121);
-            this.lbxSelectedMenuItems.TabIndex = 11;
+            this.tbxClientVisits_ClientSelect.Location = new System.Drawing.Point(534, 229);
+            this.tbxClientVisits_ClientSelect.Name = "tbxClientVisits_ClientSelect";
+            this.tbxClientVisits_ClientSelect.ReadOnly = true;
+            this.tbxClientVisits_ClientSelect.Size = new System.Drawing.Size(162, 20);
+            this.tbxClientVisits_ClientSelect.TabIndex = 6;
+            this.tbxClientVisits_ClientSelect.TextChanged += new System.EventHandler(this.tbxClientID_tpClientSelect_TextChanged);
             // 
-            // tpMenuSelection
+            // lblClientID_ClientSelect
             // 
-            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectContainer);
-            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectionTableInfo);
-            this.tpMenuSelection.Controls.Add(this.btnSetOrder);
-            this.tpMenuSelection.Location = new System.Drawing.Point(4, 22);
-            this.tpMenuSelection.Name = "tpMenuSelection";
-            this.tpMenuSelection.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMenuSelection.Size = new System.Drawing.Size(758, 534);
-            this.tpMenuSelection.TabIndex = 3;
-            this.tpMenuSelection.Tag = "Receptionist,Ober";
-            this.tpMenuSelection.Text = "MenuSelection";
-            this.tpMenuSelection.UseVisualStyleBackColor = true;
+            this.lblClientID_ClientSelect.AutoSize = true;
+            this.lblClientID_ClientSelect.Location = new System.Drawing.Point(534, 135);
+            this.lblClientID_ClientSelect.Name = "lblClientID_ClientSelect";
+            this.lblClientID_ClientSelect.Size = new System.Drawing.Size(50, 13);
+            this.lblClientID_ClientSelect.TabIndex = 7;
+            this.lblClientID_ClientSelect.Text = "Client ID:";
             // 
-            // btnSetOrder
+            // tbxClientID_tpClientSelect
             // 
-            this.btnSetOrder.BackColor = System.Drawing.Color.Transparent;
-            this.btnSetOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSetOrder.Location = new System.Drawing.Point(3, 483);
-            this.btnSetOrder.MinimumSize = new System.Drawing.Size(0, 48);
-            this.btnSetOrder.Name = "btnSetOrder";
-            this.btnSetOrder.Size = new System.Drawing.Size(752, 48);
-            this.btnSetOrder.TabIndex = 0;
-            this.btnSetOrder.Text = "Collect Selected Menu\'s";
-            this.btnSetOrder.UseVisualStyleBackColor = false;
-            this.btnSetOrder.Click += new System.EventHandler(this.btnSetOrder_Click);
+            this.tbxClientID_tpClientSelect.Location = new System.Drawing.Point(534, 151);
+            this.tbxClientID_tpClientSelect.Name = "tbxClientID_tpClientSelect";
+            this.tbxClientID_tpClientSelect.ReadOnly = true;
+            this.tbxClientID_tpClientSelect.Size = new System.Drawing.Size(162, 20);
+            this.tbxClientID_tpClientSelect.TabIndex = 6;
+            this.tbxClientID_tpClientSelect.TextChanged += new System.EventHandler(this.tbxClientID_tpClientSelect_TextChanged);
             // 
-            // pnlMenuSelectionTableInfo
+            // lbxClientList
             // 
-            this.pnlMenuSelectionTableInfo.Controls.Add(this.comboBox1);
-            this.pnlMenuSelectionTableInfo.Controls.Add(this.label1);
-            this.pnlMenuSelectionTableInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenuSelectionTableInfo.Location = new System.Drawing.Point(3, 3);
-            this.pnlMenuSelectionTableInfo.Name = "pnlMenuSelectionTableInfo";
-            this.pnlMenuSelectionTableInfo.Size = new System.Drawing.Size(752, 27);
-            this.pnlMenuSelectionTableInfo.TabIndex = 1;
+            this.lbxClientList.FormattingEnabled = true;
+            this.lbxClientList.Location = new System.Drawing.Point(6, 58);
+            this.lbxClientList.Name = "lbxClientList";
+            this.lbxClientList.Size = new System.Drawing.Size(519, 316);
+            this.lbxClientList.TabIndex = 2;
+            this.lbxClientList.SelectedIndexChanged += new System.EventHandler(this.lbxClientList_SelectedIndexChanged);
             // 
-            // label1
+            // tbxSearchName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Current Table";
+            this.tbxSearchName.Location = new System.Drawing.Point(6, 19);
+            this.tbxSearchName.Name = "tbxSearchName";
+            this.tbxSearchName.Size = new System.Drawing.Size(493, 20);
+            this.tbxSearchName.TabIndex = 0;
             // 
-            // comboBox1
+            // plnSearchName
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(71, 0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(681, 21);
-            this.comboBox1.TabIndex = 1;
+            this.plnSearchName.BackColor = System.Drawing.Color.Gray;
+            this.plnSearchName.BackgroundImage = global::BonTemps.Properties.Resources.loop;
+            this.plnSearchName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.plnSearchName.Location = new System.Drawing.Point(505, 19);
+            this.plnSearchName.Name = "plnSearchName";
+            this.plnSearchName.Size = new System.Drawing.Size(20, 20);
+            this.plnSearchName.TabIndex = 1;
+            this.plnSearchName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.plnSearchName_MouseClick);
             // 
-            // pnlMenuSelectContainer
+            // btnEditClient_ClientSelect
             // 
-            this.pnlMenuSelectContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMenuSelectContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenuSelectContainer.Location = new System.Drawing.Point(3, 30);
-            this.pnlMenuSelectContainer.Name = "pnlMenuSelectContainer";
-            this.pnlMenuSelectContainer.Size = new System.Drawing.Size(752, 453);
-            this.pnlMenuSelectContainer.TabIndex = 0;
+            this.btnEditClient_ClientSelect.Location = new System.Drawing.Point(534, 255);
+            this.btnEditClient_ClientSelect.Name = "btnEditClient_ClientSelect";
+            this.btnEditClient_ClientSelect.Size = new System.Drawing.Size(162, 23);
+            this.btnEditClient_ClientSelect.TabIndex = 5;
+            this.btnEditClient_ClientSelect.Text = "Edit ClientInfo";
+            this.btnEditClient_ClientSelect.UseVisualStyleBackColor = true;
+            this.btnEditClient_ClientSelect.Click += new System.EventHandler(this.btnEditClient_Click);
+            // 
+            // btnDeleteClient_ClientSelect
+            // 
+            this.btnDeleteClient_ClientSelect.Location = new System.Drawing.Point(534, 313);
+            this.btnDeleteClient_ClientSelect.Name = "btnDeleteClient_ClientSelect";
+            this.btnDeleteClient_ClientSelect.Size = new System.Drawing.Size(162, 23);
+            this.btnDeleteClient_ClientSelect.TabIndex = 5;
+            this.btnDeleteClient_ClientSelect.Text = "Delete Client";
+            this.btnDeleteClient_ClientSelect.UseVisualStyleBackColor = true;
+            this.btnDeleteClient_ClientSelect.Click += new System.EventHandler(this.btnDeleteClient_ClientSelect_Click);
+            // 
+            // btnNewClient_ClientSelect
+            // 
+            this.btnNewClient_ClientSelect.Location = new System.Drawing.Point(534, 284);
+            this.btnNewClient_ClientSelect.Name = "btnNewClient_ClientSelect";
+            this.btnNewClient_ClientSelect.Size = new System.Drawing.Size(162, 23);
+            this.btnNewClient_ClientSelect.TabIndex = 5;
+            this.btnNewClient_ClientSelect.Text = "Add New Client";
+            this.btnNewClient_ClientSelect.UseVisualStyleBackColor = true;
+            this.btnNewClient_ClientSelect.Click += new System.EventHandler(this.btnNewClient_Click);
             // 
             // tpOrderCreation
             // 
@@ -433,39 +353,68 @@
             this.tpOrderCreation.Text = "Order";
             this.tpOrderCreation.UseVisualStyleBackColor = true;
             // 
-            // tbxClientName_tpOrderCreation
+            // tbxAmountOfPersons_tpOrderCreation
             // 
-            this.tbxClientName_tpOrderCreation.Location = new System.Drawing.Point(21, 140);
-            this.tbxClientName_tpOrderCreation.Name = "tbxClientName_tpOrderCreation";
-            this.tbxClientName_tpOrderCreation.ReadOnly = true;
-            this.tbxClientName_tpOrderCreation.Size = new System.Drawing.Size(170, 20);
-            this.tbxClientName_tpOrderCreation.TabIndex = 0;
+            this.tbxAmountOfPersons_tpOrderCreation.Location = new System.Drawing.Point(21, 179);
+            this.tbxAmountOfPersons_tpOrderCreation.Name = "tbxAmountOfPersons_tpOrderCreation";
+            this.tbxAmountOfPersons_tpOrderCreation.Size = new System.Drawing.Size(170, 20);
+            this.tbxAmountOfPersons_tpOrderCreation.TabIndex = 7;
             // 
-            // tbxClientID_tpOrderCreation
+            // lbltime
             // 
-            this.tbxClientID_tpOrderCreation.Location = new System.Drawing.Point(21, 102);
-            this.tbxClientID_tpOrderCreation.Name = "tbxClientID_tpOrderCreation";
-            this.tbxClientID_tpOrderCreation.ReadOnly = true;
-            this.tbxClientID_tpOrderCreation.Size = new System.Drawing.Size(170, 20);
-            this.tbxClientID_tpOrderCreation.TabIndex = 0;
+            this.lbltime.AutoSize = true;
+            this.lbltime.Location = new System.Drawing.Point(21, 20);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(65, 13);
+            this.lbltime.TabIndex = 11;
+            this.lbltime.Text = "Time - Date:";
             // 
-            // lblClientID_pnlOrder
+            // lblAmmountOfPersons_pnlOrder
             // 
-            this.lblClientID_pnlOrder.AutoSize = true;
-            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(21, 86);
-            this.lblClientID_pnlOrder.Name = "lblClientID_pnlOrder";
-            this.lblClientID_pnlOrder.Size = new System.Drawing.Size(50, 13);
-            this.lblClientID_pnlOrder.TabIndex = 2;
-            this.lblClientID_pnlOrder.Text = "Client ID:";
+            this.lblAmmountOfPersons_pnlOrder.AutoSize = true;
+            this.lblAmmountOfPersons_pnlOrder.Location = new System.Drawing.Point(18, 163);
+            this.lblAmmountOfPersons_pnlOrder.Name = "lblAmmountOfPersons_pnlOrder";
+            this.lblAmmountOfPersons_pnlOrder.Size = new System.Drawing.Size(48, 13);
+            this.lblAmmountOfPersons_pnlOrder.TabIndex = 6;
+            this.lblAmmountOfPersons_pnlOrder.Text = "Persons:";
             // 
-            // lblClientName_pnlOrder
+            // btnSelectMenuItems
             // 
-            this.lblClientName_pnlOrder.AutoSize = true;
-            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(21, 124);
-            this.lblClientName_pnlOrder.Name = "lblClientName_pnlOrder";
-            this.lblClientName_pnlOrder.Size = new System.Drawing.Size(67, 13);
-            this.lblClientName_pnlOrder.TabIndex = 2;
-            this.lblClientName_pnlOrder.Text = "Client Name:";
+            this.btnSelectMenuItems.Location = new System.Drawing.Point(21, 205);
+            this.btnSelectMenuItems.Name = "btnSelectMenuItems";
+            this.btnSelectMenuItems.Size = new System.Drawing.Size(170, 23);
+            this.btnSelectMenuItems.TabIndex = 4;
+            this.btnSelectMenuItems.Text = "Menu selection";
+            this.btnSelectMenuItems.UseVisualStyleBackColor = true;
+            this.btnSelectMenuItems.Click += new System.EventHandler(this.btnSelectMenuItems_Click);
+            // 
+            // cbxOrderMinute
+            // 
+            this.cbxOrderMinute.FormattingEnabled = true;
+            this.cbxOrderMinute.Items.AddRange(new object[] {
+            "00",
+            "05",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55"});
+            this.cbxOrderMinute.Location = new System.Drawing.Point(72, 36);
+            this.cbxOrderMinute.Name = "cbxOrderMinute";
+            this.cbxOrderMinute.Size = new System.Drawing.Size(45, 21);
+            this.cbxOrderMinute.TabIndex = 10;
+            // 
+            // dtpOrderDate
+            // 
+            this.dtpOrderDate.Location = new System.Drawing.Point(21, 63);
+            this.dtpOrderDate.Name = "dtpOrderDate";
+            this.dtpOrderDate.Size = new System.Drawing.Size(170, 20);
+            this.dtpOrderDate.TabIndex = 9;
             // 
             // cbxOrderHour
             // 
@@ -500,304 +449,163 @@
             this.cbxOrderHour.Size = new System.Drawing.Size(45, 21);
             this.cbxOrderHour.TabIndex = 10;
             // 
-            // dtpOrderDate
+            // lblClientName_pnlOrder
             // 
-            this.dtpOrderDate.Location = new System.Drawing.Point(21, 63);
-            this.dtpOrderDate.Name = "dtpOrderDate";
-            this.dtpOrderDate.Size = new System.Drawing.Size(170, 20);
-            this.dtpOrderDate.TabIndex = 9;
+            this.lblClientName_pnlOrder.AutoSize = true;
+            this.lblClientName_pnlOrder.Location = new System.Drawing.Point(21, 124);
+            this.lblClientName_pnlOrder.Name = "lblClientName_pnlOrder";
+            this.lblClientName_pnlOrder.Size = new System.Drawing.Size(67, 13);
+            this.lblClientName_pnlOrder.TabIndex = 2;
+            this.lblClientName_pnlOrder.Text = "Client Name:";
             // 
-            // cbxOrderMinute
-=======
-            // tpManagement
+            // lblClientID_pnlOrder
             // 
-            this.tpManagement.BackColor = System.Drawing.Color.Transparent;
-            this.tpManagement.Controls.Add(this.splitContainer1);
-            this.tpManagement.Controls.Add(this.label2);
-            this.tpManagement.Location = new System.Drawing.Point(4, 22);
-            this.tpManagement.Name = "tpManagement";
-            this.tpManagement.Padding = new System.Windows.Forms.Padding(3);
-            this.tpManagement.Size = new System.Drawing.Size(777, 569);
-            this.tpManagement.TabIndex = 3;
-            this.tpManagement.Tag = "Manager";
-            this.tpManagement.Text = "Management";
->>>>>>> Version 3.01
+            this.lblClientID_pnlOrder.AutoSize = true;
+            this.lblClientID_pnlOrder.Location = new System.Drawing.Point(21, 86);
+            this.lblClientID_pnlOrder.Name = "lblClientID_pnlOrder";
+            this.lblClientID_pnlOrder.Size = new System.Drawing.Size(50, 13);
+            this.lblClientID_pnlOrder.TabIndex = 2;
+            this.lblClientID_pnlOrder.Text = "Client ID:";
             // 
-            this.cbxOrderMinute.FormattingEnabled = true;
-            this.cbxOrderMinute.Items.AddRange(new object[] {
-            "00",
-            "05",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55"});
-            this.cbxOrderMinute.Location = new System.Drawing.Point(72, 36);
-            this.cbxOrderMinute.Name = "cbxOrderMinute";
-            this.cbxOrderMinute.Size = new System.Drawing.Size(45, 21);
-            this.cbxOrderMinute.TabIndex = 10;
+            // tbxClientID_tpOrderCreation
             // 
-            // btnSelectMenuItems
+            this.tbxClientID_tpOrderCreation.Location = new System.Drawing.Point(21, 102);
+            this.tbxClientID_tpOrderCreation.Name = "tbxClientID_tpOrderCreation";
+            this.tbxClientID_tpOrderCreation.ReadOnly = true;
+            this.tbxClientID_tpOrderCreation.Size = new System.Drawing.Size(170, 20);
+            this.tbxClientID_tpOrderCreation.TabIndex = 0;
             // 
-<<<<<<< HEAD
-            this.btnSelectMenuItems.Location = new System.Drawing.Point(21, 205);
-            this.btnSelectMenuItems.Name = "btnSelectMenuItems";
-            this.btnSelectMenuItems.Size = new System.Drawing.Size(170, 23);
-            this.btnSelectMenuItems.TabIndex = 4;
-            this.btnSelectMenuItems.Text = "Menu selection";
-            this.btnSelectMenuItems.UseVisualStyleBackColor = true;
-            this.btnSelectMenuItems.Click += new System.EventHandler(this.btnSelectMenuItems_Click);
-=======
-            this.tpOrders.Controls.Add(this.lvOrders);
-            this.tpOrders.Location = new System.Drawing.Point(4, 22);
-            this.tpOrders.Name = "tpOrders";
-            this.tpOrders.Padding = new System.Windows.Forms.Padding(3);
-            this.tpOrders.Size = new System.Drawing.Size(777, 569);
-            this.tpOrders.TabIndex = 1;
-            this.tpOrders.Tag = "";
-            this.tpOrders.Text = "Orders";
-            this.tpOrders.UseVisualStyleBackColor = true;
->>>>>>> Version 3.01
+            // tbxClientName_tpOrderCreation
             // 
-            // lblAmmountOfPersons_pnlOrder
+            this.tbxClientName_tpOrderCreation.Location = new System.Drawing.Point(21, 140);
+            this.tbxClientName_tpOrderCreation.Name = "tbxClientName_tpOrderCreation";
+            this.tbxClientName_tpOrderCreation.ReadOnly = true;
+            this.tbxClientName_tpOrderCreation.Size = new System.Drawing.Size(170, 20);
+            this.tbxClientName_tpOrderCreation.TabIndex = 0;
             // 
-            this.lblAmmountOfPersons_pnlOrder.AutoSize = true;
-            this.lblAmmountOfPersons_pnlOrder.Location = new System.Drawing.Point(18, 163);
-            this.lblAmmountOfPersons_pnlOrder.Name = "lblAmmountOfPersons_pnlOrder";
-            this.lblAmmountOfPersons_pnlOrder.Size = new System.Drawing.Size(48, 13);
-            this.lblAmmountOfPersons_pnlOrder.TabIndex = 6;
-            this.lblAmmountOfPersons_pnlOrder.Text = "Persons:";
+            // tpMenuSelection
             // 
-            // lbltime
+            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectContainer);
+            this.tpMenuSelection.Controls.Add(this.btnSetOrder);
+            this.tpMenuSelection.Location = new System.Drawing.Point(4, 22);
+            this.tpMenuSelection.Name = "tpMenuSelection";
+            this.tpMenuSelection.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMenuSelection.Size = new System.Drawing.Size(758, 534);
+            this.tpMenuSelection.TabIndex = 3;
+            this.tpMenuSelection.Tag = "Receptionist,Ober";
+            this.tpMenuSelection.Text = "MenuSelection";
+            this.tpMenuSelection.UseVisualStyleBackColor = true;
             // 
-<<<<<<< HEAD
-            this.lbltime.AutoSize = true;
-            this.lbltime.Location = new System.Drawing.Point(21, 20);
-            this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(65, 13);
-            this.lbltime.TabIndex = 11;
-            this.lbltime.Text = "Time - Date:";
-=======
-            this.tpNewOrder.Controls.Add(this.tctrlCreateOrder);
-            this.tpNewOrder.Location = new System.Drawing.Point(4, 22);
-            this.tpNewOrder.Name = "tpNewOrder";
-            this.tpNewOrder.Padding = new System.Windows.Forms.Padding(3);
-            this.tpNewOrder.Size = new System.Drawing.Size(777, 569);
-            this.tpNewOrder.TabIndex = 0;
-            this.tpNewOrder.Tag = "Receptionist, Manager";
-            this.tpNewOrder.Text = "Create Order";
-            this.tpNewOrder.UseVisualStyleBackColor = true;
-            this.tpNewOrder.Enter += new System.EventHandler(this.tpNewOrder_Enter);
->>>>>>> Version 3.01
+            // pnlMenuSelectContainer
             // 
-            // tbxAmountOfPersons_tpOrderCreation
+            this.pnlMenuSelectContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMenuSelectContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenuSelectContainer.Location = new System.Drawing.Point(3, 3);
+            this.pnlMenuSelectContainer.Name = "pnlMenuSelectContainer";
+            this.pnlMenuSelectContainer.Size = new System.Drawing.Size(752, 480);
+            this.pnlMenuSelectContainer.TabIndex = 0;
             // 
-            this.tbxAmountOfPersons_tpOrderCreation.Location = new System.Drawing.Point(21, 179);
-            this.tbxAmountOfPersons_tpOrderCreation.Name = "tbxAmountOfPersons_tpOrderCreation";
-            this.tbxAmountOfPersons_tpOrderCreation.Size = new System.Drawing.Size(170, 20);
-            this.tbxAmountOfPersons_tpOrderCreation.TabIndex = 7;
+            // btnSetOrder
             // 
-            // tpClientSelect
+            this.btnSetOrder.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSetOrder.Location = new System.Drawing.Point(3, 483);
+            this.btnSetOrder.MinimumSize = new System.Drawing.Size(0, 48);
+            this.btnSetOrder.Name = "btnSetOrder";
+            this.btnSetOrder.Size = new System.Drawing.Size(752, 48);
+            this.btnSetOrder.TabIndex = 0;
+            this.btnSetOrder.Text = "Collect Selected Menu\'s";
+            this.btnSetOrder.UseVisualStyleBackColor = false;
+            this.btnSetOrder.Click += new System.EventHandler(this.btnSetOrder_Click);
             // 
-            this.tpClientSelect.Controls.Add(this.btnClientSelect_Cancel);
-            this.tpClientSelect.Controls.Add(this.btnClientSelect_OK);
-            this.tpClientSelect.Controls.Add(this.lblClientList);
-            this.tpClientSelect.Controls.Add(this.lblSearch);
-            this.tpClientSelect.Controls.Add(this.lblClientName_ClientSelect);
-            this.tpClientSelect.Controls.Add(this.tbxClientName_tpClientSelect);
-            this.tpClientSelect.Controls.Add(this.lblClientVisits_ClientSelect);
-            this.tpClientSelect.Controls.Add(this.tbxClientVisits_ClientSelect);
-            this.tpClientSelect.Controls.Add(this.lblClientID_ClientSelect);
-            this.tpClientSelect.Controls.Add(this.tbxClientID_tpClientSelect);
-            this.tpClientSelect.Controls.Add(this.lbxClientList);
-            this.tpClientSelect.Controls.Add(this.tbxSearchName);
-            this.tpClientSelect.Controls.Add(this.plnSearchName);
-            this.tpClientSelect.Controls.Add(this.btnEditClient_ClientSelect);
-            this.tpClientSelect.Controls.Add(this.btnDeleteClient_ClientSelect);
-            this.tpClientSelect.Controls.Add(this.btnNewClient_ClientSelect);
-            this.tpClientSelect.Location = new System.Drawing.Point(4, 22);
-            this.tpClientSelect.Name = "tpClientSelect";
-            this.tpClientSelect.Padding = new System.Windows.Forms.Padding(3);
-            this.tpClientSelect.Size = new System.Drawing.Size(758, 534);
-            this.tpClientSelect.TabIndex = 0;
-            this.tpClientSelect.Text = "Client";
-            this.tpClientSelect.UseVisualStyleBackColor = true;
+            // tpTableSelection
             // 
-            // btnNewClient_ClientSelect
+            this.tpTableSelection.Controls.Add(this.pnlOverview);
+            this.tpTableSelection.Controls.Add(this.lbxSelectedMenuItems);
+            this.tpTableSelection.Controls.Add(this.lbl1_pnlOrder);
+            this.tpTableSelection.Controls.Add(this.lblTableID_pnlOrder);
+            this.tpTableSelection.Controls.Add(this.btnClearTableIDs_pnlOrder);
+            this.tpTableSelection.Controls.Add(this.tbxTableID_tpOrderCreation);
+            this.tpTableSelection.Controls.Add(this.btnCreateNewOrder);
+            this.tpTableSelection.Controls.Add(this.btnCancelNewOrder);
+            this.tpTableSelection.Location = new System.Drawing.Point(4, 22);
+            this.tpTableSelection.Name = "tpTableSelection";
+            this.tpTableSelection.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTableSelection.Size = new System.Drawing.Size(758, 534);
+            this.tpTableSelection.TabIndex = 4;
+            this.tpTableSelection.Text = "Table";
+            this.tpTableSelection.UseVisualStyleBackColor = true;
             // 
-            this.btnNewClient_ClientSelect.Location = new System.Drawing.Point(534, 284);
-            this.btnNewClient_ClientSelect.Name = "btnNewClient_ClientSelect";
-            this.btnNewClient_ClientSelect.Size = new System.Drawing.Size(162, 23);
-            this.btnNewClient_ClientSelect.TabIndex = 5;
-            this.btnNewClient_ClientSelect.Text = "Add New Client";
-            this.btnNewClient_ClientSelect.UseVisualStyleBackColor = true;
-            this.btnNewClient_ClientSelect.Click += new System.EventHandler(this.btnNewClient_Click);
+            // lbxSelectedMenuItems
             // 
-            // btnDeleteClient_ClientSelect
+            this.lbxSelectedMenuItems.FormattingEnabled = true;
+            this.lbxSelectedMenuItems.Location = new System.Drawing.Point(9, 32);
+            this.lbxSelectedMenuItems.Name = "lbxSelectedMenuItems";
+            this.lbxSelectedMenuItems.Size = new System.Drawing.Size(563, 121);
+            this.lbxSelectedMenuItems.TabIndex = 11;
             // 
-            this.btnDeleteClient_ClientSelect.Location = new System.Drawing.Point(534, 313);
-            this.btnDeleteClient_ClientSelect.Name = "btnDeleteClient_ClientSelect";
-            this.btnDeleteClient_ClientSelect.Size = new System.Drawing.Size(162, 23);
-            this.btnDeleteClient_ClientSelect.TabIndex = 5;
-            this.btnDeleteClient_ClientSelect.Text = "Delete Client";
-            this.btnDeleteClient_ClientSelect.UseVisualStyleBackColor = true;
-            this.btnDeleteClient_ClientSelect.Click += new System.EventHandler(this.btnDeleteClient_ClientSelect_Click);
+            // lbl1_pnlOrder
             // 
-            // btnEditClient_ClientSelect
+            this.lbl1_pnlOrder.AutoSize = true;
+            this.lbl1_pnlOrder.Location = new System.Drawing.Point(6, 16);
+            this.lbl1_pnlOrder.Name = "lbl1_pnlOrder";
+            this.lbl1_pnlOrder.Size = new System.Drawing.Size(47, 13);
+            this.lbl1_pnlOrder.TabIndex = 10;
+            this.lbl1_pnlOrder.Text = "Order(s):";
             // 
-            this.btnEditClient_ClientSelect.Location = new System.Drawing.Point(534, 255);
-            this.btnEditClient_ClientSelect.Name = "btnEditClient_ClientSelect";
-            this.btnEditClient_ClientSelect.Size = new System.Drawing.Size(162, 23);
-            this.btnEditClient_ClientSelect.TabIndex = 5;
-            this.btnEditClient_ClientSelect.Text = "Edit ClientInfo";
-            this.btnEditClient_ClientSelect.UseVisualStyleBackColor = true;
-            this.btnEditClient_ClientSelect.Click += new System.EventHandler(this.btnEditClient_Click);
+            // lblTableID_pnlOrder
             // 
-            // plnSearchName
+            this.lblTableID_pnlOrder.AutoSize = true;
+            this.lblTableID_pnlOrder.Location = new System.Drawing.Point(6, 163);
+            this.lblTableID_pnlOrder.Name = "lblTableID_pnlOrder";
+            this.lblTableID_pnlOrder.Size = new System.Drawing.Size(37, 13);
+            this.lblTableID_pnlOrder.TabIndex = 2;
+            this.lblTableID_pnlOrder.Text = "Table:";
             // 
-            this.plnSearchName.BackColor = System.Drawing.Color.Gray;
-            this.plnSearchName.BackgroundImage = global::BonTemps.Properties.Resources.loop;
-            this.plnSearchName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.plnSearchName.Location = new System.Drawing.Point(505, 19);
-            this.plnSearchName.Name = "plnSearchName";
-            this.plnSearchName.Size = new System.Drawing.Size(20, 20);
-            this.plnSearchName.TabIndex = 1;
-            this.plnSearchName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.plnSearchName_MouseClick);
+            // btnClearTableIDs_pnlOrder
             // 
-            // tbxSearchName
+            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(504, 380);
+            this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
+            this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(68, 23);
+            this.btnClearTableIDs_pnlOrder.TabIndex = 8;
+            this.btnClearTableIDs_pnlOrder.Text = "Clear";
+            this.btnClearTableIDs_pnlOrder.UseVisualStyleBackColor = true;
+            this.btnClearTableIDs_pnlOrder.Click += new System.EventHandler(this.btnClearTableIDs_pnlOrder_Click);
             // 
-            this.tbxSearchName.Location = new System.Drawing.Point(6, 19);
-            this.tbxSearchName.Name = "tbxSearchName";
-            this.tbxSearchName.Size = new System.Drawing.Size(493, 20);
-            this.tbxSearchName.TabIndex = 0;
+            // tbxTableID_tpOrderCreation
             // 
-            // lbxClientList
+            this.tbxTableID_tpOrderCreation.Location = new System.Drawing.Point(218, 382);
+            this.tbxTableID_tpOrderCreation.Name = "tbxTableID_tpOrderCreation";
+            this.tbxTableID_tpOrderCreation.ReadOnly = true;
+            this.tbxTableID_tpOrderCreation.Size = new System.Drawing.Size(280, 20);
+            this.tbxTableID_tpOrderCreation.TabIndex = 0;
             // 
-            this.lbxClientList.FormattingEnabled = true;
-            this.lbxClientList.Location = new System.Drawing.Point(6, 58);
-            this.lbxClientList.Name = "lbxClientList";
-            this.lbxClientList.Size = new System.Drawing.Size(519, 316);
-            this.lbxClientList.TabIndex = 2;
-            this.lbxClientList.SelectedIndexChanged += new System.EventHandler(this.lbxClientList_SelectedIndexChanged);
+            // btnCreateNewOrder
             // 
-            // tbxClientID_tpClientSelect
+            this.btnCreateNewOrder.Location = new System.Drawing.Point(398, 408);
+            this.btnCreateNewOrder.Name = "btnCreateNewOrder";
+            this.btnCreateNewOrder.Size = new System.Drawing.Size(174, 23);
+            this.btnCreateNewOrder.TabIndex = 1;
+            this.btnCreateNewOrder.Text = "Create Order";
+            this.btnCreateNewOrder.UseVisualStyleBackColor = true;
+            this.btnCreateNewOrder.Click += new System.EventHandler(this.btnCreateNewOrder_Click);
             // 
-            this.tbxClientID_tpClientSelect.Location = new System.Drawing.Point(534, 151);
-            this.tbxClientID_tpClientSelect.Name = "tbxClientID_tpClientSelect";
-            this.tbxClientID_tpClientSelect.ReadOnly = true;
-            this.tbxClientID_tpClientSelect.Size = new System.Drawing.Size(162, 20);
-            this.tbxClientID_tpClientSelect.TabIndex = 6;
-            this.tbxClientID_tpClientSelect.TextChanged += new System.EventHandler(this.tbxClientID_tpClientSelect_TextChanged);
+            // btnCancelNewOrder
             // 
-            // lblClientID_ClientSelect
+            this.btnCancelNewOrder.Location = new System.Drawing.Point(218, 407);
+            this.btnCancelNewOrder.Name = "btnCancelNewOrder";
+            this.btnCancelNewOrder.Size = new System.Drawing.Size(174, 23);
+            this.btnCancelNewOrder.TabIndex = 1;
+            this.btnCancelNewOrder.Text = "Cancel";
+            this.btnCancelNewOrder.UseVisualStyleBackColor = true;
             // 
-            this.lblClientID_ClientSelect.AutoSize = true;
-            this.lblClientID_ClientSelect.Location = new System.Drawing.Point(534, 135);
-            this.lblClientID_ClientSelect.Name = "lblClientID_ClientSelect";
-            this.lblClientID_ClientSelect.Size = new System.Drawing.Size(50, 13);
-            this.lblClientID_ClientSelect.TabIndex = 7;
-            this.lblClientID_ClientSelect.Text = "Client ID:";
+            // pnlOverview
             // 
-            // tbxClientVisits_ClientSelect
-            // 
-            this.tbxClientVisits_ClientSelect.Location = new System.Drawing.Point(534, 229);
-            this.tbxClientVisits_ClientSelect.Name = "tbxClientVisits_ClientSelect";
-            this.tbxClientVisits_ClientSelect.ReadOnly = true;
-            this.tbxClientVisits_ClientSelect.Size = new System.Drawing.Size(162, 20);
-            this.tbxClientVisits_ClientSelect.TabIndex = 6;
-            this.tbxClientVisits_ClientSelect.TextChanged += new System.EventHandler(this.tbxClientID_tpClientSelect_TextChanged);
-            // 
-            // lblClientVisits_ClientSelect
-            // 
-            this.lblClientVisits_ClientSelect.AutoSize = true;
-            this.lblClientVisits_ClientSelect.Location = new System.Drawing.Point(534, 213);
-            this.lblClientVisits_ClientSelect.Name = "lblClientVisits_ClientSelect";
-            this.lblClientVisits_ClientSelect.Size = new System.Drawing.Size(34, 13);
-            this.lblClientVisits_ClientSelect.TabIndex = 7;
-            this.lblClientVisits_ClientSelect.Text = "Visits:";
-            // 
-            // tbxClientName_tpClientSelect
-            // 
-            this.tbxClientName_tpClientSelect.Location = new System.Drawing.Point(534, 190);
-            this.tbxClientName_tpClientSelect.Name = "tbxClientName_tpClientSelect";
-            this.tbxClientName_tpClientSelect.ReadOnly = true;
-            this.tbxClientName_tpClientSelect.Size = new System.Drawing.Size(162, 20);
-            this.tbxClientName_tpClientSelect.TabIndex = 8;
-            // 
-            // lblClientName_ClientSelect
-            // 
-            this.lblClientName_ClientSelect.AutoSize = true;
-            this.lblClientName_ClientSelect.Location = new System.Drawing.Point(534, 174);
-            this.lblClientName_ClientSelect.Name = "lblClientName_ClientSelect";
-            this.lblClientName_ClientSelect.Size = new System.Drawing.Size(67, 13);
-            this.lblClientName_ClientSelect.TabIndex = 9;
-            this.lblClientName_ClientSelect.Text = "Client Name:";
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(6, 3);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(44, 13);
-            this.lblSearch.TabIndex = 10;
-            this.lblSearch.Text = "Search:";
-            // 
-            // lblClientList
-            // 
-            this.lblClientList.AutoSize = true;
-            this.lblClientList.Location = new System.Drawing.Point(6, 42);
-            this.lblClientList.Name = "lblClientList";
-            this.lblClientList.Size = new System.Drawing.Size(52, 13);
-            this.lblClientList.TabIndex = 10;
-            this.lblClientList.Text = "ClientList:";
-            // 
-            // btnClientSelect_OK
-            // 
-            this.btnClientSelect_OK.Location = new System.Drawing.Point(618, 351);
-            this.btnClientSelect_OK.Name = "btnClientSelect_OK";
-            this.btnClientSelect_OK.Size = new System.Drawing.Size(75, 23);
-            this.btnClientSelect_OK.TabIndex = 11;
-            this.btnClientSelect_OK.Text = "Ok";
-            this.btnClientSelect_OK.UseVisualStyleBackColor = true;
-            this.btnClientSelect_OK.Click += new System.EventHandler(this.btnClientSelect_OK_Click);
-            // 
-            // btnClientSelect_Cancel
-            // 
-            this.btnClientSelect_Cancel.Location = new System.Drawing.Point(537, 351);
-            this.btnClientSelect_Cancel.Name = "btnClientSelect_Cancel";
-            this.btnClientSelect_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.btnClientSelect_Cancel.TabIndex = 11;
-            this.btnClientSelect_Cancel.Text = "Cancel";
-            this.btnClientSelect_Cancel.UseVisualStyleBackColor = true;
-            this.btnClientSelect_Cancel.Click += new System.EventHandler(this.btnClientSelect_Cancel_Click);
-            // 
-            // tpNewOrder
-            // 
-            this.tpNewOrder.Controls.Add(this.tctrlCreateOrder);
-            this.tpNewOrder.Location = new System.Drawing.Point(4, 22);
-            this.tpNewOrder.Name = "tpNewOrder";
-            this.tpNewOrder.Padding = new System.Windows.Forms.Padding(3);
-            this.tpNewOrder.Size = new System.Drawing.Size(777, 569);
-            this.tpNewOrder.TabIndex = 0;
-            this.tpNewOrder.Tag = "Receptionist";
-            this.tpNewOrder.Text = "Create Order";
-            this.tpNewOrder.UseVisualStyleBackColor = true;
-            this.tpNewOrder.Enter += new System.EventHandler(this.tpNewOrder_Enter);
-            // 
-            // lvOrders
-            // 
-            this.lvOrders.CheckBoxes = true;
-            this.lvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvOrders.Location = new System.Drawing.Point(3, 3);
-            this.lvOrders.Name = "lvOrders";
-            this.lvOrders.Size = new System.Drawing.Size(771, 563);
-            this.lvOrders.TabIndex = 0;
-            this.lvOrders.UseCompatibleStateImageBehavior = false;
+            this.pnlOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOverview.Location = new System.Drawing.Point(9, 179);
+            this.pnlOverview.Name = "pnlOverview";
+            this.pnlOverview.Size = new System.Drawing.Size(563, 195);
+            this.pnlOverview.TabIndex = 12;
             // 
             // tpOrders
             // 
@@ -811,6 +619,16 @@
             this.tpOrders.Text = "Orders";
             this.tpOrders.UseVisualStyleBackColor = true;
             // 
+            // lvOrders
+            // 
+            this.lvOrders.CheckBoxes = true;
+            this.lvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvOrders.Location = new System.Drawing.Point(3, 3);
+            this.lvOrders.Name = "lvOrders";
+            this.lvOrders.Size = new System.Drawing.Size(771, 563);
+            this.lvOrders.TabIndex = 0;
+            this.lvOrders.UseCompatibleStateImageBehavior = false;
+            // 
             // tpManagement
             // 
             this.tpManagement.BackColor = System.Drawing.Color.Transparent;
@@ -823,7 +641,48 @@
             this.tpManagement.Padding = new System.Windows.Forms.Padding(3);
             this.tpManagement.Size = new System.Drawing.Size(777, 569);
             this.tpManagement.TabIndex = 3;
+            this.tpManagement.Tag = "Manager";
             this.tpManagement.Text = "Management";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(8, 517);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(761, 44);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // dgvEditTables
+            // 
+            this.dgvEditTables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEditTables.Location = new System.Drawing.Point(8, 29);
+            this.dgvEditTables.Name = "dgvEditTables";
+            this.dgvEditTables.Size = new System.Drawing.Size(761, 368);
+            this.dgvEditTables.TabIndex = 2;
+            // 
+            // rbEditUsers
+            // 
+            this.rbEditUsers.AutoSize = true;
+            this.rbEditUsers.Location = new System.Drawing.Point(71, 6);
+            this.rbEditUsers.Name = "rbEditUsers";
+            this.rbEditUsers.Size = new System.Drawing.Size(52, 17);
+            this.rbEditUsers.TabIndex = 1;
+            this.rbEditUsers.TabStop = true;
+            this.rbEditUsers.Text = "Users";
+            this.rbEditUsers.UseVisualStyleBackColor = true;
+            // 
+            // rbEditMenus
+            // 
+            this.rbEditMenus.AutoSize = true;
+            this.rbEditMenus.Location = new System.Drawing.Point(8, 6);
+            this.rbEditMenus.Name = "rbEditMenus";
+            this.rbEditMenus.Size = new System.Drawing.Size(57, 17);
+            this.rbEditMenus.TabIndex = 0;
+            this.rbEditMenus.TabStop = true;
+            this.rbEditMenus.Text = "Menus";
+            this.rbEditMenus.UseVisualStyleBackColor = true;
             // 
             // minimizeMenuToolStripMenuItem
             // 
@@ -870,135 +729,56 @@
             this.exitbuttonToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
             this.exitbuttonToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // fileToolStripMenuItem2
+            // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportClientsToolStripMenuItem2,
-            this.toolStripMenuItem4,
-            this.exitToolStripMenuItem2,
-            this.logoutToolStripMenuItem,
-            this.lockToolStripMenuItem});
-            this.fileToolStripMenuItem2.ForeColor = System.Drawing.Color.White;
-            this.fileToolStripMenuItem2.Name = "fileToolStripMenuItem2";
-            this.fileToolStripMenuItem2.Size = new System.Drawing.Size(39, 20);
-            this.fileToolStripMenuItem2.Text = "File";
-            this.fileToolStripMenuItem2.DropDownClosed += new System.EventHandler(this.fileToolStripMenuItem2_DropDownClosed);
-            this.fileToolStripMenuItem2.DropDownOpened += new System.EventHandler(this.fileToolStripMenuItem2_DropDownOpened);
+            this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // exportClientsToolStripMenuItem2
+            // exportClientsToolStripMenuItem
             // 
-            this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.exportClientsToolStripMenuItem2.Text = "Export Clients";
-            this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
+            this.exportClientsToolStripMenuItem.Name = "exportClientsToolStripMenuItem";
+            this.exportClientsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.exportClientsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.exportClientsToolStripMenuItem.Text = "Export Clients";
             // 
-            // toolStripMenuItem4
+            // toolStripMenuItem1
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(183, 6);
             // 
-            // exitToolStripMenuItem2
+            // closeToolStripMenuItem
             // 
-            this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem2.Text = "Exit";
-            this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
-            // logoutToolStripMenuItem
+            // menuToolStripMenuItem
             // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            this.menuToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.menuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
             // 
-            // lockToolStripMenuItem
+            // alterMenuToolStripMenuItem
             // 
-            this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
-            this.lockToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.lockToolStripMenuItem.Text = "Lock";
-            this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
+            this.alterMenuToolStripMenuItem.Name = "alterMenuToolStripMenuItem";
+            this.alterMenuToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.alterMenuToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.alterMenuToolStripMenuItem.Text = "Alter Menu";
             // 
-            // exitToolStripMenuItem1
+            // toolStripMenuItem2
             // 
-<<<<<<< HEAD
-            this.exitToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.exitToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.exitToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.closebutton;
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(109, 20);
-            this.exitToolStripMenuItem1.Text = "LOOOOL XDD";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
-=======
-            this.tpMenuSelection.Controls.Add(this.pnlMenuSelectContainer);
-            this.tpMenuSelection.Controls.Add(this.btnSetOrder);
-            this.tpMenuSelection.Location = new System.Drawing.Point(4, 22);
-            this.tpMenuSelection.Name = "tpMenuSelection";
-            this.tpMenuSelection.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMenuSelection.Size = new System.Drawing.Size(758, 534);
-            this.tpMenuSelection.TabIndex = 3;
-            this.tpMenuSelection.Tag = "Receptionist,Ober";
-            this.tpMenuSelection.Text = "MenuSelection";
-            this.tpMenuSelection.UseVisualStyleBackColor = true;
->>>>>>> Version 3.01
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(196, 6);
             // 
-            // minimizeToolStripMenuItem1
+            // checkStockedSuppliesToolStripMenuItem
             // 
-<<<<<<< HEAD
-            this.minimizeToolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.minimizeToolStripMenuItem1.Image = global::BonTemps.Properties.Resources.minimizebutton;
-            this.minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
-            this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
-            this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
+            this.checkStockedSuppliesToolStripMenuItem.Name = "checkStockedSuppliesToolStripMenuItem";
+            this.checkStockedSuppliesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.checkStockedSuppliesToolStripMenuItem.Text = "Check Stocked Supplies";
             // 
-            // menuMain
-            // 
-            this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
-            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem2,
-            this.exitToolStripMenuItem1,
-            this.minimizeToolStripMenuItem1});
-            this.menuMain.Location = new System.Drawing.Point(0, 0);
-            this.menuMain.Name = "menuMain";
-            this.menuMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuMain.Size = new System.Drawing.Size(785, 24);
-            this.menuMain.TabIndex = 1;
-            this.menuMain.Text = "menuStrip1";
-            // 
-            // menuToolStripMenuItem1
-            // 
-            this.menuToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.menuToolStripMenuItem1.Name = "menuToolStripMenuItem1";
-            this.menuToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
-            this.menuToolStripMenuItem1.Text = "Menu";
-            // 
-            // exportClientsToolStripMenuItem1
-            // 
-            this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.exportClientsToolStripMenuItem1.Text = "Export Clients";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
-=======
-            this.pnlMenuSelectContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMenuSelectContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenuSelectContainer.Location = new System.Drawing.Point(3, 3);
-            this.pnlMenuSelectContainer.Name = "pnlMenuSelectContainer";
-            this.pnlMenuSelectContainer.Size = new System.Drawing.Size(752, 480);
-            this.pnlMenuSelectContainer.TabIndex = 0;
-            // 
-            // btnSetOrder
->>>>>>> Version 3.01
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
-<<<<<<< HEAD
             // fileToolStripMenuItem1
             // 
             this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1009,155 +789,34 @@
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem1.Text = "File";
-=======
-            this.tpTableSelection.Controls.Add(this.pnlOverview);
-            this.tpTableSelection.Controls.Add(this.lbxSelectedMenuItems);
-            this.tpTableSelection.Controls.Add(this.lbl1_pnlOrder);
-            this.tpTableSelection.Controls.Add(this.lblTableID_pnlOrder);
-            this.tpTableSelection.Controls.Add(this.btnClearTableIDs_pnlOrder);
-            this.tpTableSelection.Controls.Add(this.tbxTableID_tpOrderCreation);
-            this.tpTableSelection.Controls.Add(this.btnCreateNewOrder);
-            this.tpTableSelection.Controls.Add(this.btnCancelNewOrder);
-            this.tpTableSelection.Location = new System.Drawing.Point(4, 22);
-            this.tpTableSelection.Name = "tpTableSelection";
-            this.tpTableSelection.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTableSelection.Size = new System.Drawing.Size(758, 534);
-            this.tpTableSelection.TabIndex = 4;
-            this.tpTableSelection.Text = "Table";
-            this.tpTableSelection.UseVisualStyleBackColor = true;
             // 
-            // pnlOverview
+            // exportClientsToolStripMenuItem1
             // 
-            this.pnlOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlOverview.Location = new System.Drawing.Point(9, 179);
-            this.pnlOverview.Name = "pnlOverview";
-            this.pnlOverview.Size = new System.Drawing.Size(563, 195);
-            this.pnlOverview.TabIndex = 12;
+            this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem1.Text = "Export Clients";
             // 
-            // lbxSelectedMenuItems
->>>>>>> Version 3.01
+            // toolStripMenuItem3
             // 
-            // checkStockedSuppliesToolStripMenuItem
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
             // 
-            this.checkStockedSuppliesToolStripMenuItem.Name = "checkStockedSuppliesToolStripMenuItem";
-            this.checkStockedSuppliesToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.checkStockedSuppliesToolStripMenuItem.Text = "Check Stocked Supplies";
+            // exitToolStripMenuItem
             // 
-            // toolStripMenuItem2
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
-<<<<<<< HEAD
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(196, 6);
+            // menuToolStripMenuItem1
             // 
-            // alterMenuToolStripMenuItem
-            // 
-            this.alterMenuToolStripMenuItem.Name = "alterMenuToolStripMenuItem";
-            this.alterMenuToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.alterMenuToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.alterMenuToolStripMenuItem.Text = "Alter Menu";
-=======
-            // lblTableID_pnlOrder
->>>>>>> Version 3.01
-            // 
-            // menuToolStripMenuItem
-            // 
-            this.menuToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.menuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.menuToolStripMenuItem.Text = "Menu";
-            // 
-<<<<<<< HEAD
-            // closeToolStripMenuItem
-=======
-            this.btnClearTableIDs_pnlOrder.Location = new System.Drawing.Point(504, 380);
-            this.btnClearTableIDs_pnlOrder.Name = "btnClearTableIDs_pnlOrder";
-            this.btnClearTableIDs_pnlOrder.Size = new System.Drawing.Size(68, 23);
-            this.btnClearTableIDs_pnlOrder.TabIndex = 8;
-            this.btnClearTableIDs_pnlOrder.Text = "Clear";
-            this.btnClearTableIDs_pnlOrder.UseVisualStyleBackColor = true;
-            this.btnClearTableIDs_pnlOrder.Click += new System.EventHandler(this.btnClearTableIDs_pnlOrder_Click);
->>>>>>> Version 3.01
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(183, 6);
-            // 
-<<<<<<< HEAD
-            // exportClientsToolStripMenuItem
-=======
-            this.btnCreateNewOrder.Location = new System.Drawing.Point(398, 408);
-            this.btnCreateNewOrder.Name = "btnCreateNewOrder";
-            this.btnCreateNewOrder.Size = new System.Drawing.Size(174, 23);
-            this.btnCreateNewOrder.TabIndex = 1;
-            this.btnCreateNewOrder.Text = "Create Order";
-            this.btnCreateNewOrder.UseVisualStyleBackColor = true;
-            this.btnCreateNewOrder.Click += new System.EventHandler(this.btnCreateNewOrder_Click);
->>>>>>> Version 3.01
-            // 
-            this.exportClientsToolStripMenuItem.Name = "exportClientsToolStripMenuItem";
-            this.exportClientsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exportClientsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.exportClientsToolStripMenuItem.Text = "Export Clients";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // rbEditMenus
-            // 
-            this.rbEditMenus.AutoSize = true;
-            this.rbEditMenus.Location = new System.Drawing.Point(8, 6);
-            this.rbEditMenus.Name = "rbEditMenus";
-            this.rbEditMenus.Size = new System.Drawing.Size(57, 17);
-            this.rbEditMenus.TabIndex = 0;
-            this.rbEditMenus.TabStop = true;
-            this.rbEditMenus.Text = "Menus";
-            this.rbEditMenus.UseVisualStyleBackColor = true;
-            // 
-            // rbEditUsers
-            // 
-            this.rbEditUsers.AutoSize = true;
-            this.rbEditUsers.Location = new System.Drawing.Point(71, 6);
-            this.rbEditUsers.Name = "rbEditUsers";
-            this.rbEditUsers.Size = new System.Drawing.Size(52, 17);
-            this.rbEditUsers.TabIndex = 1;
-            this.rbEditUsers.TabStop = true;
-            this.rbEditUsers.Text = "Users";
-            this.rbEditUsers.UseVisualStyleBackColor = true;
-            // 
-            // dgvEditTables
-            // 
-            this.dgvEditTables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEditTables.Location = new System.Drawing.Point(8, 29);
-            this.dgvEditTables.Name = "dgvEditTables";
-            this.dgvEditTables.Size = new System.Drawing.Size(761, 368);
-            this.dgvEditTables.TabIndex = 2;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(8, 517);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(761, 44);
-            this.btnUpdate.TabIndex = 3;
-            this.btnUpdate.Text = "UPDATE";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.menuToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.menuToolStripMenuItem1.Name = "menuToolStripMenuItem1";
+            this.menuToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem1.Text = "Menu";
             // 
             // menuMain
             // 
             this.menuMain.BackgroundImage = global::BonTemps.Properties.Resources.menustrip2;
-            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem2,
-            this.exitToolStripMenuItem1,
-            this.minimizeToolStripMenuItem1});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
             this.menuMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -1231,51 +890,6 @@
             this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
             this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
             // 
-            // exitbuttonToolStripMenuItem
-            // 
-            this.exitbuttonToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.exitbuttonToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.exitbuttonToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.exitbuttonToolStripMenuItem.Image = global::BonTemps.Properties.Resources.closebutton;
-            this.exitbuttonToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.exitbuttonToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.exitbuttonToolStripMenuItem.Name = "exitbuttonToolStripMenuItem";
-            this.exitbuttonToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.exitbuttonToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-            this.exitbuttonToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // minimizeToolStripMenuItem
-            // 
-            this.minimizeToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.minimizeToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.minimizeToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.minimizeToolStripMenuItem.Image = global::BonTemps.Properties.Resources.minimizebutton;
-            this.minimizeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-            // 
-            // closeMenuToolStripMenuItem
-            // 
-            this.closeMenuToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.closeMenuToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.closeMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.closeMenuToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("closeMenuToolStripMenuItem.Image")));
-            this.closeMenuToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.closeMenuToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.closeMenuToolStripMenuItem.Name = "closeMenuToolStripMenuItem";
-            this.closeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-            this.closeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // minimizeMenuToolStripMenuItem
-            // 
-            this.minimizeMenuToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.minimizeMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.minimizeMenuToolStripMenuItem.Image = global::BonTemps.Properties.Resources.minimizebutton;
-            this.minimizeMenuToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.minimizeMenuToolStripMenuItem.Name = "minimizeMenuToolStripMenuItem";
-            this.minimizeMenuToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-            this.minimizeMenuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1287,50 +901,22 @@
             this.MainMenuStrip = this.menuMain;
             this.Name = "FormMain";
             this.Text = "Main Form";
-<<<<<<< HEAD
             this.tctrlInterface.ResumeLayout(false);
-=======
-            this.tpManagement.ResumeLayout(false);
-            this.tpManagement.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMenus)).EndInit();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.tpOrders.ResumeLayout(false);
             this.tpNewOrder.ResumeLayout(false);
->>>>>>> Version 3.01
             this.tctrlCreateOrder.ResumeLayout(false);
-            this.tpTableSelection.ResumeLayout(false);
-            this.tpTableSelection.PerformLayout();
-            this.tpMenuSelection.ResumeLayout(false);
-<<<<<<< HEAD
-            this.pnlMenuSelectionTableInfo.ResumeLayout(false);
-            this.pnlMenuSelectionTableInfo.PerformLayout();
-            this.tpOrderCreation.ResumeLayout(false);
-            this.tpOrderCreation.PerformLayout();
             this.tpClientSelect.ResumeLayout(false);
             this.tpClientSelect.PerformLayout();
-            this.tpNewOrder.ResumeLayout(false);
+            this.tpOrderCreation.ResumeLayout(false);
+            this.tpOrderCreation.PerformLayout();
+            this.tpMenuSelection.ResumeLayout(false);
+            this.tpTableSelection.ResumeLayout(false);
+            this.tpTableSelection.PerformLayout();
             this.tpOrders.ResumeLayout(false);
             this.tpManagement.ResumeLayout(false);
             this.tpManagement.PerformLayout();
-            this.menuMain.ResumeLayout(false);
-            this.menuMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditTables)).EndInit();
-=======
-            this.tpTableSelection.ResumeLayout(false);
-            this.tpTableSelection.PerformLayout();
-            this.tctrlInterface.ResumeLayout(false);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
->>>>>>> Version 3.01
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1374,18 +960,17 @@
         private System.Windows.Forms.Panel pnlMenuSelectContainer;
         private System.Windows.Forms.Button btnSetOrder;
         private System.Windows.Forms.TabPage tpTableSelection;
-<<<<<<< HEAD
+
         private System.Windows.Forms.ListBox lbxSelectedMenuItems;
         private System.Windows.Forms.Label lbl1_pnlOrder;
-        private System.Windows.Forms.ListView listView1;
-=======
->>>>>>> Version 3.01
+
+
         private System.Windows.Forms.Label lblTableID_pnlOrder;
         private System.Windows.Forms.Button btnClearTableIDs_pnlOrder;
         private System.Windows.Forms.TextBox tbxTableID_tpOrderCreation;
         private System.Windows.Forms.Button btnCreateNewOrder;
         private System.Windows.Forms.Button btnCancelNewOrder;
-<<<<<<< HEAD
+
         private System.Windows.Forms.TabPage tpOrders;
         private System.Windows.Forms.ListView lvOrders;
         private System.Windows.Forms.TabPage tpManagement;
@@ -1420,16 +1005,8 @@
         private System.Windows.Forms.RadioButton rbEditMenus;
         private System.Windows.Forms.DataGridView dgvEditTables;
         private System.Windows.Forms.Button btnUpdate;
-
-=======
-        private System.Windows.Forms.TabControl tctrlInterface;
-        private System.Windows.Forms.Label lblClientVisits_ClientSelect;
-        private System.Windows.Forms.TextBox tbxClientVisits_ClientSelect;
-        private System.Windows.Forms.Button btnDeleteClient_ClientSelect;
-        private System.Windows.Forms.ListBox lbxSelectedMenuItems;
-        private System.Windows.Forms.Label lbl1_pnlOrder;
         private System.Windows.Forms.Panel pnlOverview;
->>>>>>> Version 3.01
+
     }
 }
 

@@ -14,6 +14,7 @@ namespace BonTemps
         private Form parentForm;
         private string initialUser;
         private int tableSize = 0;
+        private int tableMultiplier;
         private List<Client> clients;
         private List<TableLayout> tables;
 
@@ -24,8 +25,8 @@ namespace BonTemps
             this.InitializeComponent();
             this.InitializeFormProperties();
             this.InitializeRules();
-            this.InitializeTabManagement();
         }
+
         private void InitializeTabManagement()
         {
             this.rbEditMenus.Select();
@@ -112,12 +113,12 @@ namespace BonTemps
         {
             // @Ryan: not sure whether you mean the view initialization or the manager ini... e.g. like you did with IniOrderView & IniChef/Waiter.. 
             // Made IniManagerView() instead... see below
+            this.InitializeTabManagement();
             
         }
 
         private void IniManagerView()
         {
-
         }
 
         private void IniChef()
@@ -961,26 +962,6 @@ namespace BonTemps
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (this.rbEditMenus.Checked)
-            {
-                if (this.ProcessInfoMenu()) MessageBox.Show("Menu information successfully updated.");
-                else MessageBox.Show("Menu information update failed.");
-            }
-            else
-            {
-                if (this.ProcessInfoUsers()) MessageBox.Show("User information successfully updated.");
-                else MessageBox.Show("User information update failed.");
-            }
-        }
-
-        private bool ProcessInfoMenu()
-        {
-            Control[] ctrlTbx = this.Controls.Find("");
-        }
-
-        private bool ProcessInfoUsers()
-        {
-
         }
     }
 }

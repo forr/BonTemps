@@ -174,8 +174,10 @@
     <Content Include="Images\MainMenu\menstrip.png" />
     <Content Include="Images\MainMenu\minimizebutton.png" />
     <Content Include="Images\SplashScreen\splashscreenbg.png" />
-    <None Include="Resources\background.png" />
-    <None Include="Resources\background.bmp" />
+    <None Include="background.png" />
+    <None Include="Resources\background.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
