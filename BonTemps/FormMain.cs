@@ -1014,6 +1014,11 @@ namespace BonTemps
 
         }
 
+        private void lvOrders_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            new Database().UpdateOrderReady((!lvOrders.Items[e.Index].Checked), Int32.Parse(lvOrders.Items[e.Index].Text.Remove(0, lvOrders.Items[e.Index].Text.Length - 1)),Int32.Parse(lvOrders.Items[e.Index].SubItems[1].Text));
+        }
+
         //private bool ProcessInfoMenu()
         //{
         //    return true;

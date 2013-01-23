@@ -77,6 +77,17 @@
             this.lvOrders = new System.Windows.Forms.ListView();
             this.tpManagement = new System.Windows.Forms.TabPage();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.tbxPrice = new System.Windows.Forms.TextBox();
+            this.tbxDessert = new System.Windows.Forms.TextBox();
+            this.tbxMainCourse = new System.Windows.Forms.TextBox();
+            this.tbxEntree = new System.Windows.Forms.TextBox();
+            this.tbxMenuID = new System.Windows.Forms.TextBox();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblDessert = new System.Windows.Forms.Label();
+            this.lblMainCourse = new System.Windows.Forms.Label();
+            this.lblEntree = new System.Windows.Forms.Label();
+            this.lblMenuID = new System.Windows.Forms.Label();
+            this.dgvEditMenus = new System.Windows.Forms.DataGridView();
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,17 +125,6 @@
             this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvEditMenus = new System.Windows.Forms.DataGridView();
-            this.lblMenuID = new System.Windows.Forms.Label();
-            this.lblEntree = new System.Windows.Forms.Label();
-            this.lblMainCourse = new System.Windows.Forms.Label();
-            this.lblDessert = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.tbxMenuID = new System.Windows.Forms.TextBox();
-            this.tbxEntree = new System.Windows.Forms.TextBox();
-            this.tbxMainCourse = new System.Windows.Forms.TextBox();
-            this.tbxDessert = new System.Windows.Forms.TextBox();
-            this.tbxPrice = new System.Windows.Forms.TextBox();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
             this.tctrlCreateOrder.SuspendLayout();
@@ -135,8 +135,8 @@
             this.tpOrders.SuspendLayout();
             this.tpManagement.SuspendLayout();
             this.pnlMain.SuspendLayout();
-            this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditMenus)).BeginInit();
+            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tctrlInterface
@@ -647,6 +647,7 @@
             this.lvOrders.Size = new System.Drawing.Size(771, 563);
             this.lvOrders.TabIndex = 0;
             this.lvOrders.UseCompatibleStateImageBehavior = false;
+            this.lvOrders.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lvOrders_ItemCheck);
             // 
             // tpManagement
             // 
@@ -679,6 +680,94 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(761, 478);
             this.pnlMain.TabIndex = 5;
+            // 
+            // tbxPrice
+            // 
+            this.tbxPrice.Location = new System.Drawing.Point(426, 425);
+            this.tbxPrice.Name = "tbxPrice";
+            this.tbxPrice.Size = new System.Drawing.Size(300, 20);
+            this.tbxPrice.TabIndex = 10;
+            // 
+            // tbxDessert
+            // 
+            this.tbxDessert.Location = new System.Drawing.Point(426, 401);
+            this.tbxDessert.Name = "tbxDessert";
+            this.tbxDessert.Size = new System.Drawing.Size(300, 20);
+            this.tbxDessert.TabIndex = 9;
+            // 
+            // tbxMainCourse
+            // 
+            this.tbxMainCourse.Location = new System.Drawing.Point(71, 448);
+            this.tbxMainCourse.Name = "tbxMainCourse";
+            this.tbxMainCourse.Size = new System.Drawing.Size(300, 20);
+            this.tbxMainCourse.TabIndex = 8;
+            // 
+            // tbxEntree
+            // 
+            this.tbxEntree.Location = new System.Drawing.Point(71, 425);
+            this.tbxEntree.Name = "tbxEntree";
+            this.tbxEntree.Size = new System.Drawing.Size(300, 20);
+            this.tbxEntree.TabIndex = 7;
+            // 
+            // tbxMenuID
+            // 
+            this.tbxMenuID.Location = new System.Drawing.Point(71, 401);
+            this.tbxMenuID.Name = "tbxMenuID";
+            this.tbxMenuID.Size = new System.Drawing.Size(300, 20);
+            this.tbxMenuID.TabIndex = 6;
+            // 
+            // lblPrice
+            // 
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Location = new System.Drawing.Point(377, 428);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(31, 13);
+            this.lblPrice.TabIndex = 5;
+            this.lblPrice.Text = "Price";
+            // 
+            // lblDessert
+            // 
+            this.lblDessert.AutoSize = true;
+            this.lblDessert.Location = new System.Drawing.Point(377, 404);
+            this.lblDessert.Name = "lblDessert";
+            this.lblDessert.Size = new System.Drawing.Size(43, 13);
+            this.lblDessert.TabIndex = 4;
+            this.lblDessert.Text = "Dessert";
+            // 
+            // lblMainCourse
+            // 
+            this.lblMainCourse.AutoSize = true;
+            this.lblMainCourse.Location = new System.Drawing.Point(3, 451);
+            this.lblMainCourse.Name = "lblMainCourse";
+            this.lblMainCourse.Size = new System.Drawing.Size(66, 13);
+            this.lblMainCourse.TabIndex = 3;
+            this.lblMainCourse.Text = "Main Course";
+            // 
+            // lblEntree
+            // 
+            this.lblEntree.AutoSize = true;
+            this.lblEntree.Location = new System.Drawing.Point(3, 428);
+            this.lblEntree.Name = "lblEntree";
+            this.lblEntree.Size = new System.Drawing.Size(38, 13);
+            this.lblEntree.TabIndex = 2;
+            this.lblEntree.Text = "Entree";
+            // 
+            // lblMenuID
+            // 
+            this.lblMenuID.AutoSize = true;
+            this.lblMenuID.Location = new System.Drawing.Point(3, 404);
+            this.lblMenuID.Name = "lblMenuID";
+            this.lblMenuID.Size = new System.Drawing.Size(48, 13);
+            this.lblMenuID.TabIndex = 1;
+            this.lblMenuID.Text = "Menu ID";
+            // 
+            // dgvEditMenus
+            // 
+            this.dgvEditMenus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEditMenus.Location = new System.Drawing.Point(3, 3);
+            this.dgvEditMenus.Name = "dgvEditMenus";
+            this.dgvEditMenus.Size = new System.Drawing.Size(755, 389);
+            this.dgvEditMenus.TabIndex = 0;
             // 
             // cbxType
             // 
@@ -811,18 +900,18 @@
             // exportClientsToolStripMenuItem1
             // 
             this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem1.Text = "Export Clients";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // menuToolStripMenuItem1
@@ -856,39 +945,39 @@
             this.lockToolStripMenuItem1});
             this.fileToolStripMenuItem3.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem3.Name = "fileToolStripMenuItem3";
-            this.fileToolStripMenuItem3.Size = new System.Drawing.Size(39, 20);
+            this.fileToolStripMenuItem3.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem3.Text = "File";
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.exportToolStripMenuItem.Text = "Export Clientlist";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(156, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(153, 6);
             // 
             // closeToolStripMenuItem1
             // 
             this.closeToolStripMenuItem1.Name = "closeToolStripMenuItem1";
-            this.closeToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.closeToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             this.closeToolStripMenuItem1.Text = "Close";
             this.closeToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
             // logoutToolStripMenuItem1
             // 
             this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
-            this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             this.logoutToolStripMenuItem1.Text = "Logout";
             this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // lockToolStripMenuItem1
             // 
             this.lockToolStripMenuItem1.Name = "lockToolStripMenuItem1";
-            this.lockToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.lockToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             this.lockToolStripMenuItem1.Text = "Lock";
             this.lockToolStripMenuItem1.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
             // 
@@ -898,7 +987,7 @@
             this.CloseToolStripMenuItem3.ForeColor = System.Drawing.Color.White;
             this.CloseToolStripMenuItem3.Image = global::BonTemps.Properties.Resources.closebutton;
             this.CloseToolStripMenuItem3.Name = "CloseToolStripMenuItem3";
-            this.CloseToolStripMenuItem3.Size = new System.Drawing.Size(65, 20);
+            this.CloseToolStripMenuItem3.Size = new System.Drawing.Size(64, 20);
             this.CloseToolStripMenuItem3.Text = "Close";
             this.CloseToolStripMenuItem3.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -928,33 +1017,33 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // lockToolStripMenuItem
             // 
             this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
-            this.lockToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.lockToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.lockToolStripMenuItem.Text = "Lock";
             this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
             // 
@@ -975,94 +1064,6 @@
             this.minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
             this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
             this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
-            // 
-            // dgvEditMenus
-            // 
-            this.dgvEditMenus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEditMenus.Location = new System.Drawing.Point(3, 3);
-            this.dgvEditMenus.Name = "dgvEditMenus";
-            this.dgvEditMenus.Size = new System.Drawing.Size(755, 389);
-            this.dgvEditMenus.TabIndex = 0;
-            // 
-            // lblMenuID
-            // 
-            this.lblMenuID.AutoSize = true;
-            this.lblMenuID.Location = new System.Drawing.Point(3, 404);
-            this.lblMenuID.Name = "lblMenuID";
-            this.lblMenuID.Size = new System.Drawing.Size(48, 13);
-            this.lblMenuID.TabIndex = 1;
-            this.lblMenuID.Text = "Menu ID";
-            // 
-            // lblEntree
-            // 
-            this.lblEntree.AutoSize = true;
-            this.lblEntree.Location = new System.Drawing.Point(3, 428);
-            this.lblEntree.Name = "lblEntree";
-            this.lblEntree.Size = new System.Drawing.Size(38, 13);
-            this.lblEntree.TabIndex = 2;
-            this.lblEntree.Text = "Entree";
-            // 
-            // lblMainCourse
-            // 
-            this.lblMainCourse.AutoSize = true;
-            this.lblMainCourse.Location = new System.Drawing.Point(3, 451);
-            this.lblMainCourse.Name = "lblMainCourse";
-            this.lblMainCourse.Size = new System.Drawing.Size(66, 13);
-            this.lblMainCourse.TabIndex = 3;
-            this.lblMainCourse.Text = "Main Course";
-            // 
-            // lblDessert
-            // 
-            this.lblDessert.AutoSize = true;
-            this.lblDessert.Location = new System.Drawing.Point(377, 404);
-            this.lblDessert.Name = "lblDessert";
-            this.lblDessert.Size = new System.Drawing.Size(43, 13);
-            this.lblDessert.TabIndex = 4;
-            this.lblDessert.Text = "Dessert";
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(377, 428);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(31, 13);
-            this.lblPrice.TabIndex = 5;
-            this.lblPrice.Text = "Price";
-            // 
-            // tbxMenuID
-            // 
-            this.tbxMenuID.Location = new System.Drawing.Point(71, 401);
-            this.tbxMenuID.Name = "tbxMenuID";
-            this.tbxMenuID.Size = new System.Drawing.Size(300, 20);
-            this.tbxMenuID.TabIndex = 6;
-            // 
-            // tbxEntree
-            // 
-            this.tbxEntree.Location = new System.Drawing.Point(71, 425);
-            this.tbxEntree.Name = "tbxEntree";
-            this.tbxEntree.Size = new System.Drawing.Size(300, 20);
-            this.tbxEntree.TabIndex = 7;
-            // 
-            // tbxMainCourse
-            // 
-            this.tbxMainCourse.Location = new System.Drawing.Point(71, 448);
-            this.tbxMainCourse.Name = "tbxMainCourse";
-            this.tbxMainCourse.Size = new System.Drawing.Size(300, 20);
-            this.tbxMainCourse.TabIndex = 8;
-            // 
-            // tbxDessert
-            // 
-            this.tbxDessert.Location = new System.Drawing.Point(426, 401);
-            this.tbxDessert.Name = "tbxDessert";
-            this.tbxDessert.Size = new System.Drawing.Size(300, 20);
-            this.tbxDessert.TabIndex = 9;
-            // 
-            // tbxPrice
-            // 
-            this.tbxPrice.Location = new System.Drawing.Point(426, 425);
-            this.tbxPrice.Name = "tbxPrice";
-            this.tbxPrice.Size = new System.Drawing.Size(300, 20);
-            this.tbxPrice.TabIndex = 10;
             // 
             // FormMain
             // 
@@ -1089,9 +1090,9 @@
             this.tpManagement.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEditMenus)).EndInit();
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEditMenus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

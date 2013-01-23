@@ -184,6 +184,33 @@ namespace BonTemps
         }
         #endregion
 
+        /// <summary>
+        /// Updating OrderReady Boolean in TableOrders
+        /// </summary>
+        /// <param name="ready">If the order is ready or not</param>
+        /// <param name="orderID">Where OrderID equals to ... *(int)</param>
+        /// <param name="tableID">Where TableID equals to ... *(int)</param>
+        /// <returns></returns>
+        public bool UpdateOrderReady(bool ready, int orderID, int tableID)
+        {
+            string sqlCmd = string.Format("UPDATE TableOrders " +
+                                          "SET           OrderReady = @OrderID " +
+                                          "WHERE         (TableID={0}) " +
+                                          "AND         (OrderID={1})", orderID, tableID);
+
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(GetConnectionString()))
+                {
+                    sqlConn.Open();
+                    SqlCommand sqlQuery = new SqlCommand(sqlCmd, sqlConn);
+                    sqlQuery.Parameters.AddWithValue("@OrderID", (bool)ready);
+                    return sqlQuery.ExecuteNonQuery() == 1;
+                }
+            }
+            catch { return false; }
+        }
+
         public bool UpdateClientVisit(ulong id)
         {
             string sqlCmd = string.Format("UPDATE Clients " +
@@ -452,6 +479,7 @@ namespace BonTemps
                             to.TableOrderID = (ulong)sqlDR["TableOrderID"];
                             to.TableID = (ulong)sqlDR["TableID"];
                             to.OrderID = (ulong)sqlDR["OrderID"];
+                            to.OrderReady = (Boolean)sqlDR["OrderReady"];
                             return to;
                         }
                         result = TableOrder.Null;
@@ -786,6 +814,7 @@ namespace BonTemps
                             to.TableOrderID = Convert.ToUInt64(sqlDR["TableOrderID"]);
                             to.TableID = Convert.ToUInt64(sqlDR["TableID"]);
                             to.OrderID = Convert.ToUInt64(sqlDR["OrderID"]);
+                            to.OrderReady = (Boolean)sqlDR["OrderReady"];
                             tableOrders.Add(to);
                         }
                         return tableOrders;
