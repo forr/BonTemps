@@ -992,12 +992,16 @@ namespace BonTemps
 
         private void EnableMenuControls()
         {
-            //
+            this.pnlMain.Enabled = true;
+            this.pnlMain.Visible = true;
+            this.pnlMain.Show();
         }
 
         private void DisableMenuControls()
         {
-
+            this.pnlMain.Enabled = false;
+            this.pnlMain.Visible = false;
+            this.pnlMain.Hide();
         }
 
         private void EnableUserControls()
