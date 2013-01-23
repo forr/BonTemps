@@ -885,7 +885,7 @@ namespace BonTemps
             Control[] cs = this.parentForm.Controls.Find("lblLoginStatus", true);
             cs[0].Text = "Account Locked";
 
-            Control[] cs2 = this.parentForm.Controls.Find("comboBoxOccupation", true);
+            Control[] cs2 = this.parentForm.Controls.Find("tbxUsername", true);
             cs2[0].Enabled = false;
 
             Control[] cs3 = this.parentForm.Controls.Find("tbxPassword", true);
