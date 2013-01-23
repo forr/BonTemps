@@ -29,45 +29,46 @@ namespace BonTemps
 
         private void InitializeTabManagement()
         {
-            this.rbEditMenus.Select();
-            this.dgvEditTables.DataSource = new Database().GetAllMenus();
-            int x = this.dgvEditTables.Location.X;
-            int y = this.dgvEditTables.Location.Y + this.dgvEditTables.ClientSize.Height + 20;
-            string[] lblText = new string[] { "Menu ID", "Entree", "Main Course", "Dessert", "Price" };
-            for (int i = 0; i < 6; i++)
-            {
-                TextBox txtbx = new TextBox();
-                Label lbl = new Label();
-                txtbx.Name = String.Format("txtbxEditItem{0}", i);
-                lbl.Name = String.Format("lblEditItem{0}", i);
+            this.cbxType.SelectedIndex = 0;
+            this.cbxType.DropDownStyle = ComboBoxStyle.DropDownList;
+            //this.dgvEditTables.DataSource = new Database().GetAllMenus();
+            //int x = this.dgvEditTables.Location.X;
+            //int y = this.dgvEditTables.Location.Y + this.dgvEditTables.ClientSize.Height + 20;
+            //string[] lblText = new string[] { "Menu ID", "Entree", "Main Course", "Dessert", "Price" };
+            //for (int i = 0; i < 6; i++)
+            //{
+            //    TextBox txtbx = new TextBox();
+            //    Label lbl = new Label();
+            //    txtbx.Name = String.Format("txtbxEditItem{0}", i);
+            //    lbl.Name = String.Format("lblEditItem{0}", i);
 
-                if (i != 0)
-                {
-                    Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
-                    MessageBox.Show(ctrlLbl.Length.ToString());
-                    ctrlLbl[0].Text = lblText[i - 1];
+            //    if (i != 0)
+            //    {
+            //        Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
+            //        MessageBox.Show(ctrlLbl.Length.ToString());
+            //        ctrlLbl[0].Text = lblText[i - 1];
 
-                    Control[] ctrlTbx = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
+            //        Control[] ctrlTbx = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
 
-                    if ((i + 1) % 2 == 0)
-                    {
-                        x += (this.dgvEditTables.ClientSize.Width / 2) + 4;
-                        y = ctrlTbx[0].Location.Y;
-                    }
-                    else
-                        y = (ctrlTbx[0].Location.Y + ctrlTbx[0].ClientSize.Height + 8);
-                }
-                lbl.Location = new Point(x, y);
-                lbl.AutoSize = true;
-                txtbx.Location = new Point(x + 2 + lbl.ClientSize.Width, y);
+            //        if ((i + 1) % 2 == 0)
+            //        {
+            //            x += (this.dgvEditTables.ClientSize.Width / 2) + 4;
+            //            y = ctrlTbx[0].Location.Y;
+            //        }
+            //        else
+            //            y = (ctrlTbx[0].Location.Y + ctrlTbx[0].ClientSize.Height + 8);
+            //    }
+            //    lbl.Location = new Point(x, y);
+            //    lbl.AutoSize = true;
+            //    txtbx.Location = new Point(x + 2 + lbl.ClientSize.Width, y);
 
-                if (i != 5)
-                {
-                    this.tpManagement.Controls.Add(txtbx);
-                    this.tpManagement.Controls.Add(lbl);
-                    x = this.dgvEditTables.Location.X;
-                }
-            }
+            //    if (i != 5)
+            //    {
+            //        this.tpManagement.Controls.Add(txtbx);
+            //        this.tpManagement.Controls.Add(lbl);
+            //        x = this.dgvEditTables.Location.X;
+            //    }
+            //}
         }
 
         private void InitializeFormProperties()
@@ -963,47 +964,48 @@ namespace BonTemps
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (this.rbEditMenus.Checked)
-                if (this.ProcessInfoMenu())
-                    MessageBox.Show("Update of menu information successful.");
-                else
-                    MessageBox.Show("Update of menu information failed.");
-            else
-                if (this.ProcessInfoUser())
-                    MessageBox.Show("Update of user information successful.");
-                else
-                    MessageBox.Show("Update of user information failed.");
+            //if (this.rbEditMenus.Checked)
+            //    if (this.ProcessInfoMenu())
+            //        MessageBox.Show("Update of menu information successful.");
+            //    else
+            //        MessageBox.Show("Update of menu information failed.");
+            //else
+            //    if (this.ProcessInfoUser())
+            //        MessageBox.Show("Update of user information successful.");
+            //    else
+            //        MessageBox.Show("Update of user information failed.");
         }
 
-        private bool ProcessInfoMenu()
-        {
-            return true;
-        }
+        //private bool ProcessInfoMenu()
+        //{
+        //    return true;
+        //}
 
-        private bool ProcessInfoUser()
-        {
-            string[] lblText = new string[] { "User ID", "Username", "Employee Type", "Password" };
+        //private bool ProcessInfoUser()
+        //{
+        //    return true;
+        //    //string[] lblText = new string[] { "User ID", "Username", "Employee Type", "Password" };
 
-            for (int i = 0; i < 6; i++)
-            {
-                if (i != 0)
-                {
-                    Control[] ctrlLblOld = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
-                    Control[] ctrlTbxOld = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
-                    ctrlLblOld[0].Text = null;
-                    //this.Controls.Remove(ctrlTbxOld[4]);         
-                }
-            }
-            for (int j = 0; j < 4; j++)
-            {
-                if (j != 0)
-                {
-                    Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (j - 1).ToString(), true);
-                    ctrlLbl[0].Text = lblText[j - 1];
-                }
-            }
+        //    //for (int i = 0; i < 6; i++)
+        //    //{
+        //    //    if (i != 0)
+        //    //    {
+        //    //        Control[] ctrlLblOld = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
+        //    //        Control[] ctrlTbxOld = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
+        //    //        ctrlLblOld[0].Text = null;
+        //    //        //this.Controls.Remove(ctrlTbxOld[4]);         
+        //    //    }
+        //    //}
+        //    //for (int j = 0; j < 4; j++)
+        //    //{
+        //    //    if (j != 0)
+        //    //    {
+        //    //        Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (j - 1).ToString(), true);
+        //    //        ctrlLbl[0].Text = lblText[j - 1];
+        //    //    }
+        //    //}
 
-            return true;
-        }
+        //    //return true;
+        //}
     }
 }

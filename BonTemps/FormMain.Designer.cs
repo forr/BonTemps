@@ -65,6 +65,7 @@
             this.pnlMenuSelectContainer = new System.Windows.Forms.Panel();
             this.btnSetOrder = new System.Windows.Forms.Button();
             this.tpTableSelection = new System.Windows.Forms.TabPage();
+            this.pnlOverview = new System.Windows.Forms.Panel();
             this.lbxSelectedMenuItems = new System.Windows.Forms.ListBox();
             this.lbl1_pnlOrder = new System.Windows.Forms.Label();
             this.lblTableID_pnlOrder = new System.Windows.Forms.Label();
@@ -72,14 +73,10 @@
             this.tbxTableID_tpOrderCreation = new System.Windows.Forms.TextBox();
             this.btnCreateNewOrder = new System.Windows.Forms.Button();
             this.btnCancelNewOrder = new System.Windows.Forms.Button();
-            this.pnlOverview = new System.Windows.Forms.Panel();
             this.tpOrders = new System.Windows.Forms.TabPage();
             this.lvOrders = new System.Windows.Forms.ListView();
             this.tpManagement = new System.Windows.Forms.TabPage();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.dgvEditTables = new System.Windows.Forms.DataGridView();
-            this.rbEditUsers = new System.Windows.Forms.RadioButton();
-            this.rbEditMenus = new System.Windows.Forms.RadioButton();
             this.minimizeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +104,8 @@
             this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbxType = new System.Windows.Forms.ComboBox();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
             this.tctrlCreateOrder.SuspendLayout();
@@ -116,8 +115,6 @@
             this.tpTableSelection.SuspendLayout();
             this.tpOrders.SuspendLayout();
             this.tpManagement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEditTables)).BeginInit();
-            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tctrlInterface
@@ -536,6 +533,14 @@
             this.tpTableSelection.Text = "Table";
             this.tpTableSelection.UseVisualStyleBackColor = true;
             // 
+            // pnlOverview
+            // 
+            this.pnlOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOverview.Location = new System.Drawing.Point(9, 179);
+            this.pnlOverview.Name = "pnlOverview";
+            this.pnlOverview.Size = new System.Drawing.Size(563, 195);
+            this.pnlOverview.TabIndex = 12;
+            // 
             // lbxSelectedMenuItems
             // 
             this.lbxSelectedMenuItems.FormattingEnabled = true;
@@ -599,14 +604,6 @@
             this.btnCancelNewOrder.Text = "Cancel";
             this.btnCancelNewOrder.UseVisualStyleBackColor = true;
             // 
-            // pnlOverview
-            // 
-            this.pnlOverview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlOverview.Location = new System.Drawing.Point(9, 179);
-            this.pnlOverview.Name = "pnlOverview";
-            this.pnlOverview.Size = new System.Drawing.Size(563, 195);
-            this.pnlOverview.TabIndex = 12;
-            // 
             // tpOrders
             // 
             this.tpOrders.Controls.Add(this.lvOrders);
@@ -632,10 +629,9 @@
             // tpManagement
             // 
             this.tpManagement.BackColor = System.Drawing.Color.Transparent;
+            this.tpManagement.Controls.Add(this.pnlMain);
+            this.tpManagement.Controls.Add(this.cbxType);
             this.tpManagement.Controls.Add(this.btnUpdate);
-            this.tpManagement.Controls.Add(this.dgvEditTables);
-            this.tpManagement.Controls.Add(this.rbEditUsers);
-            this.tpManagement.Controls.Add(this.rbEditMenus);
             this.tpManagement.Location = new System.Drawing.Point(4, 22);
             this.tpManagement.Name = "tpManagement";
             this.tpManagement.Padding = new System.Windows.Forms.Padding(3);
@@ -653,36 +649,6 @@
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // dgvEditTables
-            // 
-            this.dgvEditTables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEditTables.Location = new System.Drawing.Point(8, 29);
-            this.dgvEditTables.Name = "dgvEditTables";
-            this.dgvEditTables.Size = new System.Drawing.Size(761, 368);
-            this.dgvEditTables.TabIndex = 2;
-            // 
-            // rbEditUsers
-            // 
-            this.rbEditUsers.AutoSize = true;
-            this.rbEditUsers.Location = new System.Drawing.Point(71, 6);
-            this.rbEditUsers.Name = "rbEditUsers";
-            this.rbEditUsers.Size = new System.Drawing.Size(52, 17);
-            this.rbEditUsers.TabIndex = 1;
-            this.rbEditUsers.TabStop = true;
-            this.rbEditUsers.Text = "Users";
-            this.rbEditUsers.UseVisualStyleBackColor = true;
-            // 
-            // rbEditMenus
-            // 
-            this.rbEditMenus.AutoSize = true;
-            this.rbEditMenus.Location = new System.Drawing.Point(8, 6);
-            this.rbEditMenus.Name = "rbEditMenus";
-            this.rbEditMenus.Size = new System.Drawing.Size(57, 17);
-            this.rbEditMenus.TabIndex = 0;
-            this.rbEditMenus.TabStop = true;
-            this.rbEditMenus.Text = "Menus";
-            this.rbEditMenus.UseVisualStyleBackColor = true;
             // 
             // minimizeMenuToolStripMenuItem
             // 
@@ -793,18 +759,18 @@
             // exportClientsToolStripMenuItem1
             // 
             this.exportClientsToolStripMenuItem1.Name = "exportClientsToolStripMenuItem1";
-            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.exportClientsToolStripMenuItem1.Text = "Export Clients";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // menuToolStripMenuItem1
@@ -842,33 +808,33 @@
             // exportClientsToolStripMenuItem2
             // 
             this.exportClientsToolStripMenuItem2.Name = "exportClientsToolStripMenuItem2";
-            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exportClientsToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
             this.exportClientsToolStripMenuItem2.Text = "Export Clients";
             this.exportClientsToolStripMenuItem2.Click += new System.EventHandler(this.exportClientsToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(145, 6);
             // 
             // exitToolStripMenuItem2
             // 
             this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem2.Text = "Exit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // lockToolStripMenuItem
             // 
             this.lockToolStripMenuItem.Name = "lockToolStripMenuItem";
-            this.lockToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.lockToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.lockToolStripMenuItem.Text = "Lock";
             this.lockToolStripMenuItem.Click += new System.EventHandler(this.lockToolStripMenuItem_Click);
             // 
@@ -889,6 +855,24 @@
             this.minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
             this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
             this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
+            // 
+            // cbxType
+            // 
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Items.AddRange(new object[] {
+            "Menus",
+            "Users"});
+            this.cbxType.Location = new System.Drawing.Point(8, 6);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(181, 21);
+            this.cbxType.TabIndex = 4;
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Location = new System.Drawing.Point(8, 33);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(761, 478);
+            this.pnlMain.TabIndex = 5;
             // 
             // FormMain
             // 
@@ -913,10 +897,6 @@
             this.tpTableSelection.PerformLayout();
             this.tpOrders.ResumeLayout(false);
             this.tpManagement.ResumeLayout(false);
-            this.tpManagement.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEditTables)).EndInit();
-            this.menuMain.ResumeLayout(false);
-            this.menuMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1001,11 +981,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exportClientsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.RadioButton rbEditUsers;
-        private System.Windows.Forms.RadioButton rbEditMenus;
-        private System.Windows.Forms.DataGridView dgvEditTables;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Panel pnlOverview;
+        private System.Windows.Forms.ComboBox cbxType;
+        private System.Windows.Forms.Panel pnlMain;
 
     }
 }
