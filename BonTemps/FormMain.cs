@@ -992,7 +992,7 @@ namespace BonTemps
 
         private void EnableMenuControls()
         {
-
+            //
         }
 
         private void DisableMenuControls()
