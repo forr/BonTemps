@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tctrlInterface = new System.Windows.Forms.TabControl();
             this.tpNewOrder = new System.Windows.Forms.TabPage();
@@ -125,6 +126,7 @@
             this.lockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.minimizeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmrLvOrderRefresh = new System.Windows.Forms.Timer(this.components);
             this.tctrlInterface.SuspendLayout();
             this.tpNewOrder.SuspendLayout();
             this.tctrlCreateOrder.SuspendLayout();
@@ -1065,6 +1067,11 @@
             this.minimizeToolStripMenuItem1.Size = new System.Drawing.Size(28, 20);
             this.minimizeToolStripMenuItem1.Click += new System.EventHandler(this.minimizeToolStripMenuItem1_Click);
             // 
+            // tmrLvOrderRefresh
+            // 
+            this.tmrLvOrderRefresh.Interval = 10000;
+            this.tmrLvOrderRefresh.Tick += new System.EventHandler(this.tmrLvOrderRefresh_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1200,6 +1207,7 @@
         private System.Windows.Forms.TextBox tbxMainCourse;
         private System.Windows.Forms.TextBox tbxEntree;
         private System.Windows.Forms.TextBox tbxMenuID;
+        private System.Windows.Forms.Timer tmrLvOrderRefresh;
 
     }
 }

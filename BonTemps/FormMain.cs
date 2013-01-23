@@ -25,6 +25,7 @@ namespace BonTemps
             this.InitializeComponent();
             this.InitializeFormProperties();
             this.InitializeRules();
+            this.tmrLvOrderRefresh.Enabled = true;
         }
 
         private void InitializeTabManagement()
@@ -89,7 +90,7 @@ namespace BonTemps
             else
             {
                 this.IniTabData(); //Removes all Unrelated Tabpages for the current user.
-                this.IniOrderView(); //Displays all current orders and is allowed to be seen by everyone.
+                
 
                 switch (initialUser)
                 {
@@ -116,7 +117,8 @@ namespace BonTemps
             // @Ryan: not sure whether you mean the view initialization or the manager ini... e.g. like you did with IniOrderView & IniChef/Waiter.. 
             // Made IniManagerView() instead... see below
             this.InitializeTabManagement();
-            
+
+            this.IniOrderView(); //Displays all current orders and is allowed to be seen by everyone.
         }
 
         private void IniManagerView()
@@ -125,6 +127,7 @@ namespace BonTemps
 
         private void IniChef()
         {
+            this.IniOrderView(); //Displays all current orders and is allowed to be seen by everyone.
         }
 
         private void IniWaiter()
@@ -133,6 +136,7 @@ namespace BonTemps
             {
                 this.pnlMenuSelectContainer.Controls.Add(this.DisplayMenuItems().Controls[i]);
             }
+            this.IniOrderView(); //Displays all current orders and is allowed to be seen by everyone.
         }
 
         private void IniReceptionist()
@@ -1016,7 +1020,18 @@ namespace BonTemps
 
         private void lvOrders_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            new Database().UpdateOrderReady((!lvOrders.Items[e.Index].Checked), Int32.Parse(lvOrders.Items[e.Index].Text.Remove(0, lvOrders.Items[e.Index].Text.Length - 1)),Int32.Parse(lvOrders.Items[e.Index].SubItems[1].Text));
+            if (this.initialUser == "Chef")
+            {
+                new Database().UpdateOrderReady((!lvOrders.Items[e.Index].Checked), Int32.Parse(lvOrders.Items[e.Index].Text.Remove(0, lvOrders.Items[e.Index].Text.Length - 1)), Int32.Parse(lvOrders.Items[e.Index].SubItems[1].Text));
+            }
+        }
+
+        private void tmrLvOrderRefresh_Tick(object sender, EventArgs e)
+        {
+            this.lvOrders.Clear();
+            this.lvOrders.Update();
+            IniOrderView();
+            this.lvOrders.Update();
         }
 
         //private bool ProcessInfoMenu()
