@@ -976,6 +976,40 @@ namespace BonTemps
             //        MessageBox.Show("Update of user information failed.");
         }
 
+        private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cbxType.SelectedText == "Menus")
+            {
+                this.DisableUserControls();
+                this.EnableMenuControls();
+            }
+            else
+            {
+                this.DisableMenuControls();
+                this.EnableUserControls();
+            }
+        }
+
+        private void EnableMenuControls()
+        {
+
+        }
+
+        private void DisableMenuControls()
+        {
+
+        }
+
+        private void EnableUserControls()
+        {
+
+        }
+
+        private void DisableUserControls()
+        {
+
+        }
+
         //private bool ProcessInfoMenu()
         //{
         //    return true;

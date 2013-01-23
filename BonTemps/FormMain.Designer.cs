@@ -685,13 +685,12 @@
             this.cbxType.FormattingEnabled = true;
             this.cbxType.Items.AddRange(new object[] {
             "Menus",
-            "Users",
-            "Menus",
             "Users"});
             this.cbxType.Location = new System.Drawing.Point(8, 6);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(181, 21);
             this.cbxType.TabIndex = 4;
+            this.cbxType.SelectedIndexChanged += new System.EventHandler(this.cbxType_SelectedIndexChanged);
             // 
             // btnUpdate
             // 
