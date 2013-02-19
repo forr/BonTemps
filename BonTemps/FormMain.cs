@@ -243,6 +243,11 @@ namespace BonTemps
             //foreach (var val in array)
             //    items.Add(val);
 
+            this.tbxClientID_tpClientSelect.Text = String.Empty;
+            this.tbxClientName_tpClientSelect.Text = String.Empty;
+
+            this.btnEditClient_ClientSelect.Enabled = true;
+
             this.lvOrders.Bounds = new Rectangle(0, 0, this.lvOrders.ClientSize.Width, this.lvOrders.ClientSize.Height);
             this.lvOrders.View = View.Details;
             this.lvOrders.LabelEdit = false;
@@ -251,7 +256,6 @@ namespace BonTemps
             this.lvOrders.GridLines = true;
 
 
-            //DataTable orderList = new Database().GetAllCurrentOrders();
             List<ListViewItem> lviList = new List<ListViewItem>();
             ListViewItem itemx = null;
             foreach (DataRow dr in new Database().GetAllCurrentOrders().Rows)
@@ -329,7 +333,6 @@ namespace BonTemps
 
         private Point GetClientIDLocation()
         {
-            //centered on Location (sizes(100%,100%))
             double relevantWidth = 50;
             double relevantHeight = 75;
 
@@ -377,7 +380,6 @@ namespace BonTemps
                 lblTableStatus.TextAlign = ContentAlignment.MiddleRight;
                 lblTableStatus.ForeColor = System.Drawing.Color.White;
                 lblTableStatus.Font = new Font(SystemFonts.CaptionFont.FontFamily, SystemFonts.CaptionFont.Size, FontStyle.Bold);
-                //lblTableStatus.BackColor = Color.White;
 
                 Label lblClientID = new Label();
                 Point pLblClientID = this.GetClientIDLocation();
@@ -1048,40 +1050,8 @@ namespace BonTemps
         {
             this.lvOrders.Clear();
             this.lvOrders.Update();
-            IniOrderView();
+            this.IniOrderView();
             this.lvOrders.Update();
         }
-
-        //private bool ProcessInfoMenu()
-        //{
-        //    return true;
-        //}
-
-        //private bool ProcessInfoUser()
-        //{
-        //    return true;
-        //    //string[] lblText = new string[] { "User ID", "Username", "Employee Type", "Password" };
-
-        //    //for (int i = 0; i < 6; i++)
-        //    //{
-        //    //    if (i != 0)
-        //    //    {
-        //    //        Control[] ctrlLblOld = this.Controls.Find("lblEditItem" + (i - 1).ToString(), true);
-        //    //        Control[] ctrlTbxOld = this.Controls.Find("txtbxEditItem" + (i - 1).ToString(), true);
-        //    //        ctrlLblOld[0].Text = null;
-        //    //        //this.Controls.Remove(ctrlTbxOld[4]);         
-        //    //    }
-        //    //}
-        //    //for (int j = 0; j < 4; j++)
-        //    //{
-        //    //    if (j != 0)
-        //    //    {
-        //    //        Control[] ctrlLbl = this.Controls.Find("lblEditItem" + (j - 1).ToString(), true);
-        //    //        ctrlLbl[0].Text = lblText[j - 1];
-        //    //    }
-        //    //}
-
-        //    //return true;
-        //}
     }
 }
