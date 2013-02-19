@@ -32,6 +32,7 @@ namespace BonTemps
         {
             this.cbxType.SelectedIndex = 0;
             this.cbxType.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.dgvEditMenus.DataSource = new Database().GetAllMenus();
             //this.dgvEditTables.DataSource = new Database().GetAllMenus();
             //int x = this.dgvEditTables.Location.X;
             //int y = this.dgvEditTables.Location.Y + this.dgvEditTables.ClientSize.Height + 20;
@@ -968,21 +969,25 @@ namespace BonTemps
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //if (this.rbEditMenus.Checked)
-            //    if (this.ProcessInfoMenu())
-            //        MessageBox.Show("Update of menu information successful.");
-            //    else
-            //        MessageBox.Show("Update of menu information failed.");
-            //else
-            //    if (this.ProcessInfoUser())
-            //        MessageBox.Show("Update of user information successful.");
-            //    else
-            //        MessageBox.Show("Update of user information failed.");
+            if (this.cbxType.SelectedIndex == 0)
+            {
+                string menuID = this.tbxMenuID.Text;
+                string entree = this.tbxEntree.Text;
+                string mainCourse = this.tbxMainCourse.Text;
+                string dessert = this.tbxDessert.Text;
+                string price = this.tbxPrice.Text;
+
+                new Database().Update(Database.TableName.Menus, new string[] { }, new string[] { entree, mainCourse, dessert, price }, Convert.ToInt32(menuID));
+            }
+            else
+            {
+
+            }
         }
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.cbxType.SelectedText == "Menus")
+            if (this.cbxType.SelectedIndex == 0)
             {
                 this.DisableUserControls();
                 this.EnableMenuControls();
@@ -1010,7 +1015,20 @@ namespace BonTemps
 
         private void EnableUserControls()
         {
+            DataGridView dgvEditUsers = new DataGridView();
+            dgvEditUsers.Location = this.dgvEditMenus.Location;
+            dgvEditUsers.Size = this.dgvEditMenus.Size;
+            dgvEditUsers.DataSource = new Database().GetAllUsers();
 
+            string[] lblText = new string[] { "User ID", "Username", "Employee Type", "Password" };
+            for (int i = 0; i < 4; i++)
+            {
+                Label lbl = new Label();
+                TextBox tbx = new TextBox();
+                lbl.Name = String.Format("lbl{0}", lblText[i]);
+                lbl.Text = lblText[i];
+                
+            }
         }
 
         private void DisableUserControls()
